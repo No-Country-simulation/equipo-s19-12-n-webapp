@@ -1,0 +1,25 @@
+/* src/components/Categories.css */
+.categorias {
+  width: 250px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  overflow-y: auto;
+}
+
+.categorias ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.categorias li {
+  margin: 10px 0;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.categorias li:hover {
+  background-color: #bbb;
+}

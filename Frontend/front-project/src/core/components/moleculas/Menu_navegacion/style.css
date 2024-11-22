@@ -1,0 +1,8 @@
+.molecula_opc_navbar {
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    list-style: none;
+}

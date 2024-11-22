@@ -1,5 +1,9 @@
+
 :root {
   --font-primary: "Montserrat", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
 
   /* Colores */
   --color-verde: #76b939;
@@ -27,28 +31,16 @@ h2 {
   font-weight: 600; /* Semi Bold 600 */
 }
 
-/* H3 - Heading */
-h3 {
-  font-size: 24px;
-  font-weight: 500; /* Medium 500 */
-}
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+} */
 
-/* P - Párrafo */
-p {
-  font-size: 16px;
-  font-weight: 400; /* Regular 400 */
-}
-/* Texto en color verde */
-.text-verde {
-  color: var(--color-verde);
-}
-
-/* Texto en color naranja */
-.text-naranja {
-  color: var(--color-naranja);
-}
-
-/* Texto de error */
-.text-error {
-  color: var(--color-rojo-error);
-}
