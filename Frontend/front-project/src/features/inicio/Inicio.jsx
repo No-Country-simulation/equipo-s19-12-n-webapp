@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Home from "../../core/components/templates/Home/Home";
 
 const Inicio = () => {
   return (
-    <div>inicio</div>
-  )
-}
+    <div>
+      <Home />
+    </div>
+  );
+};
 
-export default Inicio
+export default Inicio;
