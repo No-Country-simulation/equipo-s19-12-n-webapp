@@ -1,0 +1,48 @@
+*{   
+    font-family: "Montserrat", sans-serif;
+}
+
+h1{
+    font-size: 25px;
+    font-weight: 700;
+}
+
+h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+h3{
+    font-size: 24px;
+    font-weight: 500;
+}
+
+p{
+    font-size: 16px;
+}
+
+
+@media (min-width: 768px) {
+    h1{
+        font-size: 34px;
+        font-weight: 700;
+    }
+
+    h2{
+        font-size: 24px;
+        font-weight: 600;
+    }
+}
+
+@media (min-whidth: 1024px) {
+    
+    h1{
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+    h2{
+        font-size: 32px;
+        font-weight: 600;
+    }
+}
