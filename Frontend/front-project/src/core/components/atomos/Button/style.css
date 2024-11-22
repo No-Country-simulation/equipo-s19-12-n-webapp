@@ -1,0 +1,25 @@
+.button {
+    padding: 6px 15px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    margin: 5px;
+    transition: opacity .5s;
+}
+
+.button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.button.orange{
+    background-color: #F87C01;
+    color: #ffffff;
+    box-shadow: 0 4px 4px 0 #0000002c;
+    border: none;
+    outline: none;
+}
+
+.button.green {
+    border: 2px solid #76B939;
+    color: #76B939;
+}
