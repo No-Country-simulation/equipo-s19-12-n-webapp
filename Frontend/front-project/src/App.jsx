@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedCategory, setSelectedCategory] = useState("frutas");
+
+  // Datos de ejemplo para las categorías de productos
+  const productsData = {
+    frutas: [
+      { name: "Manzana", price: 150, image: "/assets/images/frutas.jpg" },
+      { name: "Banana", price: 100, image: "/assets/images/frutas.jpg" },
+    ],
+    carnes: [
+      { name: "Carne de Res", price: 1200, image: "/assets/images/carnes.jpg" },
+      { name: "Pollo", price: 800, image: "/assets/images/carnes.jpg" },
+    ],
+    lacteos: [
+      { name: "Leche", price: 200, image: "/assets/images/lacteos.jpg" },
+      { name: "Queso", price: 400, image: "/assets/images/lacteos.jpg" },
+    ],
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <Navbar />
+      <Hero
+        selectedCategory={selectedCategory}
+        onCategorySelect={setSelectedCategory}
+        productsData={productsData}
+      />
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;
