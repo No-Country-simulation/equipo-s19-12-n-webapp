@@ -1,14 +1,13 @@
-import { useState } from 'react'
 import './App.css'
-import Home from './components/templates/Home/Home'
+import { RouterProvider } from 'react-router-dom'
+import { AppRouter } from './core/routes/AppRouter'
+import { AuthProvider } from './core/auth/providers/AuthProvider'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <Home />
-    </>
+    <AuthProvider>
+      <RouterProvider router={AppRouter}></RouterProvider>
+    </AuthProvider>
   )
 }
 
