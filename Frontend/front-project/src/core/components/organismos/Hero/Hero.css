@@ -1,0 +1,21 @@
+/* src/components/Hero.css */
+.hero {
+  display: flex;
+  height: 100vh;
+}
+
+.categorias {
+  width: 250px;
+  padding: 20px;
+  background-color: #f4f4f4;
+  overflow-y: auto;
+}
+
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+}
