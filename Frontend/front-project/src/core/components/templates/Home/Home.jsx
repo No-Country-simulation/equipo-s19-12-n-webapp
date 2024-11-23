@@ -10,7 +10,11 @@ const Home = () => {
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
   };
-
+  
+// aca obtiene las variables del contexto
+  const { isLoggedIn } = useAuth(); 
+  console.log("isLoggedIn:" + isLoggedIn);
+  
   return (
     <Layout>
       <Hero
