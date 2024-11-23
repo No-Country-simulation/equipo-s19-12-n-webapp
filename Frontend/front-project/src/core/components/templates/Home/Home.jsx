@@ -3,6 +3,7 @@ import { useState } from "react";
 import Layout from "../../../layouts/Layout.jsx"; // Importa el Layout
 import Hero from "../../organismos/Hero/Hero";
 import productsData from "../../../data/productsData.js";
+import { useAuth } from '../../../auth/hook/use_auth.js'
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("frutas");
