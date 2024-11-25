@@ -4,11 +4,14 @@ import Inicio from '../../features/inicio/Inicio'
 import Categorias from '../../features/categorias/Categorias'
 import Perfil from '../../features/perfil/Perfil'
 import Soporte from '../../features/soporte/Soporte'
+import Layout from '../layouts/Layout'
 
 export const AppRouter = createBrowserRouter([
     {
         path: "/",
-        element: <Inicio></Inicio>,
+        element: <Layout>
+                    <Inicio></Inicio>
+                </Layout>,
     },
     {
         path: "/login",

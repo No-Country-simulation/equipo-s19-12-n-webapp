@@ -9,7 +9,7 @@ const Home = () => {
 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
-  };
+  };  
 
   return (
     <Layout>

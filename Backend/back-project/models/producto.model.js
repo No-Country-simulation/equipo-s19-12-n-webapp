@@ -1,0 +1,14 @@
+import mongoose from "mongoose";
+
+const schema = mongoose.Schema;
+
+const productoSchema = new schema({
+    Nombre: String,
+    desc: String,
+    precio: Number,
+    img: String,
+})
+
+const Producto = mongoose.model("Producto", productoSchema, "Producto");
+
+export default Producto;
