@@ -1,0 +1,14 @@
+.desk-selector{
+    color: #303030;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+  
+  /* Borde cuadrado */
+  .square {
+    border-radius: 0; /* Bordes cuadrados */
+  }
+  
+  /* Borde redondeado */
+  .rounded {
+    border-radius: 12px; /* Bordes redondeados */
+  }

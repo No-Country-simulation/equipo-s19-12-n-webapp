@@ -1,0 +1,10 @@
+.default {
+    border-radius: 8px;  /* Esquinas redondeadas con un radio de 8px */
+}
+
+.circle {
+    border-radius: 50%;  /* Hace la imagen circular */
+    width: 150px;         /* Ajusta el tamaño para que sea cuadrado (necesario para el círculo) */
+    height: 150px;        /* Ajusta el tamaño para que sea cuadrado (necesario para el círculo) */
+    object-fit: cover;    /* Asegura que la imagen se ajuste correctamente dentro del círculo */
+}
