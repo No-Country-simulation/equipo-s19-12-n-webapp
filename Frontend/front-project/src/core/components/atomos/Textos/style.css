@@ -3,46 +3,66 @@
 }
 
 h1{
-    font-size: 25px;
+    font-size: 1.5rem;
     font-weight: 700;
 }
 
 h2{
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 600;
 }
 
 h3{
-    font-size: 24px;
+    font-size: 1.1rem;
     font-weight: 500;
 }
 
 p{
-    font-size: 16px;
+    font-size: 1rem;
+}
+
+.orange{
+    color: #F87C01;
+}
+
+.green{
+    color: #76B939;
+}
+
+.white{
+    color: #fff;
 }
 
 
 @media (min-width: 768px) {
     h1{
-        font-size: 34px;
+        font-size: 2.125rem;
         font-weight: 700;
     }
 
     h2{
-        font-size: 24px;
+        font-size: 1.5rem;
         font-weight: 600;
+    }
+
+    h3{
+        font-size: 1.2rem;
     }
 }
 
 @media (min-whidth: 1024px) {
     
     h1{
-        font-size: 40px;
+        font-size: 2.5rem;
         font-weight: 700;
     }
 
     h2{
-        font-size: 32px;
+        font-size: 2rem;
         font-weight: 600;
+    }
+
+    h3{
+        font-size: 1.5rem;
     }
 }
