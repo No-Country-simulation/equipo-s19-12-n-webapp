@@ -1,0 +1,20 @@
+.main-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 445px;
+  width: auto;
+  background-image: url("../../../../assets/images/food-doodles-banner.svg");
+}
+
+.text-content {
+  flex: 1;
+  text-align: center;
+}
+
+.image-content {
+  flex: 1;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}

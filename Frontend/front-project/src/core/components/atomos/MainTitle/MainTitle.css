@@ -1,0 +1,12 @@
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48.76px;
+  text-align: center;
+  text-underline-position: from-font;
+}
+
+.highlight {
+  color: #6ab344;
+}
