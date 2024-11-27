@@ -1,14 +1,35 @@
-.desk-selector{
-    color: #303030;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+/* Estilos generales para el selector */
+.desk-selector {
+  color: #303030;
+  font-size: 16px; /* Tamaño de fuente por defecto */
+  padding: 8px 12px; /* Espaciado interno */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  width: 100%; /* Ocupa todo el ancho disponible */
+  border: 1px solid #ccc; /* Borde por defecto */
 }
-  
-  /* Borde cuadrado */
-  .square {
-    border-radius: 0; /* Bordes cuadrados */
+
+/* Borde cuadrado */
+.square {
+  border-radius: 0; /* Bordes cuadrados */
+}
+
+/* Borde redondeado */
+.rounded {
+  border-radius: 12px; /* Bordes redondeados */
+}
+
+/* Media Query para pantallas más pequeñas (máximo 768px) */
+@media (max-width: 768px) {
+  .desk-selector {
+      font-size: 14px; /* Reducir tamaño de fuente en pantallas medianas y pequeñas */
+      padding: 6px 10px; /* Reducir espaciado interno */
   }
-  
-  /* Borde redondeado */
-  .rounded {
-    border-radius: 12px; /* Bordes redondeados */
+}
+
+/* Media Query para pantallas muy pequeñas (máximo 480px) */
+@media (max-width: 480px) {
+  .desk-selector {
+      font-size: 12px; /* Reducir aún más el tamaño de la fuente */
+      padding: 4px 8px; /* Reducir aún más el espaciado interno */
   }
+}
