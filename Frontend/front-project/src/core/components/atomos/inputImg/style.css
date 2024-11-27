@@ -1,0 +1,26 @@
+input[type="file"] {
+    display: none;
+  }
+
+.boton_mas {
+    width: 40%;
+    aspect-ratio: 1/1;
+    display: inline-block;
+    padding: 20px 20px;
+    background-color: #909090;
+    border-radius: 5px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.icono_mas{
+    width: 40%;
+    vertical-align: middle;
+}
+
+@media (min-width: 768px) {
+    .boton_mas {
+        width: 25%;
+    }
+}
