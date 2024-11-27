@@ -2,11 +2,14 @@
   position: relative;
   display: flex;
   align-items: center;
+  width: 400px;
+  height: 56px;
+  gap: 300px;
 }
 
 .search-input {
   width: 400px;
-  height: 56px;
+  height: 26px;
   padding: 8px 40px 8px 12px;
   border-radius: 35px;
   border: none;
@@ -16,6 +19,7 @@
 .search-icon {
   position: absolute;
   right: 12px;
-  width: 48px;
-  height: 48px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }

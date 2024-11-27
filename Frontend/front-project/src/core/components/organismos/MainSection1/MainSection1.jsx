@@ -13,6 +13,7 @@ const MainSection1 = () => {
         <Button
           variante={"orange"}
           texto={"Ver productos"}
+          className="otrosEstilos"
         />
       </div>
       <div className="image-content">

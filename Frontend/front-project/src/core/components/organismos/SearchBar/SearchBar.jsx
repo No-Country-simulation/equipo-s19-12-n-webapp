@@ -10,8 +10,18 @@ const SearchBar = () => {
       </div>
       <div className="sectionButtons">
         <Button texto={"Ordenar por"} />
-        <Button texto={"Mapa"} />
-        <Button texto={"Carrito"} />
+        <Button
+          texto={"Mapa"}
+          variante={"white"}
+          icon={"carrito"}
+          className="btns-search-bar"
+        />
+        <Button
+          texto={"Carrito"}
+          variante={"white"}
+          icon={"carrito"}
+          className="btns-search-bar"
+        />
       </div>
     </div>
   );

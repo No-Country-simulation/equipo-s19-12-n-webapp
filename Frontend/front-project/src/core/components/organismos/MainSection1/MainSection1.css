@@ -18,3 +18,9 @@
   justify-content: end;
   align-items: end;
 }
+
+.otrosEstilos {
+  padding-left: 50px;
+  padding-right: 50px;
+  font-weight: 600;
+}
