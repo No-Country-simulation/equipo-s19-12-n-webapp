@@ -1,0 +1,43 @@
+.enlace_navbar{
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    color: #303030;
+    font-weight: 600; 
+  text-decoration: none;
+}
+
+.enlace_login{
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #76B939;
+  font-weight: 600; 
+  text-decoration: none;
+  font-weight: normal; /* Regular */
+  width: 215px; /* Ancho de la caja */
+  height: 20px; /* Altura de la caja */
+  line-height: 20px; /* Para alinear el texto verticalmente */
+
+}
+
+.enlace_login_registrarse{
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  color: #76B939;
+  font-weight: 600; 
+  font-weight: 500; /* Medium */
+  width: 392px; /* Ancho */
+  height: 24px; /* Alto */
+  line-height: 24px; /* Para centrar el texto verticalmente */
+  text-decoration: underline; /* Línea debajo del texto */
+}
+
+.enlace_footer{
+  font-family: 'Montserrat', sans-serif;
+  color: #FAFAFA;
+  font-weight: normal; /* Regular */
+  font-size: 16px; 
+  width: 394px;
+  height: 22px;
+  line-height: 22px;
+  text-decoration: none; /* Línea debajo del texto */
+}
