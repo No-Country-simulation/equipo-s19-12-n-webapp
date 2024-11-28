@@ -1,0 +1,60 @@
+.seccionFooter{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    background-color: #303030;
+    justify-content: space-around;
+}
+
+.seccionFooter div{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 3%;
+}
+
+.seccionFooter p{
+    margin: 2% 0;
+}
+
+.derechos{
+    padding: 2%;
+    text-align: center;
+    background-color: #303030;
+    border-top: 0.5px solid #fff;
+    width: 100%;
+}
+
+.contacto{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.redes{
+    flex-direction: row;
+}
+
+@media (min-width: 768px) {
+    .seccionFooter{
+        flex-direction: row;
+        flex-wrap: wrap;
+        text-wrap:balance;
+    }
+
+    .seccionFooter > div:nth-child(4) {
+        width: 25%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .seccionFooter div{
+        width: 10%;
+    }
+
+    .seccionFooter > div:nth-child(4) {
+        width: 20%;
+    }
+    
+}

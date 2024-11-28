@@ -33,6 +33,11 @@ p{
     color: #fff;
 }
 
+.tituloFooter{
+    color: #fff;
+    font-weight: 500;
+}
+
 
 @media (min-width: 768px) {
     h1{

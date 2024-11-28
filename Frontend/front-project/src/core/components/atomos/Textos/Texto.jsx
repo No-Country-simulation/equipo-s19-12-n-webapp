@@ -7,6 +7,7 @@ const Texto = ({ level, texto, variante}) => {
         orange: variante === 'orange',
         green: variante === 'green',
         white: variante === 'white',
+        tituloFooter: variante === 'tituloFooter',
     })
 
     return (

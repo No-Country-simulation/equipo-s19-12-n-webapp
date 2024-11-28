@@ -3,7 +3,7 @@ import "./style.css";
 import classnames from "classnames";
 import Icon from "../Icon/Icon";
 
-const Button = ({ texto, variante, icon }) => {
+const Button = ({ texto, variante, icon, iconSize}) => {
   const buttonClassnames = classnames("button", {
     orange: variante === "orange",
     green: variante === "green",
@@ -18,6 +18,7 @@ const Button = ({ texto, variante, icon }) => {
           <Icon
             type={icon}
             className="button-icon"
+            size = {iconSize}
           />
         )}
         {texto}
