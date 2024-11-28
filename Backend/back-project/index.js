@@ -14,6 +14,13 @@ const app = express();
 dontenv.config();
 const port = process.env.PORT || 5000;
 
+/* Data Base Conection */
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@proyects.kxrihqg.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
+mongoose
+  .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("Base de datos conectada"))
+  .catch((e) => console.log(e));
+
   /* Midlewares */ 
 app.use(express.json());
 app.use(cors()); // Aqui se pueden añadir todas las aplicaciones que tienen acceso al servidor, si no se añade nada por defecto deja entrar a todo el mundo.
