@@ -1,6 +1,6 @@
 input[type="file"] {
     display: none;
-  }
+}
 
 .boton_mas {
     width: 40%;
@@ -15,7 +15,7 @@ input[type="file"] {
 }
 
 .icono_mas{
-    width: 40%;
+    width: 80% ;
     vertical-align: middle;
 }
 
