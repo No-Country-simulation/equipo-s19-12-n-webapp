@@ -15,13 +15,13 @@ router.get("/:_id", async (req, res) => {
 
 router.post("/", async (req, res) => {
     const {nombre, desc, precio, img} = req.body;
-    const nuevoProducto = new productoSchema({nombre, desc, precio, img});
+    const nuevoProducto = new productoSchema({nombre, desc, precio, stock, img, comerciante});
     await productoSchema.insertMany(nuevoProducto);
 })
 
 router.post("/:_id", async (req, res) => {
     const {nombre, desc, precio, img} = req.body;
-    const productoActualizado = new productoSchema({nombre, desc, precio, img});
+    const productoActualizado = new productoSchema({nombre, desc, precio, stock, img, comerciante});
     await productoSchema.findByIdAndUpdate(req.params._id, productoActualizado);
 })
 

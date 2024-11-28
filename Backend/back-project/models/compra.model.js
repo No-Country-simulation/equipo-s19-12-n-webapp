@@ -4,6 +4,7 @@ const schema = mongoose.Schema;
 
 const compraSchema = new schema({
     consumidor: String,
+    comerciante: Number,
     precioT: Number,
     fecha: Date,
 })

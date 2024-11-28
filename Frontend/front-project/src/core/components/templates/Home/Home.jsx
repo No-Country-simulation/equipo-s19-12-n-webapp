@@ -12,13 +12,11 @@ const Home = () => {
   };  
 
   return (
-    <Layout>
       <Hero
         selectedCategory={selectedCategory}
         onCategorySelect={handleCategorySelect}
         productsData={productsData}
       />
-    </Layout>
   );
 };
 
