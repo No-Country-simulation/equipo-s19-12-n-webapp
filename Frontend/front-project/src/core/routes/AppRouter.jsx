@@ -9,9 +9,7 @@ import Layout from '../layouts/Layout'
 export const AppRouter = createBrowserRouter([
     {
         path: "/",
-        element: <Layout>
-                    <Inicio></Inicio>
-                </Layout>,
+        element:<Layout><Inicio></Inicio></Layout> ,
     },
     {
         path: "/login",
