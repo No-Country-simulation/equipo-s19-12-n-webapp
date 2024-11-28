@@ -1,10 +1,41 @@
+/* Estilos por defecto para las imágenes */
 .default {
-    border-radius: 8px;  /* Esquinas redondeadas con un radio de 8px */
+    border-radius: 8px; /* Bordes redondeados por defecto */
+    width: 100%; /* La imagen ocupará el 100% del ancho disponible por defecto */
+    height: auto; /* Mantener la relación de aspecto */
+    object-fit: cover; /* La imagen se ajustará sin distorsionarse */
 }
 
+/* Estilos para las imágenes circulares */
 .circle {
-    border-radius: 50%;  /* Hace la imagen circular */
-    width: 150px;         /* Ajusta el tamaño para que sea cuadrado (necesario para el círculo) */
-    height: 150px;        /* Ajusta el tamaño para que sea cuadrado (necesario para el círculo) */
-    object-fit: cover;    /* Asegura que la imagen se ajuste correctamente dentro del círculo */
+    border-radius: 50%; /* Hace la imagen circular */
+    width: 150px; /* Tamaño fijo para imágenes circulares */
+    height: 150px; /* Asegura que la imagen sea cuadrada */
+    object-fit: cover; /* Asegura que la imagen se ajuste bien dentro del círculo */
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .default {
+        width: 80%; /* Reducción del tamaño de la imagen en pantallas medianas y pequeñas */
+        height: auto; /* Mantener la relación de aspecto */
+    }
+
+    .circle {
+        width: 120px; /* Reducir el tamaño del círculo en pantallas pequeñas */
+        height: 120px; /* Mantener la proporción circular */
+    }
+}
+
+/* Media Query para pantallas muy pequeñas (móviles pequeños) */
+@media (max-width: 480px) {
+    .default {
+        width: 90%; /* La imagen ocupará el 90% del ancho disponible en móviles pequeños */
+        height: auto; /* Mantener la relación de aspecto */
+    }
+
+    .circle {
+        width: 100px; /* Reducir aún más el tamaño de las imágenes circulares */
+        height: 100px; /* Mantener la proporción circular */
+    }
 }

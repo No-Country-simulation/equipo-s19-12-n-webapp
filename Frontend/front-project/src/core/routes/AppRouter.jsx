@@ -6,7 +6,6 @@ import Perfil from '../../features/perfil/Perfil'
 import Soporte from '../../features/soporte/Soporte'
 import Layout from '../layouts/Layout'
 
-
 export const AppRouter = createBrowserRouter([
     {
         path: "/",
