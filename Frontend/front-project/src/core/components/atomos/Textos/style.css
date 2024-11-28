@@ -55,7 +55,7 @@ p{
     }
 }
 
-@media (min-whidth: 1024px) {
+@media (min-width: 1024px) {
     
     h1{
         font-size: 2.5rem;
