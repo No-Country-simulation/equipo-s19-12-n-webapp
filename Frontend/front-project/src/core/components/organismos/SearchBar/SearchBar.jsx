@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import SearchInput from "../../atomos/SearchInput/SearchInput";
 import Button from "../../atomos/Button/Button";
-import Selector from "../../atomos/Selector/Selector";
 import "./SearchBar.css";
 
 const SearchBar = () => {
@@ -25,15 +24,8 @@ const SearchBar = () => {
         <SearchInput />
       </div>
       <div className="sectionButtons">
-        <Selector
-          options={options}
-          selectedValue={selectedValue}
-          handleChange={handleSelectChange}
-          borderType="rounded"
-        />
-
         <Button
-          texto={"mapa"}
+          texto={"Mapa"}
           variante={"white"}
           icon={"carrito"}
         />

@@ -1,0 +1,12 @@
+.main-banner {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+  background-image: url("../../../../assets/images/food-doodles-banner.svg");
+  background-size: cover;
+}
+.text-content {
+  flex: 1;
+  text-align: center;
+}

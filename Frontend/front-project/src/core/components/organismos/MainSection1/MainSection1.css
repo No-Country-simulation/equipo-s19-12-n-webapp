@@ -24,3 +24,7 @@
   padding-right: 50px;
   font-weight: 600;
 }
+
+/* Media Query para Tablets */
+@media (max-width: 768px) {
+}

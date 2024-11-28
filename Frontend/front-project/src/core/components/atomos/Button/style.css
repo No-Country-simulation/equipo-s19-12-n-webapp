@@ -4,6 +4,7 @@
   letter-spacing: 1px;
   margin: 5px;
   transition: opacity 0.5s;
+  font-weight: 600;
 }
 
 .button:hover {
