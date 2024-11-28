@@ -1,8 +1,10 @@
 import Button from "../../core/components/atomos/Button/Button";
 import Texto from "../../core/components/atomos/Textos/Texto";
 import InputImg from "../../core/components/atomos/inputImg/InputImg";
-import Pagination from "../../core/components/moleculas/Pagination/Pagination";
 import Footer from "../../core/components/organismos/Footer/Footer";
+import ImgCategorias from "../../core/components/atomos/ImgCategorias/ImgCategorias";
+import CategoriasImg from "../../core/components/moleculas/CategoriasImg/categoriasImg";
+import Categories from "../../core/components/organismos/Categorias/Categorias";
 
 const Categorias = () => {
   return (
@@ -49,9 +51,12 @@ const Categorias = () => {
         texto={"ACERCA DE NOSOTROS"}
         variante={"tituloFooter"}
       />
+      <ImgCategorias type={'bebidas'} size={'large'} />
+      <CategoriasImg nombreImg={'carnes-pescados'} tituloCat={'carnes y pescados'} size={'large'} />
+      <Categories />
+ 
       <InputImg />
-      <Pagination />
-      <Footer />
+      <Footer />   
     </div>
   );
 };
