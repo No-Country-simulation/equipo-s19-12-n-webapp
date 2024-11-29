@@ -38,7 +38,7 @@ routerCompra.post("/", async (req, res) => {
     }
     try {
         const {consumidor, precioT, fecha} = req.body;
-        const nuevaCompra = new comercianteSchema({consumidor, comerciante, precioT, fecha});
+        const nuevaCompra = new compraSchema({consumidor, comerciante, precioT, fecha});
         await compraSchema.insertMany(nuevaCompra);
         res.sendStatus(200).send({
             message: "Se añadieron nuevos datos correctamente"
