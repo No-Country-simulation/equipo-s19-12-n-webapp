@@ -14,14 +14,14 @@ routerComerciante.get("/:email", async (req, res) => {
 })
 
 routerComerciante.post("/", async (req, res) => {
-    const {nombre, direccion, telefono, logo, email, pass, img1, img2, img3} = req.body;
-    const nuevoComerciante = new comercianteSchema({nombre, direccion, telefono, logo, email, pass, img1, img2, img3});
+    const {cuit, nombre, direccion, telefono, logo, email, pass, img1, img2, img3} = req.body;
+    const nuevoComerciante = new comercianteSchema({cuit, nombre, direccion, telefono, logo, email, pass, img1, img2, img3});
     await comercianteSchema.insertMany(nuevoComerciante);
 })
 
 routerComerciante.post("/:_id", async (req, res) => {
-    const {nombre, direccion, telefono, logo, email, pass, img1, img2, img3} = req.body;
-    const comercianteActualizado = new comercianteSchema({nombre, direccion, telefono, logo, email, pass, img1, img2, img3});
+    const {cuit, nombre, direccion, telefono, logo, email, pass, img1, img2, img3} = req.body;
+    const comercianteActualizado = new comercianteSchema({cuit, nombre, direccion, telefono, logo, email, pass, img1, img2, img3});
     await comercianteSchema.findByIdAndUpdate(req.params._id, comercianteActualizado);
 })
 
