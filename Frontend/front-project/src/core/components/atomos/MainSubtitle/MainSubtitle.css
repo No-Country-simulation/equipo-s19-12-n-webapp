@@ -1,0 +1,11 @@
+.subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29.26px;
+  text-align: center;
+}
+
+.pb {
+  margin-bottom: 30px;
+}
