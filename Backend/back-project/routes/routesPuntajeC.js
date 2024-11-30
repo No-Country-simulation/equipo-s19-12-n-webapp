@@ -53,7 +53,7 @@ routerPuntajeC.post("/", async (req, res) => {
     } 
 })
 
-routerPuntajeC.post("/:_id", async (req, res) => {
+routerPuntajeC.put("/:_id", async (req, res) => {
     if (!req.body) {
         return res.status(400).send({
             message: "No se pueden enviar parámetros vacíos!"

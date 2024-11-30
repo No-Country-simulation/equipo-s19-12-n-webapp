@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const schema = mongoose.Schema;
 
 const productoSchema = new schema({
-    Nombre: String,
+    nombre: String,
     desc: String,
     precio: Number,
     stock: Number,

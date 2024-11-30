@@ -53,7 +53,7 @@ routerConsumidor.post("/", async (req, res) => {
     } 
 })
 
-routerConsumidor.post("/:email", async (req, res) => {
+routerConsumidor.put("/:email", async (req, res) => {
 
     if (!req.body) {
         return res.status(400).send({

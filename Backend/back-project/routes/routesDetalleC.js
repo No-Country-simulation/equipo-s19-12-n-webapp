@@ -50,7 +50,7 @@ routerDetalleC.post("/", async (req, res) => {
     } 
 })
 
-routerDetalleC.post("/:_id", async (req, res) => {
+routerDetalleC.put("/:_id", async (req, res) => {
     if (!req.body) {
         return res.status(400).send({
             message: "No se pueden enviar parámetros vacíos!"

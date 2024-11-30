@@ -53,7 +53,7 @@ routerComerciante.post("/", async (req, res) => {
     }    
 })
 
-routerComerciante.post("/:_id", async (req, res) => {   
+routerComerciante.put("/:_id", async (req, res) => {   
     if (!req.body) {
         return res.status(400).send({
             message: "No se pueden enviar parámetros vacíos!"
