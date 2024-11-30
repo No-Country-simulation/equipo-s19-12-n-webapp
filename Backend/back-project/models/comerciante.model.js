@@ -8,6 +8,7 @@ const comercianteSchema = new schema({
     email: String,
     pass: String,
     direccion: String,
+    ciudad: Number,
     telefono: Number,
     logo: String,
     img1: String,
