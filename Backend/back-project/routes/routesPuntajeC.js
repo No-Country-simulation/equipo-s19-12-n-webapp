@@ -44,6 +44,9 @@ routerPuntajeC.post("/", async (req, res) => {
             message: "Se añadieron nuevos datos correctamente"
         })
     } catch (error) {
+        if (error.code === 11000) {
+            return res.status(400).json({ error: 'Ya puntuaste a este comerciante.' });
+        }
         res.status(500).send({
             message: "Error al añadir datos"
         });

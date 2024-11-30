@@ -44,6 +44,9 @@ routerConsumidor.post("/", async (req, res) => {
             message: "Se añadieron nuevos datos correctamente"
         })
     } catch (error) {
+        if (error.code === 11000) {
+            return res.status(400).json({ error: 'Este email corresponde a un usuario ya registrado.' });
+        }
         res.status(500).send({
             message: "Error al añadir datos"
         });

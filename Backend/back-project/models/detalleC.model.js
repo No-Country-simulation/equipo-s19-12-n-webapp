@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 const schema = mongoose.Schema;
 
 const detalleCSchema = new schema({
-    compra: Number,
-    articulo: Number,
+    compra: String,
+    articulo: String,
     cantidad: Number,
 })
 

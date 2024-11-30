@@ -4,7 +4,7 @@ const schema = mongoose.Schema;
 
 const puntajeCSchema = new schema({
     comerciante: Number,
-    consumidor: Number,
+    consumidor: String,
     puntaje: Number,
 })
 
