@@ -58,7 +58,7 @@ routerDetalleC.put("/:_id", async (req, res) => {
     }
     try {
         const {compra, articulo, cantidad} = req.body;
-        const detalleCActualizado = new detalleCSchema({compra, articulo, cantidad});
+        const detalleCActualizado = {compra, articulo, cantidad};
         const data = await detalleCSchema.findByIdAndUpdate(req.params._id, detalleCActualizado);
         if (!data) {
             res.status(404).send({

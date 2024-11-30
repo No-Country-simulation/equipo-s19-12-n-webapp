@@ -61,8 +61,8 @@ routerConsumidor.put("/:email", async (req, res) => {
         });
     }
     try {
-        const {email, pass} = req.body;
-        const consumidorActualizado = new consumidorSchema({email, pass});
+        const {pass} = req.body;
+        const consumidorActualizado = {pass};
         const data = await consumidorSchema.findByIdAndUpdate(req.params.email, consumidorActualizado);
         if (!data) {
             res.status(404).send({

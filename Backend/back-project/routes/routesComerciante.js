@@ -21,7 +21,7 @@ routerComerciante.get("/:_id", async (req, res) => {
 
         if (!data)
             res.status(404).send({ message: "Registro no encontrado " });
-        else res.json(comerciante);
+        else res.json(data);
 
     } catch (err) {
         res
@@ -60,8 +60,8 @@ routerComerciante.put("/:_id", async (req, res) => {
         });
     }
     try {
-        const {cuit, nombre, direccion, ciudad, telefono, logo, email, pass, img1, img2, img3} = req.body;
-        const comercianteActualizado = new comercianteSchema({cuit, nombre, direccion, ciudad, telefono, logo, email, pass, img1, img2, img3});
+        const {nombre, direccion, ciudad, telefono, logo, email, pass, img1, img2, img3} = req.body;
+        const comercianteActualizado = {nombre, direccion, ciudad, telefono, logo, email, pass, img1, img2, img3};
         const data = await comercianteSchema.findByIdAndUpdate(req.params._id, comercianteActualizado);
         if (!data) {
             res.status(404).send({
@@ -71,7 +71,7 @@ routerComerciante.put("/:_id", async (req, res) => {
     }
     catch (err) {
         res.status(500).send({
-            message: "Error actualizando el producto con id = " + req.params._id
+            message: "Error actualizando el producto con id = " + req.params._id + err
         });
     }
 })

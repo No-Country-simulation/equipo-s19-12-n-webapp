@@ -58,7 +58,7 @@ routerCompra.put("/:_id", async (req, res) => {
     }
     try {
         const {consumidor, precioT, fecha} = req.body;
-        const compraActualizado = new compraSchema({consumidor, comerciante, precioT, fecha});
+        const compraActualizado = {consumidor, comerciante, precioT, fecha};
         const data = await compraSchema.findByIdAndUpdate(req.params._id, compraActualizado);
         if (!data) {
             res.status(404).send({

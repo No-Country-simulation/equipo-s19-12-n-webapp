@@ -60,8 +60,8 @@ routerPuntajeC.put("/:_id", async (req, res) => {
         });
     }
     try {
-        const {comerciante, consumidor, puntaje} = req.body;
-        const puntajeCActualizado = new puntajeCSchema({comerciante, consumidor, puntaje});
+        const {puntaje} = req.body;
+        const puntajeCActualizado = {puntaje};
         const data = await puntajeCSchema.findByIdAndUpdate(req.params._id, puntajeCActualizado);
         if (!data) {
             res.status(404).send({

@@ -58,7 +58,7 @@ routerProducto.put("/:_id", async (req, res) => {
     }
     try {
         const {nombre, desc, precio, stock, img, comerciante, vencimiento} = req.body;
-        const productoActualizado = new productoSchema({nombre, desc, precio, stock, img, comerciante, vencimiento});
+        const productoActualizado = {nombre, desc, precio, stock, img, comerciante, vencimiento};
         const data = await productoSchema.findByIdAndUpdate(req.params._id, productoActualizado);
         if (!data) {
             res.status(404).send({
