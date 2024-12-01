@@ -18,10 +18,7 @@ const SelectorMenu = ({ categorias, onCategoriaSelect }) => {
           onChange={handleChange}
           displayEmpty
           renderValue={(selected) => {
-            if (!selected) {
               return 'Categoría'; // Texto estático
-            }
-            return selected; // Devuelve la categoría seleccionada
           }}
           sx={{
             border: 'none', 

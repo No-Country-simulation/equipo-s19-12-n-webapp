@@ -1,33 +1,31 @@
 import React from 'react';
-import productos_destacados from "../../../data/ProductosDestacados"; // Asegúrate de importar correctamente el array de productos
-import { Grid } from '@mui/material'; // Importamos Grid de MUI
+import productos_destacados from "../../../data/ProductosDestacados";
+import { Grid } from '@mui/material';
 import CardProducto from '../../atomos/Card/CardProducto';
 
 const ProductosDestacados = () => {
-  console.log(productos_destacados); // Verifica que los datos se están recibiendo correctamente
-  
   return (
-    <Grid 
-      container 
-      spacing={3}  // Espacio entre las tarjetas
-      justifyContent="flex-start"  // Alinea los elementos a la izquierda
-      alignItems="stretch"          // Asegura que las tarjetas se estiren verticalmente
+    <Grid
+      container
+      spacing={2} // Espacio entre las tarjetas
+      justifyContent="flex-start"
+      alignItems="stretch"
       sx={{
-        padding: { xs: '10px', sm: '20px' }, // Ajuste del padding para diferentes tamaños
+        padding: { xs: '10px', sm: '20px' }, // Ajuste del padding
       }}
     >
       {productos_destacados.map((producto) => (
-        <Grid 
-          item 
-          xs={6}  // En pantallas móviles, mostramos 2 tarjetas por fila
-          sm={6}  // En pantallas medianas, seguimos mostrando 2 tarjetas por fila
-          md={3}  // En pantallas grandes mostramos 4 tarjetas por fila
+        <Grid
+          item
+          xs={6}  // 2 tarjetas por fila en móvil
+          sm={4}  // 3 tarjetas por fila en pantallas medianas
+          md={3}  // 4 tarjetas por fila en pantallas grandes
           key={producto.id}
         >
           <CardProducto
-            src={producto.imagen}   // Asumiendo que cada producto tiene una propiedad 'imagen'
-            alt={producto.titulo}   // Asumiendo que cada producto tiene una propiedad 'titulo' para el alt
-            titulo={producto.titulo} // Asumiendo que cada producto tiene un 'titulo'
+            src={producto.imagen}
+            alt={producto.titulo}
+            titulo={producto.titulo}
             precio1={producto.precio1}
             precio2={producto.precio2}
           />
