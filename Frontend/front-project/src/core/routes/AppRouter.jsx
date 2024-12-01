@@ -5,6 +5,7 @@ import Categorias from '../../features/categorias/Categorias'
 import Perfil from '../../features/perfil/Perfil'
 import Soporte from '../../features/soporte/Soporte'
 import Layout from '../layouts/Layout'
+import Productos from '../components/templates/Productos/Productos'
 
 export const AppRouter = createBrowserRouter([
     {
@@ -14,6 +15,10 @@ export const AppRouter = createBrowserRouter([
     {
         path: "/login",
         element: <LoginView/>,
+    },
+    {
+        path: "/productos",
+        element: <Layout><Productos/></Layout>,
     },
     {
         path: "/categorias",

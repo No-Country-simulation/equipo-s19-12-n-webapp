@@ -3,7 +3,7 @@ import "./style.css";
 import classnames from "classnames";
 import Icon from "../Icon/Icon";
 
-const Button = ({ texto, variante, icon, iconSize}) => {
+const Button = ({ texto, variante, icon, iconSize, onClick}) => {
   const buttonClassnames = classnames("button", {
     orange: variante === "orange",
     green: variante === "green",
@@ -13,7 +13,7 @@ const Button = ({ texto, variante, icon, iconSize}) => {
 
   return (
     <>
-      <button className={buttonClassnames}>
+      <button className={buttonClassnames} onClick={onClick}>
         {icon && (
           <Icon
             type={icon}
