@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MenuItem, Select, FormControl, Box } from '@mui/material';
 
-const SelectorInput = ({ categorias, onCategoriaSelect }) => {
+const SelectorInput = ({ categorias, onCategoriaSelect, placeholder}) => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
 
   const handleChange = (event) => {
@@ -18,7 +18,7 @@ const SelectorInput = ({ categorias, onCategoriaSelect }) => {
           onChange={handleChange}
           displayEmpty
           renderValue={(selected) => {
-            return selected || 'tipo de negocio'; // Placeholder
+            return selected || placeholder
           }}
           sx={{
             mt: 2,
@@ -26,8 +26,11 @@ const SelectorInput = ({ categorias, onCategoriaSelect }) => {
             '& .MuiInputBase-input': {
               fontFamily: 'Montserrat', // Estilo de la fuente
             },
+            width: '100%',
+            margin: '0',
+            padding: '8px 0',
             '&:before': {
-                    borderBottom: '2px solid #76B939', // Borde inferior verde
+                    borderBottom: '2px solid #303030', // Borde inferior verde
                   },
                   '&:hover:not(.Mui-disabled):before': {
                     borderBottom: '2px solid #76B939',

@@ -5,6 +5,7 @@
   margin: 5px;
   transition: opacity 0.5s;
   font-weight: 600;
+  width: 100%;
 }
 
 .button:hover {

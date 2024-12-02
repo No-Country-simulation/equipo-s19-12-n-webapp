@@ -30,5 +30,5 @@ export const AppRouter = createBrowserRouter([
     {
         path: "*",
         element: <h1>error: ruta no encontrada</h1>,
-    }, 
+    },
 ])
