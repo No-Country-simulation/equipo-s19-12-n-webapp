@@ -1,0 +1,52 @@
+.acerca-de-container {
+  padding: 30px;
+  text-align: start;
+}
+
+.acerca-de-texto {
+  margin-bottom: 50px;
+}
+
+.acerca-de-enlaces {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.acerca-de-icons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.acerca-de-row {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-bottom: 20px;
+}
+.row-icon-details {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
+}
+
+.title-detail {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.dosFilas {
+  display: flex;
+  flex-direction: row;
+}
+
+.columnaUno {
+  width: 45%;
+}
+.columnaDos {
+  width: 45%;
+}

@@ -8,6 +8,7 @@ const Button = ({ texto, variante, icon, iconSize}) => {
     orange: variante === "orange",
     green: variante === "green",
     white: variante === "white",
+    black: variante === "black",
     conIcono: Icon,
   });
 
