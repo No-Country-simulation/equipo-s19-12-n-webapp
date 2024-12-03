@@ -27,7 +27,7 @@ const FormProductos = () => {
             </div>
 
             <div className="botones">
-                <Boton texto={'Cargar producto'} variante={'orange'} />
+                <Boton texto={'Cargar producto'} variante={'orange'}/>
                 <Boton texto={'Cancelar'} variante={'green'} />
             </div>        
         </ form>

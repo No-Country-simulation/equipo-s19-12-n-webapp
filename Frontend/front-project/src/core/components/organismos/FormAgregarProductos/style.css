@@ -32,4 +32,7 @@ form {
         align-items: last baseline;
         width: 100%;
     }
+    .botones{
+        width: 50%;
+    }
 }

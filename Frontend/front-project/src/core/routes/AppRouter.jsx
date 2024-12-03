@@ -22,7 +22,7 @@ export const AppRouter = createBrowserRouter([
     },
     {
         path: "/categorias",
-        element: <Categorias/>,
+        element: <Layout><Categorias/></Layout>,
     },
     {
         path: "/perfil",

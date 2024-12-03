@@ -34,7 +34,7 @@ const Categorias = () => {
       <InputTit titulo={'Nombre de otra cooosa'} modo={'selector'} placeholder={'pureba selector'} categorias={['opc1', 'opc2', 'opc3']}/> */}
       <SearchBar />
       <FormProductos />
-      <Footer />   
+
     </div>
   );
 };
