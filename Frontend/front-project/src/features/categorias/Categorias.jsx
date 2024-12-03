@@ -1,61 +1,39 @@
-import Button from "../../core/components/atomos/Button/Button";
-import Texto from "../../core/components/atomos/Textos/Texto";
-import InputImg from "../../core/components/atomos/inputImg/InputImg";
+// import Button from "../../core/components/atomos/Button/Button";
+// import Texto from "../../core/components/atomos/Textos/Texto";
 import Footer from "../../core/components/organismos/Footer/Footer";
-import ImgCategorias from "../../core/components/atomos/ImgCategorias/ImgCategorias";
-import CategoriasImg from "../../core/components/moleculas/CategoriasImg/categoriasImg";
-import Categories from "../../core/components/organismos/Categorias/Categorias";
+// import CategoriasImg from "../../core/components/moleculas/CategoriasImg/categoriasImg";
+// import Categories from "../../core/components/organismos/Categorias/Categorias";
+// import AgregarImg from "../../core/components/moleculas/AgregarImg/AgregarImg";
+// import Inputs from "../../core/components/atomos/Inputs/Inputs";
+// import SelectorInput from "../../core/components/atomos/Selector/SelectorInput";
+// import InputTit from "../../core/components/moleculas/InputTit/InputTit";
+import FormProductos from "../../core/components/organismos/FormAgregarProductos/FormProductos";
+import SearchBar from "../../core/components/organismos/SearchBar/SearchBar"
 
 const Categorias = () => {
   return (
     // <div>Categorias</div>
     <div>
-      <Button
+      {/* <Button
         texto={"probando"}
         variante={"white"}
         icon={"carrito"}
         iconSize={"xsmall"}
-      />
-      <Button
-        texto={"probando"}
-        variante={"white"}
-      />
-      <Button
-        texto={"probando"}
-        variante={"orange"}
-      />
-      <Button
-        texto={"probando"}
-        variante={"green"}
       />
       <Texto
         level={"h1"}
         texto={"probando h1 naranja"}
         variante={"orange"}
       />
-      <Texto
-        level={"h2"}
-        texto={"probando h2 verde"}
-        variante={"green"}
-      />
-      <Texto
-        level={"h3"}
-        texto={"probando h3"}
-      />
-      <Texto
-        level={"p"}
-        texto={"probando regular"}
-      />
-      <Texto
-        level={"p"}
-        texto={"ACERCA DE NOSOTROS"}
-        variante={"tituloFooter"}
-      />
-      <ImgCategorias type={'bebidas'} size={'large'} />
       <CategoriasImg nombreImg={'carnes-pescados'} tituloCat={'carnes y pescados'} size={'large'} />
       <Categories />
- 
-      <InputImg />
+      <AgregarImg />
+      <Inputs placeholder={'Precio'} type={'number'} />
+      <SelectorInput categorias={['opción 1', 'opcion2', 'opcion3']} placeholder={'productoss'} />
+      <InputTit titulo={'Nombre del producto'} modo={'input'} type={'text'} placeholder={'pureba input'}/>
+      <InputTit titulo={'Nombre de otra cooosa'} modo={'selector'} placeholder={'pureba selector'} categorias={['opc1', 'opc2', 'opc3']}/> */}
+      <SearchBar />
+      <FormProductos />
       <Footer />   
     </div>
   );

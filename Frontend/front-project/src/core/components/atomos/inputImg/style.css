@@ -3,24 +3,36 @@ input[type="file"] {
 }
 
 .boton_mas {
-    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     aspect-ratio: 1/1;
-    display: inline-block;
-    padding: 20px 20px;
     background-color: #909090;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.contenedor_Input {
+    display: flex;
+    width: 43%;
+    aspect-ratio: 1/1;
+    position: relative;
     align-items: center;
     justify-content: center;
 }
 
-.icono_mas{
-    width: 80% ;
-    vertical-align: middle;
-}
+
+
 
 @media (min-width: 768px) {
-    .boton_mas {
-        width: 25%;
+    .contenedor_Input {
+        width: 30%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .contenedor_Input {
+        width: 20%;
     }
 }
