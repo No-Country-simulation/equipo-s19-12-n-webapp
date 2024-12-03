@@ -6,6 +6,9 @@
   transition: opacity 0.5s;
   font-weight: 600;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .button:hover {

@@ -20,20 +20,14 @@ const SearchBar = () => {
 
   return (
     <div className="search-bar">
-      <div className="sectionSearch">
-        <SearchInput />
-      </div>
-      <div className="sectionButtons">
-        <Button
-          texto={"Mapa"}
-          variante={"white"}
-          icon={"mapa"}
-        />
-        <Button
-          texto={"Carrito"}
-          variante={"white"}
-          icon={"carrito"}
-        />
+      <div className="searchBarCont0">
+        <div className="sectionSearch">
+          <SearchInput />
+        </div>
+        <div className="sectionButtons">
+          <Button texto={"Mapa"} variante={"white"} icon={"mapa"} iconSize={"small"}/>
+          <Button texto={"Carrito"} variante={"white"} icon={"carrito"} iconSize={"small"}/>
+        </div>
       </div>
     </div>
   );
