@@ -27,7 +27,7 @@ const SearchBar = () => {
         <Button
           texto={"Mapa"}
           variante={"white"}
-          icon={"carrito"}
+          icon={"mapa"}
         />
         <Button
           texto={"Carrito"}
