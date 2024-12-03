@@ -4,6 +4,7 @@ import SearchBar from '../../organismos/SearchBar/SearchBar'
 import { Pagination } from '@mui/material'
 import { Context } from '../../../context/Context'
 import CardProducto from '../../atomos/Card/CardProducto'
+import ProductCard from '../../atomos/ProductCard/ProductCard'
 
 function Productos() {
 
@@ -19,7 +20,7 @@ function Productos() {
                 <div className={styles.seccionFiltros}></div>
                 <div className={styles.seccionPaginas}>
                     <div className={styles.paginaActual}>
-                        {allProducts.map((product) => (<CardProducto key={allProducts.indexOf(product)} titulo={product.nombre} alt={""} src={"leche.jpg"} precio1={product.precio * 1.5} precio2={product.precio}></CardProducto>))}
+                        {allProducts.map((product) => (<ProductCard key={allProducts.indexOf(product)} nombre={product.nombre} img={product.img} precio={product.precio}></ProductCard>))}
                     </div>
                     <div className={styles.navPag}>
                         <Pagination></Pagination>

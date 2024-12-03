@@ -9,27 +9,37 @@ import { Context } from "./core/context/Context";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [usuario, setUsuario] = useState(null);
 
   if (process.env.NODE_ENV !== 'production') {
     console.warn = () => {};  // Suprimir los warnings en desarrollo
   }
 
   // aca va la logica para modificar isLoggedIn
+const iniciarSesion=(usuario)=>{
+  setIsLoggedIn(true);
+  setUsuario(usuario)
+}
+const cerrarSesion =()=>{
+  setIsLoggedIn(false);
+  setUsuario(null)
+}
 
+const [allProducts, setAllProducts] = useState([])
 
   return <>
   {/* se envian los datos al contexto */}
-  <Context.Provider value={{
+    <Context.Provider value={{
             isLoggedIn: isLoggedIn,
+            allProducts,
+            setAllProducts,
+            iniciarSesion,
+            cerrarSesion,
+            usuario
         }}>
           <RouterProvider router={AppRouter}></RouterProvider>
-  </Context.Provider>
+    </Context.Provider>
   </>
-  /* return (
-    <AuthProvider>
-      <RouterProvider router={AppRouter}></RouterProvider>
-    </AuthProvider>
-  ); */
 }
 
 export default App;

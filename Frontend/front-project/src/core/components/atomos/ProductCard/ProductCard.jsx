@@ -1,16 +1,25 @@
+import Button from "../Button/Button";
 import "./ProductCard.css";
+import ImgCategorias from "../ImgCategorias/ImgCategorias";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ nombre, img, precio }) => {
   return (
     <div className="product-card">
-      <img
-        src={product.image}
-        alt={product.name}
-        className="product-image"
-      />
-      <h3>{product.name}</h3>
-      <p>${product.price}</p>
-      <button>Agregar al carrito</button>
+      <img src={img} alt={nombre} className="product-image" />
+      <div className="contDataCard">
+        <div className="contDataCardDetails">
+          <div className="contDataCardProducto">
+            <h3>{nombre}</h3>
+          </div>
+          <div className="contDataCardProducto">
+            <p className="precioAnterior">${parseInt(precio) * 1.5}</p>
+            <p className="precioActual">${precio}</p>
+          </div>
+        </div>
+        <div className="contDataCardProducto2">
+          <Button variante={"orange"} texto={"Agregar al carrito"}></Button>
+        </div>
+      </div>
     </div>
   );
 };

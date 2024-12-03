@@ -4,24 +4,43 @@ import CardTienda from '../../atomos/Card/CardTienda';
 import { Grid } from '@mui/material'; // Importamos Grid de MUI
 
 const TiendasDestacadas = () => {
-  console.log(tiendas_destacadas); // Verifica que los datos se están recibiendo correctamente
+
   return (
     <Grid 
       container 
-      spacing={3}
+      spacing={3}  // Espacio entre las tarjetas
       justifyContent="flex-start"  // Alinea los elementos a la izquierda
-      alignItems="center"          // Centra los elementos verticalmente
+      alignItems="flex-start"       // Alinea verticalmente
       sx={{
-        // Agregamos márgenes para la versión escritorio
-        padding: { xs: '10px', sm: '20px' },
+        padding: { xs: '10px', sm: '20px', md: '30px' }, // Diferente padding según el tamaño de pantalla
       }}
     >
       {tiendas_destacadas.map((tienda) => (
-        <Grid item xs={6} sm={6} md={3} key={tienda.id}> {/* Ajuste del grid */}
+        <Grid 
+          item 
+          xs={12} 
+          sm={6} 
+          md={4} 
+          lg={3} 
+          key={tienda.id} 
+          sx={{
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center',
+          }}
+        > 
           <CardTienda 
             imagen={tienda.imagen} 
             titulo={tienda.titulo} 
             descripcion={tienda.descripcion} 
+            sx={{
+              width: '100%',  // Asegura que la tarjeta ocupe todo el ancho del contenedor
+              maxWidth: 350,  // Limita el ancho máximo de la tarjeta
+              minHeight: 350, // Mantiene una altura mínima constante para la tarjeta
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between', // Asegura que los elementos dentro de la tarjeta estén bien distribuidos
+            }}
           />
         </Grid>
       ))}

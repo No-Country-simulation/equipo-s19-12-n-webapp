@@ -1,4 +1,4 @@
-import { Context } from "../../context/Context";
+/*import { Context } from "../../context/Context";
 import { useState } from "react";
 
 export const AUTH_KEY = "isLoggedIn";
@@ -22,4 +22,4 @@ export const AuthProvider = ({ children }) => {
       </Context.Provider>
     </>
   );
-};
+};*/

@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardMedia, Typography } from '@mui/material';
 
 const CardTienda = ({ imagen, titulo, descripcion }) => { // Aquí recibimos las props
-  console.log(imagen);
+
   return (
     <Card
       sx={{
