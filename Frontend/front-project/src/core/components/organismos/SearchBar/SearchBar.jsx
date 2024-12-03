@@ -20,15 +20,19 @@ const SearchBar = () => {
 
   return (
     <div className="search-bar">
+      <div className="boton-filtro">
+        <Button icon={"filtro"}
+          variante={'noneBackground'} />
+      </div>
       <div className="sectionSearch">
         <SearchInput />
       </div>
       <div className="sectionButtons">
-        <Button
+        {/* <Button
           texto={"Mapa"}
           variante={"white"}
           icon={"mapa"}
-        />
+        /> */}
         <Button
           texto={"Carrito"}
           variante={"white"}
