@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 const schema = mongoose.Schema;
 
 const puntajePSchema = new schema({
-    producto: Number,
-    consumidor: Number,
+    producto: String,
+    consumidor: String,
     puntaje: Number,
 })
 

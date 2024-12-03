@@ -68,7 +68,7 @@ function ModalSesionCliente({ open, onClose }) {
     }
     const {iniciarSesion}= useContext(Context)
     function iniciarSesionCliente(){
-        
+       
         iniciarSesion("cliente")
 /*         console.log("sesion: "+isLoggedIn)
         console.log("usuario: "+usuario) */

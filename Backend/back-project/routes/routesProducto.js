@@ -4,33 +4,113 @@ import productoSchema from "../models/producto.model.js"
 const routerProducto = express.Router()
 
 routerProducto.get("/", async (req, res) => {
-    const productos = await productoSchema.find();
-    res.json(productos);
+    try {
+        const productos = await productoSchema.find();
+        return res.json(productos);
+    } catch (err) {
+        res.status(500).send({
+            message:
+                err.message || "Error al realizar la búsqueda"
+        });
+    }
 })
 
 routerProducto.get("/:_id", async (req, res) => {
-    const producto = await productoSchema.findById(req.params._id);
-    res.json(producto);
+    try {
+        const data = await productoSchema.findById(req.params._id);
+
+        if (!data)
+            res.status(404).send({ message: "Registro no encontrado " });
+        else res.json(data);
+
+    } catch (err) {
+        res
+            .status(500)
+            .send({ message: "Error al buscar el registro con id = " + req.params._id });
+    };
 })
 
 routerProducto.post("/", async (req, res) => {
-    const {nombre, desc, precio, img} = req.body;
-    const nuevoProducto = new productoSchema({nombre, desc, precio, stock, img, comerciante});
-    await productoSchema.insertMany(nuevoProducto);
+    if (!req.body) {
+        return res.status(400).send({
+            message: "No se pueden enviar parámetros vacíos!"
+        });
+    }
+    try {
+        const {nombre, desc, precio, stock, img, comerciante, vencimiento} = req.body;
+        const nuevoProducto = new productoSchema({nombre, desc, precio, stock, img, comerciante, vencimiento});
+        await productoSchema.insertMany(nuevoProducto);
+        res.sendStatus(200).send({
+            message: "Se añadieron nuevos datos correctamente"
+        })
+    } catch (error) {
+        res.status(500).send({
+            message: "Error al añadir datos"
+        });
+    } 
 })
 
-routerProducto.post("/:_id", async (req, res) => {
-    const {nombre, desc, precio, img} = req.body;
-    const productoActualizado = new productoSchema({nombre, desc, precio, stock, img, comerciante});
-    await productoSchema.findByIdAndUpdate(req.params._id, productoActualizado);
+routerProducto.put("/:_id", async (req, res) => {
+    if (!req.body) {
+        return res.status(400).send({
+            message: "No se pueden enviar parámetros vacíos!"
+        });
+    }
+    try {
+        const {nombre, desc, precio, stock, img, comerciante, vencimiento} = req.body;
+        const productoActualizado = {nombre, desc, precio, stock, img, comerciante, vencimiento};
+        const data = await productoSchema.findByIdAndUpdate(req.params._id, productoActualizado);
+        if (!data) {
+            res.status(404).send({
+                message: `No es posible actualizar el producto con id = ${req.params._id}.`
+            });
+        } else res.send({ message: "Producto actualizado correctamente." });
+    }
+    catch (err) {
+        res.status(500).send({
+            message: "Error actualizando el producto con id = " + req.params._id
+        });
+    }
 })
 
 routerProducto.delete("/:_id", async (req, res) => {
-    await productoSchema.findByIdAndDelete(req.params._id)
+    try {
+        const data = await productoSchema.findByIdAndDelete(req.params._id)
+
+        if (!data) {
+            res.status(404).send({
+                message: `No fue posible borrar el registro con el id = ${req.params._id}.`
+            });
+        } else {
+            res.send({
+                message: "El registro fue borrado correctamente!"
+            });
+        }
+    } catch (err) {
+        res.status(500).send({
+            message: "Error, no fue posible borrar el registro con el id = " + req.params._id
+        });
+    }
 })
 
 routerProducto.delete("/", async (req, res) => {
-    await productoSchema.remove();
+    try {
+        const data = await productoSchema.remove();
+
+        if (!data) {
+            res.status(404).send({
+                message: `No fue posible borrar los registros.`
+            });
+        } else {
+            res.send({
+                message: "Todos los registros has sido borrados correctamente!"
+            });
+        }
+    } catch (err) {
+        res.status(500).send({
+            message: "Error, no fue posible borrar los registros"
+        });
+    }
 })
 
 export default routerProducto;

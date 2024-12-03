@@ -1,0 +1,38 @@
+form {
+    margin: 5% 2%;
+}
+
+.seccion {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 80%;
+    justify-items: left;
+    padding: 5% 2%;
+}
+
+.botones{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .botones {
+        flex-direction: row-reverse;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .seccion {
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: last baseline;
+        width: 100%;
+    }
+    .botones{
+        width: 50%;
+    }
+}

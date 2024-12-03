@@ -1,0 +1,38 @@
+.organismo_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*padding: 0.5rem 1rem;*/
+}
+
+.icono_bars {
+    display: block;
+    cursor: pointer;
+}
+
+.icono_cart {
+    display: block;
+}
+
+.menu_nav_container {
+    display: none;
+}
+
+.menu_nav_container.visible {
+    display: block;
+}
+
+.menu_nav_container.hidden {
+    display: none;
+}
+
+@media (min-width: 768px) {
+
+    .menu_nav_container {
+        display: block;
+    }
+
+    .icono_bars {
+        display: none;
+    }
+}
