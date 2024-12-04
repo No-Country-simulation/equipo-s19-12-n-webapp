@@ -15,6 +15,29 @@ routerComerciante.get("/", async (req, res) => {
     }
 })
 
+routerComerciante.get("/login", async (req, res) => {
+    try {
+        const comerciante = await comercianteSchema.findById(req.body.email);
+        if (!comerciante){
+            res.status(404).send({ message: "Comerciante no encontrado." });
+        }
+        else{
+            if(comerciante.pass === req.body.pass){
+                return res.json(comerciante);
+            }
+            else{
+                res.status(401).send({ message: "Contraseña inválida." });
+            }
+        }
+        
+    } catch (err) {
+        res.status(500).send({
+            message:
+                err.message || "Error al realizar la búsqueda"
+        });
+    }
+})
+
 routerComerciante.get("/:_id", async (req, res) => {
     try {
         const data = await comercianteSchema.findById(req.params._id);
@@ -37,8 +60,8 @@ routerComerciante.post("/", async (req, res) => {
         });
     }
     try {
-        const {cuit, nombre, direccion, ciudad, telefono, logo, email, pass, img1, img2, img3} = req.body;
-        const nuevoComerciante = new comercianteSchema({cuit, nombre, direccion, ciudad, telefono, logo, email, pass, img1, img2, img3});
+        const {cuit, nombre, direccion, ciudad, telefono, email, pass} = req.body;
+        const nuevoComerciante = new comercianteSchema({cuit, nombre, direccion, ciudad, telefono, logo: "", email, pass, img1: "", img2: "", img3: ""});
         await comercianteSchema.insertMany(nuevoComerciante);
         res.sendStatus(200).send({
             message: "Se añadieron nuevos datos correctamente"

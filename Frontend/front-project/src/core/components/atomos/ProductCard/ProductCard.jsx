@@ -1,8 +1,27 @@
 import Button from "../Button/Button";
 import "./ProductCard.css";
-import ImgCategorias from "../ImgCategorias/ImgCategorias";
+import { Context } from "../../../context/Context";
+import { useContext } from "react";
 
-const ProductCard = ({ nombre, img, precio }) => {
+const ProductCard = ({ nombre, img, precio, id, desc, vencimiento, comerciante, stock }) => {
+
+  const { setActualProduct, setMenuArticulo } = useContext(Context);
+
+  const options = { 
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+
+  function verArticulo () {
+    const nuevoVencimiento = Date.parse(vencimiento);
+    const nuevoVencimiento2 = new Date(parseFloat(nuevoVencimiento)).toLocaleDateString("es-ES", options)
+    const nuevoVencimiento3 = nuevoVencimiento2.toString()
+    setActualProduct({_id: id, nombre: nombre, desc: desc, stock: stock, precio: precio, vencimiento: nuevoVencimiento3, comerciante: comerciante, img: img})
+    setMenuArticulo(1)
+  }
+
   return (
     <div className="product-card">
       <img src={img} alt={nombre} className="product-image" />
@@ -17,7 +36,7 @@ const ProductCard = ({ nombre, img, precio }) => {
           </div>
         </div>
         <div className="contDataCardProducto2">
-          <Button variante={"orange"} texto={"Agregar al carrito"}></Button>
+          <Button variante={"orange"} texto={"Ver más"} onClick={() => {verArticulo()}}></Button>
         </div>
       </div>
     </div>

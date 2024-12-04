@@ -15,6 +15,29 @@ routerConsumidor.get("/", async (req, res) => {
     }
 })
 
+routerConsumidor.get("/login", async (req, res) => {
+    try {
+        const consumidor = await consumidorSchema.findById(req.body.email);
+        if (!consumidor){
+            res.status(404).send({ message: "Consumidor no encontrado." });
+        }
+        else{
+            if(consumidor.pass === req.body.pass){
+                return res.json(consumidor);
+            }
+            else{
+                res.status(401).send({ message: "Contraseña inválida." });
+            }
+        }
+        
+    } catch (err) {
+        res.status(500).send({
+            message:
+                err.message || "Error al realizar la búsqueda"
+        });
+    }
+})
+
 routerConsumidor.get("/:email", async (req, res) => {
     try {
         const data = await consumidorSchema.findById(req.params.email);

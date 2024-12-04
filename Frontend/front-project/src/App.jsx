@@ -5,8 +5,6 @@ import { useState } from "react";
 import { Context } from "./core/context/Context";
 
 
-
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [usuario, setUsuario] = useState(null);
@@ -26,12 +24,18 @@ const cerrarSesion =()=>{
 }
 
 const [allProducts, setAllProducts] = useState([])
+const [actualProduct, setActualProduct] = useState({_id: 0, nombre: "", desc: "", precio: 0, stock: 0, img: "", comerciante: 0, vencimiento: ""})
+const [menuArticulo, setMenuArticulo] = useState(0)
 
   return <>
   {/* se envian los datos al contexto */}
     <Context.Provider value={{
             isLoggedIn: isLoggedIn,
             allProducts,
+            actualProduct,
+            menuArticulo,
+            setMenuArticulo,
+            setActualProduct,
             setAllProducts,
             iniciarSesion,
             cerrarSesion,
