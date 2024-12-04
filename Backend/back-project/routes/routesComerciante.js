@@ -17,7 +17,7 @@ routerComerciante.get("/", async (req, res) => {
 
 routerComerciante.get("/login", async (req, res) => {
     try {
-        const comerciante = await comercianteSchema.findById(req.body.email);
+        const comerciante = await comercianteSchema.findOne({email: req.body.email});
         if (!comerciante){
             res.status(404).send({ message: "Comerciante no encontrado." });
         }
