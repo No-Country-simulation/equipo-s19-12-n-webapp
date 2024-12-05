@@ -34,14 +34,15 @@ const MainSection1 = () => {
       <div className="text-content">
         <MainTitle />
         <MainSubtitle />
-        <Button
-          onClick={() => {
-            obtenerProductos();
-          }}
-          variante={"orange"}
-          texto={"Ver productos"}
-          className="otrosEstilos"
-        />
+        <div className="otrosEstilos">
+          <Button
+            onClick={() => {
+              obtenerProductos();
+            }}
+            variante={"orange"}
+            texto={"Ver productos"}
+          />
+        </div>
       </div>
       <div className="image-content">
         <MainImage />
