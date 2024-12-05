@@ -5,6 +5,7 @@ import Footer from "../components/organismos/Footer/Footer";
 import { useContext } from "react";
 import { Context } from "../context/Context";
 
+
 const Layout = ({ children }) => {
  const {usuario,isLoggedIn,cerrarSesion}=useContext(Context)
   function cerrar(){
@@ -16,7 +17,8 @@ const Layout = ({ children }) => {
   }
   return (
     <div>
-      <Navbar></Navbar>
+
+      <Navbar></Navbar>   
       <Button onClick={cerrar}>cerrar sesion</Button>
       <Button onClick={ver}>ver sesion</Button>
       <main>{children}</main>

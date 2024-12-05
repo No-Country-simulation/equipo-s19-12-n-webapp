@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { IconButton, TextField, Button, Checkbox, FormControlLabel } from '@mui/material';
+import { IconButton, TextField, Button, Checkbox, FormControlLabel, Grid2 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from '@mui/icons-material/Close';
+import usePostFetch from '../../../services/usePostFetch';
+
 
 // Estilo del modal
 const style = {
@@ -26,11 +28,8 @@ const style = {
 };
 
 function ModalRegistrarCliente({ open, onClose, openFrom, onBack }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [termsAccepted, setTermsAccepted] = useState(false); // Estado para el primer checkbox
-  const [promotionsAccepted, setPromotionsAccepted] = useState(false); // Estado para el segundo checkbox
+
+  const formRef = useRef(null);
 
   const handleTermsChange = (event) => {
     setTermsAccepted(event.target.checked);
@@ -39,6 +38,39 @@ function ModalRegistrarCliente({ open, onClose, openFrom, onBack }) {
   const handlePromotionsChange = (event) => {
     setPromotionsAccepted(event.target.checked);
   };
+
+  //https://api.thecatapi.com/v1/images/search
+  //'https://eaty-three.vercel.app/api/consumidor'
+  //'https://jsonplaceholder.typicode.com/posts'
+  //POST https://reqres.in/api/users
+  const { postData, data, loading, error } = usePostFetch('https://eaty-three.vercel.app/api/consumidor');
+  useEffect(() => {
+    if (data) {
+      console.log('Datos recibidos:', data);
+    }
+    if (error) {
+      console.log('Error:', error);
+    }
+  }, [data,error]); // Se ejecuta cuando 'data' cambie
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    onClose();
+    const formData = new FormData(formRef.current)
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const confirmPassword = formData.get("confirmPassword");
+    console.log("email:" + email);
+    console.log("contraseña:" + password);
+    console.log("confirmar:" + confirmPassword);
+
+    const userData = {
+      email,
+      pass: password,
+    };
+    await postData(userData);
+
+  }
 
   return (
     <Modal
@@ -140,150 +172,153 @@ function ModalRegistrarCliente({ open, onClose, openFrom, onBack }) {
             Comerciante
           </Typography>
         </Box>
+        {/* formulario */}
+        <form ref={formRef} onSubmit={handleSubmit}>
+          {/* Inputs con solo borde inferior */}
+          <Box sx={{ marginTop: 3 }}>
 
-        {/* Inputs con solo borde inferior */}
-        <Box sx={{ marginTop: 3 }}>
-          <TextField
-            placeholder="Ingresa tu correo electrónico" // Placeholder personalizado
-            type="email"
+
+            {/* Primer TextField */}
+            <TextField
+              placeholder="Ingresa tu correo electrónico"
+              type="email"
+              name='email'
+              fullWidth
+              variant="standard"
+              InputProps={{
+                disableUnderline: false,
+              }}
+              sx={{
+                fontFamily: 'Montserrat',
+                '& .MuiInputBase-input': {
+                  fontFamily: 'Montserrat',
+                },
+                '& .MuiInput-underline:before': {
+                  borderBottomColor: '#76B939',
+                },
+                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                  borderBottomColor: '#76B939',
+                },
+              }}
+            />
+
+            {/* Segundo TextField */}
+            <TextField
+              label="Contraseña"
+              type="password"
+              name='password'
+              fullWidth
+              placeholder="Ingrese una contraseña"
+              variant="standard"
+              InputProps={{
+                disableUnderline: false,
+              }}
+              sx={{
+                fontFamily: 'Montserrat',
+                '& .MuiInputBase-input': {
+                  fontFamily: 'Montserrat',
+                },
+                '& .MuiInput-underline:before': {
+                  borderBottomColor: '#76B939',
+                },
+                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                  borderBottomColor: '#76B939',
+                },
+              }}
+            />
+
+            <TextField
+              label="Confirmar Contraseña"
+              type="password"
+              name='confirmPassword'
+              fullWidth
+              placeholder="Confirme la contraseña"
+              variant="standard" // Cambiado a "standard" para mostrar solo el borde inferior
+              InputProps={{
+                disableUnderline: false, // Asegura que solo el borde inferior se muestre
+              }}
+              sx={{
+                mt: 2,
+                fontFamily: 'Montserrat',
+                '& .MuiInputBase-input': {
+                  fontFamily: 'Montserrat', // Estilo de la fuente
+                },
+                '& .MuiInput-underline:before': {
+                  borderBottomColor: '#76B939', // Borde inferior verde
+                },
+                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                  borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
+                },
+              }}
+            />
+          </Box>
+
+          {/* Checkbox de aceptación de términos */}
+          <Box sx={{ marginTop: 0.5, display: 'flex', alignItems: 'center' }}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  //               checked={checked}
+                  //              onChange={handleCheckboxChange}
+                  name="acceptTerms"
+                  sx={{
+                    color: '#76B939', // Color cuando no está marcado
+                    '&.Mui-checked': {
+                      color: '#76B939', // Color cuando está marcado
+                    },
+                  }}
+                />
+              }
+              label="Acepto términos y condiciones"
+              sx={{
+                marginTop: 2,
+                fontFamily: 'Montserrat',
+                fontSize: '16px',
+              }}
+            />
+          </Box>
+
+          {/* Checkbox de aceptación de novedades y promociones */}
+          <Box sx={{ marginTop: 0.5, display: 'flex', alignItems: 'center' }}>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  //           checked={checkedTerms}
+                  //           onChange={handleTermsChange}
+                  name="acceptTerms"
+                  sx={{
+                    color: '#76B939', // Color cuando no está marcado
+                    '&.Mui-checked': {
+                      color: '#76B939', // Color cuando está marcado
+                    },
+                  }}
+                />
+              }
+              label="Acepto términos y condiciones"
+            />
+          </Box>
+
+          {/* Botón de registro con fondo blanco, bordes verdes y redondeados */}
+          <Button
+            type='submit'
+            variant="outlined" // Utilizamos "outlined" para que el botón tenga bordes visibles
             fullWidth
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            variant="standard" // Cambiado a "standard" para mostrar solo el borde inferior
-            InputProps={{
-              disableUnderline: false, // Asegura que solo el borde inferior se muestre
-            }}
             sx={{
+              fontFamily: 'Montserrat',
               mt: 2,
-              fontFamily: 'Montserrat',
-              '& .MuiInputBase-input': {
-                fontFamily: 'Montserrat', // Estilo de la fuente
-              },
-              '& .MuiInput-underline:before': {
-                borderBottomColor: '#76B939', // Borde inferior verde
-              },
-              '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
+              color: '#76B939', // Texto en verde
+              bgcolor: '#FFFFFF', // Fondo blanco
+              borderColor: '#76B939', // Borde verde
+              textTransform: 'none', // Mantiene el texto sin convertir a mayúsculas
+              '&:hover': {
+                bgcolor: '#F0FFF0', // Fondo blanco con un ligero tono verde al pasar el cursor
+                borderColor: '#76B939', // Mantiene el borde verde
               },
             }}
-          />
-          <TextField
-            label="Contraseña"
-            type="password"
-            fullWidth
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Ingrese una contraseña"
-            variant="standard" // Cambiado a "standard" para mostrar solo el borde inferior
-            InputProps={{
-              disableUnderline: false, // Asegura que solo el borde inferior se muestre
-            }}
-            sx={{
-              mt: 2,
-              fontFamily: 'Montserrat',
-              '& .MuiInputBase-input': {
-                fontFamily: 'Montserrat', // Estilo de la fuente
-              },
-              '& .MuiInput-underline:before': {
-                borderBottomColor: '#76B939', // Borde inferior verde
-              },
-              '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
-              },
-            }}
-          />
-          <TextField
-            label="Confirmar Contraseña"
-            type="password"
-            fullWidth
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="Confirme la contraseña"
-            variant="standard" // Cambiado a "standard" para mostrar solo el borde inferior
-            InputProps={{
-              disableUnderline: false, // Asegura que solo el borde inferior se muestre
-            }}
-            sx={{
-              mt: 2,
-              fontFamily: 'Montserrat',
-              '& .MuiInputBase-input': {
-                fontFamily: 'Montserrat', // Estilo de la fuente
-              },
-              '& .MuiInput-underline:before': {
-                borderBottomColor: '#76B939', // Borde inferior verde
-              },
-              '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
-              },
-            }}
-          />
-        </Box>
-
-        {/* Checkbox de aceptación de términos */}
-        <Box sx={{ marginTop: 0.5, display: 'flex', alignItems: 'center' }}>
-        <FormControlLabel
-            control={
-              <Checkbox
-                //               checked={checked}
-                //              onChange={handleCheckboxChange}
-                name="acceptTerms"
-                sx={{
-                  color: '#76B939', // Color cuando no está marcado
-                  '&.Mui-checked': {
-                    color: '#76B939', // Color cuando está marcado
-                  },
-                }}
-              />
-            }
-            label="Acepto términos y condiciones"
-            sx={{
-              marginTop: 2,
-              fontFamily: 'Montserrat',
-              fontSize: '16px',
-            }}
-          />
-        </Box>
-
-        {/* Checkbox de aceptación de novedades y promociones */}
-        <Box sx={{ marginTop: 0.5, display: 'flex', alignItems: 'center' }}>
-        <FormControlLabel
-            control={
-              <Checkbox
-                //           checked={checkedTerms}
-                //           onChange={handleTermsChange}
-                name="acceptTerms"
-                sx={{
-                  color: '#76B939', // Color cuando no está marcado
-                  '&.Mui-checked': {
-                    color: '#76B939', // Color cuando está marcado
-                  },
-                }}
-              />
-            }
-            label="Acepto términos y condiciones"
-          />
-        </Box>
-
-        {/* Botón de registro con fondo blanco, bordes verdes y redondeados */}
-        <Button
-          variant="outlined" // Utilizamos "outlined" para que el botón tenga bordes visibles
-          fullWidth
-          sx={{
-            fontFamily: 'Montserrat',
-            mt: 2,
-            color: '#76B939', // Texto en verde
-            bgcolor: '#FFFFFF', // Fondo blanco
-            borderColor: '#76B939', // Borde verde
-            textTransform: 'none', // Mantiene el texto sin convertir a mayúsculas
-            '&:hover': {
-              bgcolor: '#F0FFF0', // Fondo blanco con un ligero tono verde al pasar el cursor
-              borderColor: '#76B939', // Mantiene el borde verde
-            },
-          }}
-        >
-          Crear Cuenta
-        </Button>
-
+          >
+            Crear Cuenta
+          </Button>
+        </form>
       </Box>
     </Modal>
   );

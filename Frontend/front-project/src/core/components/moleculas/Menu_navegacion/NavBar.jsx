@@ -32,7 +32,7 @@ const Navbar = () => {
 
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
-        setOpenMenu(true);
+        setOpenMnu(true);
     };
 
     const handleCloseMenu = () => setOpenMenu(false);
