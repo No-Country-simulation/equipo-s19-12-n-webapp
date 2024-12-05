@@ -24,7 +24,7 @@ const ProductCard = ({ nombre, img1, img2, img3, img4, precio, id, desc, vencimi
 
   return (
     <div className="product-card">
-      <img src={img} alt={nombre} className="product-image" />
+      <img src={img1} alt={nombre} className="product-image" />
       <div className="contDataCard">
         <div className="contDataCardDetails">
           <div className="contDataCardProducto">

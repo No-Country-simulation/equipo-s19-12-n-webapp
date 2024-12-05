@@ -60,7 +60,7 @@ function Productos() {
                 </div>
                 <div className={styles.seccionPaginas}>
                     <div className={styles.paginaActual}>
-                        {allProducts.map((product) => (<ProductCard key={allProducts.indexOf(product)} nombre={product.nombre} img={product.img} precio={product.precio} id={product._id} desc={product.desc} comerciante={product.comerciante} vencimiento={product.vencimiento} stock={product.stock}></ProductCard>))}
+                        {allProducts.map((product) => (<ProductCard key={allProducts.indexOf(product)} nombre={product.nombre} img1={product.img1} img2={product.img2} img3={product.img3} img4={product.img4} precio={product.precio} id={product._id} desc={product.desc} comerciante={product.comerciante} vencimiento={product.vencimiento} stock={product.stock} categoria={product.categoria} estado={product.estado}></ProductCard>))}
                     </div>
                     <div className={styles.navPag}>
                         <Pagination></Pagination>
