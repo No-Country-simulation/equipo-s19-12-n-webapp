@@ -13,6 +13,7 @@ import ModalRegistrarCliente from './ModalRegistrarCliente';
 import ModalRestablecer from './ModalRestablecer';
 import { Context } from '../../../context/Context';
 import useGetFetch from '../../../services/useGetFetch';
+import usePostFetch from '../../../services/usePostFetch';
 
 // Estilo del modal con breakpoints
 const style = {
@@ -95,13 +96,15 @@ function ModalSesionCliente({ open, onClose }) {
   } */
  //'https://api.thecatapi.com/v1/images/search'
  //'https://eaty-three.vercel.app/api/consumidor/login'
-    const { getData, data, loading, error } = useGetFetch('https://eaty-three.vercel.app/api/consumidor/login');
+    const { postData, data, loading, error } = usePostFetch('https://eaty-three.vercel.app/api/consumidor/login');
     useEffect(() => {
-        if (data) {
-          console.log('Datos recibidos:', data);
-        }
+        
         if(error){
           console.log('Error:', error);
+        }else{
+            if (data) {
+                console.log('Datos recibidos:', data);
+              }
         }
       }, [data,error]); // Se ejecuta cuando 'data' cambie
 
@@ -119,7 +122,8 @@ function ModalSesionCliente({ open, onClose }) {
         email,
         pass:password,
       };
-      await getData(userData);
+      //await getData(userData);
+      await postData(userData);
     }
         
     
