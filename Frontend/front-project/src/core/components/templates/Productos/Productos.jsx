@@ -10,6 +10,7 @@ import ArticuloProducto from '../../organismos/ArticuloProducto/ArticuloProducto
 
 function Productos() {
 
+
   const { allProducts, menuArticulo, setAllProducts } = useContext(Context);
 
   console.log(allProducts);

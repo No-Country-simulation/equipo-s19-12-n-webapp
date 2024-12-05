@@ -18,6 +18,7 @@ const ProductCard = ({ nombre, img1, img2, img3, img4, precio, id, desc, vencimi
     const nuevoVencimiento = Date.parse(vencimiento);
     const nuevoVencimiento2 = new Date(parseFloat(nuevoVencimiento)).toLocaleDateString("es-ES", options)
     const nuevoVencimiento3 = nuevoVencimiento2.toString()
+
     setActualProduct({_id: id, nombre: nombre, desc: desc, stock: stock, precio: precio, vencimiento: nuevoVencimiento3, comerciante: comerciante, img1: img1, img2: img2, img3: img3, img4: img4, categoria: categoria, estado: estado})
     setMenuArticulo(1);
 

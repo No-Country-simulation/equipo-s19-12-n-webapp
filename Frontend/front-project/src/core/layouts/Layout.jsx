@@ -18,8 +18,8 @@ const Layout = ({ children }) => {
   return (
     <div>
       <Navbar></Navbar>   
-      <Button onClick={cerrar}>cerrar sesion</Button>
-      <Button onClick={ver}>ver sesion</Button>
+      {/*<Button onClick={cerrar}>cerrar sesion</Button>
+      <Button onClick={ver}>ver sesion</Button>*/}
       <main>{children}</main>
       <Footer />
     </div>
