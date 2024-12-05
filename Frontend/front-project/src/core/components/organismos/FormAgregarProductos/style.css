@@ -1,5 +1,6 @@
 form {
-    margin: 5% 2%;
+    margin: 2% 0;
+    padding: 3%;
 }
 
 .seccion {
@@ -34,5 +35,6 @@ form {
     }
     .botones{
         width: 50%;
+        justify-self: center;
     }
 }

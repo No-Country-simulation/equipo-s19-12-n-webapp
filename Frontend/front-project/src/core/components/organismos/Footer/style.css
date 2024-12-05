@@ -1,10 +1,10 @@
+
 .seccionFooter{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
     width: 100%;
-    height: 20vh;
+    height: auto;
     /*padding: 10px;*/
     background-color: #303030;
     justify-content: space-around;
@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    /*padding: 3%;*/
+    padding: 3% 0;
 }
 
 .seccionFooter p{
@@ -62,6 +62,5 @@
 
     .seccionFooter > div:nth-child(4) {
         width: 20%;
-    }
-    
+    }    
 }

@@ -37,8 +37,8 @@ routerProducto.post("/", async (req, res) => {
         });
     }
     try {
-        const {nombre, desc, precio, stock, img, comerciante, vencimiento} = req.body;
-        const nuevoProducto = new productoSchema({nombre, desc, precio, stock, img, comerciante, vencimiento});
+        const {nombre, desc, precio, stock, img, comerciante, vencimiento, estado, categoria} = req.body;
+        const nuevoProducto = new productoSchema({nombre, desc, precio, stock, img, comerciante, vencimiento, estado, categoria});
         await productoSchema.insertMany(nuevoProducto);
         res.sendStatus(200).send({
             message: "Se añadieron nuevos datos correctamente"
@@ -57,8 +57,8 @@ routerProducto.put("/:_id", async (req, res) => {
         });
     }
     try {
-        const {nombre, desc, precio, stock, img, comerciante, vencimiento} = req.body;
-        const productoActualizado = {nombre, desc, precio, stock, img, comerciante, vencimiento};
+        const {nombre, desc, precio, stock, img, comerciante, vencimiento, estado, categoria} = req.body;
+        const productoActualizado = {nombre, desc, precio, stock, img, comerciante, vencimiento, estado, categoria};
         const data = await productoSchema.findByIdAndUpdate(req.params._id, productoActualizado);
         if (!data) {
             res.status(404).send({

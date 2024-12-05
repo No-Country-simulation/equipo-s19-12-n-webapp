@@ -1,5 +1,5 @@
 import RestaurantImage from "../../atomos/RestaurantImage/RestaurantImage";
-import RestaurantLogo from "../../atomos/RestaurantLogo/restaurantLogo";
+import RestaurantLogo from "../../atomos/RestaurantLogo/RestaurantLogo";
 import Estrellas from "../../atomos/Estrellas/Estrellas";
 
 import "./RestaurantInfo.css";
