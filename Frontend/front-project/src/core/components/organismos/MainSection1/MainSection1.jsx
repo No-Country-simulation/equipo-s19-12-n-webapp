@@ -8,11 +8,10 @@ import { Context } from "../../../context/Context";
 import { useContext } from "react";
 
 const MainSection1 = () => {
-
   const navigate = useNavigate();
   const { setAllProducts, allProducts } = useContext(Context);
 
-  function obtenerProductos () {
+  function obtenerProductos() {
     fetch("https://eaty-three.vercel.app/api/productos", {
       method: "GET",
       headers: {
@@ -23,12 +22,11 @@ const MainSection1 = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setAllProducts(data)
+        setAllProducts(data);
       })
       .then(() => {
         navigate("/productos");
       });
-
   }
 
   return (

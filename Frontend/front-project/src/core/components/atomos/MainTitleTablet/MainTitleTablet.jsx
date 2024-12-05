@@ -1,7 +1,16 @@
+import Texto from "../Textos/Texto";
 import "./MainTitleTablet.css";
 
 const MainTitleTablet = () => {
-  return <h1 className="title">Reservá en segundos y asegurá tu comida. </h1>;
+  return (
+    <>
+      <Texto
+        level={"h1"}
+        texto={"Reservá en segundos y asegurá tu comida."}
+        variante={"black"}
+      />
+    </>
+  );
 };
 
 export default MainTitleTablet;

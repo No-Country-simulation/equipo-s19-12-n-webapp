@@ -8,22 +8,18 @@ import ProductosDestacados from "../../moleculas/productos_destacados/ProductosD
 import SearchBar from "../../organismos/SearchBar/SearchBar.jsx";
 import MainSection3 from "../../organismos/MainSection3/MainSection3.jsx";
 import MainSection1 from "../../organismos/MainSection1/MainSection1.jsx";
-
+import MainSection5 from "../../organismos/MainSection5/MainSection5.jsx";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("frutas");
 
- 
   const handleCategorySelect = (category) => {
     setSelectedCategory(category);
-
-    
   };
   const handleSelectChange = (event) => {
     console.log(event.target.value);
   };
-// aca obtiene las variables del contexto
-
+  // aca obtiene las variables del contexto
 
   return (
     <>
@@ -32,7 +28,7 @@ const Home = () => {
       <TiendasDestacadas></TiendasDestacadas>
       <MainSection3></MainSection3>
       <ProductosDestacados></ProductosDestacados>
-
+      <MainSection5 />
     </>
   );
 };

@@ -2,3 +2,16 @@
   max-width: 100%;
   height: auto;
 }
+
+.main-image-tablet {
+  display: none;
+}
+
+@media (max-width: 744px) {
+  .main-image-tablet {
+    display: block;
+  }
+  .main-image-desktop {
+    display: none;
+  }
+}

@@ -1,0 +1,14 @@
+.main5-container {
+  height: 350px;
+  width: 100%;
+  background-image: url("../../../../assets/images/food-doodles-banner.svg");
+  text-align: center;
+  padding-top: 30px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.seccion-tiendas {
+  display: flex;
+  justify-content: space-evenly;
+}
