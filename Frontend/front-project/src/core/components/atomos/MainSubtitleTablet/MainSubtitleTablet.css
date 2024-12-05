@@ -11,3 +11,31 @@
 .pb {
   margin-bottom: 30px;
 }
+
+.main3-subtitle-tablet {
+  display: none;
+}
+.main3-subtitle-mobile {
+  display: none;
+}
+
+@media (max-width: 744px) {
+  .main3-subtitle-tablet {
+    display: block;
+  }
+  .main3-subtitle-desktop {
+    display: none;
+  }
+}
+
+@media (max-width: 394px) {
+  .main3-subtitle-mobile {
+    display: block;
+  }
+  .main3-subtitle-tablet {
+    display: none;
+  }
+  .main3-subtitle-desktop {
+    display: none;
+  }
+}

@@ -39,7 +39,7 @@
   }
 }
 
-@media only screen and (max-width: 394px) {
+@media (max-width: 394px) {
   /* Estilos para móviles aquí */
   .title {
     font-family: "Montserrat", sans-serif;
