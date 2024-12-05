@@ -1,19 +1,18 @@
 import React, { useContext, useState, useEffect } from "react";
 import styles from "../ArticuloProducto/ArticuloProducto.module.css";
 import { Context } from "../../../context/Context";
-import Texto from "../../atomos/Textos/Texto";
 import Button from "../../atomos/Button/Button";
 import ProductCard from "../../atomos/ProductCard/ProductCard";
 
 function ArticuloProducto() {
-  const { actualProduct, setMenuArticulo, allProducts } = useContext(Context);
+
+  const { actualProduct, setMenuArticulo, allProducts, detallesComerciante } = useContext(Context);
   const [actualImage, setActualImage] = useState(actualProduct.img1)
   const [numberImage, setNumberImage] = useState(1)
 
   useEffect(() => {
     setActualImage(actualProduct.img1)
   }, [actualProduct.img1])
-  
 
   return (
     <div className={styles.ArticuloProducto}>
@@ -82,8 +81,11 @@ function ArticuloProducto() {
                     <p>{actualProduct.vencimiento}</p>
                 </div>
                 <div className={styles.comercianteCont}>
-                    <h4>CUIT Cte: {actualProduct.comerciante}</h4>
-                    <p>Ver Perfil</p>
+                    <img src={detallesComerciante.logo} alt="" />
+                    <div className={styles.detallesPerfilCont}>
+                      <h4>{detallesComerciante.nombre}</h4>
+                      <p>Ver Perfil</p>
+                    </div>
                 </div>
                 <div className={styles.botonCont}>
                     <Button variante={"orange"} texto={"Comprar"}></Button>

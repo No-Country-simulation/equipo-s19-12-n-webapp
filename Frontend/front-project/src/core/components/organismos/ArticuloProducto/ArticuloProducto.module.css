@@ -190,21 +190,33 @@
     width: 100%;
     height: 10%;
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.comercianteCont img{
+    height: 80%;
+    width: auto;
+}
+.detallesPerfilCont{
+    width: 60%;
+    height: 100%;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
 }
-.comercianteCont p{
+.detallesPerfilCont p{
     margin: 0;
     padding: 0;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
-.comercianteCont p:hover{
+.detallesPerfilCont p:hover{
     color: var(--color-verde);
     font-weight: 600;
 }
-.comercianteCont h4{
+.detallesPerfilCont h4{
     margin: 0;
     padding: 0;
 }

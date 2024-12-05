@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 const ProductCard = ({ nombre, img1, img2, img3, img4, precio, id, desc, vencimiento, comerciante, stock, categoria, estado }) => {
 
-  const { setActualProduct, setMenuArticulo } = useContext(Context);
+  const { setActualProduct, setMenuArticulo, setDetallesComerciante } = useContext(Context);
 
   const options = { 
     weekday: 'long',
@@ -19,7 +19,21 @@ const ProductCard = ({ nombre, img1, img2, img3, img4, precio, id, desc, vencimi
     const nuevoVencimiento2 = new Date(parseFloat(nuevoVencimiento)).toLocaleDateString("es-ES", options)
     const nuevoVencimiento3 = nuevoVencimiento2.toString()
     setActualProduct({_id: id, nombre: nombre, desc: desc, stock: stock, precio: precio, vencimiento: nuevoVencimiento3, comerciante: comerciante, img1: img1, img2: img2, img3: img3, img4: img4, categoria: categoria, estado: estado})
-    setMenuArticulo(1)
+    setMenuArticulo(1);
+
+    fetch(`https://eaty-three.vercel.app/api/comerciante/detallesVendedor/${comerciante}`, {     
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setDetallesComerciante(data);
+      })
   }
 
   return (
