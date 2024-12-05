@@ -1,0 +1,119 @@
+.Productos{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.seccion0{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 4vh;
+}
+.seccion0Cont{
+    width: 90%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.paginaArticulo{
+    width: 100%;
+    height: calc(80vh - 112px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.seccionFiltros{
+    width: 20%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 1vh;
+}
+.grupoFiltro{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.subCategoria{
+    width: 100%;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.subCategoria:hover{
+    font-weight: 600;
+}
+.rangoPrecioCont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+}
+.ragoCont{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ragoCont input{
+    width: 60%;
+    height: auto;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+.listaDeFiltros{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 4vh;
+}
+
+.seccionPaginas{
+    width: 70%;
+    height: auto;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-bottom: 2vw;
+}
+.paginasArticulos{
+    width: 100%;
+    height: auto;
+}
+.paginaActual{
+    width: calc(100%-4vw);
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@media screen and (width < 1220px) {
+    .seccionFiltros{
+        display: none;
+    }
+    .seccion0Cont{
+        justify-content: center;
+    }
+    .paginaActual{
+        justify-content: center;
+    }
+    .seccionPaginas{
+        width: 100%;
+    }
+}

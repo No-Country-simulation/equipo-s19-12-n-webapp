@@ -1,12 +1,23 @@
 .search-bar {
   display: flex;
-  flex-direction: row;
-  justify-content:space-evenly;
+  width: 100%;
+  justify-content: center;
   align-items: center;
   background-color: #76b939;
-  padding: 2%;
-  gap: 3%;
+  /*padding: 10px 20px;*/
   height: 70px;
+}
+.searchBarCont0{
+  width: calc(100% - 5vw);
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.sectionButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .sectionButtons {
   display: none;
@@ -17,16 +28,17 @@
 .sectionSearch {
   display: flex;
   justify-content: center;
-  width: 70%;
+  min-width: 250px;
+  max-width: 640px;
+  width: 40%;
 }
 
 /* .btns-search-bar {
   font-weight: 600;
   outline: 1px solid red;
-  padding: 0px 15px;
-} */
-
-@media (min-width: 768px) {
+  /*padding: 0px 15px;
+}*/
+@media (max-width: 768px) {
   .search-bar {
     /*flex-direction: column;*/
     padding: 1%;

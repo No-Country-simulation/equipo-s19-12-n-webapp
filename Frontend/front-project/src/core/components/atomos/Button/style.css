@@ -7,9 +7,15 @@
   transition: opacity 0.5s;
   font-weight: 600;
   width: 100%;
+<<<<<<< HEAD
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+=======
   align-items: center;
   justify-content: center;
   gap: 7%;
+>>>>>>> 42c504e3163f9e70773c81988f41fd0029ad8706
 }
 
 .button:hover {

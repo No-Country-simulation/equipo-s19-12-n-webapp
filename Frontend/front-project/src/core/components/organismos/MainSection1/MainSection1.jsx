@@ -25,7 +25,7 @@ const MainSection1 = () => {
         setAllProducts(data);
       })
       .then(() => {
-        console.log(allProducts);
+        navigate("/productos");
       });
   }
 
@@ -34,15 +34,13 @@ const MainSection1 = () => {
       <div className="text-content">
         <MainTitle />
         <MainSubtitle />
-        <div className="mainsection1-btn-tablet">
+        <div className="otrosEstilos">
           <Button
             onClick={() => {
-              navigate("/productos");
               obtenerProductos();
             }}
             variante={"orange"}
             texto={"Ver productos"}
-            className="otrosEstilos"
           />
         </div>
       </div>

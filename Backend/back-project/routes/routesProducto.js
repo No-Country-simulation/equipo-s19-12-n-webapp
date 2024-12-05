@@ -30,6 +30,39 @@ routerProducto.get("/:_id", async (req, res) => {
     };
 })
 
+routerProducto.post("/busqueda/:nombre", async (req, res) => {
+    try {
+        const data = await productoSchema.find({nombre: { "$regex": req.params.nombre, "$options": "i" }});
+        res.json(data);
+    } catch (err) {
+        res
+            .status(500)
+            .send({ message: "Error en el servidor al realizar la búsqueda." });
+    };
+})
+
+routerProducto.post("/busqueda-por-categoria/:categoria", async (req, res) => {
+    try {
+        const data = await productoSchema.find({categoria: req.params.categoria});
+         res.json(data);
+    } catch (err) {
+        res
+            .status(500)
+            .send({ message: "Error en el servidor al realizar la búsqueda." });
+    };
+})
+
+routerProducto.post("/busqueda-por-comerciante/:cuit", async (req, res) => {
+    try {
+        const data = await productoSchema.find({comerciante: req.params.cuit});
+         res.json(data);
+    } catch (err) {
+        res
+            .status(500)
+            .send({ message: "Error en el servidor al realizar la búsqueda." });
+    };
+})
+
 routerProducto.post("/", async (req, res) => {
     if (!req.body) {
         return res.status(400).send({
@@ -37,8 +70,8 @@ routerProducto.post("/", async (req, res) => {
         });
     }
     try {
-        const {nombre, desc, precio, stock, img, comerciante, vencimiento} = req.body;
-        const nuevoProducto = new productoSchema({nombre, desc, precio, stock, img, comerciante, vencimiento});
+        const {nombre, desc, precio, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria} = req.body;
+        const nuevoProducto = new productoSchema({nombre, desc, precio, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria});
         await productoSchema.insertMany(nuevoProducto);
         res.sendStatus(200).send({
             message: "Se añadieron nuevos datos correctamente"
@@ -57,8 +90,8 @@ routerProducto.put("/:_id", async (req, res) => {
         });
     }
     try {
-        const {nombre, desc, precio, stock, img, comerciante, vencimiento} = req.body;
-        const productoActualizado = {nombre, desc, precio, stock, img, comerciante, vencimiento};
+        const {nombre, desc, precio, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria} = req.body;
+        const productoActualizado = {nombre, desc, precio, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria};
         const data = await productoSchema.findByIdAndUpdate(req.params._id, productoActualizado);
         if (!data) {
             res.status(404).send({
