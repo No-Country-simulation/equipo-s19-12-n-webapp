@@ -3,7 +3,7 @@ import "./ProductCard.css";
 import { Context } from "../../../context/Context";
 import { useContext } from "react";
 
-const ProductCard = ({ nombre, img, precio, id, desc, vencimiento, comerciante, stock }) => {
+const ProductCard = ({ nombre, img1, img2, img3, img4, precio, id, desc, vencimiento, comerciante, stock, categoria, estado }) => {
 
   const { setActualProduct, setMenuArticulo } = useContext(Context);
 
@@ -18,7 +18,7 @@ const ProductCard = ({ nombre, img, precio, id, desc, vencimiento, comerciante, 
     const nuevoVencimiento = Date.parse(vencimiento);
     const nuevoVencimiento2 = new Date(parseFloat(nuevoVencimiento)).toLocaleDateString("es-ES", options)
     const nuevoVencimiento3 = nuevoVencimiento2.toString()
-    setActualProduct({_id: id, nombre: nombre, desc: desc, stock: stock, precio: precio, vencimiento: nuevoVencimiento3, comerciante: comerciante, img: img})
+    setActualProduct({_id: id, nombre: nombre, desc: desc, stock: stock, precio: precio, vencimiento: nuevoVencimiento3, comerciante: comerciante, img1: img1, img2: img2, img3: img3, img4: img4, categoria: categoria, estado: estado})
     setMenuArticulo(1)
   }
 

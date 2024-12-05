@@ -24,8 +24,9 @@ const cerrarSesion =()=>{
 }
 
 const [allProducts, setAllProducts] = useState([])
-const [actualProduct, setActualProduct] = useState({_id: 0, nombre: "", desc: "", precio: 0, stock: 0, img: "", comerciante: 0, vencimiento: ""})
+const [actualProduct, setActualProduct] = useState({_id: 0, nombre: "", desc: "", precio: 0, stock: 0, img1: "", img2: "", img3: "", img4: "", comerciante: 0, vencimiento: ""})
 const [menuArticulo, setMenuArticulo] = useState(0)
+const [vendedorDeProducto, setVendedorDeProducto] = useState({cuit: 0, nombre: "", logo: "", direccion: "", ciudad: 0, img1: "", img2: "", img3: ""})
 
   return <>
   {/* se envian los datos al contexto */}
@@ -34,6 +35,8 @@ const [menuArticulo, setMenuArticulo] = useState(0)
             allProducts,
             actualProduct,
             menuArticulo,
+            vendedorDeProducto,
+            setVendedorDeProducto,
             setMenuArticulo,
             setActualProduct,
             setAllProducts,

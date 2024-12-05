@@ -27,8 +27,13 @@ function ArticuloProducto() {
                 <ProductCard
                     key={allProducts.indexOf(product)}
                     nombre={product.nombre}
-                    img={product.img}
+                    img1={product.img1}
+                    img2={product.img2}
+                    img3={product.img3}
+                    img4={product.img4}
                     precio={product.precio}
+                    categoria={product.categoria}
+                    estado={product.estado}
                     id={product._id}
                     desc={product.desc}
                     comerciante={product.comerciante}

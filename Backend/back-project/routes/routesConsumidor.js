@@ -15,7 +15,7 @@ routerConsumidor.get("/", async (req, res) => {
     }
 })
 
-routerConsumidor.get("/login", async (req, res) => {
+routerConsumidor.post("/login", async (req, res) => {
     try {
         const consumidor = await consumidorSchema.findOne({email: req.body.email});
         if (!consumidor){
