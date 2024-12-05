@@ -32,7 +32,7 @@ routerProducto.get("/:_id", async (req, res) => {
 
 routerProducto.post("/busqueda/:nombre", async (req, res) => {
     try {
-        const data = await productoSchema.find({nombre: req.params.nombre});
+        const data = await productoSchema.find({nombre: { "$regex": req.params.nombre, "$options": "i" }});
         res.json(data);
     } catch (err) {
         res

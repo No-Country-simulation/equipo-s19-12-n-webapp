@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -12,6 +12,7 @@ import Link from '@mui/material/Link';
 import ModalRegistrarCliente from './ModalRegistrarCliente';
 import ModalRestablecer from './ModalRestablecer';
 import { Context } from '../../../context/Context';
+import useGetFetch from '../../../services/useGetFetch';
 
 // Estilo del modal con breakpoints
 const style = {
@@ -35,6 +36,7 @@ const style = {
 function ModalSesionCliente({ open, onClose }) {
     const [openRegistrarCliente, setOpenRegistrarCliente] = useState(false);
     const [openRestablecer, setOpenRestablecer] = useState(false); // Estado para el modal de restablecer
+    const formRef = useRef(null);
 
     function abrirRegistrarCliente() {
         setOpenRegistrarCliente(true);
@@ -75,6 +77,52 @@ function ModalSesionCliente({ open, onClose }) {
         onClose();
 
     }
+
+/*   const {data,fetchData} = useFetch('https://httpbin.org/post', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ "name": 'foo', "age":3}),
+  });
+
+  useEffect(() => {
+    if (data) {
+      console.log('Datos recibidos:', data);
+    }
+  }, [data]); // Se ejecuta cuando 'data' cambie
+  async function asincronico(){
+    await fetchData();
+    
+  } */
+ //'https://api.thecatapi.com/v1/images/search'
+ //'https://eaty-three.vercel.app/api/consumidor/login'
+    const { getData, data, loading, error } = useGetFetch('https://eaty-three.vercel.app/api/consumidor/login');
+    useEffect(() => {
+        if (data) {
+          console.log('Datos recibidos:', data);
+        }
+        if(error){
+          console.log('Error:', error);
+        }
+      }, [data,error]); // Se ejecuta cuando 'data' cambie
+
+   async function handleSubmit(e){
+        e.preventDefault();
+        iniciarSesion("cliente")
+        onClose();
+        const formData = new FormData(formRef.current)
+        const email = formData.get("email");
+        const password = formData.get("password");
+        /* console.log("email:"+email);
+        console.log("contraseña:"+password); */
+    //   asincronico()
+    const userData = {
+        email,
+        pass:password,
+      };
+      await getData(userData);
+    }
+        
+    
     return (
         <>
             <Modal
@@ -84,6 +132,7 @@ function ModalSesionCliente({ open, onClose }) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
+                    
                     {/* Botón de cerrar (ícono de cruz) */}
                     <IconButton
                         onClick={onClose}
@@ -127,12 +176,13 @@ function ModalSesionCliente({ open, onClose }) {
                     >
                         cliente.
                     </Typography>
-
+                    <form ref={formRef} onSubmit={handleSubmit}>    
                     {/* Formulario de inicio de sesión */}
                     <Box sx={{ mt: 3 }}>
                         <TextField
                             placeholder="Ingresa tu correo electrónico" // Placeholder personalizado
                             type="email"
+                            name='email'
                             fullWidth
                             variant="standard" // Cambiamos a "standard" para mostrar solo el borde inferior
                             InputProps={{
@@ -155,6 +205,7 @@ function ModalSesionCliente({ open, onClose }) {
                         <TextField
                             placeholder="Ingresa tu contraseña" // Placeholder personalizado
                             type="password"
+                            name='password'
                             fullWidth
                             variant="standard" // Cambiamos a "standard" para mostrar solo el borde inferior
                             InputProps={{
@@ -222,7 +273,8 @@ function ModalSesionCliente({ open, onClose }) {
                         <Button
                             variant="outlined" // Utilizamos "outlined" para que el botón tenga bordes visibles
                             fullWidth
-                            onClick={iniciarSesionCliente}
+                            type='submit'
+//                            onClick={iniciarSesionCliente}
                             sx={{
                                 fontFamily: 'Montserrat',
                                 mt: 2,
@@ -268,6 +320,7 @@ function ModalSesionCliente({ open, onClose }) {
                             </Link>
                         </Box>
                     </Box>
+                    </form>
                 </Box>
             </Modal>
             

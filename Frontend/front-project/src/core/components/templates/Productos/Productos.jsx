@@ -10,9 +10,24 @@ import ArticuloProducto from '../../organismos/ArticuloProducto/ArticuloProducto
 
 function Productos() {
 
-  const { allProducts, menuArticulo } = useContext(Context);
+  const { allProducts, menuArticulo, setAllProducts } = useContext(Context);
 
   console.log(allProducts);
+
+  function buscarCategoria (cat) {
+    fetch(`https://eaty-three.vercel.app/api/productos/busqueda-por-categoria/${cat}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          Accept: "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setAllProducts(data);
+        })
+  }
 
   return (
     <div className={styles.Productos}>
@@ -23,14 +38,14 @@ function Productos() {
                     <div className={styles.grupoFiltro}>
                         <Texto texto={"Categorias"} level={"h3"} variante={"black"}></Texto>
                         <div className={styles.listaDeFiltros}>
-                            <p className={styles.subCategoria}>Frutas y Verduras</p>
-                            <p className={styles.subCategoria}>Carnes y Pescados</p>
-                            <p className={styles.subCategoria}>Lácteos</p>
-                            <p className={styles.subCategoria}>Panadería y Pastelería</p>
-                            <p className={styles.subCategoria}>Snacks y Golosinas</p>
-                            <p className={styles.subCategoria}>Bebidas</p>
-                            <p className={styles.subCategoria}>Alimentos no perecederos</p>
-                            <p className={styles.subCategoria}>Otros</p>
+                            <p className={styles.subCategoria} onClick={() => buscarCategoria("Frutas y Verduras")}>Frutas y Verduras</p>
+                            <p className={styles.subCategoria} onClick={() => buscarCategoria("Carnes y Pescados")}>Carnes y Pescados</p>
+                            <p className={styles.subCategoria} onClick={() => buscarCategoria("Lácteos")}>Lácteos</p>
+                            <p className={styles.subCategoria} onClick={() => buscarCategoria("Panadería y Pastelería")}>Panadería y Pastelería</p>
+                            <p className={styles.subCategoria} onClick={() => buscarCategoria("Snacks y Golosinas")}>Snacks y Golosinas</p>
+                            <p className={styles.subCategoria} onClick={() => buscarCategoria("Bebidas")}>Bebidas</p>
+                            <p className={styles.subCategoria} onClick={() => buscarCategoria("Alimentos no perecederos")}>Alimentos no perecederos</p>
+                            <p className={styles.subCategoria} onClick={() => buscarCategoria("Otros")}>Otros</p>
                         </div>
                     </div>
                     <div className={styles.grupoFiltro}>

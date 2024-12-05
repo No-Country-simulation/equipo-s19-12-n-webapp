@@ -26,7 +26,7 @@ const MainSection1 = () => {
         setAllProducts(data)
       })
       .then(() => {
-        console.log(allProducts)
+        navigate("/productos");
       });
 
   }
@@ -38,7 +38,6 @@ const MainSection1 = () => {
         <MainSubtitle />
         <Button
           onClick={() => {
-            navigate("/productos");
             obtenerProductos();
           }}
           variante={"orange"}

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -35,6 +35,7 @@ const style = {
 function ModalSesionComerciante({ open, onClose }) {
     const [openRegistrarComerciante, setOpenRegistrarComerciante] = useState(false);
     const [openRestablecer, setOpenRestablecer] = useState(false); // Estado para el modal de restablecer
+    const formRef = useRef(null);
 
     function abrirRegistrarCliente() {
         setOpenRegistrarComerciante(true);
@@ -67,12 +68,23 @@ function ModalSesionComerciante({ open, onClose }) {
         setOpenRestablecer(false)
     }
     /* contexto */
-    const {iniciarSesion}= useContext(Context)
-    function iniciarSesionComerciante(){
-        
+    const { iniciarSesion } = useContext(Context)
+    function iniciarSesionComerciante() {
+        // eliminar
         iniciarSesion("comerciante")
         onClose();
 
+    }
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log('Formulario enviado');
+        iniciarSesion("comerciante")
+        onClose();
+        const formData = new FormData(formRef.current)
+        const email = formData.get("email");
+        const password = formData.get("password");
+        console.log("email:" + email);
+        console.log("contraseña:" + password);
     }
     return (
         <>
@@ -97,7 +109,7 @@ function ModalSesionComerciante({ open, onClose }) {
                     </IconButton>
 
                     {/* Título del modal */}
-                     <Typography
+                    <Typography
                         id="modal-modal-title"
                         sx={{
                             fontFamily: 'Montserrat',
@@ -113,7 +125,7 @@ function ModalSesionComerciante({ open, onClose }) {
                         }}
                     >
                         Bienvenido
-                    </Typography> 
+                    </Typography>
 
 
                     {/* Descripción */}
@@ -128,147 +140,151 @@ function ModalSesionComerciante({ open, onClose }) {
                         comerciante.
                     </Typography>
 
-
-                    {/* Formulario de inicio de sesión */}
-                    <Box sx={{ mt: 3 }}>
-                        <TextField
-                            placeholder="Ingresa tu correo electrónico" // Placeholder personalizado
-                            type="email"
-                            fullWidth
-                            variant="standard" // Cambiamos a "standard" para mostrar solo el borde inferior
-                            InputProps={{
-                                disableUnderline: false, // Asegura que solo el borde inferior se muestre
-                            }}
-                            sx={{
-                                mt: 2,
-                                fontFamily: 'Montserrat',
-                                '& .MuiInputBase-input': {
-                                    fontFamily: 'Montserrat', // Estilo de la fuente
-                                },
-                                '& .MuiInput-underline:before': {
-                                    borderBottomColor: '#76B939', // Borde inferior verde
-                                },
-                                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                                    borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
-                                },
-                            }}
-                        />
-                        <TextField
-                            placeholder="Ingresa tu contraseña" // Placeholder personalizado
-                            type="password"
-                            fullWidth
-                            variant="standard" // Cambiamos a "standard" para mostrar solo el borde inferior
-                            InputProps={{
-                                disableUnderline: false, // Asegura que solo el borde inferior se muestre
-                            }}
-                            sx={{
-                                mt: 2,
-                                fontFamily: 'Montserrat',
-                                '& .MuiInputBase-input': {
-                                    fontFamily: 'Montserrat', // Estilo de la fuente
-                                },
-                                '& .MuiInput-underline:before': {
-                                    borderBottomColor: '#76B939', // Borde inferior verde
-                                },
-                                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                                    borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
-                                },
-                            }}
-                        />
-
-
-                        {/* Checkbox y enlace */}
-                        <Box
-                            sx={{
-                                mt: 2,
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                '@media (max-width:600px)': {
-                                    flexDirection: 'column', // En móvil, apila los elementos
-                                    alignItems: 'flex-start', // Alinea el checkbox a la izquierda
-                                },
-                            }}
-                        >
-                            {/* Checkbox para recordar */}
-                            <FormControlLabel
-                                control={<Checkbox color="primary" />}
-                                label="Recordar"
+                    <form ref={formRef} onSubmit={handleSubmit}>
+                        {/* Formulario de inicio de sesión */}
+                        <Box sx={{ mt: 3 }}>
+                            <TextField
+                                placeholder="Ingresa tu correo electrónico" // Placeholder personalizado
+                                type="email"
+                                name='email'
+                                fullWidth
+                                variant="standard" // Cambiamos a "standard" para mostrar solo el borde inferior
+                                InputProps={{
+                                    disableUnderline: false, // Asegura que solo el borde inferior se muestre
+                                }}
                                 sx={{
+                                    mt: 2,
                                     fontFamily: 'Montserrat',
-                                    fontSize: '16px',
-                                    color: '#303030',
-                                    marginRight: 'auto', // Empuja el enlace hacia la derecha
+                                    '& .MuiInputBase-input': {
+                                        fontFamily: 'Montserrat', // Estilo de la fuente
+                                    },
+                                    '& .MuiInput-underline:before': {
+                                        borderBottomColor: '#76B939', // Borde inferior verde
+                                    },
+                                    '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                                        borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
+                                    },
+                                }}
+                            />
+                            <TextField
+                                placeholder="Ingresa tu contraseña" // Placeholder personalizado
+                                type="password"
+                                name='password'
+                                fullWidth
+                                variant="standard" // Cambiamos a "standard" para mostrar solo el borde inferior
+                                InputProps={{
+                                    disableUnderline: false, // Asegura que solo el borde inferior se muestre
+                                }}
+                                sx={{
+                                    mt: 2,
+                                    fontFamily: 'Montserrat',
+                                    '& .MuiInputBase-input': {
+                                        fontFamily: 'Montserrat', // Estilo de la fuente
+                                    },
+                                    '& .MuiInput-underline:before': {
+                                        borderBottomColor: '#76B939', // Borde inferior verde
+                                    },
+                                    '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                                        borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
+                                    },
                                 }}
                             />
 
-                            {/* Enlace para "¿Olvidaste tu contraseña?" */}
-                            <Link
-                                href="#"
-                                underline="hover"
-                                onClick={handleOpenModalRestablecer}
+
+                            {/* Checkbox y enlace */}
+                            <Box
                                 sx={{
-                                    fontFamily: 'Montserrat',
-                                    fontSize: '16px',
-                                    color: '#76B939',
-                                    fontWeight: '600',
-                                    mt: { xs: 1, sm: 0 }, // Margen superior solo en dispositivos pequeños
+                                    mt: 2,
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    '@media (max-width:600px)': {
+                                        flexDirection: 'column', // En móvil, apila los elementos
+                                        alignItems: 'flex-start', // Alinea el checkbox a la izquierda
+                                    },
                                 }}
                             >
-                                ¿Olvidaste tu contraseña?
-                            </Link>
+                                {/* Checkbox para recordar */}
+                                <FormControlLabel
+                                    control={<Checkbox color="primary" />}
+                                    label="Recordar"
+                                    sx={{
+                                        fontFamily: 'Montserrat',
+                                        fontSize: '16px',
+                                        color: '#303030',
+                                        marginRight: 'auto', // Empuja el enlace hacia la derecha
+                                    }}
+                                />
+
+                                {/* Enlace para "¿Olvidaste tu contraseña?" */}
+                                <Link
+                                    href="#"
+                                    underline="hover"
+                                    onClick={handleOpenModalRestablecer}
+                                    sx={{
+                                        fontFamily: 'Montserrat',
+                                        fontSize: '16px',
+                                        color: '#76B939',
+                                        fontWeight: '600',
+                                        mt: { xs: 1, sm: 0 }, // Margen superior solo en dispositivos pequeños
+                                    }}
+                                >
+                                    ¿Olvidaste tu contraseña?
+                                </Link>
+                            </Box>
+
+                            {/* Botón de iniciar sesión */}
+                            <Button
+                                variant="outlined" // Utilizamos "outlined" para que el botón tenga bordes visibles
+                                fullWidth
+                                //                           onClick={iniciarSesionComerciante}
+                                type='submit'
+                                sx={{
+                                    fontFamily: 'Montserrat',
+                                    mt: 2,
+                                    color: '#76B939', // Texto en verde
+                                    bgcolor: '#FFFFFF', // Fondo blanco
+                                    borderColor: '#76B939', // Borde verde
+                                    textTransform: 'none', // Mantiene el texto sin convertir a mayúsculas
+                                    '&:hover': {
+                                        bgcolor: '#F0FFF0', // Fondo blanco con un ligero tono verde al pasar el cursor
+                                        borderColor: '#76B939', // Mantiene el borde verde
+                                    },
+                                }}
+                            >
+                                Iniciar sesión
+                            </Button>
+                            <Box sx={{ mt: 3, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row' } }}>
+                                {/* Texto "¿No tiene una cuenta?" */}
+                                <Typography
+                                    sx={{
+                                        fontFamily: 'Montserrat',
+                                        fontSize: '16px',
+                                        color: '#303030', // Color del texto
+                                        mr: { sm: 2 }, // Margen derecho solo en versiones sm (tablet y escritorio)
+                                    }}
+                                >
+                                    ¿No tiene una cuenta?
+                                </Typography>
+
+                                {/* Enlace "Regístrese Aquí" */}
+                                <Link
+                                    href="#"
+                                    underline="hover"
+                                    onClick={handleOpenModalRegisrarComerciante}
+                                    sx={{
+                                        fontFamily: 'Montserrat',
+                                        fontSize: '16px',
+                                        color: '#76B939', // Color verde para el enlace
+                                        fontWeight: '600', // Peso de la fuente
+
+                                    }}
+                                >
+                                    Regístrese Aquí
+                                </Link>
+                            </Box>
                         </Box>
-
-                        {/* Botón de iniciar sesión */}
-                        <Button
-                            variant="outlined" // Utilizamos "outlined" para que el botón tenga bordes visibles
-                            fullWidth
-                            onClick={iniciarSesionComerciante}
-                            sx={{
-                                fontFamily: 'Montserrat',
-                                mt: 2,
-                                color: '#76B939', // Texto en verde
-                                bgcolor: '#FFFFFF', // Fondo blanco
-                                borderColor: '#76B939', // Borde verde
-                                textTransform: 'none', // Mantiene el texto sin convertir a mayúsculas
-                                '&:hover': {
-                                    bgcolor: '#F0FFF0', // Fondo blanco con un ligero tono verde al pasar el cursor
-                                    borderColor: '#76B939', // Mantiene el borde verde
-                                },
-                            }}
-                        >
-                            Iniciar sesión
-                        </Button>
-                        <Box sx={{ mt: 3, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row' } }}>
-                            {/* Texto "¿No tiene una cuenta?" */}
-                            <Typography
-                                sx={{
-                                    fontFamily: 'Montserrat',
-                                    fontSize: '16px',
-                                    color: '#303030', // Color del texto
-                                    mr: { sm: 2 }, // Margen derecho solo en versiones sm (tablet y escritorio)
-                                }}
-                            >
-                                ¿No tiene una cuenta?
-                            </Typography>
-
-                            {/* Enlace "Regístrese Aquí" */}
-                            <Link
-                                href="#"
-                                underline="hover"
-                                onClick={handleOpenModalRegisrarComerciante}
-                                sx={{
-                                    fontFamily: 'Montserrat',
-                                    fontSize: '16px',
-                                    color: '#76B939', // Color verde para el enlace
-                                    fontWeight: '600', // Peso de la fuente
-
-                                }}
-                            >
-                                Regístrese Aquí
-                            </Link>
-                        </Box>
-                    </Box>
+                    </form>
                 </Box>
             </Modal>
             <ModalRegistrarComerciante open={openRegistrarComerciante} onClose={handleCerrarModalRegisrarComerciante} openFrom={""} onBack={atras} />

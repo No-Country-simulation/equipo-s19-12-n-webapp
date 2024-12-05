@@ -20,7 +20,7 @@ const opciones = [
     'registrar comerciante'
 ];
 
-const categorias = ['Frutas y Verduras', 'Carnes y Pescados', 'Lácteos', 'Panadería', 'Snacks', 'No Perecederos'];
+const categorias = ['Frutas y Verduras', 'Carnes y Pescados', 'Lácteos', 'Bebidas', 'Panadería y Pastelería', 'Snacks y Golosinas', 'Alimentos no perecederos', 'Otros'];
 
 const Navbar = () => {
     const [anchorEl, setAnchorEl] = useState(null); // Estado para el menú
@@ -32,7 +32,7 @@ const Navbar = () => {
 
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
-        setOpenMenu(true);
+        setOpenMnu(true);
     };
 
     const handleCloseMenu = () => setOpenMenu(false);

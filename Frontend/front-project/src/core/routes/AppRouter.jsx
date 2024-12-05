@@ -30,7 +30,7 @@ export const AppRouter = createBrowserRouter([
     },
     {
         path: "/soporte",
-        element: <Soporte/>,
+        element: <Layout><Soporte/></Layout> ,
     },
     {
         path: "*",
