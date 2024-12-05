@@ -27,9 +27,10 @@ function useGetFetch(url) {
 
       const result = await response.json();
       setData(result);  // Guardamos los datos de la respuesta
+      setError(null);
     } catch (err) {
-      //setError(err.message);  // Guardamos cualquier error
-
+      setError(err.message);  // Guardamos cualquier error
+      setData(null);  // Guardamos los datos de la respuesta
     } finally {
       setLoading(false);  // Indicamos que la solicitud ha terminado
     }
