@@ -9,3 +9,34 @@
 .pb {
   margin-bottom: 30px;
 }
+
+.main-subtitle-mobile {
+  display: none;
+}
+
+@media (max-width: 744px) {
+  .main-subtitle-tablet {
+    display: none;
+  }
+  .main-subtitle-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 394px) {
+  .main-subtitle-tablet {
+    display: none;
+  }
+  .subtitle {
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19.5px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  .main-subtitle-mobile {
+    display: block;
+  }
+}

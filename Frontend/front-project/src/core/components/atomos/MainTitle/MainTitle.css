@@ -6,16 +6,66 @@
   text-align: center;
   text-underline-position: from-font;
 }
-
+.mobile {
+  display: none;
+}
+.tablet {
+  display: none;
+}
 .highlight {
   color: #6ab344;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 744px) {
+  .tablet {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
+  .desktop {
+    display: none;
+  }
   .title {
-    font-size: 20px; /* Tamaño más pequeño para pantallas pequeñas */
-    line-height: 24.38px;
+    text-align: start;
+    padding-left: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 39.01px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+}
+
+@media only screen and (max-width: 394px) {
+  /* Estilos para móviles aquí */
+  .title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30.48px;
     text-align: center;
-    font-weight: 600;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  .highlight {
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30.48px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  .mobile {
+    display: block;
+  }
+  .desktop {
+    display: none;
+  }
+  .tablet {
+    display: none;
   }
 }
