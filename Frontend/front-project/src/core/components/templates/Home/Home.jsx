@@ -9,6 +9,7 @@ import SearchBar from "../../organismos/SearchBar/SearchBar.jsx";
 import MainSection3 from "../../organismos/MainSection3/MainSection3.jsx";
 import MainSection1 from "../../organismos/MainSection1/MainSection1.jsx";
 import MainSection5 from "../../organismos/MainSection5/MainSection5.jsx";
+import MainSection6 from "../../organismos/MainSection6/MainSection6.jsx";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("frutas");
@@ -29,6 +30,7 @@ const Home = () => {
       <MainSection3></MainSection3>
       <ProductosDestacados></ProductosDestacados>
       <MainSection5 />
+      <MainSection6 />
     </>
   );
 };
