@@ -25,7 +25,7 @@ function usePostFetch(url) {
       if (!response.ok) {
         // Si la respuesta no es exitosa, lanzamos un error con el mensaje del servidor
         setError(result);  // Guardamos los detalles del error
-        throw new Error(result.message || 'Error en la solicitud');
+        throw new Error(result.error || 'Error en la solicitud');
       }
 
       setData(result);  // Guardamos los datos si la solicitud es exitosa

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -11,6 +11,7 @@ import { Link } from '@mui/material';
 import ModalRegistrarComerciante from './ModalRegistrarComerciante';
 import ModalRestablecer from './ModalRestablecer';
 import { Context } from '../../../context/Context';
+import usePostFetch from '../../../services/usePostFetch';
 
 
 // Estilo del modal con breakpoints
@@ -67,25 +68,61 @@ function ModalSesionComerciante({ open, onClose }) {
         onClose();
         setOpenRestablecer(false)
     }
+
+    const { postData, data, loading, error } = usePostFetch('https://eaty-three.vercel.app/api/comerciante/login');
+    useEffect(() => {
+
+        if (error) {
+            console.log('Error:', error);
+        } else {
+            if (data) {
+                // usuario: cliente
+                const userData = {
+                    id: data._id,
+                    cuit: data.cuit,
+                    nombre: data.nombre,
+                    email: data.email,
+                    direccion: data.direccion,
+                    ciudad: data.ciudad,
+                    telefono: data.telefono,
+                    logo: data.logo,
+                    img1: data.img1,
+                    img2: data.img2,
+                    img3: data.img3,
+                };
+                guardarSesionComerciante(JSON.stringify(userData));
+                console.log("contexto:" + JSON.stringify(userData))
+                /* {"_id":"67527b70457df8a560780458","cuit":20,"nombre":"el heavy","email":"elheavy@hotmail.com","pass":"elheavy","direccion":"","ciudad":null,"telefono":2020,"logo":"","img1":"","img2":"","img3":"","__v":0} */
+            }
+        }
+    }, [data, error]); // Se ejecuta cuando 'data' cambie
+
     /* contexto */
-    const { iniciarSesion } = useContext(Context)
-    function iniciarSesionComerciante() {
-        // eliminar
+    const { iniciarSesion, guardarDatosUsuario } = useContext(Context)
+    function guardarSesionComerciante(datos) {
+
         iniciarSesion("comerciante")
-        onClose();
+        guardarDatosUsuario(datos)
 
     }
-    function handleSubmit(e) {
+
+    async function handleSubmit(e) {
         e.preventDefault();
         console.log('Formulario enviado');
-        iniciarSesion("comerciante")
         onClose();
         const formData = new FormData(formRef.current)
         const email = formData.get("email");
         const password = formData.get("password");
         console.log("email:" + email);
         console.log("contraseña:" + password);
+        const userData = {
+            email,
+            pass: password,
+        };
+
+        await postData(userData);
     }
+    
     return (
         <>
             <Modal

@@ -10,6 +10,7 @@ import { Context } from "./core/context/Context";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [usuario, setUsuario] = useState(null);
+  const [datosUsuario,setDatosUsuario]=useState(null)
 
   if (process.env.NODE_ENV !== 'production') {
     console.warn = () => {};  // Suprimir los warnings en desarrollo
@@ -22,7 +23,12 @@ const iniciarSesion=(usuario)=>{
 }
 const cerrarSesion =()=>{
   setIsLoggedIn(false);
-  setUsuario(null)
+  setUsuario(null);
+  setDatosUsuario(null);
+}
+
+const guardarDatosUsuario=(datos)=>{
+  setDatosUsuario(datos);
 }
 
 const [allProducts, setAllProducts] = useState([])
@@ -35,7 +41,9 @@ const [allProducts, setAllProducts] = useState([])
             setAllProducts,
             iniciarSesion,
             cerrarSesion,
-            usuario
+            usuario,// comerciante o cliente
+            datosUsuario,
+            guardarDatosUsuario
         }}>
           <RouterProvider router={AppRouter}></RouterProvider>
     </Context.Provider>
