@@ -8,31 +8,28 @@ function usePostFetch(url) {
   const postData = async (userData) => {
     setLoading(true);
     setError(null); // Limpiamos errores anteriores
-    console.log("Enviando:", JSON.stringify(userData));
-
     try {
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',  // Corregido: 'Accept' en lugar de 'Acept'
+          'Access-Control-Allow-Origin': "*",
+          'Acept': 'application/json',
         },
         body: JSON.stringify(userData),
       });
-
-      const result = await response.json();  // Leemos el cuerpo de la respuesta una sola vez
-
+      console.log(response)
       if (!response.ok) {
-        // Si la respuesta no es exitosa, lanzamos un error con el mensaje del servidor
-        setError(result);  // Guardamos los detalles del error
-        throw new Error(result.message || 'Error en la solicitud');
+        //      throw new Error('Error en la solicitud');
+        const result = await response.json();
+        setError(result);  // Guardamos los datos de la respuesta
+        throw new Error(result);
       }
 
-      setData(result);  // Guardamos los datos si la solicitud es exitosa
-      setError(null)
+      const result = await response.json();
+      setData(result);  // Guardamos los datos de la respuesta
     } catch (err) {
-      setError(err.message || 'Error desconocido');  // Guardamos cualquier error
-      setData(null)
+      setError(err.message);  // Guardamos cualquier error
     } finally {
       setLoading(false);  // Indicamos que la solicitud ha terminado
     }

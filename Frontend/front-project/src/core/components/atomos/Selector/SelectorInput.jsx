@@ -11,77 +11,24 @@ const SelectorInput = ({ categorias, onCategoriaSelect, placeholder, placeholder
     onCategoriaSelect(event.target.value); // Llamar al callback para pasar el valor seleccionado
   };
 
-//   return (
-//     <Box sx={{ display: 'flex', alignItems: 'center', gap: 0 }}>
-//       {/* Selector con tipografía unificada */}
-//       <FormControl fullWidth variant="standard">
-//         <Select
-//           value={categoriaSeleccionada}
-//           onChange={handleChange}
-//           displayEmpty
-//           renderValue={(selected) => {
-//             return selected || placeholder
-//           }}
-//           sx={{
-//             mt: 2,
-//             fontFamily: 'Montserrat',
-//             '& .MuiInputBase-input': {
-//               fontFamily: 'Montserrat', // Estilo de la fuente
-//             },
-//             width: '100%',
-//             margin: '0',
-//             padding: '8px 0',
-//             '&:before': {
-//                     borderBottom: '2px solid #303030', // Borde inferior verde
-//                   },
-//                   '&:hover:not(.Mui-disabled):before': {
-//                     borderBottom: '2px solid #76B939',
-//                   },
-//                   '&:after': {
-//                     borderBottom: '2px solid #76B939',
-//                   },
-//           }}
-//         >
-//           {categorias.map((categoria) => (
-//             <MenuItem
-//               key={categoria}
-//               value={categoria}
-//               sx={{
-//                 fontFamily: 'Montserrat', // Aplicar Montserrat en las opciones
-//                 fontWeight: 400, // Mantener peso uniforme
-//                 fontSize: '16px', // Ajustar tamaño a los demás campos
-//                 color: '#303030', // Color uniforme
-//               }}
-//             >
-//               {categoria}
-//             </MenuItem>
-//           ))}
-//         </Select>
-//       </FormControl>
-//     </Box>
-//   );
-// };
-
-const SelectorInput = ({ categorias, value, onChange, placeholder }) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 0 }}>
       <FormControl fullWidth variant="standard">
         <Select
-          value={value}
-          onChange={onChange}
+          value={categoriaSeleccionada}
+          onChange={handleChange}
           displayEmpty
           renderValue={(selected) => selected || placeholder}
           sx={{
             mt: 1,
             fontFamily: 'Montserrat',
-
             '& .MuiInputBase-root': {
               fontFamily: 'Montserrat',
               color: categoriaSeleccionada ? '#303030' : placeholderColor || '#B0B0B0',
             },
             width: '100%',
             padding: '8px 0',
-            /*'& .MuiInput-underline:before': {
+            '& .MuiInput-underline:before': {
               borderBottom: bordeVerde ? '2px solid #76B939' : '2px solid #B0B0B0', // Borde dinámico
             },
             '& .MuiInput-underline:hover:before': {
@@ -92,12 +39,7 @@ const SelectorInput = ({ categorias, value, onChange, placeholder }) => {
             },
             '@media (max-width:600px)': {
               mt: 0, // Margen superior en pantallas móviles
-            },*/
-
-            '&:before': { borderBottom: '2px solid #303030' },
-            '&:hover:not(.Mui-disabled):before': { borderBottom: '2px solid #76B939' },
-            '&:after': { borderBottom: '2px solid #76B939' },
-
+            },
           }}
         >
           {categorias.map((categoria) => (
@@ -120,7 +62,4 @@ const SelectorInput = ({ categorias, value, onChange, placeholder }) => {
   );
 };
 
-}
-
 export default SelectorInput;
-
