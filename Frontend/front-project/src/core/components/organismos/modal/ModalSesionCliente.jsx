@@ -60,7 +60,7 @@ function ModalSesionCliente({ open, onClose }) {
         setOpenRegistrarCliente(false)
         setOpenRestablecer(false)
     }
-    function handleOpenModalRestablecer(){
+    function handleOpenModalRestablecer() {
         console.log("abrir modal restablecer contraseña")
         setOpenRestablecer(true)
     }
@@ -69,64 +69,62 @@ function ModalSesionCliente({ open, onClose }) {
         onClose();
         setOpenRestablecer(false)
     }
-    const {iniciarSesion}= useContext(Context)
-    function iniciarSesionCliente(){
-       
-        iniciarSesion("cliente")
-/*         console.log("sesion: "+isLoggedIn)
-        console.log("usuario: "+usuario) */
-        onClose();
 
-    }
 
-/*   const {data,fetchData} = useFetch('https://httpbin.org/post', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ "name": 'foo', "age":3}),
-  });
 
-  useEffect(() => {
-    if (data) {
-      console.log('Datos recibidos:', data);
-    }
-  }, [data]); // Se ejecuta cuando 'data' cambie
-  async function asincronico(){
-    await fetchData();
-    
-  } */
- //'https://api.thecatapi.com/v1/images/search'
- //'https://eaty-three.vercel.app/api/consumidor/login'
+    //'https://api.thecatapi.com/v1/images/search'
+    //'https://eaty-three.vercel.app/api/consumidor/login'
     const { postData, data, loading, error } = usePostFetch('https://eaty-three.vercel.app/api/consumidor/login');
     useEffect(() => {
-        
-        if(error){
-          console.log('Error:', error);
-        }else{
-            if (data) {
-                console.log('Datos recibidos:', data);
-              }
-        }
-      }, [data,error]); // Se ejecuta cuando 'data' cambie
 
-   async function handleSubmit(e){
-        e.preventDefault();
+        if (error) {
+            console.log('Error:', error);
+        } else {
+            if (data) {
+                // usuario: cliente
+                /*  console.log('Datos recibidos:', data.email);
+                 console.log('Datos recibidos:', data._id); */
+
+
+                const userData = {
+                    email: data.email,
+                    id: data._id,
+                };
+                guardarSesionCliente(JSON.stringify(userData));
+                console.log("contexto:" + JSON.stringify(userData))
+            }
+        }
+    }, [data, error]); // Se ejecuta cuando 'data' cambie
+
+
+    //contexto
+    const { iniciarSesion, guardarDatosUsuario } = useContext(Context)
+    function guardarSesionCliente(datos) {
+
         iniciarSesion("cliente")
+        guardarDatosUsuario(datos)
+        /*         console.log("sesion: "+isLoggedIn)
+                console.log("usuario: "+usuario) */
+        //       onClose();
+
+    }
+    async function handleSubmit(e) {
+        e.preventDefault();
         onClose();
         const formData = new FormData(formRef.current)
         const email = formData.get("email");
         const password = formData.get("password");
         /* console.log("email:"+email);
         console.log("contraseña:"+password); */
-    //   asincronico()
-    const userData = {
-        email,
-        pass:password,
-      };
-      //await getData(userData);
-      await postData(userData);
+
+        const userData = {
+            email,
+            pass: password,
+        };
+        await postData(userData);
     }
-        
-    
+
+
     return (
         <>
             <Modal
@@ -136,7 +134,7 @@ function ModalSesionCliente({ open, onClose }) {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    
+
                     {/* Botón de cerrar (ícono de cruz) */}
                     <IconButton
                         onClick={onClose}
@@ -180,154 +178,154 @@ function ModalSesionCliente({ open, onClose }) {
                     >
                         cliente.
                     </Typography>
-                    <form ref={formRef} onSubmit={handleSubmit}>    
-                    {/* Formulario de inicio de sesión */}
-                    <Box sx={{ mt: 3 }}>
-                        <TextField
-                            placeholder="Ingresa tu correo electrónico" // Placeholder personalizado
-                            type="email"
-                            name='email'
-                            fullWidth
-                            variant="standard" // Cambiamos a "standard" para mostrar solo el borde inferior
-                            InputProps={{
-                                disableUnderline: false, // Asegura que solo el borde inferior se muestre
-                            }}
-                            sx={{
-                                mt: 2,
-                                fontFamily: 'Montserrat',
-                                '& .MuiInputBase-input': {
-                                    fontFamily: 'Montserrat', // Estilo de la fuente
-                                },
-                                '& .MuiInput-underline:before': {
-                                    borderBottomColor: '#76B939', // Borde inferior verde
-                                },
-                                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                                    borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
-                                },
-                            }}
-                        />
-                        <TextField
-                            placeholder="Ingresa tu contraseña" // Placeholder personalizado
-                            type="password"
-                            name='password'
-                            fullWidth
-                            variant="standard" // Cambiamos a "standard" para mostrar solo el borde inferior
-                            InputProps={{
-                                disableUnderline: false, // Asegura que solo el borde inferior se muestre
-                            }}
-                            sx={{
-                                mt: 2,
-                                fontFamily: 'Montserrat',
-                                '& .MuiInputBase-input': {
-                                    fontFamily: 'Montserrat', // Estilo de la fuente
-                                },
-                                '& .MuiInput-underline:before': {
-                                    borderBottomColor: '#76B939', // Borde inferior verde
-                                },
-                                '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-                                    borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
-                                },
-                            }}
-                        />
-
-
-                        {/* Checkbox y enlace */}
-                        <Box
-                            sx={{
-                                mt: 2,
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                alignItems: 'center',
-                                '@media (max-width:600px)': {
-                                    flexDirection: 'column', // En móvil, apila los elementos
-                                    alignItems: 'flex-start', // Alinea el checkbox a la izquierda
-                                },
-                            }}
-                        >
-                            {/* Checkbox para recordar */}
-                            <FormControlLabel
-                                control={<Checkbox color="primary" />}
-                                label="Recordar"
+                    <form ref={formRef} onSubmit={handleSubmit}>
+                        {/* Formulario de inicio de sesión */}
+                        <Box sx={{ mt: 3 }}>
+                            <TextField
+                                placeholder="Ingresa tu correo electrónico" // Placeholder personalizado
+                                type="email"
+                                name='email'
+                                fullWidth
+                                variant="standard" // Cambiamos a "standard" para mostrar solo el borde inferior
+                                InputProps={{
+                                    disableUnderline: false, // Asegura que solo el borde inferior se muestre
+                                }}
                                 sx={{
+                                    mt: 2,
                                     fontFamily: 'Montserrat',
-                                    fontSize: '16px',
-                                    color: '#303030',
-                                    marginRight: 'auto', // Empuja el enlace hacia la derecha
+                                    '& .MuiInputBase-input': {
+                                        fontFamily: 'Montserrat', // Estilo de la fuente
+                                    },
+                                    '& .MuiInput-underline:before': {
+                                        borderBottomColor: '#76B939', // Borde inferior verde
+                                    },
+                                    '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                                        borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
+                                    },
+                                }}
+                            />
+                            <TextField
+                                placeholder="Ingresa tu contraseña" // Placeholder personalizado
+                                type="password"
+                                name='password'
+                                fullWidth
+                                variant="standard" // Cambiamos a "standard" para mostrar solo el borde inferior
+                                InputProps={{
+                                    disableUnderline: false, // Asegura que solo el borde inferior se muestre
+                                }}
+                                sx={{
+                                    mt: 2,
+                                    fontFamily: 'Montserrat',
+                                    '& .MuiInputBase-input': {
+                                        fontFamily: 'Montserrat', // Estilo de la fuente
+                                    },
+                                    '& .MuiInput-underline:before': {
+                                        borderBottomColor: '#76B939', // Borde inferior verde
+                                    },
+                                    '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
+                                        borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
+                                    },
                                 }}
                             />
 
-                            {/* Enlace para "¿Olvidaste tu contraseña?" */}
-                            <Link
-                                href="#"
-                                underline="hover"
-                                onClick={handleOpenModalRestablecer}
+
+                            {/* Checkbox y enlace */}
+                            <Box
                                 sx={{
-                                    fontFamily: 'Montserrat',
-                                    fontSize: '16px',
-                                    color: '#76B939',
-                                    fontWeight: '600',
-                                    mt: { xs: 1, sm: 0 }, // Margen superior solo en dispositivos pequeños
+                                    mt: 2,
+                                    display: 'flex',
+                                    justifyContent: 'space-between',
+                                    alignItems: 'center',
+                                    '@media (max-width:600px)': {
+                                        flexDirection: 'column', // En móvil, apila los elementos
+                                        alignItems: 'flex-start', // Alinea el checkbox a la izquierda
+                                    },
                                 }}
                             >
-                                ¿Olvidaste tu contraseña?
-                            </Link>
+                                {/* Checkbox para recordar */}
+                                <FormControlLabel
+                                    control={<Checkbox color="primary" />}
+                                    label="Recordar"
+                                    sx={{
+                                        fontFamily: 'Montserrat',
+                                        fontSize: '16px',
+                                        color: '#303030',
+                                        marginRight: 'auto', // Empuja el enlace hacia la derecha
+                                    }}
+                                />
+
+                                {/* Enlace para "¿Olvidaste tu contraseña?" */}
+                                <Link
+                                    href="#"
+                                    underline="hover"
+                                    onClick={handleOpenModalRestablecer}
+                                    sx={{
+                                        fontFamily: 'Montserrat',
+                                        fontSize: '16px',
+                                        color: '#76B939',
+                                        fontWeight: '600',
+                                        mt: { xs: 1, sm: 0 }, // Margen superior solo en dispositivos pequeños
+                                    }}
+                                >
+                                    ¿Olvidaste tu contraseña?
+                                </Link>
+                            </Box>
+
+                            {/* Botón de iniciar sesión */}
+                            <Button
+                                variant="outlined" // Utilizamos "outlined" para que el botón tenga bordes visibles
+                                fullWidth
+                                type='submit'
+                                //                            onClick={iniciarSesionCliente}
+                                sx={{
+                                    fontFamily: 'Montserrat',
+                                    mt: 2,
+                                    color: '#76B939', // Texto en verde
+                                    bgcolor: '#FFFFFF', // Fondo blanco
+                                    borderColor: '#76B939', // Borde verde
+                                    textTransform: 'none', // Mantiene el texto sin convertir a mayúsculas
+                                    '&:hover': {
+                                        bgcolor: '#F0FFF0', // Fondo blanco con un ligero tono verde al pasar el cursor
+                                        borderColor: '#76B939', // Mantiene el borde verde
+                                    },
+                                }}
+                            >
+                                Iniciar sesión
+                            </Button>
+                            <Box sx={{ mt: 3, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row' } }}>
+                                {/* Texto "¿No tiene una cuenta?" */}
+                                <Typography
+                                    sx={{
+                                        fontFamily: 'Montserrat',
+                                        fontSize: '16px',
+                                        color: '#303030', // Color del texto
+                                        mr: { sm: 2 }, // Margen derecho solo en versiones sm (tablet y escritorio)
+                                    }}
+                                >
+                                    ¿No tiene una cuenta?
+                                </Typography>
+
+                                {/* Enlace "Regístrese Aquí" */}
+                                <Link
+                                    href="#"
+                                    underline="hover"
+                                    onClick={handleOpenModalRegisrarCliente}
+                                    sx={{
+                                        fontFamily: 'Montserrat',
+                                        fontSize: '16px',
+                                        color: '#76B939', // Color verde para el enlace
+                                        fontWeight: '600', // Peso de la fuente
+
+                                    }}
+                                >
+                                    Regístrese Aquí
+                                </Link>
+                            </Box>
                         </Box>
-
-                        {/* Botón de iniciar sesión */}
-                        <Button
-                            variant="outlined" // Utilizamos "outlined" para que el botón tenga bordes visibles
-                            fullWidth
-                            type='submit'
-//                            onClick={iniciarSesionCliente}
-                            sx={{
-                                fontFamily: 'Montserrat',
-                                mt: 2,
-                                color: '#76B939', // Texto en verde
-                                bgcolor: '#FFFFFF', // Fondo blanco
-                                borderColor: '#76B939', // Borde verde
-                                textTransform: 'none', // Mantiene el texto sin convertir a mayúsculas
-                                '&:hover': {
-                                    bgcolor: '#F0FFF0', // Fondo blanco con un ligero tono verde al pasar el cursor
-                                    borderColor: '#76B939', // Mantiene el borde verde
-                                },
-                            }}
-                        >
-                            Iniciar sesión
-                        </Button>
-                        <Box sx={{ mt: 3, display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: { xs: 'column', sm: 'row' } }}>
-                            {/* Texto "¿No tiene una cuenta?" */}
-                            <Typography
-                                sx={{
-                                    fontFamily: 'Montserrat',
-                                    fontSize: '16px',
-                                    color: '#303030', // Color del texto
-                                    mr: { sm: 2 }, // Margen derecho solo en versiones sm (tablet y escritorio)
-                                }}
-                            >
-                                ¿No tiene una cuenta?
-                            </Typography>
-
-                            {/* Enlace "Regístrese Aquí" */}
-                            <Link
-                                href="#"
-                                underline="hover"
-                                onClick={handleOpenModalRegisrarCliente}
-                                sx={{
-                                    fontFamily: 'Montserrat',
-                                    fontSize: '16px',
-                                    color: '#76B939', // Color verde para el enlace
-                                    fontWeight: '600', // Peso de la fuente
-
-                                }}
-                            >
-                                Regístrese Aquí
-                            </Link>
-                        </Box>
-                    </Box>
                     </form>
                 </Box>
             </Modal>
-            
+
             <ModalRegistrarCliente open={openRegistrarCliente} onClose={handleCerrarModalRegisrarCliente} openFrom={""} onBack={atras} />
             <ModalRestablecer open={openRestablecer} onClose={handleCerrarModalRestablecer} openFrom={""} onBack={atras} />
         </>

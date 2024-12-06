@@ -7,13 +7,14 @@ import { Context } from "../context/Context";
 
 
 const Layout = ({ children }) => {
- const {usuario,isLoggedIn,cerrarSesion}=useContext(Context)
+ const {usuario,datosUsuario,isLoggedIn,cerrarSesion}=useContext(Context)
   function cerrar(){
     cerrarSesion()
   }
   function ver(){
     console.log("sesion:"+isLoggedIn)
     console.log("usuario:"+usuario)
+    console.log("datos de usuario:"+datosUsuario)
   }
   return (
     <div>

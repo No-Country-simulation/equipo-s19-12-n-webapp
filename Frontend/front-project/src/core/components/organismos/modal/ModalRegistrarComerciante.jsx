@@ -1,8 +1,9 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button, TextField, Modal, Box, IconButton, Typography, Select, MenuItem, InputAdornment, FormControlLabel, Checkbox, styled, Grid } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from '@mui/icons-material/Close';
 import SelectorInput from '../../atomos/Selector/SelectorInput';
+import usePostFetch from '../../../services/usePostFetch';
 
 
 const style = {
@@ -30,7 +31,17 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
   const formRef = useRef(null);
   const [categoria, setCategoria] = useState("");
 
-  function handleSubmit(e) {
+  const { postData, data, loading, error } = usePostFetch('https://eaty-three.vercel.app/api/comerciante');
+  useEffect(() => {
+    if (data) {
+      console.log('Datos recibidos:', data);
+    }
+    if (error) {
+      console.log('Error:', error);
+    }
+  }, [data,error]); // Se ejecuta cuando 'data' cambie
+
+ async function handleSubmit(e) {
     e.preventDefault();
     console.log('Formulario enviado');
     const formData = new FormData(formRef.current)
@@ -42,7 +53,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
     const password = formData.get("password");
     const confirmPassword = formData.get("confirmPassword");
 
-    console.log("email:" + cuit);
+    console.log("cuit:" + cuit);
     console.log("nombre del negocio:" + nombreNegocio);
     console.log("tipo de negocio:" + categoria);
     console.log("caracteristica:" + caracteristica);
@@ -51,6 +62,23 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
     console.log("password:" + password);
     console.log("confirmar:" + confirmPassword);
     onClose();
+    //cuit, nombre, direccion, ciudad, telefono, logo, email, pass, img1, img2, img3
+    const userData = {
+      cuit,
+      nombre:nombreNegocio,
+      direccion: "",
+      ciudad:"",
+      telefono,
+      logo: "",
+      email,
+      pass:password,
+      img1: "",
+      img2: "",
+      img3: "",
+      /* categoria,
+      caracteristica, */
+    };
+    await postData(userData);
   }
   return (
     <Modal
