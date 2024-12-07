@@ -9,7 +9,6 @@ import Footer from "../../core/components/organismos/Footer/Footer";
 import Breadcrumb from "../../core/components/atomos/Breadcrum/Breadcrumb";
 import RestaurantInfo from "../../core/components/organismos/RestaurantInfo/RestaurantInfo";
 
-
 const Perfil = () => {
   return (
     <div>

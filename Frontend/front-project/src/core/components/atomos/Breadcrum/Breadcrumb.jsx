@@ -1,10 +1,21 @@
+import Texto from "../Textos/Texto";
+import "./BreadCrumb.css";
+
 const Breadcrumb = () => {
   return (
     <>
-      <br />
-        <div>Inicio `{'>'}` Restaurante </div>
-        <h1>Restaurante El Rincón Tropical</h1>
-      <br />
+      <div className="breadcrum-container">
+        <Texto
+          level="p"
+          texto={"Inicio > Restaurante"}
+          variante="black"
+        />
+        <Texto
+          level="h2"
+          texto={"Restaurante El Rincón Tropical"}
+          variante="black"
+        />
+      </div>
     </>
   );
 };

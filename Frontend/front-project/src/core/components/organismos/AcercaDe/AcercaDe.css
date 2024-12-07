@@ -1,10 +1,10 @@
 .acerca-de-container {
-  padding: 30px;
+  padding-top: 30px;
   text-align: start;
 }
 
 .acerca-de-texto {
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .acerca-de-enlaces {

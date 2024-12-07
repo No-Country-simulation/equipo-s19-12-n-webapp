@@ -1,0 +1,11 @@
+.icono-con-texto {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Ajusta el espacio entre cada ítem */
+}
+
+.icono-imagen {
+  width: 24px; /* Ajusta el tamaño del ícono */
+  height: 24px;
+  margin-right: 8px; /* Espacio entre el ícono y el texto */
+}
