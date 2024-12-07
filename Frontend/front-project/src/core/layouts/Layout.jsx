@@ -4,6 +4,7 @@ import Navbar from "../components/moleculas/Menu_navegacion/NavBar";
 import Footer from "../components/organismos/Footer/Footer";
 import { useContext } from "react";
 import { Context } from "../context/Context";
+import ResponsiveAppBar from "../components/moleculas/Menu_navegacion/ResponsiveAppBar";
 
 
 const Layout = ({ children }) => {
@@ -18,8 +19,8 @@ const Layout = ({ children }) => {
   }
   return (
     <div>
-
-      <Navbar></Navbar>   
+       {/* <ResponsiveAppBar></ResponsiveAppBar> */}
+       <Navbar></Navbar>    
       <Button onClick={cerrar}>cerrar sesion</Button>
       <Button onClick={ver}>ver sesion</Button>
       <main>{children}</main>

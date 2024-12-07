@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <>
-      <SearchBar></SearchBar>
+      <SearchBar></SearchBar> 
       <MainSection1></MainSection1>
       <TiendasDestacadas></TiendasDestacadas>
       <MainSection3></MainSection3>
