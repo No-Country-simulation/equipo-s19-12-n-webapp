@@ -8,6 +8,7 @@ import ProductosDestacados from "../../moleculas/productos_destacados/ProductosD
 import SearchBar from "../../organismos/SearchBar/SearchBar.jsx";
 import MainSection3 from "../../organismos/MainSection3/MainSection3.jsx";
 import MainSection1 from "../../organismos/MainSection1/MainSection1.jsx";
+import Ofertas from "../../moleculas/ofertas/Ofertas.jsx";
 
 
 const Home = () => {
@@ -22,7 +23,7 @@ const Home = () => {
   const handleSelectChange = (event) => {
     console.log(event.target.value);
   };
-// aca obtiene las variables del contexto
+
 
 
   return (
@@ -31,7 +32,9 @@ const Home = () => {
       <MainSection1></MainSection1>
       <TiendasDestacadas></TiendasDestacadas>
       <MainSection3></MainSection3>
+      
       <ProductosDestacados></ProductosDestacados>
+      <Ofertas></Ofertas>
 
     </>
   );

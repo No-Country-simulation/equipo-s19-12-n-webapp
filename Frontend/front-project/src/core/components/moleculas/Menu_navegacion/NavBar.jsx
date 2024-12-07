@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AppBar, Toolbar, IconButton, Menu, MenuItem, Box } from '@mui/material';
 import { Menu as MenuIcon } from '@mui/icons-material';
 import Enlace from "../../atomos/Enlace/Enlace.jsx";
@@ -10,14 +10,24 @@ import ModalRegistrarCliente from '../../organismos/modal/ModalRegistrarCliente.
 import ModalSesionCliente from '../../organismos/modal/ModalSesionCliente.jsx';  // Modal de sesión cliente
 import ModalSesionComerciante from '../../organismos/modal/ModalSesionComerciante.jsx';  // Modal de sesión comerciante
 import ModalRegistrarComerciante from '../../organismos/modal/ModalRegistrarComerciante.jsx';  // Modal de registro comerciante
+import { Context } from '../../../context/Context.jsx';
 
 
-// Opciones del selector
+// Opciones del selector en caso de que no haya sesion iniciada
 const opciones = [
     'iniciar sesion cliente',
     'iniciar sesion comerciante',
     'Registrar cliente',
     'registrar comerciante'
+];
+// Opciones del selector en caso de sesion del cliente
+const opcionesSesionCliente = [
+    'cerrar sesion',
+];
+// Opciones del selector en caso de sesion del comerciante
+const opcionesSesionComerciante = [
+    'vender producto',
+    'cerrar sesion',
 ];
 
 const categorias = ['Frutas y Verduras', 'Carnes y Pescados', 'Lácteos', 'Panadería', 'Snacks', 'No Perecederos'];
@@ -30,11 +40,15 @@ const Navbar = () => {
     const [openSesionComerciante, setOpenSesionComerciante] = useState(false); // Estado para el modal de sesión comerciante
     const [openRegistrarComerciante, setOpenRegistrarComerciante] = useState(false); // Estado para el modal de registro comerciante
 
+    //contexto
+    const { usuario ,cerrarSesion} = useContext(Context)
+
+
+
     const handleMenuClick = (event) => {
         setAnchorEl(event.currentTarget);
-        setOpenMnu(true);
+        setOpenMenu(true);
     };
-
     const handleCloseMenu = () => setOpenMenu(false);
 
     // Función para manejar la opción seleccionada
@@ -47,7 +61,12 @@ const Navbar = () => {
             setOpenSesionComerciante(true); // Abrir el modal de sesión comerciante
         } else if (opcion === "registrar comerciante") {
             setOpenRegistrarComerciante(true); // Abrir el modal de registro comerciante
+        }else if (opcion === "cerrar sesion") {
+            cerrarSesion(); // cierra sesion del usuario
+        }else if (opcion === "vender producto") {
+            console.log("vender producto");
         }
+        
     };
 
     return (
@@ -92,10 +111,30 @@ const Navbar = () => {
                     </Box>
 
                     {/* Icono de usuario */}
-                    <SelectorUsuario
-                        opciones={opciones}
-                        opcionElegida={handleOpcionSelect} // Llama a la función que maneja las opciones
-                    />
+                    {/* si no se inicio sesion entonces */}
+                    {!usuario && (
+                        <SelectorUsuario
+                            opciones={opciones}
+                            opcionElegida={handleOpcionSelect}
+                            color={"#303030"}  // negro
+                        />
+                    )}
+                    {/* si no se inicio sesion cliente entonces */}
+                    {usuario==="cliente" && (
+                        <SelectorUsuario
+                            opciones={opcionesSesionCliente}
+                            opcionElegida={handleOpcionSelect}
+                            color={"#76B939"}  // verde
+                        />
+                    )}
+                    {/* si no se inicio sesion comerciante entonces */}
+                    {usuario==="comerciante" && (
+                        <SelectorUsuario
+                            opciones={opcionesSesionComerciante}
+                            opcionElegida={handleOpcionSelect}
+                            color={"#76B939"}  // verde
+                        />
+                    )}
 
                     {/* Menú móvil */}
                     <Menu
@@ -126,12 +165,12 @@ const Navbar = () => {
                 open={openRegistrarCliente}  // Controla si el modal está visible
                 onClose={() => setOpenRegistrarCliente(false)}  // Cierra el modal de registro cliente
                 openFrom={"NavBar"}
-            />            
+            />
 
             <ModalRegistrarComerciante
                 open={openRegistrarComerciante}  // Controla si el modal de registro comerciante está visible
                 onClose={() => setOpenRegistrarComerciante(false)}  // Cierra el modal de registro comerciante
-                openFrom={"NavBar"}    
+                openFrom={"NavBar"}
             />
         </>
     );
