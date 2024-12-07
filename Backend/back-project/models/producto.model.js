@@ -6,6 +6,7 @@ const productoSchema = new schema({
     nombre: String,
     desc: String,
     precio: Number,
+    off: Number,
     stock: Number,
     img1: String,
     img2: String,

@@ -4,6 +4,8 @@ import Navbar from "../components/moleculas/Menu_navegacion/NavBar";
 import Footer from "../components/organismos/Footer/Footer";
 import { useContext } from "react";
 import { Context } from "../context/Context";
+import Perfil from "../../features/perfil/Perfil";
+import styles from "../layouts/Layout.module.css"
 
 
 const Layout = ({ children }) => {
@@ -17,12 +19,12 @@ const Layout = ({ children }) => {
     console.log("datos de usuario:"+datosUsuario)
   }
   return (
-    <div>
-      <Navbar></Navbar>   
-      {/*<Button onClick={cerrar}>cerrar sesion</Button>
-      <Button onClick={ver}>ver sesion</Button>*/}
-      <main>{children}</main>
-      <Footer />
+    <div className={styles.Layout}>
+      {usuario === "comerciante" ? <Perfil></Perfil> : <div className={styles.Layout}>
+        <Navbar></Navbar>   
+        <main>{children}</main>
+        <Footer />
+      </div>}
     </div>
   );
 };

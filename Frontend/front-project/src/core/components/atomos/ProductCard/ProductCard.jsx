@@ -3,7 +3,7 @@ import "./ProductCard.css";
 import { Context } from "../../../context/Context";
 import { useContext } from "react";
 
-const ProductCard = ({ nombre, img1, img2, img3, img4, precio, id, desc, vencimiento, comerciante, stock, categoria, estado }) => {
+const ProductCard = ({ nombre, img1, img2, img3, img4, precio, off, id, desc, vencimiento, comerciante, stock, categoria, estado }) => {
 
   const { setActualProduct, setMenuArticulo, setDetallesComerciante } = useContext(Context);
 
@@ -19,7 +19,7 @@ const ProductCard = ({ nombre, img1, img2, img3, img4, precio, id, desc, vencimi
     const nuevoVencimiento2 = new Date(parseFloat(nuevoVencimiento)).toLocaleDateString("es-ES", options)
     const nuevoVencimiento3 = nuevoVencimiento2.toString()
 
-    setActualProduct({_id: id, nombre: nombre, desc: desc, stock: stock, precio: precio, vencimiento: nuevoVencimiento3, comerciante: comerciante, img1: img1, img2: img2, img3: img3, img4: img4, categoria: categoria, estado: estado})
+    setActualProduct({_id: id, nombre: nombre, off: off, desc: desc, stock: stock, precio: precio, vencimiento: nuevoVencimiento3, comerciante: comerciante, img1: img1, img2: img2, img3: img3, img4: img4, categoria: categoria, estado: estado})
     setMenuArticulo(1);
 
     fetch(`https://eaty-three.vercel.app/api/comerciante/detallesVendedor/${comerciante}`, {     
@@ -40,6 +40,7 @@ const ProductCard = ({ nombre, img1, img2, img3, img4, precio, id, desc, vencimi
   return (
     <div className="product-card">
       <img src={img1} alt={nombre} className="product-image" />
+      <div className="discountC">OFF {off}%</div>
       <div className="contDataCard">
         <div className="contDataCardDetails">
           <div className="contDataCardProducto">

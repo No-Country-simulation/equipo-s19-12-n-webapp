@@ -5,7 +5,7 @@ const routerProducto = express.Router()
 
 routerProducto.get("/", async (req, res) => {
     try {
-        const productos = await productoSchema.find();
+        const productos = await productoSchema.find().limit(48);
         return res.json(productos);
     } catch (err) {
         res.status(500).send({
@@ -33,6 +33,45 @@ routerProducto.get("/:_id", async (req, res) => {
 routerProducto.post("/busqueda/:nombre", async (req, res) => {
     try {
         const data = await productoSchema.find({nombre: { "$regex": req.params.nombre, "$options": "i" }});
+        res.json(data);
+    } catch (err) {
+        res
+            .status(500)
+            .send({ message: "Error en el servidor al realizar la búsqueda." });
+    };
+})
+
+routerProducto.post("/busqueda-por-ofertas/", async (req, res) => {
+    try {
+        const data = await productoSchema.find().sort({off: -1}).limit(4);
+        res.json(data);
+    } catch (err) {
+        res
+            .status(500)
+            .send({ message: "Error en el servidor al realizar la búsqueda." });
+    };
+})
+
+routerProducto.post("/busqueda-por-descuentos/:off", async (req, res) => {
+    try {
+        const data = await productoSchema.find({off: req.params.off});
+         res.json(data);
+    } catch (err) {
+        res
+            .status(500)
+            .send({ message: "Error en el servidor al realizar la búsqueda." });
+    };
+})
+
+routerProducto.post("/busqueda-por-precio/", async (req, res) => {
+    if (!req.body) {
+        return res.status(400).send({
+            message: "No se pueden enviar parámetros vacíos!"
+        });
+    }
+    try {
+        const {minimo, maximo} = req.body;
+        const data = await productoSchema.find({precio: { $gte: minimo, $lte: maximo }});
         res.json(data);
     } catch (err) {
         res
@@ -70,8 +109,8 @@ routerProducto.post("/", async (req, res) => {
         });
     }
     try {
-        const {nombre, desc, precio, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria} = req.body;
-        const nuevoProducto = new productoSchema({nombre, desc, precio, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria});
+        const {nombre, desc, precio, off, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria} = req.body;
+        const nuevoProducto = new productoSchema({nombre, desc, precio, off, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria});
         await productoSchema.insertMany(nuevoProducto);
         res.sendStatus(200).send({
             message: "Se añadieron nuevos datos correctamente"
@@ -90,8 +129,8 @@ routerProducto.put("/:_id", async (req, res) => {
         });
     }
     try {
-        const {nombre, desc, precio, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria} = req.body;
-        const productoActualizado = {nombre, desc, precio, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria};
+        const {nombre, desc, precio, off, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria} = req.body;
+        const productoActualizado = {nombre, desc, precio, off, stock, img1, img2, img3, img4, comerciante, vencimiento, estado, categoria};
         const data = await productoSchema.findByIdAndUpdate(req.params._id, productoActualizado);
         if (!data) {
             res.status(404).send({

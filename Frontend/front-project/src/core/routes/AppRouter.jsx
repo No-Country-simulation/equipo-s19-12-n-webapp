@@ -24,10 +24,10 @@ export const AppRouter = createBrowserRouter([
         path: "/agregarProductos",
         element: <Layout><AgregarProductos/></Layout>,
     },
-    {
+    /*{
         path: "/perfil",
         element: <Perfil/>,
-    },
+    },*/
     {
         path: "/soporte",
         element: <Layout><Soporte/></Layout> ,

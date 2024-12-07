@@ -47,6 +47,7 @@ function ArticuloProducto() {
                     img3={product.img3}
                     img4={product.img4}
                     precio={product.precio}
+                    off={product.off}
                     categoria={product.categoria}
                     estado={product.estado}
                     id={product._id}
@@ -66,11 +67,12 @@ function ArticuloProducto() {
                 <div className={styles.precioCont}>
                     <div className={styles.precioActual}>${actualProduct.precio}</div>
                     <div className={styles.precioAnterior}>${parseInt(actualProduct.precio) * 1.5}</div>
+                    <div className={styles.discount}>-{actualProduct.off}%</div>
                 </div>
                 <div className={styles.detallesCont}>
                     <div className={styles.detalleCont}>
                         <h4>Categoría:</h4>
-                        <p>Lácteos</p>
+                        <p>{actualProduct.categoria}</p>
                     </div>
                     <div className={styles.detalleCont}>
                         <h4>Stock:</h4>
