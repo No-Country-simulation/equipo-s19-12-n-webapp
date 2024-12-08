@@ -58,110 +58,10 @@ const FormProductos = () => {
           setValorDescuento(70)
         }
       }, [descuento])
-      
-    
-      // Maneja las imágenes
-      /*const cargarImagen1 = async (event) => {
-        const file = event.target.files[0];
-        const data = new FormData();
-        data.append("file", file);
-        data.append("upload_preset", "EatyPreset");
-
-        const response = await fetch("https://api.cloudinary.com/v1_1/dabb8jxxh/image/upload", {
-          method: "POST",
-          body: data
-        });
-
-        if (response.ok) {
-          const result = await response.json();
-          setImagen1(result.secure_url)
-        } else {
-          console.error("Error al subir la imagen:", response.statusText);
-        }
-      }
-
-      function cargarImagen2(event) {
-        const fileP = event.target.files[0]
-        const preset = {file: fileP, upload_preset: "EatyPreset"}
-
-        fetch("https://api/coudinary.com/v1_1/dabb8jxxh/image/upload", {
-          method: "POST",
-          body: JSON.stringify(preset),
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            Accept: "application/json",
-          },
-        })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        })
-      }
-
-      function cargarImagen3(event) {
-        const fileP = event.target.files[0]
-        const preset = {file: fileP, upload_preset: "EatyPreset"}
-
-        fetch("https://api/coudinary.com/v1_1/dabb8jxxh/image/upload", {
-          method: "POST",
-          body: JSON.stringify(preset),
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            Accept: "application/json",
-          },
-        })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        }) 
-      }
-      function cargarImagen4(event) {
-        const fileP = event.target.files[0]
-        const preset = {file: fileP, upload_preset: "EatyPreset"}
-
-        fetch("https://api/coudinary.com/v1_1/dabb8jxxh/image/upload", {
-          method: "POST",
-          body: JSON.stringify(preset),
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            Accept: "application/json",
-          },
-        })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-        })
-      }*/
-
-      /*const handleImageChange = (event, number) => {
-        const files = Array.from(event.target.files); // Convertir FileList a un array
-        setFormData((prevData) => ({
-          ...prevData,
-          img: [...prevData.img, ...files], // Agregar las nuevas imágenes
-        }));
-      };
-    
-      // Maneja otros campos
-      const handleChange = (field, value) => {
-        setFormData((prevData) => ({
-          ...prevData,
-          [field]: value, // Actualiza dinámicamente el campo correspondiente
-        }));
-      };*/
     
       // Envía el formulario
       const handleSubmit = async (e) => {
         e.preventDefault();
-    
-        // Validación
-        /*if (nombreProducto === "" || precioProducto === 0 || categoriaProducto === "") {
-          setError("Por favor completa los campos obligatorios");
-          return;
-        }
-        setError(null);*/
     
         try {
           const response = await fetch("https://eaty-three.vercel.app/api/productos/", {
@@ -173,20 +73,8 @@ const FormProductos = () => {
             },
           });
     
-          //const data = await response.json();
           console.log("Producto agregado:", response);
-    
-          // Limpiar el formulario
-          /*setFormData({
-            nombre: "",
-            precio: "",
-            stock: "",
-            categoria: "",
-            vencimiento: "",
-            estado: "",
-            off: "",
-            img: [],
-          });*/
+
         } catch (err) {
           console.error("Error al agregar producto:", err);
           setError("Ocurrió un error al enviar los datos.");

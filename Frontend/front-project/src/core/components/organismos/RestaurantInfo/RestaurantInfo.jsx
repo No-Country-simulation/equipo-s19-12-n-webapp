@@ -4,8 +4,7 @@ import Estrellas from "../../atomos/Estrellas/Estrellas";
 import { useContext } from "react";
 import { Context } from "../../../context/Context";
 import "./RestaurantInfo.css";
-import Button from "../../atomos/Button/Button";
-import AcercaDe from "../AcercaDe/AcercaDe";
+import PestañasPerfil from "../PestañasPerfil/PestañasPerfil";
 
 const RestaurantInfo = () => {
 
@@ -22,7 +21,7 @@ const RestaurantInfo = () => {
           <h3>CUIT: {datosUsuario.cuit}</h3>
           <button className="botonAbiertoCerrado">Abierto</button>
         </div>
-        <AcercaDe />
+        <PestañasPerfil />
       </div>
     </div>
   );

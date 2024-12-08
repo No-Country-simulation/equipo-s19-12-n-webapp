@@ -1,0 +1,46 @@
+.tab-header {
+  display: flex;
+  padding-left: 15px;
+}
+
+.tab-button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  font-family: "Montserrat";
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29.26px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #303030;
+  border-radius: 0;
+}
+
+.tab-button.active {
+  border-bottom: 2px solid #76b939;
+  font-weight: bold;
+  color: #76b939;
+  font-family: "Montserrat";
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 29.26px;
+  text-align: center;
+  text-decoration-skip-ink: none;
+}
+
+.tab-button:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.tab-content {
+  padding: 20px;
+}
+
+.tab-panel {
+  display: block;
+}

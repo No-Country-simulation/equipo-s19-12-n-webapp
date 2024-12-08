@@ -30,7 +30,6 @@ export default function Estrellas() {
             marginBottom: "8px",
           }}
         ></Typography>
-
         <Rating
           name="simple-controlled"
           value={value}

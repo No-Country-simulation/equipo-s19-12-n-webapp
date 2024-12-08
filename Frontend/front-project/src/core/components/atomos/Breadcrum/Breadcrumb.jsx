@@ -5,7 +5,6 @@ import { useContext } from "react";
 const Breadcrumb = () => {
 
   const {datosUsuario} = useContext(Context)
-  console.log(datosUsuario.id)
 
   return (
     <div className={styles.Breadcrumb}>

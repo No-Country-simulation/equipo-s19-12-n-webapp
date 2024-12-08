@@ -13,7 +13,6 @@ import { useState } from "react";
 import styles from "../perfil/Perfil.module.css"
 import AgregarProductos from "../agregarProductos/AgregarProductos";
 
-
 const Perfil = () => {
 
   const [panelPerfil, setPanelPerfil] = useState(0);
