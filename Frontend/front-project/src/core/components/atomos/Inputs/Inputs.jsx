@@ -1,14 +1,5 @@
 import './style.css'
 
-// const Inputs = ({ type, placeholder }) => {
-
-//     return(
-//         <>
-//             <input type= {type} placeholder= {placeholder} required />
-//         </>
-//     )
-// }
-
 const Inputs = ({ type, placeholder, value, onChange }) => {
     return (
       <input
@@ -16,7 +7,7 @@ const Inputs = ({ type, placeholder, value, onChange }) => {
         placeholder={placeholder}
         required
         value={value}
-        onChange={onChange}
+        onChange={(e) => onChange(e.target.value)}
       />
     );
 };
