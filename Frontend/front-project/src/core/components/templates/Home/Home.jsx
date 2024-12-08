@@ -9,6 +9,8 @@ import SearchBar from "../../organismos/SearchBar/SearchBar.jsx";
 import MainSection3 from "../../organismos/MainSection3/MainSection3.jsx";
 import MainSection1 from "../../organismos/MainSection1/MainSection1.jsx";
 import MainSection5 from "../../organismos/MainSection5/MainSection5.jsx";
+import Ofertas from "../../moleculas/ofertas/Ofertas.jsx";
+
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("frutas");
@@ -19,16 +21,16 @@ const Home = () => {
   const handleSelectChange = (event) => {
     console.log(event.target.value);
   };
-  // aca obtiene las variables del contexto
 
   return (
     <>
-      <SearchBar></SearchBar>
+      <SearchBar></SearchBar> 
       <MainSection1></MainSection1>
       <TiendasDestacadas></TiendasDestacadas>
       <MainSection3></MainSection3>
+      
       <ProductosDestacados></ProductosDestacados>
-      <MainSection5 />
+      <Ofertas></Ofertas>
     </>
   );
 };

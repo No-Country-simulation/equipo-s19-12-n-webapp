@@ -7,7 +7,6 @@ import { Context } from "../context/Context";
 import Perfil from "../../features/perfil/Perfil";
 import styles from "../layouts/Layout.module.css"
 
-
 const Layout = ({ children }) => {
  const {usuario,datosUsuario,isLoggedIn,cerrarSesion}=useContext(Context)
   function cerrar(){

@@ -70,8 +70,6 @@ function ModalSesionCliente({ open, onClose }) {
         setOpenRestablecer(false)
     }
 
-
-
     //'https://api.thecatapi.com/v1/images/search'
     //'https://eaty-three.vercel.app/api/consumidor/login'
     const { postData, data, loading, error } = usePostFetch('https://eaty-three.vercel.app/api/consumidor/login');
@@ -81,10 +79,6 @@ function ModalSesionCliente({ open, onClose }) {
             console.log('Error:', error);
         } else {
             if (data) {
-                // usuario: cliente
-                /*  console.log('Datos recibidos:', data.email);
-                 console.log('Datos recibidos:', data._id); */
-
 
                 const userData = {
                     email: data.email,
@@ -101,11 +95,8 @@ function ModalSesionCliente({ open, onClose }) {
     const { iniciarSesion, guardarDatosUsuario } = useContext(Context)
     function guardarSesionCliente(datos) {
 
-        iniciarSesion("cliente")
-        guardarDatosUsuario(datos)
-        /*         console.log("sesion: "+isLoggedIn)
-                console.log("usuario: "+usuario) */
-        //       onClose();
+        iniciarSesion("cliente");
+        guardarDatosUsuario(datos);
 
     }
     async function handleSubmit(e) {
