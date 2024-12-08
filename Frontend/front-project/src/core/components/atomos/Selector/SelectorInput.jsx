@@ -12,7 +12,7 @@ const SelectorInput = ({ categorias, onCategoriaSelect, placeholder, placeholder
   };
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: 0 }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', height: '40px', gap: 0 }}>
       <FormControl fullWidth variant="standard">
         <Select
           value={categoriaSeleccionada}
@@ -20,7 +20,7 @@ const SelectorInput = ({ categorias, onCategoriaSelect, placeholder, placeholder
           displayEmpty
           renderValue={(selected) => selected || placeholder}
           sx={{
-            mt: 1,
+            mt: 0,
             fontFamily: 'Montserrat',
             '& .MuiInputBase-root': {
               fontFamily: 'Montserrat',

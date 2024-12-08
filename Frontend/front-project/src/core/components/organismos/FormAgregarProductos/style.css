@@ -18,6 +18,18 @@ form {
     width: 100%;
     justify-content: center;
 }
+.contenedorAgregarImagenes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2% 3%;
+    width: 100%;
+}
+.inputImgen{
+    width: auto;
+    height: auto;
+}
 
 @media (min-width: 768px) {
     .botones {
