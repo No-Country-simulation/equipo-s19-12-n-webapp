@@ -1,14 +1,17 @@
-import RestaurantImg from "../../../../assets/images/RestaurantImage.svg";
+import { useContext } from "react";
+import { Context } from "../../../context/Context";
+import styles from "../RestaurantImage/Rest.module.css"
 
 const RestaurantImage = () => {
+
+  const {datosUsuario} = useContext(Context)
   return (
-    <>
-      <br />
-      <img
-        src={RestaurantImg}
-        alt="Imagen del Restaurante"
+    <div className={styles.contImagenPortada}>
+      <div
+        className={styles.imagenPortada}
+        style={{backgroundImage: "url(../../../../../public/assets/images/pechuga.jpg)"}}
       />
-    </>
+    </div>
   );
 };
 

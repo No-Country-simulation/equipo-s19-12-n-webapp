@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Texto from "../../atomos/Textos/Texto";
 import Mapa from "../../atomos/Icon/mapa.svg";
 import Telefono from "../../atomos/Icon/telefono.svg";
@@ -7,39 +8,57 @@ import Tarjeta from "../../atomos/Icon/tarjeta.svg";
 import Monedero from "../../atomos/Icon/monedero.svg";
 import Delivery from "../../atomos/Icon/delivery.svg";
 import Retirar from "../../atomos/Icon/retirar.svg";
-import ImagenMapa from "../../../../assets/images/ImagenMapa.svg";
-
 import "./AcercaDe.css";
+import DescripcionComerciante from "../../moleculas/DescripcionComerciante/DescripcionComerciante";
+import IconoConTexto from "../../moleculas/IconoConTexto/IconoConTexto";
 
 const AcercaDe = () => {
+  const [datosGenerales, setDatosGenerales] = useState({
+    direccion: "",
+    telefono: "",
+    horario: "",
+  });
+
+  const [servicios, setServicios] = useState({
+    pagoEfectivo: false,
+    pagoTarjeta: false,
+    monederoDigital: false,
+    delivery: false,
+    recojoEnRestaurante: false,
+  });
+
+  useEffect(() => {
+    // Simulamos llamada al backend para obtener los datos
+    // Puedes reemplazar esto con fetch/axios para obtener los datos reales.
+    const fetchDatos = async () => {
+      // Simula una respuesta del backend
+      const responseDatosGenerales = {
+        direccion: "Av. Principal 123",
+        telefono: "984 745 748",
+        horario: "07:00 am - 09:00 pm",
+      };
+      const responseServicios = {
+        pagoEfectivo: true,
+        pagoTarjeta: true,
+        monederoDigital: false,
+        delivery: true,
+        recojoEnRestaurante: true,
+      };
+
+      setDatosGenerales(responseDatosGenerales);
+      setServicios(responseServicios);
+    };
+
+    fetchDatos();
+  }, []);
+
   return (
     <div className="acerca-de-container">
-      <div className="acerca-de-row">
-        <Texto
-          level="h2"
-          texto="Acerca de "
-          variante="green"
-        />
-        <Texto
-          level="h2"
-          texto="Catálogo"
-          variante="black"
-        />
-      </div>
       <div className="acerca-de-texto">
-        <Texto
-          level="p"
-          texto="En Sabores del Valle , nos especializamos en ofrecer platos frescos y de alta calidad elaborados con ingredientes cuidadosamente seleccionados.
-           Nuestra pasión es brindar a cada cliente una experiencia única a través de recetas que combinan tradición y creatividad.
-           Ven a visitarnos y descubre por qué somos el lugar preferido de la comunidad. ¡Te esperamos con los brazos abiertos!"
-          variante="black"
-        />
-        <Texto
-          level="p"
-          texto="Ven a visitarnos y descubre por qué somos el lugar preferido de la comunidad. ¡Te esperamos con los brazos abiertos!"
-          variante="black"
-        />
+        <DescripcionComerciante comercianteId={123} />
       </div>
+
+      {/* Sección Datos Generales */}
       <div className="title-detail">
         <Texto
           level="h3"
@@ -49,124 +68,90 @@ const AcercaDe = () => {
       </div>
 
       <div className="row-icon-details">
-        <img
-          src={Mapa}
-          alt="icono de mapa"
-        />
-        <Texto
-          level="p"
-          texto="Dirección: Av."
-          variante="black"
+        <IconoConTexto
+          icono={Mapa}
+          descripcion={
+            datosGenerales.direccion || "Falta completar información"
+          }
+          altText="icono de mapa"
         />
       </div>
+
       <div className="row-icon-details">
-        <img
-          src={Telefono}
-          alt="icono de telefono"
-        />
-        <Texto
-          level="p"
-          texto="984 745 748"
-          variante="black"
+        <IconoConTexto
+          icono={Telefono}
+          descripcion={datosGenerales.telefono || "Falta completar información"}
+          altText="icono de teléfono"
         />
       </div>
+
       <div className="row-icon-details">
-        <img
-          src={Reloj}
-          alt="icono de reloj"
-        />
-        <Texto
-          level="p"
-          texto="07:00 am - 09:00 pm"
-          variante="black"
+        <IconoConTexto
+          icono={Reloj}
+          descripcion={datosGenerales.horario || "Falta completar información"}
+          altText="icono de reloj"
         />
       </div>
-      <div className="dosFilas">
-        <div className="columnaUno">
-          <div className="title-detail">
-            <Texto
-              level="h3"
-              texto="Métodos de Pago"
-              variante="black"
-            />
-          </div>
-          <div className="row-icon-details">
-            <img
-              src={Pago}
-              alt="icono de pago en efectivo"
-            />
-            <Texto
-              level="p"
-              texto="Pago en efectivo"
-              variante="black"
-            />
-          </div>
-          <div className="row-icon-details">
-            <img
-              src={Tarjeta}
-              alt="icono de pago en tarjeta"
-            />
-            <Texto
-              level="p"
-              texto="Pago con tarjeta"
-              variante="black"
-            />
-          </div>
-          <div className="row-icon-details">
-            <img
-              src={Monedero}
-              alt="icono de monedero digital"
-            />
-            <Texto
-              level="p"
-              texto="Monedero Digital"
-              variante="black"
-            />
-          </div>
-        </div>
-        <div className="columnaDos">
-          <div className="title-detail">
-            <Texto
-              level="h3"
-              texto="Servicios de entrega"
-              variante="black"
-            />
-          </div>
-          <div className="row-icon-details">
-            <img
-              src={Delivery}
-              alt="icono de delivery"
-            />
-            <Texto
-              level="p"
-              texto="Monedero Digital"
-              variante="black"
-            />
-          </div>
-          <div className="row-icon-details">
-            <img
-              src={Retirar}
-              alt="icono de retirar"
-            />
-            <Texto
-              level="p"
-              texto="Recojo en restaurante"
-              variante="black"
-            />
-          </div>
-        </div>
-      </div>
+
+      {/* Sección Servicios que brinda de manera presencial */}
       <div className="title-detail">
         <Texto
           level="h3"
-          texto="Localización"
+          texto="Servicios que brinda de manera presencial"
           variante="black"
         />
       </div>
-      <img
-        src={ImagenMapa}
-        alt="imagen de un mapa"
-      />
+
+      {Object.values(servicios).some((servicio) => servicio) ? (
+        <div className="dosFilas">
+          <div className="columnaUno">
+            {servicios.pagoEfectivo && (
+              <IconoConTexto
+                icono={Pago}
+                descripcion="Pago en efectivo"
+                altText="icono de pago en efectivo"
+              />
+            )}
+            {servicios.pagoTarjeta && (
+              <IconoConTexto
+                icono={Tarjeta}
+                descripcion="Pago con tarjeta"
+                altText="icono de pago con tarjeta"
+              />
+            )}
+            {servicios.monederoDigital && (
+              <IconoConTexto
+                icono={Monedero}
+                descripcion="Monedero Digital"
+                altText="icono de monedero digital"
+              />
+            )}
+          </div>
+
+          <div className="columnaDos">
+            {servicios.delivery && (
+              <IconoConTexto
+                icono={Delivery}
+                descripcion="Delivery"
+                altText="icono de delivery"
+              />
+            )}
+            {servicios.recojoEnRestaurante && (
+              <IconoConTexto
+                icono={Retirar}
+                descripcion="Recojo en restaurante"
+                altText="icono de recojo en restaurante"
+              />
+            )}
+          </div>
+        </div>
+      ) : (
+        <Texto
+          level="p"
+          texto="Falta completar información"
+          variante="black"
+        />
+      )}
     </div>
   );
 };

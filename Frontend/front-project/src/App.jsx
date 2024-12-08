@@ -8,6 +8,7 @@ import { Context } from "./core/context/Context";
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [usuario, setUsuario] = useState(null);
+  const [datosUsuario,setDatosUsuario]=useState(null);
 
   if (process.env.NODE_ENV !== 'production') {
     console.warn = () => {};  // Suprimir los warnings en desarrollo
@@ -16,16 +17,22 @@ function App() {
   // aca va la logica para modificar isLoggedIn
 const iniciarSesion=(usuario)=>{
   setIsLoggedIn(true);
-  setUsuario(usuario)
+  setUsuario(usuario);
 }
 const cerrarSesion =()=>{
   setIsLoggedIn(false);
-  setUsuario(null)
+  setUsuario(null);
+  setDatosUsuario(null);
+}
+
+const guardarDatosUsuario=(datos)=>{
+  setDatosUsuario(JSON.parse(datos));
 }
 
 const [allProducts, setAllProducts] = useState([])
-const [actualProduct, setActualProduct] = useState({_id: 0, nombre: "", desc: "", precio: 0, stock: 0, img: "", comerciante: 0, vencimiento: ""})
+const [actualProduct, setActualProduct] = useState({_id: 0, nombre: "", desc: "", precio: 0, off: 0, stock: 0, img1: "", img2: "", img3: "", img4: "", comerciante: 0, vencimiento: ""})
 const [menuArticulo, setMenuArticulo] = useState(0)
+const [detallesComerciante, setDetallesComerciante] = useState({_id: 0, cuit: 0, nombre: "", logo: "", direccion: "", ciudad: 0, img1: "", img2: "", img3: ""})
 
   return <>
   {/* se envian los datos al contexto */}
@@ -34,12 +41,16 @@ const [menuArticulo, setMenuArticulo] = useState(0)
             allProducts,
             actualProduct,
             menuArticulo,
+            detallesComerciante,
+            setDetallesComerciante,
             setMenuArticulo,
             setActualProduct,
             setAllProducts,
             iniciarSesion,
             cerrarSesion,
-            usuario
+            usuario,// comerciante o cliente
+            datosUsuario,
+            guardarDatosUsuario
         }}>
           <RouterProvider router={AppRouter}></RouterProvider>
     </Context.Provider>

@@ -1,12 +1,32 @@
-.main-banner {
+.contenedor-seccion-3 {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
-  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+  height: 435px;
+  width: 100%;
   background-image: url("../../../../assets/images/food-doodles-banner.svg");
   background-size: cover;
 }
-.text-content {
+.main3-text-content {
   flex: 1;
   text-align: center;
+}
+.main3-imagen-bolsa {
+  padding-top: 50px;
+}
+
+.mainsection3-btn-tablet {
+  padding-left: 600px;
+  width: 20%;
+  height: auto;
+  margin-top: -30px;
+}
+
+@media (max-width: 744px) {
+  .contenedor-seccion-3 {
+    background-image: url("../../../../assets/images/food-doodles-banner.svg");
+  }
+  .mainsection3-btn-tablet {
+    padding-left: 30%;
+    width: 40%;
+  }
 }

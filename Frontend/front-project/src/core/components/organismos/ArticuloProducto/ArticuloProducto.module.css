@@ -1,5 +1,6 @@
 .ArticuloProducto{
     width: 90%;
+    max-width: 1400px;
     height: 90%;
     display: flex;
     justify-content: center;
@@ -9,13 +10,48 @@
 .panelA{
     width: 50%;
     height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2vh;
 }
 .imgACont{
-    height: 40%;
+    height: 50vh;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+}
+.imagesCont{
+    width: 60%;
+    height: 90%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+}
+.carrucelImages{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.carrucelImages img{
+    width: 80%;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.imagenPrincipal{
+    width: 80%;
+    height: auto;
 }
 .infoPanel{
     height: 80%;
@@ -38,10 +74,10 @@
 .back:hover{
     font-weight: 700;
 }
-.imgACont img{
+/*.imgACont img{
     height: 80%;
     width: auto;
-}
+}*/
 .otrosArticulos{
     width: 100%;
     height: 60%;
@@ -116,6 +152,11 @@
     color: var(--color-verde);
     text-align: left;
 }
+.discount{
+    font-size: 1rem;
+    color: red;
+    text-align: left;
+}
 .detallesCont{
     width: 100%;
     height: 10%;
@@ -154,21 +195,33 @@
     width: 100%;
     height: 10%;
     display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.comercianteCont img{
+    height: 80%;
+    width: auto;
+}
+.detallesPerfilCont{
+    width: 60%;
+    height: 100%;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-evenly;
 }
-.comercianteCont p{
+.detallesPerfilCont p{
     margin: 0;
     padding: 0;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
-.comercianteCont p:hover{
+.detallesPerfilCont p:hover{
     color: var(--color-verde);
     font-weight: 600;
 }
-.comercianteCont h4{
+.detallesPerfilCont h4{
     margin: 0;
     padding: 0;
 }
@@ -180,4 +233,26 @@
     align-items: flex-start;
     justify-content: center;
     gap: 1vh;    
+}
+
+@media screen and (aspect-ratio < 1) {
+
+    .ArticuloProducto{
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow-y: auto;
+        gap: 10vh;
+    }
+    .panelA{
+        width: 90%;
+        height: 60vh;
+        overflow-y: visible;
+    }
+    .panelB{
+        width: 90%;
+        height: 70vh;
+    }
+    .panelBCont{
+        height: 70vh;
+    }
 }

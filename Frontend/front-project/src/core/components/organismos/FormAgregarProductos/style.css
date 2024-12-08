@@ -1,5 +1,6 @@
 form {
-    margin: 5% 2%;
+    margin: 2% 0;
+    padding: 3%;
 }
 
 .seccion {
@@ -16,6 +17,18 @@ form {
     flex-direction: column;
     width: 100%;
     justify-content: center;
+}
+.contenedorAgregarImagenes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 2% 3%;
+    width: 100%;
+}
+.inputImgen{
+    width: auto;
+    height: auto;
 }
 
 @media (min-width: 768px) {
@@ -34,5 +47,6 @@ form {
     }
     .botones{
         width: 50%;
+        justify-self: center;
     }
 }

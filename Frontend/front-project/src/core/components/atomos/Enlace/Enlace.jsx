@@ -5,7 +5,7 @@ import './style_enlace.css'
 const Enlace = ({ pagina, texto ,tipo}) => {
     return (
         <>
-        <Link to={pagina} className={tipo}>{texto}</Link>
+        <Link to={pagina} className={tipo} >{texto}</Link>
         </>
 
     )

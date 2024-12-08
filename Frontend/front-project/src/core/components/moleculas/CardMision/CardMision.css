@@ -1,0 +1,11 @@
+.card-mision-container {
+  width: 400px;
+  height: 200px;
+  background: rgb(156, 230, 137);
+  background: linear-gradient(
+    0deg,
+    rgba(156, 230, 137, 0.23301820728291311) 0%,
+    rgba(108, 198, 63, 0.4543067226890757) 100%
+  );
+  border-radius: 25px;
+}

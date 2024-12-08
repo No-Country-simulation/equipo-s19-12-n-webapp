@@ -3,9 +3,9 @@ import "./ProductCard.css";
 import { Context } from "../../../context/Context";
 import { useContext } from "react";
 
-const ProductCard = ({ nombre, img, precio, id, desc, vencimiento, comerciante, stock }) => {
+const ProductCard = ({ nombre, img1, img2, img3, img4, precio, off, id, desc, vencimiento, comerciante, stock, categoria, estado }) => {
 
-  const { setActualProduct, setMenuArticulo } = useContext(Context);
+  const { setActualProduct, setMenuArticulo, setDetallesComerciante } = useContext(Context);
 
   const options = { 
     weekday: 'long',
@@ -18,13 +18,29 @@ const ProductCard = ({ nombre, img, precio, id, desc, vencimiento, comerciante, 
     const nuevoVencimiento = Date.parse(vencimiento);
     const nuevoVencimiento2 = new Date(parseFloat(nuevoVencimiento)).toLocaleDateString("es-ES", options)
     const nuevoVencimiento3 = nuevoVencimiento2.toString()
-    setActualProduct({_id: id, nombre: nombre, desc: desc, stock: stock, precio: precio, vencimiento: nuevoVencimiento3, comerciante: comerciante, img: img})
-    setMenuArticulo(1)
+
+    setActualProduct({_id: id, nombre: nombre, off: off, desc: desc, stock: stock, precio: precio, vencimiento: nuevoVencimiento3, comerciante: comerciante, img1: img1, img2: img2, img3: img3, img4: img4, categoria: categoria, estado: estado})
+    setMenuArticulo(1);
+
+    fetch(`https://eaty-three.vercel.app/api/comerciante/detallesVendedor/${comerciante}`, {     
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setDetallesComerciante(data);
+      })
   }
 
   return (
     <div className="product-card">
-      <img src={img} alt={nombre} className="product-image" />
+      <img src={img1} alt={nombre} className="product-image" />
+      <div className="discountC">OFF {off}%</div>
       <div className="contDataCard">
         <div className="contDataCardDetails">
           <div className="contDataCardProducto">

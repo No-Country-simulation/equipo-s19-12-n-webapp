@@ -6,3 +6,14 @@
   text-align: center;
   padding-bottom: 20px;
 }
+
+@media (max-width: 744px) {
+  .title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 8px;
+    font-weight: 600;
+    line-height: 29.26px;
+    text-align: center;
+    text-decoration-skip-ink: none;
+  }
+}

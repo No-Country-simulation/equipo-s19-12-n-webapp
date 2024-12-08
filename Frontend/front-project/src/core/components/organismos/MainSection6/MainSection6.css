@@ -1,0 +1,11 @@
+.main6-contenedor {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+
+.main6-seccion-mision {
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 25px;
+}

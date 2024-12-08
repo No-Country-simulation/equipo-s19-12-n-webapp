@@ -3,12 +3,13 @@ import "./style.css";
 import classnames from "classnames";
 import Icon from "../Icon/Icon";
 
-const Button = ({ texto, variante, icon, iconSize, onClick, ancho}) => {
+const Button = ({ texto, variante, icon, iconSize, onClick, ancho }) => {
   const buttonClassnames = classnames("button", {
     orange: variante === "orange",
     green: variante === "green",
     white: variante === "white",
     black: variante === "black",
+    noneBackground: variante === "noneBackground",
     conIcono: Icon,
   });
 

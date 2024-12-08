@@ -15,9 +15,9 @@ routerComerciante.get("/", async (req, res) => {
     }
 })
 
-routerComerciante.get("/login", async (req, res) => {
+routerComerciante.post("/login", async (req, res) => {
     try {
-        const comerciante = await comercianteSchema.findById(req.body.email);
+        const comerciante = await comercianteSchema.findOne({email: req.body.email});
         if (!comerciante){
             res.status(404).send({ message: "Comerciante no encontrado." });
         }
@@ -50,6 +50,21 @@ routerComerciante.get("/:_id", async (req, res) => {
         res
             .status(500)
             .send({ message: "Error al buscar el registro con id = " + req.params._id });
+    };
+})
+
+routerComerciante.post("/detallesVendedor/:cuit", async (req, res) => {
+    try {
+        const data = await comercianteSchema.findOne({cuit: req.params.cuit});
+
+        if (!data)
+            res.status(404).send({ message: "Registro no encontrado " });
+        else res.json(data);
+
+    } catch (err) {
+        res
+            .status(500)
+            .send({ message: "Error en el servidor al buscar el registro"});
     };
 })
 

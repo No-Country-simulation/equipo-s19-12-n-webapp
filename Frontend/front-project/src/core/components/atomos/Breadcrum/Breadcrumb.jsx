@@ -1,11 +1,16 @@
+import styles from "../Breadcrum/Breadcrumb.module.css"
+import { Context } from "../../../context/Context";
+import { useContext } from "react";
+
 const Breadcrumb = () => {
+
+  const {datosUsuario} = useContext(Context)
+
   return (
-    <>
-      <br />
-      <div>Inicio `{'>'}` Restaurante </div>
-      <h1>Restaurante El Rincón Tropical</h1>
-      <br />
-    </>
+    <div className={styles.Breadcrumb}>
+      <div className={styles.titulo2}>Perfil de Negocio</div>
+      <div className={styles.titulo}>Comercio: {datosUsuario.nombre}</div>
+    </div>
   );
 };
 

@@ -1,30 +1,77 @@
 .main-banner {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   height: 445px;
-  width: auto;
+  width: 100%;
   background-image: url("../../../../assets/images/food-doodles-banner.svg");
+  margin-bottom: 100px;
+  margin-top: 50px;
 }
 
 .text-content {
-  flex: 1;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
 .image-content {
-  flex: 1;
+  width: 40%;
   display: flex;
   justify-content: end;
   align-items: end;
 }
 
 .otrosEstilos {
-  padding-left: 50px;
-  padding-right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  width: 50%;
   font-weight: 600;
 }
+.mainsection1-btn-tablet {
+  padding-left: 230px;
+  width: 40%;
+  height: auto;
+}
 
-/* Media Query para Tablets */
-@media (max-width: 768px) {
+@media (max-width: 744px) {
+  /* Estilos para tablets aquí */
+  .text-content {
+    flex: 60%;
+  }
+  .image-content {
+    flex: 40%;
+  }
+  .main-banner {
+    background-image: none;
+    height: 220px;
+  }
+  .mainsection1-btn-tablet {
+    width: 196px;
+    padding-left: 100px;
+  }
+}
+@media (max-width: 394px) {
+  /* Estilos para móviles aquí */
+  .main-banner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-image: url("../../../../assets/images/food-doodles-banner.svg");
+
+    background-size: cover;
+  }
+
+  .image-content {
+    display: none;
+  }
+  .mainsection1-btn-tablet {
+    padding-bottom: 30px;
+    margin-top: -3.1rem;
+  }
 }

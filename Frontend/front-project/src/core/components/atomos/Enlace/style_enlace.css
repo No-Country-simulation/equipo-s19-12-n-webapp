@@ -45,7 +45,7 @@
 /* Media Queries para dispositivos móviles */
 @media (max-width: 768px) {
   .enlace_navbar {
-      font-size: 20px; /* Reducir tamaño de fuente en dispositivos móviles */
+      font-size: 16px; /* Reducir tamaño de fuente en dispositivos móviles */
   }
 
   .enlace_login {
