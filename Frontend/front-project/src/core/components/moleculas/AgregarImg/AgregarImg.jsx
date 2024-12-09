@@ -7,10 +7,10 @@ const AgregarImg = ({ evento1, evento2, evento3, evento4, estado1, estado2, esta
 
     return(
         <div className="contenedorInputsImg">
-            {estado1 === "" ? <InputImg setImagen={evento1} /> : <PreviewImg url={estado1}></PreviewImg> }
-            {estado2 === "" ? <InputImg setImagen={evento2} /> : <PreviewImg url={estado2}></PreviewImg> }
-            {estado3 === "" ? <InputImg setImagen={evento3} /> : <PreviewImg url={estado3}></PreviewImg> }
-            {estado4 === "" ? <InputImg setImagen={evento4} /> : <PreviewImg url={estado4}></PreviewImg> }
+            {estado1 === "" ? <InputImg setImagen={evento1} /> : <PreviewImg url={estado1} evento={evento1}></PreviewImg> }
+            {estado2 === "" ? <InputImg setImagen={evento2} /> : <PreviewImg url={estado2} evento={evento2}></PreviewImg> }
+            {estado3 === "" ? <InputImg setImagen={evento3} /> : <PreviewImg url={estado3} evento={evento3}></PreviewImg> }
+            {estado4 === "" ? <InputImg setImagen={evento4} /> : <PreviewImg url={estado4} evento={evento4}></PreviewImg> }
         </div>
     )
 }

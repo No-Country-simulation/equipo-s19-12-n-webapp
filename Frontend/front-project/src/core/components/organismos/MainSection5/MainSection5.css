@@ -1,14 +1,46 @@
 .main5-container {
-  height: 350px;
+  margin-top: 20vh;
+  height: auto;
   width: 100%;
   background-image: url("../../../../assets/images/food-doodles-banner.svg");
-  text-align: center;
-  padding-top: 30px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4vh;
 }
 
 .seccion-tiendas {
   display: flex;
-  justify-content: space-evenly;
+  width: 80%;
+  height: auto;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8vh;
+}
+.contTituloNegociosAderidos{
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+@media screen and (width < 767px) {
+  .main5-container {
+    gap: 0vh;
+  }
+  .seccion-tiendas {
+    gap: 2vh;
+  }
+  .seccion-tiendas img{
+    scale: 0.7;
+  }
+  .contTituloNegociosAderidos{
+    font-size: 1.2rem;
+  }
 }

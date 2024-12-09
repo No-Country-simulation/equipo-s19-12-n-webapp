@@ -1,5 +1,5 @@
 import "./MainImage.css";
-import girlImage from "../../../../assets/images/girl-image.svg";
+import girlImage from "../../../../assets/images/girl-image.png";
 import food from "../../../../assets/images/food-plate-1.svg";
 
 const MainImage = () => {

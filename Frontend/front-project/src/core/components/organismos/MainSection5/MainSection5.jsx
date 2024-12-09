@@ -10,11 +10,9 @@ import Vea from "../../../../assets/images/vea.svg";
 const MainSection5 = () => {
   return (
     <div className="main5-container">
-      <Texto
-        level={"h2"}
-        texto={"Tiendas que se sumaron al cambio"}
-        variante={"black"}
-      />
+      <div className="contTituloNegociosAderidos">
+        Tiendas que se sumaron al cambio
+      </div>
       <div className="seccion-tiendas">
         <img
           src={Carrefour}
