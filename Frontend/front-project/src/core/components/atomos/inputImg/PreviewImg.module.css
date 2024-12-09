@@ -5,6 +5,7 @@
     justify-content: space-evenly;
     width: 43%;
     aspect-ratio: 1;
+    position: relative;
 }
 .pImg{
     width: 50%;
@@ -19,4 +20,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (min-width: 768px) {
+    .Preview {
+        width: 30%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .Preview {
+        width: 20%;
+    }
 }

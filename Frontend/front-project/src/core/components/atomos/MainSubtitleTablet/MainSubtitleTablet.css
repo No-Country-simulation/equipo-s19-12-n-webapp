@@ -1,41 +1,28 @@
-.subtitle {
+.subtitleReserva0 {
   font-family: "Montserrat", sans-serif;
-  font-size: 24px;
+  font-size: 1.2rem;
   font-weight: 500;
-  line-height: 29.26px;
+  line-height: 2rem;
   text-align: center;
-
-  padding-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pb {
   margin-bottom: 30px;
 }
 
-.main3-subtitle-tablet {
-  display: none;
-}
-.main3-subtitle-mobile {
-  display: none;
-}
-
 @media (max-width: 744px) {
-  .main3-subtitle-tablet {
-    display: block;
-  }
-  .main3-subtitle-desktop {
-    display: none;
+  .subtitleReserva0{
+    font-size: 1rem;
+    line-height: 1.6rem;
   }
 }
 
 @media (max-width: 394px) {
-  .main3-subtitle-mobile {
-    display: block;
-  }
-  .main3-subtitle-tablet {
-    display: none;
-  }
-  .main3-subtitle-desktop {
-    display: none;
+  .subtitleReserva0{
+    font-size: 0.9rem;
+    line-height: 1.4rem;
   }
 }

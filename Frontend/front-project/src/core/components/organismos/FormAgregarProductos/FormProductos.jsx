@@ -73,7 +73,7 @@ const FormProductos = () => {
             },
           });
     
-          console.log("Producto agregado:", response);
+          console.log({nombre: nombreProducto, desc: "", precio: precioProducto, off: valorDescuento, stock: stockProducto, img1: imagen1, img2: imagen2, img3: imagen3, img4: imagen4, comerciante: datosUsuario.cuit, vencimiento: fechaProducto, estado: estadoProducto, categoria: categoriaProducto});
 
         } catch (err) {
           console.error("Error al agregar producto:", err);
@@ -88,26 +88,26 @@ const FormProductos = () => {
             <AgregarImg evento1={setImagen1} evento2={setImagen2} evento3={setImagen3} evento4={setImagen4} estado1={imagen1} estado2={imagen2} estado3={imagen3} estado4={imagen4}/>
             <div className="seccion">
                 <InputTit titulo={'Nombre del producto'} modo={'input'} type={'text'} 
-                evento={() => setNombreProducto()}/> 
+                evento={setNombreProducto}/> 
                 <InputTit titulo={'Precio'} modo={'input'} type={'number'} placeholder={'$'} 
-                evento={() => setPrecioProducto()}/>
+                evento={setPrecioProducto}/>
                 <InputTit titulo={'Descuento'} modo={'selector'} placeholder={'Selecciona un descuento'}
                 categorias={['20% OFF', '30% OFF', '40% OFF', '50% OFF', '60% OFF', '70% OFF']}
-                evento={() => setDescuento()}/>
+                evento={setDescuento}/>
                 <InputTit titulo={'Stock'} modo={'input'} placeholder={'unidades'} type={'number'} 
-                evento={() => setStockProducto()}/> 
+                evento={setStockProducto}/> 
             </div>
             
             <Texto level={'h2'} texto={'Detalle de alimento'} />
             <div className="seccion"> 
                 <InputTit titulo={'Categoría'} modo={'selector'} placeholder={'Selecciona una categoría'}
                 categorias={['Frutas y Verduras', 'Carnes y Pescados', 'Lácteos', 'Panadería y Pastelería', 'Snacks y Golosinas', 'Bebidas', 'Alimentos no perecederos', 'Otros']}
-                evento={() => setCategoriaProducto()}/>
+                evento={setCategoriaProducto}/>
                 <InputTit titulo={'Estado del producto'} modo={'selector'} placeholder={'Estado'} 
                 categorias={['Próximo consumo recomendado', 'Exceso de inventario', 'Defecto de empaque', 'Producto reempacado']}
-                evento={() => setEstadoProducto()}/>
+                evento={setEstadoProducto}/>
                 <InputTit titulo={'Fecha de vencimiento'} modo={'input'} placeholder={'dd/mm/aaaa'} type={'date'}
-                evento={() => setFechaProducto()}/>
+                evento={setFechaProducto}/>
             </div>
 
             {error && <p className="error">{error}</p>}
