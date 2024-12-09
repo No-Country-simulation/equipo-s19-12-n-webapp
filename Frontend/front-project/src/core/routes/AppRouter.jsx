@@ -6,6 +6,8 @@ import Perfil from '../../features/perfil/Perfil'
 import Soporte from '../../features/soporte/Soporte'
 import Layout from '../layouts/Layout'
 import Productos from '../components/templates/Productos/Productos'
+import Comprar from '../components/templates/compra/Comprar.jsx'
+import PrivateRouteCliente from '../auth/components/PrivateRouteCliente.jsx'
 
 export const AppRouter = createBrowserRouter([
     {
@@ -23,6 +25,10 @@ export const AppRouter = createBrowserRouter([
     {
         path: "/agregarProductos",
         element: <Layout><AgregarProductos/></Layout>,
+    },
+    {
+        path: "/comprar",
+        element: <PrivateRouteCliente><Layout><Comprar/></Layout></PrivateRouteCliente> ,
     },
     /*{
         path: "/perfil",

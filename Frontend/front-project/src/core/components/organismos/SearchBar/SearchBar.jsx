@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import SearchInput from "../../atomos/SearchInput/SearchInput";
 import Button from "../../atomos/Button/Button";
 import "./SearchBar.css";
+import ModalCarrito from '../modal/CarritoRightDrawer'
+import CarritoRightDrawer from "../modal/CarritoRightDrawer";
 
 const SearchBar = () => {
   const [selectedValue, setSelectedValue] = useState("");
+  // modal carrito
+  const [openModalCarrito, setOpenModalCarrito] = useState(false);
+
 
   // Definir las opciones para el selector
   const options = [
@@ -18,7 +23,12 @@ const SearchBar = () => {
     setSelectedValue(newValue);
   };
 
+  const abrirModalCarrito = ()=>{
+    setOpenModalCarrito(true);
+  }
+
   return (
+    <>
     <div className="search-bar">
       <div className="searchBarCont0">
         <div className="sectionSearch">
@@ -27,9 +37,15 @@ const SearchBar = () => {
         <div className="sectionButtons">
           <Button texto={"Mapa"} variante={"white"} icon={"mapa"} iconSize={"small"}/>
           <Button texto={"Carrito"} variante={"white"} icon={"carrito"} iconSize={"small"}/>
+          
         </div>
+        <Button onClick={abrirModalCarrito} texto={"Carrito"} variante={"white"} icon={"carrito"} iconSize={"small"}/>
       </div>
     </div>
+
+     <CarritoRightDrawer open={openModalCarrito} onClose={() => setOpenModalCarrito(false)} /> 
+    </>
+    
   );
 };
 
