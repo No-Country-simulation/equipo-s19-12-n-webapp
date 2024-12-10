@@ -7,8 +7,8 @@ import "./RestaurantInfo.css";
 import PestañasPerfil from "../PestañasPerfil/PestañasPerfil";
 
 const RestaurantInfo = () => {
-
-  const {datosUsuario} = useContext(Context)
+  const { datosUsuario } = useContext(Context);
+  console.log(datosUsuario);
 
   return (
     <div className="container">

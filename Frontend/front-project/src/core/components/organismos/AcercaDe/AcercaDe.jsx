@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useContext } from "react";
 import Texto from "../../atomos/Textos/Texto";
 import Mapa from "../../atomos/Icon/mapa.svg";
 import Telefono from "../../atomos/Icon/telefono.svg";
@@ -11,51 +11,26 @@ import Retirar from "../../atomos/Icon/retirar.svg";
 import "./AcercaDe.css";
 import DescripcionComerciante from "../../moleculas/DescripcionComerciante/DescripcionComerciante";
 import IconoConTexto from "../../moleculas/IconoConTexto/IconoConTexto";
+import { Context } from "../../../context/Context";
 
 const AcercaDe = () => {
-  const [datosGenerales, setDatosGenerales] = useState({
-    direccion: "",
-    telefono: "",
-    horario: "",
-  });
+  const { datosUsuario } = useContext(Context);
 
-  const [servicios, setServicios] = useState({
-    pagoEfectivo: false,
-    pagoTarjeta: false,
-    monederoDigital: false,
-    delivery: false,
-    recojoEnRestaurante: false,
-  });
-
-  useEffect(() => {
-    // Simulamos llamada al backend para obtener los datos
-    // Puedes reemplazar esto con fetch/axios para obtener los datos reales.
-    const fetchDatos = async () => {
-      // Simula una respuesta del backend
-      const responseDatosGenerales = {
-        direccion: "Av. Principal 123",
-        telefono: "984 745 748",
-        horario: "07:00 am - 09:00 pm",
-      };
-      const responseServicios = {
-        pagoEfectivo: true,
-        pagoTarjeta: true,
-        monederoDigital: false,
-        delivery: true,
-        recojoEnRestaurante: true,
-      };
-
-      setDatosGenerales(responseDatosGenerales);
-      setServicios(responseServicios);
-    };
-
-    fetchDatos();
-  }, []);
+  const {
+    direccion = "Falta completar información",
+    telefono = "Falta completar información",
+    horario = "08:00 am - 20:00 pm",
+    pagoEfectivo = true,
+    pagoTarjeta = true,
+    monederoDigital = true,
+    delivery = true,
+    recojoEnRestaurante = true,
+  } = datosUsuario || {};
 
   return (
     <div className="acerca-de-container">
       <div className="acerca-de-texto">
-        <DescripcionComerciante comercianteId={123} />
+        <DescripcionComerciante comercianteId={datosUsuario?.id} />
       </div>
 
       {/* Sección Datos Generales */}
@@ -70,9 +45,7 @@ const AcercaDe = () => {
       <div className="row-icon-details">
         <IconoConTexto
           icono={Mapa}
-          descripcion={
-            datosGenerales.direccion || "Falta completar información"
-          }
+          descripcion={direccion}
           altText="icono de mapa"
         />
       </div>
@@ -80,7 +53,7 @@ const AcercaDe = () => {
       <div className="row-icon-details">
         <IconoConTexto
           icono={Telefono}
-          descripcion={datosGenerales.telefono || "Falta completar información"}
+          descripcion={telefono}
           altText="icono de teléfono"
         />
       </div>
@@ -88,7 +61,7 @@ const AcercaDe = () => {
       <div className="row-icon-details">
         <IconoConTexto
           icono={Reloj}
-          descripcion={datosGenerales.horario || "Falta completar información"}
+          descripcion={horario}
           altText="icono de reloj"
         />
       </div>
@@ -102,24 +75,28 @@ const AcercaDe = () => {
         />
       </div>
 
-      {Object.values(servicios).some((servicio) => servicio) ? (
+      {pagoEfectivo ||
+      pagoTarjeta ||
+      monederoDigital ||
+      delivery ||
+      recojoEnRestaurante ? (
         <div className="dosFilas">
           <div className="columnaUno">
-            {servicios.pagoEfectivo && (
+            {pagoEfectivo && (
               <IconoConTexto
                 icono={Pago}
                 descripcion="Pago en efectivo"
                 altText="icono de pago en efectivo"
               />
             )}
-            {servicios.pagoTarjeta && (
+            {pagoTarjeta && (
               <IconoConTexto
                 icono={Tarjeta}
                 descripcion="Pago con tarjeta"
                 altText="icono de pago con tarjeta"
               />
             )}
-            {servicios.monederoDigital && (
+            {monederoDigital && (
               <IconoConTexto
                 icono={Monedero}
                 descripcion="Monedero Digital"
@@ -129,14 +106,14 @@ const AcercaDe = () => {
           </div>
 
           <div className="columnaDos">
-            {servicios.delivery && (
+            {delivery && (
               <IconoConTexto
                 icono={Delivery}
                 descripcion="Delivery"
                 altText="icono de delivery"
               />
             )}
-            {servicios.recojoEnRestaurante && (
+            {recojoEnRestaurante && (
               <IconoConTexto
                 icono={Retirar}
                 descripcion="Recojo en restaurante"

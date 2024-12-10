@@ -39,8 +39,14 @@
 
 .tab-content {
   padding: 20px;
+  width: 1200px;
 }
 
 .tab-panel {
   display: block;
+}
+
+.contenedorInputPerfil {
+  width: 30%;
+  display: flex;
 }
