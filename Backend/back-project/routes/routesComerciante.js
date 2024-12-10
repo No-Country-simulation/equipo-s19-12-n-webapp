@@ -75,8 +75,8 @@ routerComerciante.post("/", async (req, res) => {
         });
     }
     try {
-        const {cuit, nombre, direccion, ciudad, telefono, email, pass} = req.body;
-        const nuevoComerciante = new comercianteSchema({cuit, nombre, direccion, ciudad, telefono, logo: "", email, pass, img1: "", img2: "", img3: ""});
+        const {cuit, nombre, direccion, rubro, ciudad, telefono, email, pass} = req.body;
+        const nuevoComerciante = new comercianteSchema({cuit, nombre, direccion, ciudad, telefono, rubro, desc: "", logo: "", email, pass, img1: "", img2: "", img3: ""});
         await comercianteSchema.insertMany(nuevoComerciante);
         res.sendStatus(200).send({
             message: "Se añadieron nuevos datos correctamente"
@@ -98,8 +98,8 @@ routerComerciante.put("/:_id", async (req, res) => {
         });
     }
     try {
-        const {nombre, direccion, ciudad, telefono, logo, email, pass, img1, img2, img3} = req.body;
-        const comercianteActualizado = {nombre, direccion, ciudad, telefono, logo, email, pass, img1, img2, img3};
+        const {nombre, direccion, ciudad, rubro, desc, telefono, logo, email, pass, img1, img2, img3} = req.body;
+        const comercianteActualizado = {nombre, direccion, ciudad, desc, rubro, telefono, logo, email, pass, img1, img2, img3};
         const data = await comercianteSchema.findByIdAndUpdate(req.params._id, comercianteActualizado);
         if (!data) {
             res.status(404).send({

@@ -105,8 +105,6 @@ function ModalSesionCliente({ open, onClose }) {
         const formData = new FormData(formRef.current)
         const email = formData.get("email");
         const password = formData.get("password");
-        /* console.log("email:"+email);
-        console.log("contraseña:"+password); */
 
         const userData = {
             email,

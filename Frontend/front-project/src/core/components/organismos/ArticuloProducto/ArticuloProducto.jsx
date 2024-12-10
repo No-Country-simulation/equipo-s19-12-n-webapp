@@ -4,6 +4,7 @@ import styles from "../ArticuloProducto/ArticuloProducto.module.css";
 import { Context } from "../../../context/Context";
 import Button from "../../atomos/Button/Button";
 import ProductCard from "../../atomos/ProductCard/ProductCard";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function ArticuloProducto() {
 
@@ -15,6 +16,26 @@ function ArticuloProducto() {
     setActualImage(actualProduct.img1)
   }, [actualProduct.img1])
 
+  const navigate = useNavigate();
+  const {usuario}=useContext(Context)
+  function clickComprar(){
+    if(usuario===null){
+      alert("Debes estar logueado para comprar")
+    }else{
+    //  navigate("/comprar");
+    }
+    
+  }
+  const {agregarAcarrito} = useContext(Context)
+  function clickAgregarAlCarrito(){
+    if(usuario===null||usuario==="comerciante"){
+      alert("Debes estar logueado como cliente para agregar al carrito")
+      }else{
+        agregarAcarrito(actualProduct)
+        console.log(actualProduct)
+      }
+  }
+  
   return (
     <div className={styles.ArticuloProducto}>
         <div className={styles.panelA}>
@@ -91,8 +112,8 @@ function ArticuloProducto() {
                     </div>
                 </div>
                 <div className={styles.botonCont}>
-                    <Button variante={"orange"} texto={"Comprar"}></Button>
-                    <Button variante={"green"} texto={"Añadir al carrito"}></Button>
+                    <Button onClick={clickComprar} variante={"orange"} texto={"Comprar"}></Button>
+                    <Button onClick={clickAgregarAlCarrito} variante={"green"} texto={"Añadir al carrito"}></Button>
                 </div>
             </div>
         </div>
