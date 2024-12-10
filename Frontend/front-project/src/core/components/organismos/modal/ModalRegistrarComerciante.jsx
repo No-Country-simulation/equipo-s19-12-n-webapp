@@ -25,7 +25,7 @@ const style = {
 };
 
 
-const categorias = ['Comida saludable y nutricional', 'Panaderías y pastelería', 'Lácteos', 'Panadería', 'Snacks', 'No Perecederos'];
+const categorias = ['Kiosko', 'Supermercado', 'Autoservicio', 'Panadería', 'Restaurant', 'Bar'];
 
 const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
   const formRef = useRef(null);
@@ -47,6 +47,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
     const formData = new FormData(formRef.current)
     const cuit = formData.get("cuit");
     const nombreNegocio = formData.get("nombreNegocio");
+    const rubroNegocio = formData.get("rubroNegocio");
     const caracteristica = formData.get("caracteristica")
     const telefono = formData.get("telefono");
     const email = formData.get("email");
@@ -55,7 +56,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
 
     console.log("cuit:" + cuit);
     console.log("nombre del negocio:" + nombreNegocio);
-    console.log("tipo de negocio:" + categoria);
+    console.log("tipo de negocio:" + rubroNegocio);
     console.log("caracteristica:" + caracteristica);
     console.log("telefono:" + telefono);
     console.log("email:" + email);
@@ -72,6 +73,8 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
       logo: "",
       email,
       pass:password,
+      rubro: rubroNegocio,
+      desc: "",
       img1: "",
       img2: "",
       img3: "",
@@ -241,12 +244,14 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
             <Grid container spacing={2}>
               {/* Selector de tipo de negocio */}
               <Grid item xs={12} sm={4}>
-                <SelectorInput
-                  categorias={categorias}
-                  onCategoriaSelect={(categoria) => setCategoria(categoria)}
-                  placeholder={"Tipo de negocio"}
-                  placeholderColor={"rgba(0, 0, 0, 0.54)"}
-                />
+                <select name='rubroNegocio'>
+                  <option value="Supermercado" selected>Supermercado</option>
+                  <option value="Autoservicio">Autoservicio</option>
+                  <option value="Kiosko">Kiosko</option>
+                  <option value="Panadería">Panadería</option>
+                  <option value="Restaurant">Restaurant</option>
+                  <option value="Bar">Bar</option>
+                </select>
               </Grid>
 
               {/* Caja para los campos de teléfono */}

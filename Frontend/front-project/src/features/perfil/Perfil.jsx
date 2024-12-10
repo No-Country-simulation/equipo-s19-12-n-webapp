@@ -19,9 +19,6 @@ const Perfil = () => {
 
   return (
     <div>
-      {/*{" "}
-      <Navbar />
-      <SearchBar />*/}
       <NavBar verPerfil={setPanelPerfil}></NavBar>
       {panelPerfil === 0 ? <div className={styles.perfilCont}>
         <Breadcrumb />

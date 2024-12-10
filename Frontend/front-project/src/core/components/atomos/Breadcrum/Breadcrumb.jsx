@@ -9,7 +9,7 @@ const Breadcrumb = () => {
   return (
     <div className={styles.Breadcrumb}>
       <div className={styles.titulo2}>Perfil de Negocio</div>
-      <div className={styles.titulo}>Comercio: {datosUsuario.nombre}</div>
+      <div className={styles.titulo}>{datosUsuario.rubro}: {datosUsuario.nombre}</div>
     </div>
   );
 };

@@ -81,6 +81,8 @@ function ModalSesionComerciante({ open, onClose }) {
                     id: data._id,
                     cuit: data.cuit,
                     nombre: data.nombre,
+                    rubro: data.rubro,
+                    desc: data.desc,
                     email: data.email,
                     direccion: data.direccion,
                     ciudad: data.ciudad,
