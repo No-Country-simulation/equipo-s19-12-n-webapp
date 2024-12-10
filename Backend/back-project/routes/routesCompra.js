@@ -1,5 +1,6 @@
 import express from "express"
 import compraSchema from "../models/compra.model.js"
+import productoSchema from "../models/producto.model.js"
 
 const routerCompra = express.Router()
 

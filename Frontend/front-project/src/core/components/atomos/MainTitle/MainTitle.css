@@ -16,7 +16,7 @@
   color: #6ab344;
 }
 
-@media (max-width: 744px) {
+@media (max-width: 1000px) {
   .tablet {
     display: block;
   }

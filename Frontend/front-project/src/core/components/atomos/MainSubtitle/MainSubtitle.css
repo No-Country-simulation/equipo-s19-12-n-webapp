@@ -16,7 +16,7 @@
   display: none;
 }
 
-@media (max-width: 744px) {
+@media (max-width: 1000px) {
   .main-subtitle-tablet {
     display: none;
   }

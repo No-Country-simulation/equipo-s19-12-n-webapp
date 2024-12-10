@@ -1,0 +1,8 @@
+.oferta{
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.oferta:hover{
+    scale: 1.1;
+    filter: drop-shadow(0 0 6px orange);
+}

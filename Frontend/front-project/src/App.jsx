@@ -46,6 +46,7 @@ const [allProductsComerciante, setAllProductsComerciante] = useState([])
 const [actualProduct, setActualProduct] = useState({_id: 0, nombre: "", desc: "", precio: 0, off: 0, stock: 0, img1: "", img2: "", img3: "", img4: "", comerciante: 0, vencimiento: ""})
 const [menuArticulo, setMenuArticulo] = useState(0)
 const [detallesComerciante, setDetallesComerciante] = useState({_id: 0, cuit: 0, nombre: "", logo: "", direccion: "", ciudad: 0, img1: "", img2: "", img3: ""})
+const [comerciosAderidos, setComerciosAderidos] = useState([])
 
 useEffect(() => {
   fetch(`https://eaty-three.vercel.app/api/productos/busqueda-por-comerciante/${detallesComerciante.cuit}`, {
@@ -72,6 +73,8 @@ useEffect(() => {
             menuArticulo,
             detallesComerciante,
             allProductsComerciante,
+            comerciosAderidos,
+            setComerciosAderidos,
             setAllProductsComerciante,
             setDetallesComerciante,
             setMenuArticulo,
