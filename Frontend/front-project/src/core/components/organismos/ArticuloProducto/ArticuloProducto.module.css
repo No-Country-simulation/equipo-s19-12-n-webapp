@@ -1,7 +1,7 @@
 .ArticuloProducto{
     width: 90%;
     max-width: 1400px;
-    height: 90%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,20 +13,33 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.titulo2Articulo{
+    display: none;
+}
+.panelACont{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 2vh;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 2vh;
 }
 .imgACont{
-    height: 50vh;
+    height: auto;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
 }
 .imagesCont{
-    width: 60%;
-    height: 90%;
+    width: 100%;
+    height: auto;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -50,7 +63,7 @@
     cursor: pointer;
 }
 .imagenPrincipal{
-    width: 80%;
+    width: 50%;
     height: auto;
 }
 .infoPanel{
@@ -79,12 +92,13 @@
     width: auto;
 }*/
 .otrosArticulos{
-    width: 100%;
-    height: 60%;
+    width: 90%;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 4vh;
 }
 .otrosArticulos h3{
     width: 100%;
@@ -93,13 +107,13 @@
 }
 .carrucelCont{
     width: 100%;
-    height: calc(90% - 1vh);
+    height: auto;
     overflow-x: scroll;
     overflow-y: hidden;
 }
 .carrucel{
     width: auto;
-    height: 90%;
+    height: auto;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -160,6 +174,7 @@
 .detallesCont{
     width: 100%;
     height: 10%;
+    min-height: 60px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -168,6 +183,7 @@
 .detalleCont{
     width: 100%;
     height: 30%;
+    min-height: 20px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -176,6 +192,7 @@
 .vencimientoCont{
     width: 100%;
     height: 10%;
+    min-height: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -194,6 +211,7 @@
 .comercianteCont{
     width: 100%;
     height: 10%;
+    min-height: 50px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -234,6 +252,24 @@
     justify-content: center;
     gap: 1vh;    
 }
+.descripcionCont{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    gap: 1vh;
+    margin-bottom: 4vh;
+}
+.descripcionCont h3{
+    margin: 0;
+    padding: 0;
+}
+.desc{
+    margin-bottom: 2vh;
+}
 
 @media screen and (aspect-ratio < 1) {
 
@@ -241,18 +277,37 @@
         flex-direction: column;
         justify-content: flex-start;
         overflow-y: auto;
-        gap: 10vh;
+        gap: 2vh;
+    }
+    .panelBCont h3{
+        display: none;
     }
     .panelA{
         width: 90%;
-        height: 60vh;
+        height: auto;
         overflow-y: visible;
     }
     .panelB{
-        width: 90%;
+        width: 100%;
         height: 70vh;
+        border: none;
     }
     .panelBCont{
         height: 70vh;
+    }
+    .titulo2Articulo{
+        width: 90%;
+        display: flex;
+        font-size: 1.6rem;
+        font-weight: 600;
+        padding-bottom: 1vh;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        margin-bottom: 4vh;
+    }
+    .imagenPrincipal{
+        width: 70%;
+    }
+    .otrosArticulos, .panelACont, .titulo2Articulo, .descripcionCont{
+        width: 100%;
     }
 }

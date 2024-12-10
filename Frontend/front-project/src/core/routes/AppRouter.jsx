@@ -8,6 +8,7 @@ import Layout from '../layouts/Layout'
 import Productos from '../components/templates/Productos/Productos'
 import Comprar from '../components/templates/compra/Comprar.jsx'
 import PrivateRouteCliente from '../auth/components/PrivateRouteCliente.jsx'
+import Articulo from '../components/templates/Articulo/Articulo.jsx'
 
 export const AppRouter = createBrowserRouter([
     {
@@ -17,6 +18,10 @@ export const AppRouter = createBrowserRouter([
     {
         path: "/login",
         element: <LoginView/>,
+    },
+    {
+        path: "/productos/articulo",
+        element: <Layout><Articulo></Articulo></Layout>,
     },
     {
         path: "/productos",

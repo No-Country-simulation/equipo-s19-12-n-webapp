@@ -4,7 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from '@mui/icons-material/Close';
 import SelectorInput from '../../atomos/Selector/SelectorInput';
 import usePostFetch from '../../../services/usePostFetch';
-
+import styles from "../modal/styles.module.css"
 
 const style = {
   position: 'absolute',
@@ -95,7 +95,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
         {/*   contenedor engloba todo el formulario */}
 
         {/* Contenedor de los botones de cerrar y volver atrás */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: "calc(100% - 8vh)", height: "calc(100% - 8vh)" }}>
           {/* Mostrar la flecha de volver atrás solo si openFrom NO es 'NavBar' */}
           {openFrom !== 'NavBar' && (
             <IconButton
@@ -210,6 +210,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
                     '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
                       borderBottomColor: '#76B939',
                     },
+                    borderBottom: "1px solid #76B939"
                   }}
                 />
               </Grid>
@@ -237,6 +238,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
                     '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
                       borderBottomColor: '#76B939',
                     },
+                    borderBottom: "1px solid #76B939"
                   }}
                 />
               </Grid>
@@ -244,7 +246,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
             <Grid container spacing={2}>
               {/* Selector de tipo de negocio */}
               <Grid item xs={12} sm={4}>
-                <select name='rubroNegocio'>
+                <select className={styles.inputSelector} name='rubroNegocio'>
                   <option value="Supermercado" selected>Supermercado</option>
                   <option value="Autoservicio">Autoservicio</option>
                   <option value="Kiosko">Kiosko</option>
@@ -356,6 +358,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
                     '@media (max-width:600px)': {
                           mt: 2, // Margen superior en pantallas móviles
                         },
+                      borderBottom: "1px solid #76B939"
                   }}
                 />
               </Grid>
@@ -387,6 +390,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
                     '@media (max-width:600px)': {
                       mt: 0, // Margen superior en pantallas móviles
                     },
+                    borderBottom: "1px solid #76B939"
                   }}
                 />
               </Grid>
@@ -416,6 +420,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
                     '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
                       borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
                     },
+                    borderBottom: "1px solid #76B939"
                   }}
                 />
               </Grid>

@@ -9,7 +9,7 @@ import { useContext } from "react";
 
 const MainSection1 = () => {
   const navigate = useNavigate();
-  const { setAllProducts, allProducts } = useContext(Context);
+  const { setAllProducts } = useContext(Context);
 
   function obtenerProductos() {
     fetch("https://eaty-three.vercel.app/api/productos", {
