@@ -10,3 +10,8 @@
   border-radius: 50%;
   border: 6px solid white;
 }
+
+.contenedor-btn-imagen-perfil {
+  margin-top: -70px;
+  margin-left: 170px;
+}

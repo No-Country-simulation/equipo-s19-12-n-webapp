@@ -16,7 +16,11 @@ const RestaurantInfo = () => {
         <RestaurantImage />
         <RestaurantLogo />
         <h2>{datosUsuario.nombre}</h2>
-        <Estrellas />
+        <div className="row-estrellas">
+          <h3>4.0</h3>
+          <Estrellas />
+          <h3>1 reseña</h3>
+        </div>
         <div className="row">
           <h3>CUIT: {datosUsuario.cuit}</h3>
           <button className="botonAbiertoCerrado">Abierto</button>
