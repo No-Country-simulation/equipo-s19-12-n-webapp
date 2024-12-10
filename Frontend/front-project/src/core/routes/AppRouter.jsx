@@ -6,6 +6,7 @@ import Perfil from '../../features/perfil/Perfil'
 import Soporte from '../../features/soporte/Soporte'
 import Layout from '../layouts/Layout'
 import Productos from '../components/templates/Productos/Productos'
+import EditarProductos from '../../features/editarProducto/EditarProducto'
 
 export const AppRouter = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ export const AppRouter = createBrowserRouter([
     {
         path: "/agregarProductos",
         element: <Layout><AgregarProductos/></Layout>,
+    },
+    {
+        path: "/editarProductos/674a6fdafd6b4dbe70401dc8",
+        element: <Layout><EditarProductos/></Layout>,
     },
     /*{
         path: "/perfil",
