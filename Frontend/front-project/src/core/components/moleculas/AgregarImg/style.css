@@ -2,13 +2,13 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
-    padding: 2% 3%;
+    justify-content: center;
+    gap: 2vh;
     width: 100%;
 }
 
 
-@media (max-width: 767px) {
+/*@media (max-width: 767px) {
     .contenedorInputsImg > :nth-child(n+3) {
         display: none;
     }
@@ -18,4 +18,4 @@
     .contenedorInputsImg > :nth-child(n+4) {
         display: none;
     }
-}
+}*/
