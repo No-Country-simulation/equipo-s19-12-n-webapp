@@ -48,8 +48,7 @@ const MetodosDePago = () => {
             await postData(venta);
             vaciarVenta();
             vaciarCarrito();
-            alert("su compra se realizo exitosamente,sera redireccionado al inicio");
-            navigate("/"); 
+            navigate("/confirmacion"); 
         }
 
         
@@ -57,7 +56,6 @@ const MetodosDePago = () => {
 
     return (
         <>
-        {<SearchBar></SearchBar>} 
         <Box
             sx={{
                 display: 'flex',
@@ -121,7 +119,7 @@ const MetodosDePago = () => {
                 </Typography>
             </Box>
 
-            <Card sx={{ width: '1200px', height: '800px', mb: 15, borderRadius: '20px', background: '#FAFAFA', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}>
+            <Card sx={{ width: '1142px', height: '900px', mb: 15, borderRadius: '20px', background: '#FAFAFA', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}>
                 {/* Botones centrados*/}
                 <Box sx={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: 4 }}> {/* Cambié aquí el marginTop */}
                     {/* Botón 1 - Tarjeta de Débito */}
@@ -374,7 +372,7 @@ const MetodosDePago = () => {
                     </Box>
 
                     {/* Botón Final */}
-                    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 3 }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
                         <Button
                             type="submit"
                             variant="contained"

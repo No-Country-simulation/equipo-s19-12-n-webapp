@@ -11,6 +11,7 @@ import Articulo from '../components/templates/Articulo/Articulo.jsx'
 import DatosPersonales from '../components/templates/datosPersonales/DatosPersonales.jsx'
 import MetodosDePago from '../components/templates/pagos/MetodosDePago.jsx'
 import EditarProductos from '../../features/editarProducto/EditarProducto'
+import Confirmacion from '../components/templates/confirmacion/Confirmacion.jsx'
 
 export const AppRouter = createBrowserRouter([
     {
@@ -44,6 +45,10 @@ export const AppRouter = createBrowserRouter([
     {
         path: "/editarProductos/674a6fdafd6b4dbe70401dc8",
         element: <Layout><EditarProductos/></Layout>,
+    },
+    {
+        path:"/confirmacion",
+        element:<Layout><Confirmacion/></Layout>,
     },
     /*{
         path: "/perfil",
