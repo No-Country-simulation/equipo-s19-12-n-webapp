@@ -13,6 +13,7 @@ import MainSection6 from "../../organismos/MainSection6/MainSection6.jsx";
 import './style.css'
 
 const Home = () => {
+
   return (
     <>
       <SearchBar></SearchBar> 

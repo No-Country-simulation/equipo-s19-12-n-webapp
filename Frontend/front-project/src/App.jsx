@@ -10,6 +10,7 @@ function App() {
   const [usuario, setUsuario] = useState(null);
   const [datosUsuario,setDatosUsuario]=useState(null);
   const [carrito,setCarrito]=useState([]);
+  const [venta,setVenta]=useState(null);
 
   if (process.env.NODE_ENV !== 'production') {
     console.warn = () => {};  // Suprimir los warnings en desarrollo
@@ -40,6 +41,15 @@ const eliminarDeCarrito = (id) => {
 const vaciarCarrito=()=>{
   setCarrito([])
 }
+const agregarVenta = (nuevaVenta, callback) => {
+  setVenta(nuevaVenta); // Actualiza el estado
+  if (callback) {
+    callback(nuevaVenta); // Ejecuta el callback con la nueva venta
+  }
+};
+  const vaciarVenta = ()=>{
+    setVenta(null)
+  }
 
 const [allProducts, setAllProducts] = useState([])
 const [allProductsComerciante, setAllProductsComerciante] = useState([])
@@ -88,7 +98,10 @@ useEffect(() => {
             carrito,
             agregarAcarrito,
             eliminarDeCarrito,
-            vaciarCarrito
+            vaciarCarrito,
+            agregarVenta,
+            vaciarVenta,
+            venta
         }}>
           <RouterProvider router={AppRouter}></RouterProvider>
     </Context.Provider>

@@ -6,9 +6,10 @@ import Perfil from '../../features/perfil/Perfil'
 import Soporte from '../../features/soporte/Soporte'
 import Layout from '../layouts/Layout'
 import Productos from '../components/templates/Productos/Productos'
-import Comprar from '../components/templates/compra/Comprar.jsx'
 import PrivateRouteCliente from '../auth/components/PrivateRouteCliente.jsx'
 import Articulo from '../components/templates/Articulo/Articulo.jsx'
+import DatosPersonales from '../components/templates/datosPersonales/DatosPersonales.jsx'
+import MetodosDePago from '../components/templates/pagos/MetodosDePago.jsx'
 
 export const AppRouter = createBrowserRouter([
     {
@@ -32,8 +33,11 @@ export const AppRouter = createBrowserRouter([
         element: <Layout><AgregarProductos/></Layout>,
     },
     {
-        path: "/comprar",
-        element: <PrivateRouteCliente><Layout><Comprar/></Layout></PrivateRouteCliente> ,
+        path: "/metodos_de_pago",
+        element: <PrivateRouteCliente><Layout><MetodosDePago/></Layout></PrivateRouteCliente> ,
+    },
+    {path: "/datos_personales",
+        element: <PrivateRouteCliente><Layout><DatosPersonales/></Layout></PrivateRouteCliente> ,
     },
     /*{
         path: "/perfil",
