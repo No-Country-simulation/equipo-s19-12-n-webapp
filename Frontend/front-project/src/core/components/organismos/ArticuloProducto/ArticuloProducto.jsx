@@ -43,7 +43,7 @@ function ArticuloProducto() {
       console.log(objetoOrden)
       agregarAcarrito(actualProduct)
       agregarVenta(objetoOrden)
-            navigate("/datos_personales");
+       //     navigate("/datos_personales");
     }
 
   }
@@ -135,7 +135,7 @@ function ArticuloProducto() {
             </div>
           </div>
           <div className={styles.botonCont}>
-            <Button onClick={clickComprar} variante={"orange"} texto={"Comprar"}></Button>
+            <Button onClick={clickAgregarAlCarrito} variante={"orange"} texto={"Comprar"}></Button>
             <Button onClick={clickAgregarAlCarrito} variante={"green"} texto={"Añadir al carrito"}></Button>
           </div>
         </div>
