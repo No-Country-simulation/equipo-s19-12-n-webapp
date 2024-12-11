@@ -10,6 +10,7 @@ import PrivateRouteCliente from '../auth/components/PrivateRouteCliente.jsx'
 import Articulo from '../components/templates/Articulo/Articulo.jsx'
 import DatosPersonales from '../components/templates/datosPersonales/DatosPersonales.jsx'
 import MetodosDePago from '../components/templates/pagos/MetodosDePago.jsx'
+import EditarProductos from '../../features/editarProducto/EditarProducto'
 
 export const AppRouter = createBrowserRouter([
     {
@@ -36,8 +37,13 @@ export const AppRouter = createBrowserRouter([
         path: "/metodos_de_pago",
         element: <PrivateRouteCliente><Layout><MetodosDePago/></Layout></PrivateRouteCliente> ,
     },
-    {path: "/datos_personales",
+    {
+        path: "/datos_personales",
         element: <PrivateRouteCliente><Layout><DatosPersonales/></Layout></PrivateRouteCliente> ,
+    },
+    {
+        path: "/editarProductos/674a6fdafd6b4dbe70401dc8",
+        element: <Layout><EditarProductos/></Layout>,
     },
     /*{
         path: "/perfil",

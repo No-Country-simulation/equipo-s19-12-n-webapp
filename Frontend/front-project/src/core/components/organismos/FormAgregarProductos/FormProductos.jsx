@@ -8,17 +8,6 @@ import { Context } from '../../../context/Context';
 
 const FormProductos = () => {
 
-    const [formData, setFormData] = useState({
-        nombre: "",
-        precio: "",
-        stock: "",
-        categoria: "",
-        vencimiento: "",
-        estado: "",
-        off: "",
-        img: [],
-      });
-
       const { datosUsuario } = useContext(Context)
     
       const [error, setError] = useState(null);
