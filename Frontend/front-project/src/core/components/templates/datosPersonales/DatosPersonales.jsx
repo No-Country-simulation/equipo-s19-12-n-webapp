@@ -112,8 +112,8 @@ const DatosPersonales = () => {
       </Box>
 
       <Card sx={{
-        width: '800px',
-        height: '500px',
+        width: '1142px',
+        height: '673px',
         mb: 15,
         flexShrink: 0,
         borderRadius: '20px',
@@ -293,7 +293,7 @@ const DatosPersonales = () => {
             </Box>
           </Box>
 
-          <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 3 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
             <Button
               type="submit"
               variant="contained"
