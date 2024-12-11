@@ -1,10 +1,9 @@
-import styles from "../Breadcrum/Breadcrumb.module.css"
+import styles from "../Breadcrum/Breadcrumb.module.css";
 import { Context } from "../../../context/Context";
 import { useContext } from "react";
 
 const Breadcrumb = () => {
-
-  const {datosUsuario} = useContext(Context)
+  const { datosUsuario } = useContext(Context);
 
   return (
     <div className={styles.Breadcrumb}>

@@ -114,7 +114,7 @@ const Footer = () => {
             />
             <Texto
               level={"p"}
-              texto={"adoptify060@gmail.com"}
+              texto={"eaty@gmail.com"}
               variante={"white"}
             />
           </span>
@@ -123,7 +123,7 @@ const Footer = () => {
       <div className="derechos">
         <Texto
           level={"p"}
-          texto={"© 2024 Nombre del proyecto - Todos los derechos reservados"}
+          texto={"© 2024 Eaty - Todos los derechos reservados"}
           variante={"white"}
         />
       </div>

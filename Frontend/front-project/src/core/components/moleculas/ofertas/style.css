@@ -1,28 +1,26 @@
-.contenedorOfertasHome{
-    margin-top: 30vh;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.contenedorOfertasHome {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.contenedorTituloOfertas{
-    width: 90%;
-    height: 5vh;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    font-weight: 600;
-    font-size: 1.4rem;
+.contenedorTituloOfertas {
+  width: 90%;
+  height: 5vh;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.4rem;
 }
-.contenedorCarrucelOfertas{
-    margin-top: 5vh;
-    width: 85%;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 8vh;
-    flex-wrap: wrap;
+.contenedorCarrucelOfertas {
+  margin-top: 5vh;
+  width: 95%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
 }

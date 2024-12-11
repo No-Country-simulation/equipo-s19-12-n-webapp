@@ -7,8 +7,8 @@ import "./RestaurantInfo.css";
 import PestañasPerfil from "../PestañasPerfil/PestañasPerfil";
 
 const RestaurantInfo = () => {
-
-  const {datosUsuario} = useContext(Context)
+  const { datosUsuario } = useContext(Context);
+  console.log(datosUsuario);
 
   return (
     <div className="container">
@@ -16,8 +16,12 @@ const RestaurantInfo = () => {
         <RestaurantImage />
         <RestaurantLogo />
         <h2>{datosUsuario.nombre}</h2>
-        <Estrellas />
-        <div className="row">
+        <div className="row-estrellas">
+          <h3>4.0</h3>
+          <Estrellas />
+          <h3>1 reseña</h3>
+        </div>
+        <div className="cuit-row">
           <h3>CUIT: {datosUsuario.cuit}</h3>
           <button className="botonAbiertoCerrado">Abierto</button>
         </div>
