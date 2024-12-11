@@ -31,6 +31,29 @@ routerCompra.get("/:_id", async (req, res) => {
     };
 })
 
+routerCompra.post("/agregarCompra", async (req, res) => {
+    if (!req.body) {
+        return res.status(400).send({
+            message: "No se pueden enviar parámetros vacíos!"
+        });
+    }
+    try {
+        const {consumidor, comerciante, precioT, fecha, detalle} = req.body;
+        detalle.map(async (det) => {
+            await productoSchema.findByIdAndUpdate(det.id_producto, { $inc: { stock: (parseInt(det.cantidad) * -1)} })
+        })
+        const nuevaCompra = new compraSchema({consumidor, comerciante, precioT, fecha});
+        await compraSchema.insertMany(nuevaCompra);
+        res.sendStatus(200).send({
+            message: "Se añadieron nuevos datos correctamente"
+        })
+    } catch (error) {
+        res.status(500).send({
+            message: "Error al añadir datos"
+        });
+    }  
+})
+
 routerCompra.post("/", async (req, res) => {
     if (!req.body) {
         return res.status(400).send({
