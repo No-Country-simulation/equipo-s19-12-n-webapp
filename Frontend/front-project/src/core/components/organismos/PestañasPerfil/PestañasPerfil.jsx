@@ -4,6 +4,7 @@ import AcercaDe from "../AcercaDe/AcercaDe";
 import Ofertas from "../../moleculas/ofertas/Ofertas";
 import SearchInput from "../../atomos/SearchInput/SearchInput";
 import Button from "../../atomos/Button/Button";
+import ProductosRelacionados from "../ProductosRelacionados/ProductosRelacionados";
 
 // Componente para las pestañas
 const Tabs = ({ children }) => {
@@ -54,6 +55,7 @@ const PestañasPerfil = () => {
           <div className="contenerdorBtnCatalogo">
             No hay Productos registrados
           </div>
+          <ProductosRelacionados />
         </TabPanel>
       </Tabs>
     </div>
