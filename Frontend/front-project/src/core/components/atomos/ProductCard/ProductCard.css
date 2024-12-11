@@ -99,7 +99,7 @@ button:focus {
 }
 .contDataCardProducto2{
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   width: 90%;
   height: 30%;
@@ -117,4 +117,37 @@ button:focus {
   color: #555;
   text-align: left;
   text-decoration: line-through;
+}
+.contBotonesEditarProducto{
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contBotonEditarProducto{
+  width: 80%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.contimagenPapeleraB{
+  width: 10%;
+  height: auto;
+  aspect-ratio: 1;
+  background-color: rgb(218, 77, 72);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.contimagenPapeleraB img{
+  width: 60%;
+  height: auto;
+}
+.contimagenPapeleraB:hover{
+  background-color: rgb(255, 116, 81);
 }

@@ -21,7 +21,7 @@ const ProductCard = ({
   categoria,
   estado,
 }) => {
-  const { setActualProduct, setMenuArticulo, setDetallesComerciante } =
+  const { setActualProduct, setMenuArticulo, setDetallesComerciante, usuario } =
     useContext(Context);
 
   const options = {
@@ -98,13 +98,21 @@ const ProductCard = ({
           </div>
         </div>
         <div className="contDataCardProducto2">
+          {usuario === "comerciante" ? <div className="contBotonesEditarProducto">
+            <div className="contBotonEditarProducto">
+              <Button variante={"orange"} texto={"Editar"}></Button>
+            </div>
+            <div className="contimagenPapeleraB">
+              <img src="/assets/images/papelera.png" alt="" />
+            </div>
+          </div> :
           <Button
             variante={"orange"}
             texto={"Ver más"}
             onClick={() => {
               verArticulo();
             }}
-          ></Button>
+          ></Button>}
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@ const ProductosRelacionados = () => {
             style={{
               height: "250px",
               width: "auto",
-              scale: "0.8",
+              scale: "0.9",
               minWidth: "160px",
             }}
           ></ProductCard>

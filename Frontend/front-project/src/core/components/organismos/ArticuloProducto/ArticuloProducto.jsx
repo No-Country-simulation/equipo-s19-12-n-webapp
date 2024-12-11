@@ -5,7 +5,6 @@ import { Context } from "../../../context/Context";
 import Button from "../../atomos/Button/Button";
 import ProductCard from "../../atomos/ProductCard/ProductCard";
 import { Navigate, useNavigate } from "react-router-dom";
-import { height, minWidth } from "@mui/system";
 
 function ArticuloProducto() {
 

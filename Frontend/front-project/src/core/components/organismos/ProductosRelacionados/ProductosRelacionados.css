@@ -1,8 +1,8 @@
 .productos-relacionados-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
+  margin-top: 4vh;
+  margin-bottom: 4vh;
 }
 
 .productos-relacionados-container > * {
