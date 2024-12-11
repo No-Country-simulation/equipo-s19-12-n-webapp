@@ -29,35 +29,27 @@ const MetodosDePago = () => {
         setSelectedButton(buttonId); // Cambia el estado al botón seleccionado
     };
 
-    const { postData, data, loading, error } = usePostFetch('https://eaty-three.vercel.app/api/compra/añadirCompra');
+    const { postData, data, loading, error } = usePostFetch('https://eaty-three.vercel.app/api/compra/agregarCompra');
     useEffect(() => {
       if (data) {
-        console.log('Datos recibidos:', data);
+        console.log('Datos recibidos:', JSON.parse(data));
       }
-      if (error) {
+      else {
         console.log('Error:', error);
       }
     }, [data,error]); // Se ejecuta cuando 'data' cambie
 
   async function handleSubmit(e) {
         e.preventDefault();
-        console.log(numeroTarjeta)
-        console.log(cuotas)
-        console.log(mesVencimiento)
-        console.log(anioVencimiento)
-        console.log(codigoSeguridad)
-        console.log(nombreApellido)
-        console.log(direccion)
-        console.log(selectedButton)
         if(selectedButton===null){
             alert("Seleccione un método de pago")
         }else{
             console.log("enviando:"+venta)
             await postData(venta);
-            /* vaciarVenta();
+            vaciarVenta();
             vaciarCarrito();
             alert("su compra se realizo exitosamente,sera redireccionado al inicio");
-            navigate("/"); */
+            navigate("/"); 
         }
 
         

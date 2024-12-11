@@ -5,7 +5,7 @@ import { Context } from "../../../context/Context";
 import Button from "../../atomos/Button/Button";
 import ProductCard from "../../atomos/ProductCard/ProductCard";
 import { Navigate, useNavigate } from "react-router-dom";
-import { height } from "@mui/system";
+import { height, minWidth } from "@mui/system";
 
 function ArticuloProducto() {
 
@@ -74,7 +74,7 @@ function ArticuloProducto() {
                     comerciante={product.comerciante}
                     vencimiento={product.vencimiento}
                     stock={product.stock}
-                    style={{height: "250px", width: "auto", scale: "0.8", width: "160px"}}
+                    style={{height: "250px", width: "auto", scale: "0.8", minWidth: "160px"}}
                 ></ProductCard>
               ))}
             </div>

@@ -1,6 +1,6 @@
 import './style.css'
 
-const Inputs = ({ type, placeholder, value, onChange }) => {
+const Inputs = ({ type, placeholder, value, onChange}) => {
     return (
       <input
         type={type}
@@ -8,6 +8,7 @@ const Inputs = ({ type, placeholder, value, onChange }) => {
         required
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        // handleInputChange={(valor) => handleInputChange("nombre", valor)}
       />
     );
 };
