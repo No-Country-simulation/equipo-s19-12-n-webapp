@@ -52,10 +52,7 @@ const PestañasPerfil = () => {
           </div>
           <Ofertas />
           <div className="contenerdorBtnCatalogo">
-            <Button
-              variante={"orange"}
-              texto={"Agregar producto"}
-            />
+            No hay Productos registrados
           </div>
         </TabPanel>
       </Tabs>

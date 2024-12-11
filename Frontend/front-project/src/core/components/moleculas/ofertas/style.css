@@ -1,5 +1,4 @@
 .contenedorOfertasHome {
-  margin-top: 30vh;
   width: 100%;
   height: auto;
   display: flex;
@@ -18,11 +17,10 @@
 }
 .contenedorCarrucelOfertas {
   margin-top: 5vh;
-  width: 85%;
+  width: 95%;
   height: auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  gap: 8vh;
-  flex-wrap: wrap;
+  gap: 20px;
 }
