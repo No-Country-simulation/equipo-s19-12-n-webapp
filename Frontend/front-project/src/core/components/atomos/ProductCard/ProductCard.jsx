@@ -21,8 +21,7 @@ const ProductCard = ({
   categoria,
   estado,
 }) => {
-  const { setActualProduct, setMenuArticulo, setDetallesComerciante, usuario } =
-    useContext(Context);
+  const { setActualProduct, setPanelPerfil, setMenuArticulo, setDetallesComerciante, usuario } = useContext(Context);
 
   const options = {
     weekday: "long",
@@ -32,6 +31,46 @@ const ProductCard = ({
   };
 
   const navigate = useNavigate();
+
+  async function editarProducto () {
+    const nuevoVencimiento = Date.parse(vencimiento);
+    const nuevoVencimiento2 = new Date(
+      parseFloat(nuevoVencimiento)
+    ).toLocaleDateString("es-ES", options);
+    const nuevoVencimiento3 = nuevoVencimiento2.toString();
+
+    await setActualProduct({
+      _id: id,
+      nombre: nombre,
+      off: off,
+      desc: desc,
+      stock: stock,
+      precio: precio,
+      vencimiento: nuevoVencimiento3,
+      comerciante: comerciante,
+      img1: img1,
+      img2: img2,
+      img3: img3,
+      img4: img4,
+      categoria: categoria,
+      estado: estado,
+    });
+    await setPanelPerfil(2);
+  }
+
+  function eliminarProducto (){
+    fetch(
+      `https://eaty-three.vercel.app/api/productos/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          Accept: "application/json",
+        },
+      }
+    )
+  }
 
   function verArticulo() {
     const nuevoVencimiento = Date.parse(vencimiento);
@@ -100,9 +139,9 @@ const ProductCard = ({
         <div className="contDataCardProducto2">
           {usuario === "comerciante" ? <div className="contBotonesEditarProducto">
             <div className="contBotonEditarProducto">
-              <Button variante={"orange"} texto={"Editar"}></Button>
+              <Button variante={"orange"} texto={"Editar"} onClick={() => editarProducto()}></Button>
             </div>
-            <div className="contimagenPapeleraB">
+            <div className="contimagenPapeleraB" onClick={() => eliminarProducto()}>
               <img src="/assets/images/papelera.png" alt="" />
             </div>
           </div> :

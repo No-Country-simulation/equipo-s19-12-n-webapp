@@ -4,7 +4,7 @@ import { Context } from '../../../context/Context'
 
 function NavBar({verPerfil}) {
 
-  const { cerrarSesion } = useContext(Context);
+  const { cerrarSesion, setPanelPerfil } = useContext(Context);
 
   return (
     <div className={styles.NavBar}>
@@ -13,7 +13,7 @@ function NavBar({verPerfil}) {
             <div className={styles.MenuCont}>
                 <div className={styles.Enlace} onClick={() => verPerfil(0)}>Ver Perfil</div>
                 <div className={styles.Enlace} onClick={() => verPerfil(1)}>Agregar Producto</div>
-                <div className={styles.Enlace} onClick={() => cerrarSesion()}>Cerrar Sesión</div>
+                <div className={styles.Enlace} onClick={() => {cerrarSesion(); setPanelPerfil(0)}}>Cerrar Sesión</div>
             </div>
             <div className={styles.MiniMenuCont}></div>
         </div>

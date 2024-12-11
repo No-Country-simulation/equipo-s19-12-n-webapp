@@ -8,7 +8,6 @@ import PestañasPerfil from "../PestañasPerfil/PestañasPerfil";
 
 const RestaurantInfo = () => {
   const { datosUsuario, setAllProductsComerciante } = useContext(Context);
-  console.log(datosUsuario);
 
   fetch(
     `https://eaty-three.vercel.app/api/productos/busqueda-por-comerciante/${datosUsuario.cuit}`,

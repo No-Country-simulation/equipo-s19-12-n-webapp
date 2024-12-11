@@ -48,7 +48,7 @@ function App() {
   const vaciarVenta = () => {
     setVenta(null);
   };
-
+  const [panelPerfil, setPanelPerfil] = useState(0);
   const [allProducts, setAllProducts] = useState([]);
   const [allProductsComerciante, setAllProductsComerciante] = useState([]);
   const [actualProduct, setActualProduct] = useState({
@@ -109,6 +109,8 @@ function App() {
           detallesComerciante,
           allProductsComerciante,
           comerciosAderidos,
+          panelPerfil,
+          setPanelPerfil,
           setComerciosAderidos,
           setAllProductsComerciante,
           setDetallesComerciante,

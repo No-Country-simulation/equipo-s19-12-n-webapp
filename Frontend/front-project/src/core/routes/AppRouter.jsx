@@ -43,7 +43,7 @@ export const AppRouter = createBrowserRouter([
         element: <PrivateRouteCliente><Layout><DatosPersonales/></Layout></PrivateRouteCliente> ,
     },
     {
-        path: "/editarProductos/674a6fdafd6b4dbe70401dc8",
+        path: "/editarProductos/:id",
         element: <Layout><EditarProductos/></Layout>,
     },
     {
