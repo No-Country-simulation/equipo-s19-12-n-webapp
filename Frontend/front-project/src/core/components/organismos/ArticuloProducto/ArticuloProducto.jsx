@@ -22,7 +22,7 @@ function ArticuloProducto() {
     if(usuario===null){
       alert("Debes estar logueado para comprar")
     }else{
-    //  navigate("/comprar");
+      navigate("/datos_personales");
     }
     
   }

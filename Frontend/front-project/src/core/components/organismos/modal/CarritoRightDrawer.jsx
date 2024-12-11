@@ -8,12 +8,14 @@ import { Button, Card, CardContent, CardMedia, Divider } from '@mui/material';
 import { Context } from '../../../context/Context';
 import imagenCarritoVacio from '../../../../../public/assets/images/carrito_vacio.svg';
 import iconoBorrar from '../../../../../public/assets/images/icono-delete.svg';
+import { useNavigate } from 'react-router-dom';
 
 export default function CarritoRightDrawer({ open, onClose }) {
-  const { carrito, eliminarDeCarrito, vaciarCarrito } = useContext(Context);
+  const { carrito, eliminarDeCarrito, vaciarCarrito, detallesComerciante,datosUsuario,agregarVenta,venta,vaciarVenta} = useContext(Context);
   const [subtotal, setSubTotal] = useState(0);
   const [cantidadProductos, setCantidadProductos] = useState({});
 
+  const navigate = useNavigate();
   useEffect(() => {
     // Calcula el subtotal sumando los precios de todos los productos
     const nuevoSubTotal = carrito.reduce((acc, producto) => acc + producto.precio * (cantidadProductos[producto._id] || 1), 0);
@@ -38,8 +40,8 @@ export default function CarritoRightDrawer({ open, onClose }) {
       return prev;
     });
   }
-   // Eliminar producto y restablecer cantidad a 1
-   function eliminarDeCarritoConReset(idProducto) {
+  // Eliminar producto y restablecer cantidad a 1
+  function eliminarDeCarritoConReset(idProducto) {
     eliminarDeCarrito(idProducto); // Eliminar del carrito
     setCantidadProductos((prev) => {
       const nuevoEstado = { ...prev };
@@ -48,11 +50,40 @@ export default function CarritoRightDrawer({ open, onClose }) {
     });
   }
 
-    // Vaciar el carrito y restablecer todas las cantidades a 1
-    function vaciarCarritoConReset() {
-      vaciarCarrito(); // Vaciar el carrito
-      setCantidadProductos({}); // Restablecer todas las cantidades a 1
-    }
+  // Vaciar el carrito y restablecer todas las cantidades a 1
+  function vaciarCarritoConReset() {
+    vaciarCarrito(); // Vaciar el carrito
+    setCantidadProductos({}); // Restablecer todas las cantidades a 1
+    vaciarVenta();
+  }
+
+  function botonIrApagar() {
+    // Crear el array de productos en el formato solicitado
+    const productosFormatoNuevo = carrito.map((producto) => ({
+      id_producto: producto._id,
+      cantidad: cantidadProductos[producto._id] || 1, // Usar 1 si no hay cantidad personalizada
+    }));
+  
+    // Obtener la fecha actual en formato ISO
+    const fechaActual = new Date().toISOString();
+  
+    // Crear el objeto con los campos requeridos
+    const objetoOrden = {
+      comerciante: detallesComerciante.cuit, // Asumiendo que detallesComerciante tiene el nombre del comerciante
+      consumidor: datosUsuario.email, // Asegúrate de que el objeto usuario esté disponible en el contexto
+      fecha: fechaActual,
+      precioT: subtotal,
+      detalle: productosFormatoNuevo,
+    };
+ //   agregarVenta(objetoOrden)
+ //   console.log("Objeto Orden:", venta);
+    agregarVenta(objetoOrden, (nuevaVenta) => {
+      console.log("Venta actualizada:", nuevaVenta);
+      navigate("/datos_personales");
+    });
+  
+    
+  }
 
   return (
     <Drawer
@@ -62,33 +93,59 @@ export default function CarritoRightDrawer({ open, onClose }) {
     >
       <Box
         sx={{
-          width: 542,
+          width: 450,
           padding: 2,
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
         }}
       >
-        {/* Botón de cierre */}
-        <IconButton
-          onClick={onClose}
-          sx={{
-            alignSelf: 'flex-end',
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 
-        {/* Título en la parte superior */}
-        <Typography variant="h6" component="h2" sx={{
-          color: '#303030',
-          fontFamily: 'Montserrat',
-          fontSize: '32px',
-          fontWeight: 600,
-          marginBottom: 2,
-        }}>
-          Mi carrito
-        </Typography>
+          {/* Título en la parte superior */}
+          <Typography variant="h6" component="h2" sx={{
+            color: '#303030',
+            fontFamily: 'Montserrat',
+            fontSize: '32px',
+            fontWeight: 600,
+            marginBottom: 2,
+          }}>
+            Mi carrito
+          </Typography>
+          {/* Botón de cierre */}
+          <IconButton
+            onClick={onClose}
+            sx={{
+              alignSelf: 'flex-start',  // Alineación del IconButton
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+
+        </Box>
+        {carrito.length !== 0 ? (
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <img
+            src={detallesComerciante.logo} // Coloca la URL de la imagen aquí
+            alt="Imagen del comerciante"
+            style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: '50%' }} // Ajusta el tamaño y estilo de la imagen
+          />
+          <Typography
+            variant="body1"
+            sx={{
+              textAlign: 'start',
+              fontFamily: 'Montserrat',
+              fontSize: '16px',
+              fontStyle: 'normal',
+              fontWeight: 400,
+              lineHeight: 'normal',
+              ml:4
+            }}
+          >
+            {detallesComerciante.nombre}
+          </Typography>
+        </Box>):null}
+
         <Divider sx={{ borderColor: 'black', borderWidth: 1 }} />
 
         {/* Contenido del Drawer */}
@@ -127,20 +184,22 @@ export default function CarritoRightDrawer({ open, onClose }) {
                           {producto.nombre}
                         </Typography>
                       </Box>
-
                       <Box sx={{
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'space-between',
                         width: 137,
                         height: 23,
-                        backgroundColor: '#F87C01',
-                        padding: '0 5px',
+                        backgroundColor: '#FAFAFA',
+                        padding: '0 2px',
                         borderRadius: 1,
+                        borderColor: '#76B939',  // Establecer el color del borde como verde
+                        borderStyle: 'solid',    // Establecer el estilo del borde
+                        borderWidth: '2px'       // Establecer el grosor del borde
                       }}>
                         {/* Botones de decremento e incremento */}
                         <Button onClick={() => disminuirCantidad(producto)} sx={{
-                          minWidth: 20, height: 20, padding: 0, fontSize: '16px', color: 'white',
+                          minWidth: 20, height: 20, padding: 0, fontSize: '16px', color: 'white', backgroundColor: "#76B939"
                         }}>
                           -
                         </Button>
@@ -148,13 +207,13 @@ export default function CarritoRightDrawer({ open, onClose }) {
                           variant="body1"
                           sx={{
                             fontSize: '16px',
-                            color: 'white',
+                            color: '#76B939',
                           }}
                         >
                           {cantidad}
                         </Typography>
                         <Button onClick={() => aumentarCantidad(producto)} sx={{
-                          minWidth: 20, height: 20, padding: 0, fontSize: '16px', color: 'white',
+                          minWidth: 20, height: 20, padding: 0, fontSize: '16px', color: 'white', backgroundColor: "#76B939"
                         }}>
                           +
                         </Button>
@@ -194,13 +253,16 @@ export default function CarritoRightDrawer({ open, onClose }) {
         {/* Subtotal, delivery, total */}
         {carrito.length > 0 && (
           <Box sx={{
-            width: 480,
-            height: 308,
+            width: 420,
+            height: 258,
             border: '1px solid #000',
             padding: 2,
             display: 'flex',
             flexDirection: 'column',
-            borderTop: '2px solid rgba(0, 0, 0, 0.3)',
+            borderTop: '2px solid rgba(0, 0, 0, 0.3)',  // Borde superior gris
+            borderLeft: 'none',  // Sin borde izquierdo
+            borderRight: 'none',  // Sin borde derecho
+            borderBottom: 'none',  // Sin borde inferior
           }}>
             <Box sx={{
               display: 'flex',
@@ -243,6 +305,7 @@ export default function CarritoRightDrawer({ open, onClose }) {
               <Button
                 variant="contained"
                 color="primary"
+                onClick={botonIrApagar}
                 sx={{
                   width: '80%',
                   height: 50,
