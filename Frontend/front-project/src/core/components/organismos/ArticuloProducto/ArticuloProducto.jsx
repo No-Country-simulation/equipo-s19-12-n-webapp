@@ -9,33 +9,55 @@ import { height, minWidth } from "@mui/system";
 
 function ArticuloProducto() {
 
-  const { actualProduct, setMenuArticulo, allProductsComerciante, detallesComerciante } = useContext(Context);
+  const { actualProduct, setMenuArticulo, allProducts, allProductsComerciante, detallesComerciante, datosUsuario, agregarVenta } = useContext(Context);
   const [actualImage, setActualImage] = useState(actualProduct.img1)
   const [numberImage, setNumberImage] = useState(1)
+  const { agregarAcarrito, usuario } = useContext(Context)
+  const navigate = useNavigate();
 
   useEffect(() => {
     setActualImage(actualProduct.img1)
   }, [actualProduct.img1])
 
-  const navigate = useNavigate();
-  const {usuario}=useContext(Context)
-  function clickComprar(){
-    if(usuario===null){
+    ;
+
+  function clickComprar() {
+    if (usuario === null) {
       alert("Debes estar logueado para comprar")
-    }else{
-      navigate("/datos_personales");
+    } else {
+
+      const productosFormatoNuevo = [{
+        id_producto: actualProduct._id,
+        cantidad: 1, // Usar 1 si no hay cantidad personalizada
+      }];
+      // Obtener la fecha actual en formato ISO
+      const fechaActual = new Date().toISOString();
+
+      // Crear el objeto con los campos requeridos
+      const objetoOrden = {
+        comerciante: detallesComerciante.cuit, // Asumiendo que detallesComerciante tiene el nombre del comerciante
+        consumidor: datosUsuario.email, // Asegúrate de que el objeto usuario esté disponible en el contexto
+        fecha: fechaActual,
+        precioT: actualProduct.precio,
+        detalle: productosFormatoNuevo,
+      };
+      console.log(objetoOrden)
+      agregarAcarrito(actualProduct)
+      agregarVenta(objetoOrden)
+            navigate("/datos_personales");
     }
-    
+
   }
-  const {agregarAcarrito} = useContext(Context)
-  function clickAgregarAlCarrito(){
-    if(usuario===null||usuario==="comerciante"){
+
+  function clickAgregarAlCarrito() {
+    if (usuario === null || usuario === "comerciante") {
       alert("Debes estar logueado como cliente para agregar al carrito")
-      }else{
-        agregarAcarrito(actualProduct)
-      }
+    } else {
+      agregarAcarrito(actualProduct)
+      console.log(actualProduct)
+    }
   }
-  
+
   return (
     <div className={styles.ArticuloProducto}>
         <div className={styles.panelA}>
@@ -56,6 +78,7 @@ function ArticuloProducto() {
           <div className={styles.otrosArticulos}>
             <h3>Otras ofertas del vendedor</h3>
             <div className={styles.carrucelCont}>
+
             <div className={styles.carrucel}>
               {allProductsComerciante.map((product) => (
                 <ProductCard
@@ -78,48 +101,48 @@ function ArticuloProducto() {
                 ></ProductCard>
               ))}
             </div>
-            </div>
           </div>
           <div className={styles.descripcionCont}>
             <h3>Descripción</h3>
             <div className={styles.desc}>{actualProduct.desc}</div>
           </div>
         </div>
-        <div className={styles.panelB}>
-            <div className={styles.panelBCont}>
-                <h3>{actualProduct.nombre}</h3>
-                <div className={styles.precioCont}>
-                    <div className={styles.precioActual}>${actualProduct.precio}</div>
-                    <div className={styles.precioAnterior}>${parseInt(actualProduct.precio) * 1.5}</div>
-                    <div className={styles.discount}>-{actualProduct.off}%</div>
-                </div>
-                <div className={styles.detallesCont}>
-                    <div className={styles.detalleCont}>
-                        <h4>Categoría:</h4>
-                        <p>{actualProduct.categoria}</p>
-                    </div>
-                    <div className={styles.detalleCont}>
-                        <h4>Stock:</h4>
-                        <p>{actualProduct.stock}</p>
-                    </div>
-                </div>
-                <div className={styles.vencimientoCont}>
-                    <h4>Fecha de vencimiento</h4>
-                    <p>{actualProduct.vencimiento}</p>
-                </div>
-                <div className={styles.comercianteCont}>
-                    <img src={detallesComerciante.logo} alt="" />
-                    <div className={styles.detallesPerfilCont}>
-                      <h4>{detallesComerciante.nombre}</h4>
-                      <p>Ver Perfil</p>
-                    </div>
-                </div>
-                <div className={styles.botonCont}>
-                    <Button onClick={clickComprar} variante={"orange"} texto={"Comprar"}></Button>
-                    <Button onClick={clickAgregarAlCarrito} variante={"green"} texto={"Añadir al carrito"}></Button>
-                </div>
+      </div>
+      <div className={styles.panelB}>
+        <div className={styles.panelBCont}>
+          <h3>{actualProduct.nombre}</h3>
+          <div className={styles.precioCont}>
+            <div className={styles.precioActual}>${actualProduct.precio}</div>
+            <div className={styles.precioAnterior}>${parseInt(actualProduct.precio) * 1.5}</div>
+            <div className={styles.discount}>-{actualProduct.off}%</div>
+          </div>
+          <div className={styles.detallesCont}>
+            <div className={styles.detalleCont}>
+              <h4>Categoría:</h4>
+              <p>{actualProduct.categoria}</p>
             </div>
+            <div className={styles.detalleCont}>
+              <h4>Stock:</h4>
+              <p>{actualProduct.stock}</p>
+            </div>
+          </div>
+          <div className={styles.vencimientoCont}>
+            <h4>Fecha de vencimiento</h4>
+            <p>{actualProduct.vencimiento}</p>
+          </div>
+          <div className={styles.comercianteCont}>
+            <img src={detallesComerciante.logo} alt="" />
+            <div className={styles.detallesPerfilCont}>
+              <h4>{detallesComerciante.nombre}</h4>
+              <p>Ver Perfil</p>
+            </div>
+          </div>
+          <div className={styles.botonCont}>
+            <Button onClick={clickComprar} variante={"orange"} texto={"Comprar"}></Button>
+            <Button onClick={clickAgregarAlCarrito} variante={"green"} texto={"Añadir al carrito"}></Button>
+          </div>
         </div>
+      </div>
     </div>
   );
 }

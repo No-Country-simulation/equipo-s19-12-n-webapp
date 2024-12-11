@@ -57,7 +57,7 @@ const MetodosDePago = () => {
 
     return (
         <>
-        <SearchBar></SearchBar> 
+        {<SearchBar></SearchBar>} 
         <Box
             sx={{
                 display: 'flex',
@@ -121,7 +121,7 @@ const MetodosDePago = () => {
                 </Typography>
             </Box>
 
-            <Card sx={{ width: '800px', height: '600px', mb: 15, borderRadius: '20px', background: '#FAFAFA', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}>
+            <Card sx={{ width: '1200px', height: '800px', mb: 15, borderRadius: '20px', background: '#FAFAFA', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}>
                 {/* Botones centrados*/}
                 <Box sx={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: 4 }}> {/* Cambié aquí el marginTop */}
                     {/* Botón 1 - Tarjeta de Débito */}
@@ -130,8 +130,8 @@ const MetodosDePago = () => {
                         color={selectedButton === 1 ? 'success' : 'inhert'}
                         onClick={() => handleButtonClick(1)}
                         style={{
-                            width: '200px', borderRadius: 10, textTransform: 'none',
-                            height: '65px', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                            width: '327px', borderRadius: 10, textTransform: 'none',
+                            height: '105px', display: 'flex', alignItems: 'center', justifyContent: 'center'
                         }}
                     >
                         <img src={iconoTarjetaDeDebito} alt="Tarjeta de débito" style={{ width: 24, height: 24, marginRight: 8 }} />
@@ -144,8 +144,8 @@ const MetodosDePago = () => {
                         color={selectedButton === 2 ? 'success' : 'inhert'}
                         onClick={() => handleButtonClick(2)}
                         style={{
-                            width: '200px', borderRadius: 10, textTransform: 'none',
-                            height: '65px', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                            width: '327px', borderRadius: 10, textTransform: 'none',
+                            height: '105px', display: 'flex', alignItems: 'center', justifyContent: 'center'
                         }}
                     >
                         <img src={iconoTarjetaDeCredito} alt="Tarjeta de crédito" style={{ width: 24, height: 24, marginRight: 8 }} />
@@ -158,8 +158,8 @@ const MetodosDePago = () => {
                         color={selectedButton === 3 ? 'success' : 'inhert'}
                         onClick={() => handleButtonClick(3)}
                         style={{
-                            width: '200px', borderRadius: 10, textTransform: 'none',
-                            height: '65px', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                            width: '327px', borderRadius: 10, textTransform: 'none',
+                            height: '105px', display: 'flex', alignItems: 'center', justifyContent: 'center'
                         }}
                     >
                         <img src={iconoMercadoPago} alt="MercadoPago" style={{ width: 24, height: 24, marginRight: 8 }} />
