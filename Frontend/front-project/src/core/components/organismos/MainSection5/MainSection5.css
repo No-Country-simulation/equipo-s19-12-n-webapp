@@ -15,7 +15,7 @@
   width: 80%;
   height: auto;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   flex-wrap: wrap;
   gap: 8vh;
 }
@@ -27,6 +27,27 @@
   align-items: center;
   text-align: center;
   font-size: 1.6rem;
+  font-weight: 600;
+}
+.comercioAdCont{
+  width: 15%;
+  height: auto;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  aspect-ratio: 1;
+}
+.comercioAdCont img{
+  height: 50%;
+  width: auto;
+}
+.comercioAdTitulo{
+  width: 100%;
+  height: auto;
+  font-size: 1rem;
+  text-align: center;
   font-weight: 600;
 }
 
@@ -42,5 +63,8 @@
   }
   .contTituloNegociosAderidos{
     font-size: 1.2rem;
+  }
+  .comercioAdTitulo{
+    font-size: 0.9rem;
   }
 }

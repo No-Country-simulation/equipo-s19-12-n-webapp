@@ -2,44 +2,44 @@ const ofertas = [
     {
       id: 1,
       imagen: "/assets/images/elegir_fruta.svg",
-      titulo: "oferta 1",
-      descripcion: "Descripción de oferta 1"
+      titulo: "Frutas y Verduras",
+      descripcion: "Frutas y Verduras"
     },
     {
       id: 2,
       imagen: "/assets/images/elegir_carne.svg",
-      titulo: "oferta 1",
-      descripcion: "Descripción de oferta 1"
+      titulo: "Carnes y Pescados",
+      descripcion: "Carnes y Pescados"
     },
     {
       id: 3,
       imagen: "/assets/images/elegir_lacteo.svg",
-      titulo: "oferta 1",
-      descripcion: "Descripción de oferta 1"
+      titulo: "Lácteos",
+      descripcion: "Lácteos"
     },
     {
       id: 4,
       imagen: "/assets/images/elegir_panaderia.svg",
-      titulo: "oferta 1",
-      descripcion: "Descripción de oferta 1"
+      titulo: "Panadería y Pastelería",
+      descripcion: "Panadería y Pastelería"
     },
     {
       id: 5,
       imagen: "/assets/images/elegir_golosina.svg",
-      titulo: "oferta 1",
-      descripcion: "Descripción de oferta 1"
+      titulo: "Snacks y Golosinas",
+      descripcion: "Snacks y Golosinas"
     },
     {
       id: 6,
       imagen: "/assets/images/elegir_bebida.svg",
-      titulo: "oferta 1",
-      descripcion: "Descripción de oferta 1"
+      titulo: "Bebidas",
+      descripcion: "Bebidas"
     },
     {
       id: 7,
       imagen: "/assets/images/elegir_no_perecedero.svg",
-      titulo: "oferta 1",
-      descripcion: "Descripción de oferta 1"
+      titulo: "Alimentos no perecederos",
+      descripcion: "Alimentos no perecederos"
     },
     
   ];

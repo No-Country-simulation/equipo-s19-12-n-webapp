@@ -2,8 +2,9 @@ import Button from "../Button/Button";
 import "./ProductCard.css";
 import { Context } from "../../../context/Context";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
-const ProductCard = ({ nombre, img1, img2, img3, img4, precio, off, id, desc, vencimiento, comerciante, stock, categoria, estado }) => {
+const ProductCard = ({ style, nombre, img1, img2, img3, img4, precio, off, id, desc, vencimiento, comerciante, stock, categoria, estado }) => {
 
   const { setActualProduct, setMenuArticulo, setDetallesComerciante } = useContext(Context);
 
@@ -14,13 +15,15 @@ const ProductCard = ({ nombre, img1, img2, img3, img4, precio, off, id, desc, ve
     day: 'numeric',
   };
 
+  const navigate = useNavigate();
+
   function verArticulo () {
     const nuevoVencimiento = Date.parse(vencimiento);
     const nuevoVencimiento2 = new Date(parseFloat(nuevoVencimiento)).toLocaleDateString("es-ES", options)
     const nuevoVencimiento3 = nuevoVencimiento2.toString()
 
     setActualProduct({_id: id, nombre: nombre, off: off, desc: desc, stock: stock, precio: precio, vencimiento: nuevoVencimiento3, comerciante: comerciante, img1: img1, img2: img2, img3: img3, img4: img4, categoria: categoria, estado: estado})
-    setMenuArticulo(1);
+    navigate("/productos/articulo");
 
     fetch(`https://eaty-three.vercel.app/api/comerciante/detallesVendedor/${comerciante}`, {     
       method: "POST",
@@ -35,10 +38,11 @@ const ProductCard = ({ nombre, img1, img2, img3, img4, precio, off, id, desc, ve
         console.log(data);
         setDetallesComerciante(data);
       })
+
   }
 
   return (
-    <div className="product-card">
+    <div className="product-card" style={style}>
       <img src={img1} alt={nombre} className="product-image" />
       <div className="discountC">OFF {off}%</div>
       <div className="contDataCard">

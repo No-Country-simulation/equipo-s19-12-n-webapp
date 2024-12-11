@@ -1,6 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Context } from '../../../context/Context';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { MenuItem, Select, FormControl, Box } from '@mui/material';
 
 const SelectorMenu = ({ categorias, onCategoriaSelect }) => {
@@ -12,7 +12,12 @@ const SelectorMenu = ({ categorias, onCategoriaSelect }) => {
   };
 
   const navigate = useNavigate();
+  const location = useLocation();
   const { setAllProducts } = useContext(Context);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
 
   function buscarCategoria (cat) {
     fetch(`https://eaty-three.vercel.app/api/productos/busqueda-por-categoria/${cat}`, {

@@ -103,7 +103,7 @@ const Navbar = () => {
                             <ImagenGenerica
                                 src={logo}
                                 alt="Logo"
-                                sx={{ width: '249px', height: '112px' }}
+                                sx={{ width: '117px', height: '112px' }}
                             />
                         </Box>
 

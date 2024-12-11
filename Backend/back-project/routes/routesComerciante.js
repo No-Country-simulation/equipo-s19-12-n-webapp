@@ -38,6 +38,16 @@ routerComerciante.post("/login", async (req, res) => {
     }
 })
 
+routerComerciante.get('/negociosAderidos', async (req, res) => {
+    try {
+      const data = await comercianteSchema.find({ logo: { $ne: "" } }).limit(10); // Consulta MongoDB
+      res.json(data); // Responde con los usuarios encontrados
+    } catch (error) {
+      console.error("Error al obtener usuarios:", error);
+      res.status(500).json({ error: 'Error en el servidor' });
+    }
+  });
+
 routerComerciante.get("/:_id", async (req, res) => {
     try {
         const data = await comercianteSchema.findById(req.params._id);
