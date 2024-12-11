@@ -51,10 +51,12 @@
   display: flex;
 }
 
-.contenerdorBtnCatalogo {
+.contenedor-padre-input {
   display: flex;
-  min-height: 500px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row-reverse;
+  margin-bottom: 50px;
+}
+
+.contenedor-padre-ofertas {
+  margin-bottom: 40px;
 }

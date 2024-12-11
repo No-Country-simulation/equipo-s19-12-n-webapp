@@ -48,12 +48,13 @@ const PestañasPerfil = () => {
         </TabPanel>
         <TabPanel label="Catálogo">
           {/* Aquí puedes importar y renderizar el componente de "Catálogo" */}
-          <div className="contenedorInputPerfil">
-            <SearchInput />
+          <div className="contenedor-padre-input">
+            <div className="contenedorInputPerfil">
+              <SearchInput />
+            </div>
           </div>
-          <Ofertas />
-          <div className="contenerdorBtnCatalogo">
-            No hay Productos registrados
+          <div className="contenedor-padre-ofertas">
+            <Ofertas />
           </div>
           <ProductosRelacionados />
         </TabPanel>

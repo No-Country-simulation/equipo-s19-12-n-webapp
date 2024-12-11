@@ -94,12 +94,8 @@ function App() {
       .then((res) => res.json())
       .then((data) => {
         setAllProductsComerciante(data);
-        console.log("first" + data);
       });
   }, [detallesComerciante]);
-
-  console.log(allProductsComerciante);
-  console.log(detallesComerciante.cuit);
 
   return (
     <>

@@ -21,7 +21,7 @@ const RestaurantInfo = () => {
           <Estrellas />
           <h3>1 reseña</h3>
         </div>
-        <div className="row">
+        <div className="cuit-row">
           <h3>CUIT: {datosUsuario.cuit}</h3>
           <button className="botonAbiertoCerrado">Abierto</button>
         </div>
