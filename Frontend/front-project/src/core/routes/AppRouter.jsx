@@ -26,7 +26,7 @@ export const AppRouter = createBrowserRouter([
         element: <Layout><AgregarProductos/></Layout>,
     },
     {
-        path: "/editarProductos/674a6fdafd6b4dbe70401dc8",
+        path: "/editarProductos/:id",
         element: <Layout><EditarProductos/></Layout>,
     },
     /*{
