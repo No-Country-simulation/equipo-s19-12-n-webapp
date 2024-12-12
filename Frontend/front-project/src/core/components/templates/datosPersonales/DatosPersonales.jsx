@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { Context } from '../../../context/Context';
 
 const DatosPersonales = () => {
-  const {carrito,datosUsuario}=useContext(Context)
+  const { carrito, datosUsuario } = useContext(Context)
   console.log(carrito)
   const formRef = useRef(null);
   const navigate = useNavigate();
@@ -88,7 +88,7 @@ const DatosPersonales = () => {
 
       {/* Texto "Datos personales" en la parte inferior izquierda */}
 
-      <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 3 }}>
+      <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: 3, ml: 35 }}>
         {/* Texto "Datos personales" fuera de la Card y alineado con la Card */}
         <Typography
           variant="body1"
@@ -110,48 +110,26 @@ const DatosPersonales = () => {
         height: '673px',
         mb: 15,
         flexShrink: 0,
+        display: 'flex',
+        justifyContent: 'center',  // Centra los elementos en el eje X
+        alignItems: 'center',
         borderRadius: '20px',
         boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
       }}>
-        {/* Formulario */}
-        <form ref={formRef} onSubmit={handleSubmit}>
-          {/* Campo de Email */}
-          <Box sx={{ width: '50%', marginBottom: 1 }}>
-            <Typography variant="body2" sx={{
-              color: '#303030',
-              fontFamily: 'Montserrat',
-              fontSize: '20px',
-              fontStyle: 'normal',
-              fontWeight: 600,
-              lineHeight: 'normal',
-            }}>
-              Correo electrónico
-            </Typography>
-            <TextField
-              name="email"
-              type="email"
-              fullWidth
-              margin="normal"
-              value={datosUsuario.email}
-              required
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  border: 'none',
-                  '& fieldset': {
-                    border: 'none',
-                  },
-                },
-                '& .MuiInputBase-root': {
-                  borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
-                },
-              }}
-            />
-          </Box>
 
-          {/* Campos Nombre y Apellido en el mismo nivel */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
-            {/* Campo de Nombre */}
-            <Box sx={{ width: '48%' }}>
+        {/* box del formulario */}
+        <Box sx={{
+          width: '750px',
+          height: '390px',
+          display: 'flex',
+          flexDirection: 'normal',   // Asegura que los elementos se apilen verticalmente
+          justifyContent: 'flex-start',  // Alinea los elementos al principio del eje vertical (arriba)
+          alignItems: 'flex-start',      // Alinea los elementos al principio del eje horizontal (izquierda)
+        }}>
+          {/* Formulario */}
+          <form ref={formRef} onSubmit={handleSubmit}>
+            {/* Campo de Email */}
+            <Box sx={{ width: '50%', mt: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
               <Typography variant="body2" sx={{
                 color: '#303030',
                 fontFamily: 'Montserrat',
@@ -160,14 +138,13 @@ const DatosPersonales = () => {
                 fontWeight: 600,
                 lineHeight: 'normal',
               }}>
-                Nombre
+                Correo electrónico
               </Typography>
               <TextField
-                label="Ingresa tu nombre"
-                name="nombre"
-                type="text"
+                name="email"
+                type="email"
                 fullWidth
-                margin="normal"
+                value={datosUsuario.email}
                 required
                 sx={{
                   '& .MuiOutlinedInput-root': {
@@ -181,133 +158,172 @@ const DatosPersonales = () => {
                   },
                 }}
               />
+
             </Box>
 
-            {/* Campo de Apellido */}
-            <Box sx={{ width: '48%' }}>
-              <Typography variant="body2" sx={{
-                color: '#303030',
-                fontFamily: 'Montserrat',
-                fontSize: '20px',
-                fontStyle: 'normal',
-                fontWeight: 600,
-                lineHeight: 'normal',
-              }}>
-                Apellido
-              </Typography>
-              <TextField
-                label="Ingresa tu apellido"
-                name="apellido"
-                type="text"
-                fullWidth
-                margin="normal"
-                required
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    border: 'none',
-                    '& fieldset': {
+
+            {/* Campos Nombre y Apellido en el mismo nivel */}
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start', gap: 2, width: '100%' }}>
+              {/* Campo de Nombre */}
+              <Box sx={{ width: '48%' }}>
+                <Typography variant="body2" sx={{
+                  color: '#303030',
+                  fontFamily: 'Montserrat',
+                  fontSize: '20px',
+                  fontStyle: 'normal',
+                  fontWeight: 600,
+                  lineHeight: 'normal',
+                }}>
+                  Nombre
+                </Typography>
+                <TextField
+                  label="Ingresa tu nombre"
+                  name="nombre"
+                  type="text"
+                  fullWidth
+                  margin="normal"
+                  required
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
                       border: 'none',
+                      '& fieldset': {
+                        border: 'none',
+                      },
                     },
-                  },
-                  '& .MuiInputBase-root': {
-                    borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
-                  },
-                }}
-              />
-            </Box>
-          </Box>
+                    '& .MuiInputBase-root': {
+                      borderBottom: '2px solid #909090',
+                    },
+                  }}
+                />
+              </Box>
 
-          {/* Campos DNI y Teléfono en el mismo nivel */}
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2, marginTop: 2 }}>
-            {/* Campo de DNI */}
-            <Box sx={{ width: '48%' }}>
-              <Typography variant="body2" sx={{
-                color: '#303030',
-                fontFamily: 'Montserrat',
-                fontSize: '20px',
-                fontStyle: 'normal',
-                fontWeight: 600,
-                lineHeight: 'normal',
-              }}>
-                DNI
-              </Typography>
-              <TextField
-                label="Ingresa tu numero de documento"
-                name="dni"
-                type="text"
-                fullWidth
-                margin="normal"
-                required
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    border: 'none',
-                    '& fieldset': {
+              {/* Campo de Apellido */}
+              <Box sx={{ width: '48%' }}>
+                <Typography variant="body2" sx={{
+                  color: '#303030',
+                  fontFamily: 'Montserrat',
+                  fontSize: '20px',
+                  fontStyle: 'normal',
+                  fontWeight: 600,
+                  lineHeight: 'normal',
+                }}>
+                  Apellido
+                </Typography>
+                <TextField
+                  label="Ingresa tu apellido"
+                  name="apellido"
+                  type="text"
+                  fullWidth
+                  margin="normal"
+                  required
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
                       border: 'none',
+                      '& fieldset': {
+                        border: 'none',
+                      },
                     },
-                  },
-                  '& .MuiInputBase-root': {
-                    borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
-                  },
-                }}
-              />
+                    '& .MuiInputBase-root': {
+                      borderBottom: '2px solid #909090',
+                    },
+                  }}
+                />
+              </Box>
             </Box>
 
-            {/* Campo de Teléfono */}
-            <Box sx={{ width: '48%' }}>
-              <Typography variant="body2" sx={{
-                color: '#303030',
-                fontFamily: 'Montserrat',
-                fontSize: '20px',
-                fontStyle: 'normal',
-                fontWeight: 600,
-                lineHeight: 'normal',
-              }}>
-                Teléfono/Movil
-              </Typography>
-              <TextField
-                label="Ingresa tu numero de Teléfono"
-                name="telefono"
-                type="tel"
-                fullWidth
-                margin="normal"
-                required
-                sx={{
-                  '& .MuiOutlinedInput-root': {
-                    border: 'none',
-                    '& fieldset': {
+            {/* Campos DNI y Teléfono en el mismo nivel */}
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start', gap: 2, marginTop: 2, width: '100%' }}>
+              {/* Campo de DNI */}
+              <Box sx={{ width: '48%' }}>
+                <Typography variant="body2" sx={{
+                  color: '#303030',
+                  fontFamily: 'Montserrat',
+                  fontSize: '20px',
+                  fontStyle: 'normal',
+                  fontWeight: 600,
+                  lineHeight: 'normal',
+                }}>
+                  DNI
+                </Typography>
+                <TextField
+                  label="Ingresa tu numero de documento"
+                  name="dni"
+                  type="text"
+                  fullWidth
+                  margin="normal"
+                  required
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
                       border: 'none',
+                      '& fieldset': {
+                        border: 'none',
+                      },
                     },
-                  },
-                  '& .MuiInputBase-root': {
-                    borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
-                  },
-                }}
-              />
-            </Box>
-          </Box>
+                    '& .MuiInputBase-root': {
+                      borderBottom: '2px solid #909090',
+                    },
+                  }}
+                />
+              </Box>
 
-          <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              sx={{
-                width: '80%',
-                height: 30,
-                fontSize: '16px',
-                backgroundColor: "#F87C01",
-                textTransform: 'none',
-                '&:hover': {
-                  backgroundColor: '#F87C01',
-                },
-                marginTop: 2,
-                marginBottom: 3, // Aumenta el margen inferior
-              }}
-            >
-              Ir a modo de pago
-            </Button>
-          </Box>
-        </form>
+              {/* Campo de Teléfono */}
+              <Box sx={{ width: '48%' }}>
+                <Typography variant="body2" sx={{
+                  color: '#303030',
+                  fontFamily: 'Montserrat',
+                  fontSize: '20px',
+                  fontStyle: 'normal',
+                  fontWeight: 600,
+                  lineHeight: 'normal',
+                }}>
+                  Teléfono/Movil
+                </Typography>
+                <TextField
+                  label="Ingresa tu numero de Teléfono"
+                  name="telefono"
+                  type="tel"
+                  fullWidth
+                  margin="normal"
+                  required
+                  sx={{
+                    '& .MuiOutlinedInput-root': {
+                      border: 'none',
+                      '& fieldset': {
+                        border: 'none',
+                      },
+                    },
+                    '& .MuiInputBase-root': {
+                      borderBottom: '2px solid #909090',
+                    },
+                  }}
+                />
+              </Box>
+            </Box>
+
+            {/* Botón de Enviar */}
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start', marginTop: 10, width: '100%' }}>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                sx={{
+                  width: '678px',
+                  height: 30,
+                  fontSize: '16px',
+                  backgroundColor: "#F87C01",
+                  textTransform: 'none',
+                  '&:hover': {
+                    backgroundColor: '#F87C01',
+                  },
+                  marginBottom: 3, // Aumenta el margen inferior
+                }}
+              >
+                Ir a modo de pago
+              </Button>
+            </Box>
+          </form>
+        </Box>
+
       </Card>
     </Box>
   );
