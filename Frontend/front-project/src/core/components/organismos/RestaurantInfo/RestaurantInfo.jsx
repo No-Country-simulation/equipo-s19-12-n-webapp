@@ -7,8 +7,23 @@ import "./RestaurantInfo.css";
 import PestañasPerfil from "../PestañasPerfil/PestañasPerfil";
 
 const RestaurantInfo = () => {
+  const { datosUsuario, setAllProductsComerciante } = useContext(Context);
 
-  const {datosUsuario} = useContext(Context)
+  fetch(
+    `https://eaty-three.vercel.app/api/productos/busqueda-por-comerciante/${datosUsuario.cuit}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Accept: "application/json",
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      setAllProductsComerciante(data);
+    });
 
   return (
     <div className="container">
@@ -16,8 +31,12 @@ const RestaurantInfo = () => {
         <RestaurantImage />
         <RestaurantLogo />
         <h2>{datosUsuario.nombre}</h2>
-        <Estrellas />
-        <div className="row">
+        <div className="row-estrellas">
+          <h3>4.0</h3>
+          <Estrellas />
+          <h3>1 reseña</h3>
+        </div>
+        <div className="cuit-row">
           <h3>CUIT: {datosUsuario.cuit}</h3>
           <button className="botonAbiertoCerrado">Abierto</button>
         </div>

@@ -1,0 +1,28 @@
+.Articulo{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.seccion0{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 4vh;
+}
+.paginaArticulo{
+    width: 100%;
+    height: calc(80vh - 112px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (aspect-ratio < 1) {
+    .paginaArticulo{
+        height: auto;
+    }
+}

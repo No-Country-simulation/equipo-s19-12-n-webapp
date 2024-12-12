@@ -10,6 +10,7 @@ import MainSection1 from "../../organismos/MainSection1/MainSection1.jsx";
 import MainSection5 from "../../organismos/MainSection5/MainSection5.jsx";
 import Ofertas from "../../moleculas/ofertas/Ofertas.jsx";
 import MainSection6 from "../../organismos/MainSection6/MainSection6.jsx";
+import './style.css'
 
 const Home = () => {
 
@@ -17,9 +18,9 @@ const Home = () => {
     <>
       <SearchBar></SearchBar> 
       <MainSection1></MainSection1>
+      <Ofertas></Ofertas>
       <MainSection3></MainSection3>      
       <ProductosDestacados></ProductosDestacados>
-      <Ofertas></Ofertas>
       <MainSection5 />
       <MainSection6 />
     </>

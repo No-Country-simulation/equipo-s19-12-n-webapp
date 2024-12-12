@@ -9,7 +9,7 @@ import { useContext } from "react";
 
 const MainSection1 = () => {
   const navigate = useNavigate();
-  const { setAllProducts, allProducts } = useContext(Context);
+  const { setAllProducts } = useContext(Context);
 
   function obtenerProductos() {
     fetch("https://eaty-three.vercel.app/api/productos", {
@@ -34,6 +34,10 @@ const MainSection1 = () => {
       <div className="text-content">
         <MainTitle />
         <MainSubtitle />
+        <div className="ahorroAnimaCont">
+          <img src="assets/images/moneda.png" alt="" className="ahorroImg1"/>
+          <img src="assets/images/alcancia.png" alt="" className="ahorroImg2"/>
+        </div>
         <div className="otrosEstilos">
           <Button
             onClick={() => {

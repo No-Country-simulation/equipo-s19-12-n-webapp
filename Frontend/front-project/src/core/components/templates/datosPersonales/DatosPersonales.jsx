@@ -5,17 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { Context } from '../../../context/Context';
 
 const DatosPersonales = () => {
-  /* const [formData, setFormData] = useState({
-    email: '',
-    nombre: '',
-    apellido: '',
-    dni: '',
-    telefono: ''
-  }); */
   const {carrito,datosUsuario}=useContext(Context)
   console.log(carrito)
   const formRef = useRef(null);
   const navigate = useNavigate();
+
   function handleSubmit(e) {
     e.preventDefault();
     console.log('Formulario enviado');
@@ -117,7 +111,6 @@ const DatosPersonales = () => {
         mb: 15,
         flexShrink: 0,
         borderRadius: '20px',
-        background: '#FAFAFA',
         boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
       }}>
         {/* Formulario */}

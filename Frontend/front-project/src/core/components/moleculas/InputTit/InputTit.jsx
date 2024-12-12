@@ -10,7 +10,7 @@ const InputTit = ({ modo, titulo, type, placeholder, categorias = [], evento }) 
     return(
         <div className="contenedorInput">
             <Texto level={'h3'} texto={titulo}/>
-            { modo === 'input' && (<Input type={type} placeholder={placeholder}/>)}
+            { modo === 'input' && (<Input type={type} placeholder={placeholder} onChange={evento}/>)}
             { modo === 'selector' && <SelectorInput categorias={categorias} placeholder={placeholder} onCategoriaSelect={evento}/>}
         </ div>
     )

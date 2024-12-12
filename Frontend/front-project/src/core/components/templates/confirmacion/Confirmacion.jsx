@@ -1,12 +1,21 @@
 import { Box, Button, Divider, Typography } from '@mui/material';
-import React from 'react';
+import React, { useContext } from 'react';
 import imagenConfirmacion from '../../../../../public/assets/images/confirmacion.svg';
 import imagenTilde from '../../../../../public/assets/images/confirmacion_tilde.svg';
-
+import { useLocation } from 'react-router-dom';
+import { Context } from '../../../context/Context';
+import iconoMapa from '../../../../../public/assets/images/icono_mapa.svg'
+import MapIcon from '@mui/icons-material/Map';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { CalendarMonth, QueryBuilder } from '@mui/icons-material';
 const Confirmacion = () => {
-    // Array de productos de ejemplo
-    const productos = ['Producto 1', 'Producto 2', 'Producto 3', 'Producto 4', 'Producto 5'];
 
+    const location = useLocation();
+    const objetoRecibido = location.state?.objetoDetalles;
+    console.log(objetoRecibido)
+  //  const productos = ['Producto 1', 'Producto 2', 'Producto 3', 'Producto 4', 'Producto 5'];
+    const {detallesComerciante}=useContext(Context);
+   const productos = objetoRecibido.detalle;
     return (
         <>
             <Box
@@ -88,9 +97,15 @@ const Confirmacion = () => {
                                 lineHeight: 'normal',       // Interlineado
                             }}
                         >
-                            nombre del comercio
+                            {detallesComerciante.nombre}
                         </Typography></Box>
-                        <Box ><Typography
+                        <Box sx={{display: 'flex',
+                        alignItems: 'start',
+                        justifyContent: 'normal',
+                        mb:2
+                        }}>
+                         <MapIcon  sx={{ fontSize: 18, marginRight: 1 }} /> 
+                            <Typography
                             sx={{
                                 fontFamily: 'Montserrat',   // Tipo de fuente
                                 fontSize: '16px',           // Tamaño de la fuente
@@ -100,10 +115,11 @@ const Confirmacion = () => {
                                 marginTop: '4px'
                             }}
                         >
-                            Direccion del comercio
+                           {detallesComerciante.direccion}
                         </Typography></Box>
                         <Box sx={{ marginBottom: 1, display: 'flex', flexDirection: 'normal', justifyContent: 'flex-start' }}>
-                            <Typography
+                       <CalendarMonth></CalendarMonth>
+                                <Typography
                                 sx={{
                                     fontFamily: 'Montserrat',   // Tipo de fuente
                                     fontSize: '20px',           // Tamaño de la fuente
@@ -127,10 +143,12 @@ const Confirmacion = () => {
                                     marginLeft: '4px',
                                 }}
                             >
-                                Tu texto aquí
+                                {objetoRecibido.fecha.substring(0, 10)}
                             </Typography>
                         </Box>
-                        <Box sx={{ marginBottom: 1, display: "flex", flexDirection: 'normal', }}><Typography
+                        <Box sx={{ marginBottom: 1, display: "flex", flexDirection: 'normal', }}>
+                        <QueryBuilder></QueryBuilder>
+                            <Typography
                             sx={{
                                 fontFamily: 'Montserrat',   // Tipo de fuente
                                 fontSize: '20px',           // Tamaño de la fuente
@@ -152,7 +170,7 @@ const Confirmacion = () => {
                                     marginLeft: '4px',
                                 }}
                             >
-                                Tu texto aquí
+                                {objetoRecibido.fecha.substring(11,16)}
                             </Typography></Box>
                         <Box sx={{ marginBottom: 1 }}><Typography
                             sx={{
@@ -213,7 +231,7 @@ const Confirmacion = () => {
                                     marginLeft: '4px'
                                 }}
                             >
-                                $9999
+                                $ {objetoRecibido.precioT}
                             </Typography>
                         </Box>
 

@@ -1,48 +1,34 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
 import Rating from "@mui/material/Rating";
 
 export default function Estrellas() {
-  const [value, setValue] = React.useState(2);
+  // Estado local para controlar las estrellas
+  const [value, setValue] = React.useState(4); // Setear un valor predeterminado de 4 estrellas
 
+  // Suponiendo que tengo un valor para el tipo de usuario
+  // Aca lo simulamos, puede ser "comerciante" o "cliente"
+  const userType = "comerciante"; // Cambia a "cliente" para probar la edición
+  const isComerciante = userType === "comerciante"; // Verifica si es comerciante
+
+  // Función para manejar el cambio de calificación (solo si es cliente)
   const handleChange = (event, newValue) => {
-    setValue(newValue); // Actualiza el estado de las estrellas seleccionadas
-    console.log("Cantidad de estrellas:", newValue); // Imprime el valor en la consola
+    if (!isComerciante) {
+      setValue(newValue); // Actualiza el estado de las estrellas solo si es cliente
+      console.log("Cantidad de estrellas:", newValue); // Imprime el valor en la consola
+    }
   };
 
   return (
-    <div>
-      <Box
-        component="fieldset"
-        mb={3}
-        borderColor="transparent"
-        sx={{
-          width: "100%", // Asegura que ocupe todo el ancho disponible
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography
-          variant="h6"
-          sx={{
-            fontSize: { xs: "16px", sm: "18px", md: "20px" }, // Ajuste de tamaño de fuente
-            marginBottom: "8px",
-          }}
-        ></Typography>
-        <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={handleChange}
-          sx={{
-            fontSize: { xs: 24, sm: 30, md: 36 }, // Ajuste de tamaño de las estrellas
-          }}
-        />
-      </Box>
-    </div>
+    <Rating
+      name="simple-controlled"
+      value={value}
+      readOnly={isComerciante} // Hacer solo lectura si es comerciante
+      onChange={handleChange} // Solo cambiar si no es comerciante
+      sx={{
+        fontSize: { xs: 24, sm: 30, md: 36 }, // Ajuste de tamaño de las estrellas
+        paddingLeft: "1rem",
+        paddingRight: "1rem",
+      }}
+    />
   );
-}
-
-{
-  /* <Estrellas></Estrellas> */
 }

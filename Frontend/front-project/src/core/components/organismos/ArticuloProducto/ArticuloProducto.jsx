@@ -5,14 +5,17 @@ import { Context } from "../../../context/Context";
 import Button from "../../atomos/Button/Button";
 import ProductCard from "../../atomos/ProductCard/ProductCard";
 import { Navigate, useNavigate } from "react-router-dom";
+import CarritoRightDrawer from "../modal/CarritoRightDrawer";
 
 function ArticuloProducto() {
 
-  const { actualProduct, setMenuArticulo, allProducts, detallesComerciante, datosUsuario, agregarVenta } = useContext(Context);
+  const { actualProduct, setMenuArticulo, allProducts, allProductsComerciante, detallesComerciante, datosUsuario, agregarVenta } = useContext(Context);
   const [actualImage, setActualImage] = useState(actualProduct.img1)
   const [numberImage, setNumberImage] = useState(1)
-  const { agregarAcarrito, usuario } = useContext(Context)
+  const { agregarAcarrito, usuario ,carrito} = useContext(Context)
   const navigate = useNavigate();
+  // modal carrito
+  const [openModalCarrito, setOpenModalCarrito] = useState(false);
 
   useEffect(() => {
     setActualImage(actualProduct.img1)
@@ -47,61 +50,75 @@ function ArticuloProducto() {
     }
 
   }
+  const abrirModalCarrito = ()=>{
+    setOpenModalCarrito(true);
+  }
 
   function clickAgregarAlCarrito() {
     if (usuario === null || usuario === "comerciante") {
       alert("Debes estar logueado como cliente para agregar al carrito")
     } else {
-      agregarAcarrito(actualProduct)
-      console.log(actualProduct)
-
-
+      
+       const resultado = carrito.find(producto => producto._id === actualProduct._id);
+       console.log(resultado)
+      if(resultado===undefined){
+        agregarAcarrito(actualProduct)
+      }else{
+        alert("¡Este producto ya está en tu carrito de compras! Si deseas agregar más cantidad, por favor, ve a tu carrito y actualiza la cantidad desde allí.")
+      }
+      
+     // console.log("producto:"+actualProduct._id)
+      
     }
   }
 
   return (
     <div className={styles.ArticuloProducto}>
-      <div className={styles.panelA}>
-        <div className={styles.imgACont}>
-          <div className={styles.imagesCont}>
-            <div className={styles.carrucelImages}>
-              {actualProduct.img1 !== "" && <img src={actualProduct.img1} alt="" onClick={() => { setActualImage(actualProduct.img1); setNumberImage(1) }} style={numberImage === 1 ? { border: "1px solid rgba(0, 170, 0, 0.5)" } : { border: "1px solid rgba(0, 0, 0, 0.3)" }}></img>}
-              {actualProduct.img2 !== "" && <img src={actualProduct.img2} alt="" onClick={() => { setActualImage(actualProduct.img2); setNumberImage(2) }} style={numberImage === 2 ? { border: "1px solid rgba(0, 170, 0, 0.5)" } : { border: "1px solid rgba(0, 0, 0, 0.3)" }}></img>}
-              {actualProduct.img3 !== "" && <img src={actualProduct.img3} alt="" onClick={() => { setActualImage(actualProduct.img3); setNumberImage(3) }} style={numberImage === 3 ? { border: "1px solid rgba(0, 170, 0, 0.5)" } : { border: "1px solid rgba(0, 0, 0, 0.3)" }}></img>}
-              {actualProduct.img4 !== "" && <img src={actualProduct.img4} alt="" onClick={() => { setActualImage(actualProduct.img4); setNumberImage(4) }} style={numberImage === 4 ? { border: "1px solid rgba(0, 170, 0, 0.5)" } : { border: "1px solid rgba(0, 0, 0, 0.3)" }}></img>}
+        <div className={styles.panelA}>
+          <div className={styles.titulo2Articulo}>{actualProduct.nombre}</div>
+          <div className={styles.panelACont}>
+            <div className={styles.imgACont}>
+              <div className={styles.imagesCont}>
+                <div className={styles.carrucelImages}>
+                  {actualProduct.img1 !== "" && <img src={actualProduct.img1} alt="" onClick={() => {setActualImage(actualProduct.img1); setNumberImage(1)}} style={numberImage === 1 ? {border: "1px solid rgba(0, 170, 0, 0.5)"} : {border: "1px solid rgba(0, 0, 0, 0.3)"}}></img>}
+                  {actualProduct.img2 !== "" && <img src={actualProduct.img2} alt="" onClick={() => {setActualImage(actualProduct.img2); setNumberImage(2)}} style={numberImage === 2 ? {border: "1px solid rgba(0, 170, 0, 0.5)"} : {border: "1px solid rgba(0, 0, 0, 0.3)"}}></img>}
+                  {actualProduct.img3 !== "" && <img src={actualProduct.img3} alt="" onClick={() => {setActualImage(actualProduct.img3); setNumberImage(3)}} style={numberImage === 3 ? {border: "1px solid rgba(0, 170, 0, 0.5)"} : {border: "1px solid rgba(0, 0, 0, 0.3)"}}></img>}
+                  {actualProduct.img4 !== "" && <img src={actualProduct.img4} alt="" onClick={() => {setActualImage(actualProduct.img4); setNumberImage(4)}} style={numberImage === 4 ? {border: "1px solid rgba(0, 170, 0, 0.5)"} : {border: "1px solid rgba(0, 0, 0, 0.3)"}}></img>}
+                </div>
+                <img src={actualImage} alt="" className={styles.imagenPrincipal}/>
+              </div>                     
             </div>
-            <img src={actualImage} alt="" className={styles.imagenPrincipal} />
           </div>
-          <div className={styles.infoPanel}>
-            <p className={styles.back} onClick={() => setMenuArticulo(0)}>Volver {`>`}</p>
-            <p>{actualProduct.desc}</p>
-          </div>
+          <div className={styles.otrosArticulos}>
+            <h3>Otras ofertas del vendedor</h3>
+            <div className={styles.carrucelCont}>
 
-        </div>
-        <div className={styles.otrosArticulos}>
-          <h3>Otras Ofertas</h3>
-          <div className={styles.carrucelCont}>
             <div className={styles.carrucel}>
-              {allProducts.map((product) => (
+              {allProductsComerciante.map((product) => (
                 <ProductCard
-                  key={allProducts.indexOf(product)}
-                  nombre={product.nombre}
-                  img1={product.img1}
-                  img2={product.img2}
-                  img3={product.img3}
-                  img4={product.img4}
-                  precio={product.precio}
-                  off={product.off}
-                  categoria={product.categoria}
-                  estado={product.estado}
-                  id={product._id}
-                  desc={product.desc}
-                  comerciante={product.comerciante}
-                  vencimiento={product.vencimiento}
-                  stock={product.stock}
+                    key={allProductsComerciante.indexOf(product)}
+                    nombre={product.nombre}
+                    img1={product.img1}
+                    img2={product.img2}
+                    img3={product.img3}
+                    img4={product.img4}
+                    precio={product.precio}
+                    off={product.off}
+                    categoria={product.categoria}
+                    estado={product.estado}
+                    id={product._id}
+                    desc={product.desc}
+                    comerciante={product.comerciante}
+                    vencimiento={product.vencimiento}
+                    stock={product.stock}
+                    style={{height: "250px", width: "auto", scale: "0.8", minWidth: "160px"}}
                 ></ProductCard>
               ))}
             </div>
+          </div>
+          <div className={styles.descripcionCont}>
+            <h3>Descripción</h3>
+            <div className={styles.desc}>{actualProduct.desc}</div>
           </div>
         </div>
       </div>
@@ -135,11 +152,12 @@ function ArticuloProducto() {
             </div>
           </div>
           <div className={styles.botonCont}>
-            <Button onClick={clickAgregarAlCarrito} variante={"orange"} texto={"Comprar"}></Button>
+            <Button onClick={abrirModalCarrito} variante={"orange"} texto={"Comprar"}></Button>
             <Button onClick={clickAgregarAlCarrito} variante={"green"} texto={"Añadir al carrito"}></Button>
           </div>
         </div>
       </div>
+      <CarritoRightDrawer open={openModalCarrito} onClose={() => setOpenModalCarrito(false)} /> 
     </div>
   );
 }

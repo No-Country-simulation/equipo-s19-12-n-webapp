@@ -11,7 +11,7 @@ import usePostFetch from '../../../services/usePostFetch';
 
 const MetodosDePago = () => {
     //  const formRef = useRef(null);
-    const { vaciarVenta, vaciarCarrito, venta } = useContext(Context);
+    const { vaciarVenta, vaciarCarrito, venta,carrito } = useContext(Context);
 
     const [selectedButton, setSelectedButton] = useState(null); // Estado para el botón seleccionado
     const [numeroTarjeta, setNumeroTarjeta] = useState(0); // Estado para el mes de vencimiento
@@ -31,32 +31,43 @@ const MetodosDePago = () => {
 
     const { postData, data, loading, error } = usePostFetch('https://eaty-three.vercel.app/api/compra/agregarCompra');
     useEffect(() => {
-        if (data) {
-            console.log('Datos recibidos:', data);
-        }
-        if (error) {
-            console.log('Error:', error);
-        }
-    }, [data, error]); // Se ejecuta cuando 'data' cambie
+      if (data) {
+        console.log('Datos recibidos:', data);
+      }
+      if (error) {
+        console.log('Error:', error);
+      }
+    }, [data,error]); // Se ejecuta cuando 'data' cambie
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log(numeroTarjeta)
+       /*  console.log(numeroTarjeta)
         console.log(cuotas)
         console.log(mesVencimiento)
         console.log(anioVencimiento)
         console.log(codigoSeguridad)
         console.log(nombreApellido)
         console.log(direccion)
-        console.log(selectedButton)
-        if (selectedButton === null) {
+        console.log(selectedButton) */
+        if(selectedButton===null){
             alert("Seleccione un método de pago")
         } else {
+            console.log("carrito:"+ JSON.stringify(carrito))
             console.log("enviando:" + venta)
             await postData(venta);
+          const productos= carrito.map((producto)=>{
+                return(producto.nombre)
+            })
+            const objetoDetalles = {
+                
+                comerciante: venta.comerciante, 
+                fecha: venta.fecha,
+                precioT: venta.precioT,
+                detalle: productos,
+              };
             vaciarVenta();
             vaciarCarrito();
-            navigate("/confirmacion");
+            navigate("/confirmacion", { state: { objetoDetalles  } });
         }
 
 
@@ -64,37 +75,37 @@ const MetodosDePago = () => {
 
     return (
         <>
-//        <SearchBar></SearchBar>
-            <Box
-                sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'column',
-                }}
-            >
-                <Box sx={{ width: 500, display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
-                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 10 }}>
-                        <img
-                            src={imagenDatosPersonales}
-                            alt="proceso de compra"
-                            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-                        />
-                    </Box>
-                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 2 }}>
-                        {/* Texto a la izquierda */}
-                        <Typography
-                            variant="body1"
-                            sx={{
-                                color: '#000',
-                                textAlign: 'center',
-                                fontFamily: 'Montserrat',
-                                fontSize: '16px',
-                                fontWeight: 600,
-                            }}
-                        >
-                            Datos personales
-                        </Typography>
+//        <SearchBar></SearchBar> 
+        <Box
+            sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                flexDirection: 'column',
+            }}
+        >
+            <Box sx={{ width: 500, display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+                <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 10 }}>
+                    <img
+                        src={imagenDatosPersonales}
+                        alt="proceso de compra"
+                        style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                    />
+                </Box>
+                <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 2 }}>
+                    {/* Texto a la izquierda */}
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            color: '#000',
+                            textAlign: 'center',
+                            fontFamily: 'Montserrat',
+                            fontSize: '16px',
+                            fontWeight: 600,
+                        }}
+                    >
+                        Datos personales
+                    </Typography>
 
                         {/* Texto a la derecha */}
                         <Typography

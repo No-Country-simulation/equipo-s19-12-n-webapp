@@ -1,0 +1,13 @@
+.inputSelector{
+   margin-top: 17px;
+   width: 100%;
+   padding: 8px 0; 
+   border: none;
+   border-bottom: 2px solid #76B939;
+   font-size: 16px;
+   color: #303030;
+   outline: 0;
+}
+.inputSelector option{
+    color: #303030
+}

@@ -39,8 +39,24 @@
 
 .tab-content {
   padding: 20px;
+  width: 1200px;
 }
 
 .tab-panel {
   display: block;
+}
+
+.contenedorInputPerfil {
+  width: 30%;
+  display: flex;
+}
+
+.contenedor-padre-input {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 50px;
+}
+
+.contenedor-padre-ofertas {
+  margin-bottom: 40px;
 }

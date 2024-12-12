@@ -68,7 +68,7 @@ function Productos() {
     <div className={styles.Productos}>
         <SearchBar></SearchBar>
         <div className={styles.seccion0}>
-            {menuArticulo === 0 && <div className={styles.seccion0Cont}>
+            <div className={styles.seccion0Cont}>
                 <div className={styles.seccionFiltros}>
                     <div className={styles.grupoFiltro}>
                         <Texto texto={"Categorias"} level={"h3"} variante={"black"}></Texto>
@@ -111,16 +111,13 @@ function Productos() {
                 </div>
                 <div className={styles.seccionPaginas}>
                     <div className={styles.paginaActual}>
-                        {allProducts.map((product) => (<ProductCard key={allProducts.indexOf(product)} nombre={product.nombre} img1={product.img1} img2={product.img2} img3={product.img3} img4={product.img4} precio={product.precio} off={product.off} id={product._id} desc={product.desc} comerciante={product.comerciante} vencimiento={product.vencimiento} stock={product.stock} categoria={product.categoria} estado={product.estado}></ProductCard>))}
+                        {allProducts.map((product) => (<ProductCard style={{scale: "0.99"}} key={allProducts.indexOf(product)} nombre={product.nombre} img1={product.img1} img2={product.img2} img3={product.img3} img4={product.img4} precio={product.precio} off={product.off} id={product._id} desc={product.desc} comerciante={product.comerciante} vencimiento={product.vencimiento} stock={product.stock} categoria={product.categoria} estado={product.estado}></ProductCard>))}
                     </div>
-                    <div className={styles.navPag}>
+                    {/*<div className={styles.navPag}>
                         <Pagination></Pagination>
-                    </div>
+                    </div>*/}
                 </div>
-            </div>}
-            {menuArticulo === 1 && <div className={styles.paginaArticulo}>
-                <ArticuloProducto></ArticuloProducto>
-            </div>}
+            </div>
         </div>
     </div>
   )

@@ -11,6 +11,7 @@ import ModalSesionCliente from '../../organismos/modal/ModalSesionCliente.jsx';
 import ModalSesionComerciante from '../../organismos/modal/ModalSesionComerciante.jsx';
 import ModalRegistrarComerciante from '../../organismos/modal/ModalRegistrarComerciante.jsx';
 import { Context } from '../../../context/Context.jsx';
+import { useNavigate } from 'react-router-dom';
 
 // Opciones del selector en caso de no haber sesión iniciada
 const opciones = [
@@ -39,7 +40,8 @@ const Navbar = () => {
     const [openSesionComerciante, setOpenSesionComerciante] = useState(false);
     const [openRegistrarComerciante, setOpenRegistrarComerciante] = useState(false);
 
-    const { usuario, cerrarSesion } = useContext(Context); // Contexto
+    const { usuario, cerrarSesion ,vaciarCarrito,vaciarVenta} = useContext(Context); // Contexto
+    const navigate = useNavigate();
     
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget); // Abre el menú hamburguesa
@@ -73,6 +75,9 @@ const Navbar = () => {
             setAnchorElUser(null);
         } else if (opcion === "cerrar sesion") {
             cerrarSesion();
+            vaciarCarrito();
+            vaciarVenta();
+            navigate('/');
  //           setAnchorElUser(null);
         } else if (opcion === "vender producto") {
             console.log("vender producto");

@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "../inputImg/PreviewImg.module.css"
 import Button from '../Button/Button'
 
-function PreviewImg({url}) {
+function PreviewImg({url, evento}) {
   return (
     <div className={styles.Preview}>
         <div className={styles.pImg} style={{backgroundImage: `url("${url}")`}}></div>
