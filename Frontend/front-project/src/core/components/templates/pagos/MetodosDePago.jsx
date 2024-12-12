@@ -11,7 +11,7 @@ import usePostFetch from '../../../services/usePostFetch';
 
 const MetodosDePago = () => {
     //  const formRef = useRef(null);
-    const { vaciarVenta, vaciarCarrito, venta,carrito } = useContext(Context);
+    const { vaciarVenta, vaciarCarrito, venta, carrito } = useContext(Context);
 
     const [selectedButton, setSelectedButton] = useState(null); // Estado para el botón seleccionado
     const [numeroTarjeta, setNumeroTarjeta] = useState(0); // Estado para el mes de vencimiento
@@ -31,43 +31,43 @@ const MetodosDePago = () => {
 
     const { postData, data, loading, error } = usePostFetch('https://eaty-three.vercel.app/api/compra/agregarCompra');
     useEffect(() => {
-      if (data) {
-        console.log('Datos recibidos:', data);
-      }
-      if (error) {
-        console.log('Error:', error);
-      }
-    }, [data,error]); // Se ejecuta cuando 'data' cambie
+        if (data) {
+            console.log('Datos recibidos:', data);
+        }
+        if (error) {
+            console.log('Error:', error);
+        }
+    }, [data, error]); // Se ejecuta cuando 'data' cambie
 
     async function handleSubmit(e) {
         e.preventDefault();
-       /*  console.log(numeroTarjeta)
-        console.log(cuotas)
-        console.log(mesVencimiento)
-        console.log(anioVencimiento)
-        console.log(codigoSeguridad)
-        console.log(nombreApellido)
-        console.log(direccion)
-        console.log(selectedButton) */
-        if(selectedButton===null){
+        /*  console.log(numeroTarjeta)
+         console.log(cuotas)
+         console.log(mesVencimiento)
+         console.log(anioVencimiento)
+         console.log(codigoSeguridad)
+         console.log(nombreApellido)
+         console.log(direccion)
+         console.log(selectedButton) */
+        if (selectedButton === null) {
             alert("Seleccione un método de pago")
         } else {
-            console.log("carrito:"+ JSON.stringify(carrito))
+            console.log("carrito:" + JSON.stringify(carrito))
             console.log("enviando:" + venta)
             await postData(venta);
-          const productos= carrito.map((producto)=>{
-                return(producto.nombre)
+            const productos = carrito.map((producto) => {
+                return (producto.nombre)
             })
             const objetoDetalles = {
-                
-                comerciante: venta.comerciante, 
+
+                comerciante: venta.comerciante,
                 fecha: venta.fecha,
                 precioT: venta.precioT,
                 detalle: productos,
-              };
+            };
             vaciarVenta();
             vaciarCarrito();
-            navigate("/confirmacion", { state: { objetoDetalles  } });
+            navigate("/confirmacion", { state: { objetoDetalles } });
         }
 
 
@@ -75,37 +75,37 @@ const MetodosDePago = () => {
 
     return (
         <>
-//        <SearchBar></SearchBar> 
-        <Box
-            sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                flexDirection: 'column',
-            }}
-        >
-            <Box sx={{ width: 500, display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
-                <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 10 }}>
-                    <img
-                        src={imagenDatosPersonales}
-                        alt="proceso de compra"
-                        style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
-                    />
-                </Box>
-                <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 2 }}>
-                    {/* Texto a la izquierda */}
-                    <Typography
-                        variant="body1"
-                        sx={{
-                            color: '#000',
-                            textAlign: 'center',
-                            fontFamily: 'Montserrat',
-                            fontSize: '16px',
-                            fontWeight: 600,
-                        }}
-                    >
-                        Datos personales
-                    </Typography>
+//        <SearchBar></SearchBar>
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexDirection: 'column',
+                }}
+            >
+                <Box sx={{ width: 500, display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 10 }}>
+                        <img
+                            src={imagenDatosPersonales}
+                            alt="proceso de compra"
+                            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                        />
+                    </Box>
+                    <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 2 }}>
+                        {/* Texto a la izquierda */}
+                        <Typography
+                            variant="body1"
+                            sx={{
+                                color: '#000',
+                                textAlign: 'center',
+                                fontFamily: 'Montserrat',
+                                fontSize: '16px',
+                                fontWeight: 600,
+                            }}
+                        >
+                            Datos personales
+                        </Typography>
 
                         {/* Texto a la derecha */}
                         <Typography
@@ -123,7 +123,7 @@ const MetodosDePago = () => {
                     </Box>
                 </Box>
 
-                <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 3 }}>
+                <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start',ml:35, marginBottom: 3 }}>
                     <Typography
                         variant="body1"
                         sx={{
@@ -139,7 +139,7 @@ const MetodosDePago = () => {
                     </Typography>
                 </Box>
 
-                <Card sx={{ width: '1142px', height: '900px', mb: 15, borderRadius: '20px', background: '#FAFAFA', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}>
+                <Card sx={{ width: '1142px', height: '800px', mb: 15, borderRadius: '20px', background: '#FAFAFA', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}>
                     {/* Botones centrados*/}
                     <Box sx={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: 4 }}> {/* Cambié aquí el marginTop */}
                         {/* Botón 1 - Tarjeta de Débito */}
@@ -185,233 +185,247 @@ const MetodosDePago = () => {
                         </Button>
                     </Box>
 
-                    {/* Formulario */}
-                    <form onSubmit={handleSubmit}>
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
-                            {/* Campo de número de tarjeta */}
-                            <Box sx={{ width: '48%' }}>
-                                <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
-                                    Número
-                                </Typography>
-                                <TextField
-                                    label="Ingresa tu número de tarjeta"
-                                    name="numeroTarjeta"
-                                    type="number"
-                                    fullWidth
-                                    margin="normal"
-                                    required
-                                    value={numeroTarjeta}
-                                    onChange={(e) => setNumeroTarjeta(e.target.value)}
-                                    sx={{
-                                        '& .MuiOutlinedInput-root': {
-                                            border: 'none',
-                                            '& fieldset': {
-                                                border: 'none',
-                                            },
-                                        },
-                                        '& .MuiInputBase-root': {
-                                            borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
-                                        },
-                                    }}
-                                />
-                            </Box>
+                    <Box sx={{
+                        width: '850px',
+                        height: '590px',
+                        display: 'flex',
+                        flexDirection: 'column',  // Asegura que los elementos se apilen verticalmente
+                        justifyContent: 'center',  // Centra los elementos verticalmente
+                        alignItems: 'center',  // Centra los elementos horizontalmente
+                        ml:'auto',
+                        mr:'auto',
+                        padding: 2, // Agrega algo de padding para un mejor espaciado
+                    }}>
 
-                            {/* Campo de cuotas */}
-                            <Box sx={{ width: '48%' }}>
-                                <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
-                                    Cuotas
-                                </Typography>
-                                <TextField
-                                    label="cuotas"
-                                    name="cuotas"
-                                    type="text"
-                                    fullWidth
-                                    margin="normal"
-                                    required
-                                    value={cuotas}
-                                    onChange={(e) => setCuotas(e.target.value)}
-                                    sx={{
-                                        '& .MuiOutlinedInput-root': {
-                                            border: 'none',
-                                            '& fieldset': {
+                        {/* Formulario */}
+                        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+                            <Box sx={{ display: 'flex',width:650, justifyContent: 'space-between', gap: 2 ,alignItems: 'flex-start', }}>
+                                {/* Campo de número de tarjeta */}
+                                <Box sx={{ width: '50%' }}>
+                                    <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
+                                        Número
+                                    </Typography>
+                                    <TextField
+                                        label="Ingresa tu número de tarjeta"
+                                        name="numeroTarjeta"
+                                        type="number"
+                                        fullWidth
+                                        margin="normal"
+                                        required
+                                        value={numeroTarjeta}
+                                        onChange={(e) => setNumeroTarjeta(e.target.value)}
+                                        sx={{
+                                            '& .MuiOutlinedInput-root': {
                                                 border: 'none',
+                                                '& fieldset': {
+                                                    border: 'none',
+                                                },
                                             },
-                                        },
-                                        '& .MuiInputBase-root': {
-                                            borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
-                                        },
-                                    }}
-                                />
-                            </Box>
-                        </Box>
+                                            '& .MuiInputBase-root': {
+                                                borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
+                                            },
+                                        }}
+                                    />
+                                </Box>
 
-                        {/* Campo Fecha de Vencimiento */}
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2, marginTop: 2 }}>
-                            <Box sx={{ width: '48%' }}>
-                                <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
-                                    Fecha de Vencimiento
-                                </Typography>
-                                <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
-                                    <FormControl fullWidth required sx={{
-                                        mt: 2,
-                                        '& .MuiOutlinedInput-root': {
-                                            border: 'none',
-                                            '& fieldset': {
+                                {/* Campo de cuotas */}
+                                <Box sx={{ width: '48%' }}>
+                                    <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
+                                        Cuotas
+                                    </Typography>
+                                    <TextField
+                                        label="Cuotas"
+                                        name="cuotas"
+                                        type="text"
+                                        fullWidth
+                                        margin="normal"
+                                        required
+                                        value={cuotas}
+                                        onChange={(e) => setCuotas(e.target.value)}
+                                        sx={{
+                                            '& .MuiOutlinedInput-root': {
                                                 border: 'none',
+                                                '& fieldset': {
+                                                    border: 'none',
+                                                },
                                             },
-                                        },
-                                        '& .MuiInputBase-root': {
-                                            borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
-                                        },
-                                    }}>
-                                        <InputLabel>Mes</InputLabel>
-                                        <Select
-                                            value={mesVencimiento}
-                                            onChange={(e) => setMesVencimiento(e.target.value)}
-                                            label="Mes"
-                                        >
-                                            {[...Array(12).keys()].map((index) => (
-                                                <MenuItem key={index} value={index + 1}>
-                                                    {index + 1}
-                                                </MenuItem>
-                                            ))}
-                                        </Select>
-                                    </FormControl>
-                                    <FormControl fullWidth required sx={{
-                                        mt: 2,
-                                        '& .MuiOutlinedInput-root': {
-                                            border: 'none',
-                                            '& fieldset': {
-                                                border: 'none',
+                                            '& .MuiInputBase-root': {
+                                                borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
                                             },
-                                        },
-                                        '& .MuiInputBase-root': {
-                                            borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
-                                        },
-                                    }}>
-                                        <InputLabel>Año</InputLabel>
-                                        <Select
-                                            value={anioVencimiento}
-                                            onChange={(e) => setAnioVencimiento(e.target.value)}
-                                            label="Año"
-                                        >
-                                            {[...Array(20).keys()].map((index) => (
-                                                <MenuItem key={index} value={2024 + index}>
-                                                    {2024 + index}
-                                                </MenuItem>
-                                            ))}
-                                        </Select>
-                                    </FormControl>
+                                        }}
+                                    />
                                 </Box>
                             </Box>
 
-                            {/* Campo Código de Seguridad */}
-                            <Box sx={{ width: '48%' }}>
-                                <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
-                                    Código de Seguridad
-                                </Typography>
-                                <TextField
-                                    label="Ingresa el código"
-                                    name="codigoSeguridad"
-                                    type="number"
-                                    fullWidth
-                                    margin="normal"
-                                    value={codigoSeguridad}
-                                    onChange={(e) => setCodigoSeguridad(e.target.value)}
-                                    required
-                                    sx={{
-                                        '& .MuiOutlinedInput-root': {
-                                            border: 'none',
-                                            '& fieldset': {
+                            {/* Campo Fecha de Vencimiento */}
+                            <Box sx={{ display: 'flex',width:650, justifyContent: 'space-between', gap: 2,  }}>
+                                <Box sx={{ width: '48%' }}>
+                                    <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
+                                        Fecha de Vencimiento
+                                    </Typography>
+                                    <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2 }}>
+                                        <FormControl fullWidth required sx={{
+                                            mt: 2,
+                                            '& .MuiOutlinedInput-root': {
                                                 border: 'none',
+                                                '& fieldset': {
+                                                    border: 'none',
+                                                },
                                             },
-                                        },
-                                        '& .MuiInputBase-root': {
-                                            borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
-                                        },
-                                    }}
-                                />
-                            </Box>
-                        </Box>
-
-                        {/* Campo Nombre y Apellido + Dirección */}
-                        <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 2, marginTop: 2 }}>
-                            <Box sx={{ width: '48%' }}>
-                                <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
-                                    Nombre y Apellido
-                                </Typography>
-                                <TextField
-                                    label="Ingresa tu nombre y apellido"
-                                    name="nombreApellido"
-                                    type="text"
-                                    fullWidth
-                                    margin="normal"
-                                    value={nombreApellido}
-                                    onChange={(e) => setNombreApellido(e.target.value)}
-                                    required
-                                    sx={{
-                                        '& .MuiOutlinedInput-root': {
-                                            border: 'none',
-                                            '& fieldset': {
+                                            '& .MuiInputBase-root': {
+                                                borderBottom: '2px solid #909090',
+                                            },
+                                        }}>
+                                            <InputLabel>Mes</InputLabel>
+                                            <Select
+                                                value={mesVencimiento}
+                                                onChange={(e) => setMesVencimiento(e.target.value)}
+                                                label="Mes"
+                                            >
+                                                {[...Array(12).keys()].map((index) => (
+                                                    <MenuItem key={index} value={index + 1}>
+                                                        {index + 1}
+                                                    </MenuItem>
+                                                ))}
+                                            </Select>
+                                        </FormControl>
+                                        <FormControl fullWidth required sx={{
+                                            mt: 2,
+                                            '& .MuiOutlinedInput-root': {
                                                 border: 'none',
+                                                '& fieldset': {
+                                                    border: 'none',
+                                                },
                                             },
-                                        },
-                                        '& .MuiInputBase-root': {
-                                            borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
-                                        },
-                                    }}
-                                />
-                            </Box>
+                                            '& .MuiInputBase-root': {
+                                                borderBottom: '2px solid #909090',
+                                            },
+                                        }}>
+                                            <InputLabel>Año</InputLabel>
+                                            <Select
+                                                value={anioVencimiento}
+                                                onChange={(e) => setAnioVencimiento(e.target.value)}
+                                                label="Año"
+                                            >
+                                                {[...Array(20).keys()].map((index) => (
+                                                    <MenuItem key={index} value={2024 + index}>
+                                                        {2024 + index}
+                                                    </MenuItem>
+                                                ))}
+                                            </Select>
+                                        </FormControl>
+                                    </Box>
+                                </Box>
 
-                            <Box sx={{ width: '48%' }}>
-                                <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
-                                    Dirección
-                                </Typography>
-                                <TextField
-                                    label="Ingresa tu dirección"
-                                    name="direccion"
-                                    type="text"
-                                    fullWidth
-                                    margin="normal"
-                                    value={direccion}
-                                    onChange={(e) => setDireccion(e.target.value)}
-                                    required
-                                    sx={{
-                                        '& .MuiOutlinedInput-root': {
-                                            border: 'none',
-                                            '& fieldset': {
+                                {/* Campo Código de Seguridad */}
+                                <Box sx={{ width: '48%' }}>
+                                    <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
+                                        Código de Seguridad
+                                    </Typography>
+                                    <TextField
+                                        label="Ingresa el código"
+                                        name="codigoSeguridad"
+                                        type="number"
+                                        fullWidth
+                                        margin="normal"
+                                        value={codigoSeguridad}
+                                        onChange={(e) => setCodigoSeguridad(e.target.value)}
+                                        required
+                                        sx={{
+                                            '& .MuiOutlinedInput-root': {
                                                 border: 'none',
+                                                '& fieldset': {
+                                                    border: 'none',
+                                                },
                                             },
-                                        },
-                                        '& .MuiInputBase-root': {
-                                            borderBottom: '2px solid #909090', // Cambia el borde inferior al color #909090
-                                        },
-                                    }}
-                                />
+                                            '& .MuiInputBase-root': {
+                                                borderBottom: '2px solid #909090',
+                                            },
+                                        }}
+                                    />
+                                </Box>
                             </Box>
-                        </Box>
 
-                        {/* Botón Final */}
-                        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 10 }}>
-                            <Button
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                sx={{
-                                    width: '80%',
-                                    height: 30,
-                                    fontSize: '16px',
-                                    backgroundColor: '#F87C01',
-                                    textTransform: 'none',
-                                    '&:hover': { backgroundColor: '#F87C01' },
-                                    marginTop: 2,
-                                    marginBottom: 3,
-                                }}
-                            >
-                                Finaliza compra
-                            </Button>
-                        </Box>
-                    </form>
+                            {/* Campo Nombre y Apellido + Dirección */}
+                            <Box sx={{ display: 'flex', width:650,justifyContent: 'space-between', gap: 2, marginTop: 2 }}>
+                                <Box sx={{ width: '48%' }}>
+                                    <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
+                                        Nombre y Apellido
+                                    </Typography>
+                                    <TextField
+                                        label="Ingresa tu nombre y apellido"
+                                        name="nombreApellido"
+                                        type="text"
+                                        fullWidth
+                                        margin="normal"
+                                        value={nombreApellido}
+                                        onChange={(e) => setNombreApellido(e.target.value)}
+                                        required
+                                        sx={{
+                                            '& .MuiOutlinedInput-root': {
+                                                border: 'none',
+                                                '& fieldset': {
+                                                    border: 'none',
+                                                },
+                                            },
+                                            '& .MuiInputBase-root': {
+                                                borderBottom: '2px solid #909090',
+                                            },
+                                        }}
+                                    />
+                                </Box>
+
+                                <Box sx={{ width: '48%' }}>
+                                    <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
+                                        Dirección
+                                    </Typography>
+                                    <TextField
+                                        label="Ingresa tu dirección"
+                                        name="direccion"
+                                        type="text"
+                                        fullWidth
+                                        margin="normal"
+                                        value={direccion}
+                                        onChange={(e) => setDireccion(e.target.value)}
+                                        required
+                                        sx={{
+                                            '& .MuiOutlinedInput-root': {
+                                                border: 'none',
+                                                '& fieldset': {
+                                                    border: 'none',
+                                                },
+                                            },
+                                            '& .MuiInputBase-root': {
+                                                borderBottom: '2px solid #909090',
+                                            },
+                                        }}
+                                    />
+                                </Box>
+                            </Box>
+
+                            {/* Botón Final */}
+                            <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 2 }}>
+                                <Button
+                                    type="submit"
+                                    variant="contained"
+                                    color="primary"
+                                    sx={{
+                                        width:650,
+                                        height: 30,
+                                        fontSize: '16px',
+                                        backgroundColor: '#F87C01',
+                                        textTransform: 'none',
+                                        '&:hover': { backgroundColor: '#F87C01' },
+                                        marginTop: 2,
+                                        marginBottom: 3,
+                                    }}
+                                >
+                                    Finaliza compra
+                                </Button>
+                            </Box>
+                        </form>
+                    </Box>
+
                 </Card>
             </Box>
         </>);

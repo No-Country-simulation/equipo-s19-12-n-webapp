@@ -119,7 +119,7 @@ const DatosPersonales = () => {
 
         {/* box del formulario */}
         <Box sx={{
-          width: '750px',
+          width: '850px',
           height: '390px',
           display: 'flex',
           flexDirection: 'normal',   // Asegura que los elementos se apilen verticalmente
