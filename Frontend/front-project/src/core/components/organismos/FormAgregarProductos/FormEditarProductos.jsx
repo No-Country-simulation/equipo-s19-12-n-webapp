@@ -6,6 +6,7 @@ import InputTit from "../../moleculas/InputTit/InputTit";
 import Boton from '../../atomos/Button/Button'
 import './style.css'
 import { Context } from '../../../context/Context';
+import Modal from '../modal/ModalEditarProducto'
 
 
 const FormEditarProductos = () => {
@@ -90,7 +91,10 @@ const FormEditarProductos = () => {
 
       const handleChange = (key, value) => {
         setFormData((prev) => ({ ...prev, [key]: value }));
-      };    
+      };
+
+      const { setPanelPerfil } = useContext(Context);
+      const [isModalVisible, setModalVisible] = useState(false);
 
       const handleSubmit = async (e) => {
         e.preventDefault();
@@ -98,7 +102,6 @@ const FormEditarProductos = () => {
         try {
           const response = await fetch(`https://eaty-three.vercel.app/api/productos/${actualProduct._id}`, {
             method: "PUT",
-
             body: JSON.stringify({
               ...formData,
               img1: formData.img[0],
@@ -113,110 +116,127 @@ const FormEditarProductos = () => {
           });
 
           console.log("Datos enviados:", formData);
-    
 
+          if (response.ok) {
+            setModalVisible(true);
+          } else {
+            setError("Ocurrió un error al enviar los datos.");
+          }
+    
         } catch (err) {
           console.error("Error al agregar producto:", err);
           setError("Ocurrió un error al enviar los datos.");
         }
       };
+      
+      const handleAccept = () => {
+        setPanelPerfil(0);
+      };
 
     return (
+      <>
+        <form onSubmit={handleSubmit}>
+          <Texto level="h2" texto="Editar producto" />
+          <AgregarImg
+            evento1={(img) => handleChange("img", [img, formData.img[1], formData.img[2], formData.img[3]])}
+            evento2={(img) => handleChange("img", [formData.img[0], img, formData.img[2], formData.img[3]])}
+            evento3={(img) => handleChange("img", [formData.img[0], formData.img[1], img, formData.img[3]])}
+            evento4={(img) => handleChange("img", [formData.img[0], formData.img[1], formData.img[2], img])}
+            estado1={formData.img[0]}
+            estado2={formData.img[1]}
+            estado3={formData.img[2]}
+            estado4={formData.img[3]}
+          />
+          <div className="seccion">
+            <InputTit
+              titulo="Nombre del producto"
+              modo="input"
+              type="text"
+              placeholder={formData.nombre}
+              value={formData.nombre}
+              evento={(value) => handleChange("nombre", value)}
+            />
+            <InputTit
+              titulo="Precio"
+              modo="input"
+              type="number"
+              placeholder={formData.precio}
+              value={formData.precio}
+              evento={(value) => handleChange("precio", value)}
+            />
+            <InputTit
+              titulo="Descuento"
+              modo="selector"
+              placeholder={formData.off}
+              categorias={["20% OFF", "30% OFF", "40% OFF", "50% OFF", "60% OFF", "70% OFF"]}
+              value={formData.off}
+              evento={(value) => handleChange("off", value)}
+            />
+            <InputTit
+              titulo="Stock"
+              modo="input"
+              type="number"
+              placeholder={formData.stock}
+              value={formData.stock}
+              evento={(value) => handleChange("stock", value)}
+            />
+          </div>
+          <Texto level="h2" texto="Detalle de alimento" />
+          <div className="seccion">
+            <InputTit
+              titulo="Categoría"
+              modo="selector"
+              placeholder={formData.categoria}
+              categorias={[
+                "Frutas y Verduras",
+                "Carnes y Pescados",
+                "Lácteos",
+                "Panadería y Pastelería",
+                "Snacks y Golosinas",
+                "Bebidas",
+                "Alimentos no perecederos",
+                "Otros",
+              ]}
+              value={formData.categoria}
+              evento={(value) => handleChange("categoria", value)}
+            />
+            <InputTit
+              titulo="Estado del producto"
+              modo="selector"
+              placeholder={formData.estado}
+              categorias={[
+                "Próximo consumo recomendado",
+                "Exceso de inventario",
+                "Defecto de empaque",
+                "Producto reempacado",
+              ]}
+              value={formData.estado}
+              evento={(value) => handleChange("estado", value)}
+            />
+            <InputTit
+              titulo="Fecha de vencimiento"
+              modo="input"
+              type="date"
+              placeholder={formData.vencimiento}
+              value={formData.vencimiento}
+              evento={(value) => handleChange("vencimiento", value)}
+            />
+          </div>
 
-      <form onSubmit={handleSubmit}>
-        <Texto level="h2" texto="Editar producto" />
-        <AgregarImg
-          evento1={(img) => handleChange("img", [img, formData.img[1], formData.img[2], formData.img[3]])}
-          evento2={(img) => handleChange("img", [formData.img[0], img, formData.img[2], formData.img[3]])}
-          evento3={(img) => handleChange("img", [formData.img[0], formData.img[1], img, formData.img[3]])}
-          evento4={(img) => handleChange("img", [formData.img[0], formData.img[1], formData.img[2], img])}
-          estado1={formData.img[0]}
-          estado2={formData.img[1]}
-          estado3={formData.img[2]}
-          estado4={formData.img[3]}
-        />
-        <div className="seccion">
-          <InputTit
-            titulo="Nombre del producto"
-            modo="input"
-            type="text"
-            placeholder={formData.nombre}
-            value={formData.nombre}
-            evento={(value) => handleChange("nombre", value)}
-          />
-          <InputTit
-            titulo="Precio"
-            modo="input"
-            type="number"
-            placeholder={formData.precio}
-            value={formData.precio}
-            evento={(value) => handleChange("precio", value)}
-          />
-          <InputTit
-            titulo="Descuento"
-            modo="selector"
-            placeholder={formData.off}
-            categorias={["20% OFF", "30% OFF", "40% OFF", "50% OFF", "60% OFF", "70% OFF"]}
-            value={formData.off}
-            evento={(value) => handleChange("off", value)}
-          />
-          <InputTit
-            titulo="Stock"
-            modo="input"
-            type="number"
-            placeholder={formData.stock}
-            value={formData.stock}
-            evento={(value) => handleChange("stock", value)}
-          />
-        </div>
-        <Texto level="h2" texto="Detalle de alimento" />
-        <div className="seccion">
-          <InputTit
-            titulo="Categoría"
-            modo="selector"
-            placeholder={formData.categoria}
-            categorias={[
-              "Frutas y Verduras",
-              "Carnes y Pescados",
-              "Lácteos",
-              "Panadería y Pastelería",
-              "Snacks y Golosinas",
-              "Bebidas",
-              "Alimentos no perecederos",
-              "Otros",
-            ]}
-            value={formData.categoria}
-            evento={(value) => handleChange("categoria", value)}
-          />
-          <InputTit
-            titulo="Estado del producto"
-            modo="selector"
-            placeholder={formData.estado}
-            categorias={[
-              "Próximo consumo recomendado",
-              "Exceso de inventario",
-              "Defecto de empaque",
-              "Producto reempacado",
-            ]}
-            value={formData.estado}
-            evento={(value) => handleChange("estado", value)}
-          />
-          <InputTit
-            titulo="Fecha de vencimiento"
-            modo="input"
-            type="date"
-            placeholder={formData.vencimiento}
-            value={formData.vencimiento}
-            evento={(value) => handleChange("vencimiento", value)}
-          />
-        </div>
+          {error && <p className="error">{error}</p>}
+          <div className="botones">
+            <Boton texto="Guardar cambios" variante="orange" onClick={handleSubmit} />
+            <Boton texto="Cancelar" variante="green" onClick={() => setFormData({ ...formData, img: ["", "", "", ""] })} />
+          </div>
+        </form>
 
-        {error && <p className="error">{error}</p>}
-        <div className="botones">
-          <Boton texto="Guardar cambios" variante="orange" onClick={handleSubmit} />
-          <Boton texto="Cancelar" variante="green" onClick={() => setFormData({ ...formData, img: ["", "", "", ""] })} />
-        </div>
-    </form>
+        {isModalVisible && (
+          <Modal
+            onClose={() => setModalVisible(false)}
+            onAccept={handleAccept}
+          />
+        )}
+      </>
     )
 }
 
