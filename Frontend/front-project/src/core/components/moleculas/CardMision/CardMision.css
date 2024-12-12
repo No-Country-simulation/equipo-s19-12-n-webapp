@@ -1,11 +1,46 @@
 .card-mision-container {
   width: 400px;
-  height: 200px;
-  background: rgb(156, 230, 137);
+  height: auto;
   background: linear-gradient(
     0deg,
-    rgba(156, 230, 137, 0.23301820728291311) 0%,
-    rgba(108, 198, 63, 0.4543067226890757) 100%
+    rgba(156, 230, 137, 0.233) 0%,
+    rgba(108, 198, 63, 0.454) 100%
   );
   border-radius: 25px;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-mision-icon {
+  width: 65px;
+  height: 65px;
+  margin-top: -120px;
+}
+
+.contenedor-img-card-mision h3 {
+  font-family: "Montserrat";
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29.26px;
+  text-align: center;
+  text-decoration-skip-ink: none;
+  height: 1px;
+}
+
+.contenedor-img-card-mision p {
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19.5px;
+  text-align: center;
+  text-decoration-skip-ink: none;
+}
+
+.contenedor-titulo-y-parrafo {
+  height: 200px;
+  outline: 1px solid orange;
 }
