@@ -23,8 +23,9 @@ const Confirmacion = () => {
                     display: 'flex', // Usa flexbox para alinear elementos horizontalmente
                     justifyContent: 'center', // Centra el contenido en el eje horizontal
                     alignItems: 'center', // Centra el contenido en el eje vertical
-                    height: '100vh', // Hace que el componente ocupe todo el alto de la pantalla
+                    height: '80vh', // Hace que el componente ocupe todo el alto de la pantalla
                     width: '100%', // Asegura que ocupe todo el ancho de la pantalla
+                    scale: 0.8,
                 }}
             >
                 {/* Contenedor para el contenido (Box principal) */}

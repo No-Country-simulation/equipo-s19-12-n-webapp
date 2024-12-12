@@ -121,11 +121,13 @@ const DatosPersonales = () => {
 
         {/* box del formulario */}
         <Box sx={{
-          width: '80%',
-          height: 'auto',
-          display: 'flex',  // Asegura que los elementos se apilen verticalmente
+          width: '850px',
+          height: '390px',
+          display: 'flex',
+          flexDirection: 'normal',   // Asegura que los elementos se apilen verticalmente
           justifyContent: 'flex-start',  // Alinea los elementos al principio del eje vertical (arriba)
-          alignItems: 'flex-start',      // Alinea los elementos al principio del eje horizontal (izquierda)
+          alignItems: 'flex-start', 
+          scale: 0.8,     // Alinea los elementos al principio del eje horizontal (izquierda)
         }}>
           {/* Formulario */}
           <form ref={formRef} onSubmit={handleSubmit}>
