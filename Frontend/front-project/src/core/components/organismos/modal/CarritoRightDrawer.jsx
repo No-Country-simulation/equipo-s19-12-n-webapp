@@ -93,8 +93,8 @@ export default function CarritoRightDrawer({ open, onClose }) {
     >
       <Box
         sx={{
-          width: 450,
-          padding: 2,
+          width: {xs: 300, md: 450, lg: 450},
+          padding: 4,
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
@@ -124,11 +124,11 @@ export default function CarritoRightDrawer({ open, onClose }) {
 
         </Box>
         {carrito.length !== 0 ? (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', height: 70}} style={{borderTop: "1px solid rgba(0, 0, 0, 0.2)", borderBottom: "1px solid rgba(0, 0, 0, 0.2)"}}>
           <img
             src={detallesComerciante.logo} // Coloca la URL de la imagen aquí
             alt="Imagen del comerciante"
-            style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: '50%' }} // Ajusta el tamaño y estilo de la imagen
+            style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: '50%', marginLeft:10 }} // Ajusta el tamaño y estilo de la imagen
           />
           <Typography
             variant="body1"
@@ -146,12 +146,12 @@ export default function CarritoRightDrawer({ open, onClose }) {
           </Typography>
         </Box>):null}
 
-        <Divider sx={{ borderColor: 'black', borderWidth: 1 }} />
+        {/*<Divider style={{border: "1px solid rgba(0, 0, 0, 0.2)"}} />*/}
 
         {/* Contenido del Drawer */}
         <Box sx={{ flexGrow: 1, overflowY: 'auto', textAlign: 'center' }}>
           {carrito.length === 0 ? (
-            <Box sx={{ mt: 20 }}>
+            <Box sx={{ mt: {xs: 10, md: 20, lg: 20} }}>
               <img
                 src={imagenCarritoVacio}
                 alt="Carrito vacío"
@@ -159,26 +159,26 @@ export default function CarritoRightDrawer({ open, onClose }) {
               />
             </Box>
           ) : (
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 1 }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 1, marginTop: 4}}>
               {carrito.map((producto) => {
                 const cantidad = cantidadProductos[producto._id] || 1;
                 return (
                   <Card key={producto._id} sx={{
                     width: 500, height: 102, display: 'flex', alignItems: 'center', boxShadow: 'none',
-                    border: 'none',
+                    border: 'none', justifyContent: "space-evenly"
                   }}>
                     <CardMedia
                       component="img"
-                      sx={{ width: 106, height: 102 }}
+                      sx={{ width: "auto", height: {xs: "50%", md: "100%", lg: "100%"} }}
                       image={producto.img1}
                       alt={producto.nombre}
                     />
-                    <CardContent sx={{ flex: 1 }}>
+                    <CardContent sx={{ display: "flex", height: "100%", gap: "1vh", justifyContent: "center", flexDirection:"column", alignItems: "center"}}>
                       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <Typography variant="h6" sx={{
                           textAlign: 'center',
                           fontFamily: 'Montserrat',
-                          fontSize: '16px',
+                          fontSize: {xs: "0.8rem", md: "16px", lg: "16px"},
                           fontWeight: 500,
                         }}>
                           {producto.nombre}
@@ -239,9 +239,6 @@ export default function CarritoRightDrawer({ open, onClose }) {
                       <Typography variant="body1" color="text.primary" sx={{ color: "#76B939" }}>
                         ${producto.precio}
                       </Typography>
-                      <Typography variant="body1" color="text.primary" sx={{ textDecoration: 'line-through' }}>
-                        ${parseInt(producto.precio) * 1.5}
-                      </Typography>
                     </Box>
                   </Card>
                 );
@@ -253,46 +250,52 @@ export default function CarritoRightDrawer({ open, onClose }) {
         {/* Subtotal, delivery, total */}
         {carrito.length > 0 && (
           <Box sx={{
-            width: 420,
-            height: 258,
-            border: '1px solid #000',
-            padding: 2,
+            width: {xs:"100%", md: "100%", lg: "100%"},
+            height: "auto",
+            padding: 0,
             display: 'flex',
             flexDirection: 'column',
-            borderTop: '2px solid rgba(0, 0, 0, 0.3)',  // Borde superior gris
+            justifyContent: "flex-end",
+            alignItems: "center",
+            borderTop: '1px solid rgba(0, 0, 0, 0.3)',  // Borde superior gris
             borderLeft: 'none',  // Sin borde izquierdo
             borderRight: 'none',  // Sin borde derecho
             borderBottom: 'none',  // Sin borde inferior
           }}>
             <Box sx={{
               display: 'flex',
+              width: "100%",
+              height: {xs: "4vh", md: "6vh", lg: "6vh"},
               justifyContent: 'space-between',
               alignItems: 'center',
               fontWeight: 500,
-              marginBottom: 2,
               borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
             }}>
-              <Typography variant="h6">Subtotal</Typography>
-              <Typography variant="h6">${subtotal}</Typography>
+              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>Subtotal</Typography>
+              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>${subtotal}</Typography>
             </Box>
             <Box sx={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginBottom: 2,
+              width: "100%",
+              height: {xs: "4vh", md: "6vh", lg: "6vh"},
               borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
             }}>
-              <Typography variant="h6">Delivery</Typography>
-              <Typography variant="h6">${0}</Typography>
+              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>Delivery</Typography>
+              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>${0}</Typography>
             </Box>
             <Box sx={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              marginBottom: 2,
+              width: "100%",
+              height: {xs: "4vh", md: "6vh", lg: "6vh"},
+              borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
+              marginBottom: 6,
             }}>
-              <Typography variant="h6">Total</Typography>
-              <Typography variant="h6">${subtotal}</Typography>
+              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>Total</Typography>
+              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>${subtotal}</Typography>
             </Box>
 
             <Box sx={{
@@ -308,7 +311,7 @@ export default function CarritoRightDrawer({ open, onClose }) {
                 onClick={botonIrApagar}
                 sx={{
                   width: '80%',
-                  height: 50,
+                  height: 40,
                   fontSize: '16px',
                   backgroundColor: "#F87C01",
                   textTransform: 'none',

@@ -3,9 +3,10 @@
     font-size: 24px;
     color: #303030;
     font-weight: 600; 
-  text-decoration: none;
+    text-decoration: none;
+    padding-left: 32px;
+    padding-right: 32px;
 }
-
 .enlace_login{
   font-family: "Montserrat", sans-serif;
   font-size: 16px;
@@ -43,16 +44,17 @@
 }
 
 /* Media Queries para dispositivos móviles */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .enlace_navbar {
-      font-size: 16px; /* Reducir tamaño de fuente en dispositivos móviles */
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 16px; /* Reducir tamaño de fuente en dispositivos móviles */
   }
 
   .enlace_login {
       font-size: 16px; /* Reducir tamaño de fuente en dispositivos móviles */
       width: 215px; /* Reducir ancho de la caja */
       height: 20px; /* Reducir altura de la caja */
-
   }
 
   .enlace_login_registrarse {
@@ -67,6 +69,7 @@
       height: 22px; /* Reducir altura */
       line-height: 20px; /* Ajustar altura de línea */
   }
+  
 }
 
 @media (max-width: 480px) {

@@ -19,10 +19,13 @@
 }
 
 /* Media Query para pantallas más pequeñas (máximo 768px) */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .desk-selector {
       font-size: 14px; /* Reducir tamaño de fuente en pantallas medianas y pequeñas */
       padding: 6px 10px; /* Reducir espaciado interno */
+  }
+  .selectorCatNav{
+    font-size: 1rem;
   }
 }
 

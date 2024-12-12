@@ -5,6 +5,7 @@ const ImagenGenerica = ({ src, alt, width, height, sx, ...props }) => {
   return (
     <Box
       sx={{
+        height: "100%",
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -17,9 +18,8 @@ const ImagenGenerica = ({ src, alt, width, height, sx, ...props }) => {
         src={src}
         alt={alt}
         style={{
-          width: width || '100%',  // Si no se pasa width, toma el valor por defecto '100%'
-          height: height || 'auto',  // Si no se pasa height, mantiene la relación de aspecto
-          objectFit: 'cover',  // Hace que la imagen cubra el contenedor, sin distorsionarse
+          width: width || "auto",  // Si no se pasa width, toma el valor por defecto '100%'
+          height: height || "70%",  // Si no se pasa height, mantiene la relación de aspecto // Hace que la imagen cubra el contenedor, sin distorsionarse
         }}
       />
     </Box>

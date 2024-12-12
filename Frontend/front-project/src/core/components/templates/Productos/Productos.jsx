@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styles from "../Productos/Productos.module.css"
 import SearchBar from '../../organismos/SearchBar/SearchBar'
 import { Pagination } from '@mui/material'
@@ -16,6 +16,22 @@ function Productos() {
   const [max, setMax] = useState(0);
 
   //console.log(allProducts);
+
+  useEffect(() => {
+    fetch("https://eaty-three.vercel.app/api/productos", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        Accept: "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setAllProducts(data);
+      })
+  }, [])
+  
 
   function buscarCategoria (cat) {
     fetch(`https://eaty-three.vercel.app/api/productos/busqueda-por-categoria/${cat}`, {
@@ -110,9 +126,9 @@ function Productos() {
                     </div>
                 </div>
                 <div className={styles.seccionPaginas}>
-                    <div className={styles.paginaActual}>
+                    {allProducts.length > 0 ? <div className={styles.paginaActual}>
                         {allProducts.map((product) => (<ProductCard style={{scale: "0.99"}} key={allProducts.indexOf(product)} nombre={product.nombre} img1={product.img1} img2={product.img2} img3={product.img3} img4={product.img4} precio={product.precio} off={product.off} id={product._id} desc={product.desc} comerciante={product.comerciante} vencimiento={product.vencimiento} stock={product.stock} categoria={product.categoria} estado={product.estado}></ProductCard>))}
-                    </div>
+                    </div> : <div className={styles.paginaVacia}>No hay resultados.</div>}
                     {/*<div className={styles.navPag}>
                         <Pagination></Pagination>
                     </div>*/}

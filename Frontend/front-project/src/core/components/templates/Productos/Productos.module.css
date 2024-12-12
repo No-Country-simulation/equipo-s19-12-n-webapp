@@ -102,6 +102,14 @@
     display: flex;
     flex-wrap: wrap;
 }
+.paginaVacia{
+    width: calc(100%-4vw);
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+}
 
 @media screen and (width < 1220px) {
     .seccionFiltros{

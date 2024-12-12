@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchInput from "../../atomos/SearchInput/SearchInput";
 import Button from "../../atomos/Button/Button";
 import "./SearchBar.css";
@@ -28,6 +28,23 @@ const SearchBar = () => {
     setOpenModalCarrito(true);
   }
 
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    // Función para actualizar el estado con el ancho de la ventana
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Añadir el event listener para el cambio de tamaño de la ventana
+    window.addEventListener('resize', handleResize);
+
+    // Limpiar el event listener cuando el componente se desmonte
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <>
     <div className="search-bar">
@@ -35,12 +52,8 @@ const SearchBar = () => {
         <div className="sectionSearch">
           <SearchInput />
         </div>
-        {/* <div className="sectionButtons">
-          <Button texto={"Mapa"} variante={"white"} icon={"mapa"} iconSize={"small"}/>
-          <Button texto={"Carrito"} variante={"white"} icon={"carrito"} iconSize={"small"}/>
-          
-        </div> */}
-        <Button onClick={abrirModalCarrito} ancho={156} texto={"Carrito"} variante={"white"} icon={"carrito"} iconSize={"small"}/>
+        {windowWidth > 600 ? <Button onClick={abrirModalCarrito} ancho={"auto"} alto={"60%"} texto={"Carrito"} variante={"white"} icon={"carrito"} iconSize={"small"}/>
+        : <Button onClick={abrirModalCarrito} ancho={"auto"} alto={"60%"} texto={""} variante={"white"} icon={"carrito"} iconSize={"small"}/>}
 
       </div>
     </div>

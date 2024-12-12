@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Context } from '../../../context/Context';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { MenuItem, Select, FormControl, Box } from '@mui/material';
+import "./style_selector.css"
 
 const SelectorMenu = ({ categorias, onCategoriaSelect }) => {
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
@@ -46,18 +47,20 @@ const SelectorMenu = ({ categorias, onCategoriaSelect }) => {
           renderValue={(selected) => {
               return 'Categoría'; // Texto estático
           }}
+          
           sx={{
             border: 'none', 
             '.MuiOutlinedInput-notchedOutline': { border: 'none' },
             fontFamily: 'Montserrat',
             fontWeight: '600',
-            fontSize: '24px', // Igual al tamaño de "Inicio"
+            fontSize: {xs: "1rem", md: "24px", lg: "24px"}, // Igual al tamaño de "Inicio"
             color: '#303030', 
             textAlign: 'center', 
           }}
+          className='selectorCatNav'
         >
           {categorias.map((categoria) => (
-            <MenuItem key={categoria} value={categoria} onClick={() => buscarCategoria(categoria)}>
+            <MenuItem sx={{fontFamily: "Montserrat"}} key={categoria} value={categoria} onClick={() => buscarCategoria(categoria)}>
               {categoria}
             </MenuItem>
           ))}
