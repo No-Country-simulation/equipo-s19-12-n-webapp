@@ -122,7 +122,7 @@ const DatosPersonales = () => {
         {/* box del formulario */}
         <Box sx={{
           width: '850px',
-          height: '390px',
+          height: 'auto',
           display: 'flex',
           flexDirection: 'normal',   // Asegura que los elementos se apilen verticalmente
           justifyContent: 'flex-start',  // Alinea los elementos al principio del eje vertical (arriba)
