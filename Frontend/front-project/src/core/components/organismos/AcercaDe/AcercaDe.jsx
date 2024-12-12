@@ -18,7 +18,7 @@ const AcercaDe = () => {
 
   const {
     direccion = "Falta completar información",
-    telefono = "Falta completar información",
+    telefono = 0,
     horario = "08:00 am - 20:00 pm",
     pagoEfectivo = true,
     pagoTarjeta = true,

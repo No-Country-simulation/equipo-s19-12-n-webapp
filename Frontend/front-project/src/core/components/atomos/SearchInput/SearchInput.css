@@ -7,8 +7,10 @@
   height: 46px;
   background-color: white;
   border-radius: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   /*gap: 300px;*/
 }
+
 
 .search-input {
   width: 85%;

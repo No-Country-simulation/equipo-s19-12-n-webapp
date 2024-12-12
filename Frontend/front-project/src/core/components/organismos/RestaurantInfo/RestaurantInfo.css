@@ -16,6 +16,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 6vh;
 }
 .main h2 {
   font-size: 3rem;
@@ -43,7 +44,7 @@
 }
 
 .row-estrellas {
-  width: 30%;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,4 +56,32 @@
   font-weight: 500;
   line-height: 29.26px;
   text-align: center;
+}
+@media screen and (width < 1000px) {
+  .row-estrellas {
+    scale: 0.8;
+    width: 80%;
+  }
+  .main h2 {
+    font-size: 2rem;
+  }
+  .cuit-row {
+    scale: 0.8;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+@media screen and (width < 600px) {
+  .row-estrellas {
+    scale: 0.6;
+    width: 100%;
+  }
+  .main h2 {
+    font-size: 1.6rem;
+  }
+  .cuit-row {
+    scale: 0.6;
+    width: 100%;
+    margin-top: 0;
+  }
 }

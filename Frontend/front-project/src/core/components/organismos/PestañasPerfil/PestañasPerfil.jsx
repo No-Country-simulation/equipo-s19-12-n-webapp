@@ -40,7 +40,7 @@ const TabPanel = ({ children }) => {
 // Componente principal
 const PestañasPerfil = () => {
   return (
-    <div>
+    <div className="contPestañasDelPerfil">
       <Tabs>
         <TabPanel label="Acerca de">
           {/* Aquí puedes importar y renderizar el componente de "Acerca de" */}

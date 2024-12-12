@@ -115,13 +115,8 @@ const FormEditarProductos = () => {
             },
           });
 
-          console.log("Datos enviados:", formData);
-
-          if (response.ok) {
+          //console.log("Datos enviados:", formData);
             setModalVisible(true);
-          } else {
-            setError("Ocurrió un error al enviar los datos.");
-          }
     
         } catch (err) {
           console.error("Error al agregar producto:", err);

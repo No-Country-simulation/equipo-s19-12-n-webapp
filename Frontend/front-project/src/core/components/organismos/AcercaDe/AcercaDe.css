@@ -1,11 +1,11 @@
 .acerca-de-container {
   width: 90%;
   height: auto;
-  padding: 30px;
   text-align: start;
 }
 
 .acerca-de-texto {
+  width: 100%;
   margin-bottom: 40px;
 }
 

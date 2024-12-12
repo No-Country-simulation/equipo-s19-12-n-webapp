@@ -36,11 +36,11 @@ export const AppRouter = createBrowserRouter([
     },
     {
         path: "/metodos_de_pago",
-        element: <PrivateRouteCliente><Layout><MetodosDePago/></Layout></PrivateRouteCliente> ,
+        element: <PrivateRouteCliente><MetodosDePago/></PrivateRouteCliente> ,
     },
     {
         path: "/datos_personales",
-        element: <PrivateRouteCliente><Layout><DatosPersonales/></Layout></PrivateRouteCliente> ,
+        element: <PrivateRouteCliente><DatosPersonales/></PrivateRouteCliente> ,
     },
     {
         path: "/editarProductos/:id",

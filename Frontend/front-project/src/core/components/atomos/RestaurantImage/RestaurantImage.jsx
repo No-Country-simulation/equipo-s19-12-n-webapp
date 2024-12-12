@@ -15,7 +15,7 @@ const RestaurantImage = () => {
             "url(../../../../../public/assets/images/pechuga.jpg)",
         }}
       >
-        <div className="contenedor botones-row">
+        {/*<div className="contenedor botones-row">
           <div className="contenedor-botones">
             <div className="contenedor-btn-portada">
               <Button
@@ -30,7 +30,7 @@ const RestaurantImage = () => {
               />
             </div>
           </div>
-        </div>
+        </div>*/}
       </div>
     </div>
   );

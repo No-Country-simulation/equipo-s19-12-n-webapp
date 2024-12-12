@@ -106,8 +106,10 @@ const DatosPersonales = () => {
       </Box>
 
       <Card sx={{
-        width: '1142px',
-        height: '673px',
+        width: '80%',
+        maxWidth: '840px',
+        minWidth: '320px',
+        height: 'auto',
         mb: 15,
         flexShrink: 0,
         display: 'flex',
@@ -119,17 +121,16 @@ const DatosPersonales = () => {
 
         {/* box del formulario */}
         <Box sx={{
-          width: '750px',
-          height: '390px',
-          display: 'flex',
-          flexDirection: 'normal',   // Asegura que los elementos se apilen verticalmente
+          width: '80%',
+          height: 'auto',
+          display: 'flex',  // Asegura que los elementos se apilen verticalmente
           justifyContent: 'flex-start',  // Alinea los elementos al principio del eje vertical (arriba)
           alignItems: 'flex-start',      // Alinea los elementos al principio del eje horizontal (izquierda)
         }}>
           {/* Formulario */}
           <form ref={formRef} onSubmit={handleSubmit}>
             {/* Campo de Email */}
-            <Box sx={{ width: '50%', mt: 1, display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <Box sx={{ width: '50%', mt: 5, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
               <Typography variant="body2" sx={{
                 color: '#303030',
                 fontFamily: 'Montserrat',
