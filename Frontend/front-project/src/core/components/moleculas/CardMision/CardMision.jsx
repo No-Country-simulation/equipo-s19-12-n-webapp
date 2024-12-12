@@ -10,8 +10,10 @@ const CardMision = ({ icon, title, description }) => {
           className="card-mision-icon"
         />
       </div>
-      <h3>{title}</h3>
-      <p>{description}</p>
+      <div className="contenedor-titulo-y-parrafo">
+        <h3>{title}</h3>
+        <p>{description}</p>
+      </div>
     </div>
   );
 };

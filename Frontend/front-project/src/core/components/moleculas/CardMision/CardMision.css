@@ -39,3 +39,8 @@
   text-align: center;
   text-decoration-skip-ink: none;
 }
+
+.contenedor-titulo-y-parrafo {
+  height: 200px;
+  outline: 1px solid orange;
+}
