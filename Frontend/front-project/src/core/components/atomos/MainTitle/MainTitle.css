@@ -16,7 +16,7 @@
   color: #6ab344;
 }
 
-@media (max-width: 744px) {
+@media (max-width: 1000px) or (height < 610px){
   .tablet {
     display: block;
   }
@@ -27,19 +27,18 @@
     display: none;
   }
   .title {
-    text-align: start;
+    text-align: center;
     padding-left: 1rem;
     font-family: "Montserrat", sans-serif;
     font-size: 32px;
     font-weight: 700;
     line-height: 39.01px;
-    text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
   }
 }
 
-@media (max-width: 394px) {
+@media (max-width: 500px) {
   /* Estilos para móviles aquí */
   .title {
     font-family: "Montserrat", sans-serif;

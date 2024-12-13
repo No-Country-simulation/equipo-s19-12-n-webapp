@@ -1,9 +1,33 @@
 import { Card, CardMedia } from '@mui/material'
-import React from 'react'
+import React, { useContext } from 'react'
+import styles from "../Card/Oferta.module.css"
+import { useNavigate } from 'react-router-dom'
+import { Context } from '../../../context/Context'
 
 const Oferta = ({tipo,alt,src,titulo,altura,ancho}) => {
+
+    const navigate = useNavigate();
+    const { setAllProducts, setBusqueda0 } = useContext(Context)
+
+    function verProductos (categoria){
+        fetch(`https://eaty-three.vercel.app/api/productos/busqueda-por-categoria/${categoria}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+              Accept: "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              setAllProducts(data);
+              setBusqueda0(1);
+            })
+            .then(() => navigate("/productos"));
+    }
+
     return (
-        <Card sx={{
+        <div sx={{
             // Ajustamos el tamaño de la Card para que coincida con la imagen
             width: 115,  // Ancho de la Card igual al de la imagen en modo móvil
             height: 150, // Altura de la Card igual a la altura de la imagen en modo móvil
@@ -15,7 +39,10 @@ const Oferta = ({tipo,alt,src,titulo,altura,ancho}) => {
                 width: 140,  // Ancho de la Card igual al de la imagen en modo escritorio
                 height: 202, // Altura de la Card igual a la altura de la imagen en modo escritorio
             },
-        }}>
+        }}
+        className={styles.oferta}
+        onClick={() => verProductos(titulo)}
+        >
             <CardMedia
                 component={tipo}
                 alt={alt}
@@ -34,7 +61,7 @@ const Oferta = ({tipo,alt,src,titulo,altura,ancho}) => {
                     },
                 }}
             />
-        </Card>
+        </div>
     )
 }
 

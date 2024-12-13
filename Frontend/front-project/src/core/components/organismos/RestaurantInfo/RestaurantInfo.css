@@ -16,24 +16,72 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  margin-bottom: 6vh;
 }
-.main h2{
+.main h2 {
   font-size: 3rem;
   margin: 0;
   padding: 0;
   margin-top: 40px;
 }
-.row {
+.cuit-row {
   width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin-top: 40px;
+  margin-bottom: 40px;
 }
-.botonAbiertoCerrado{
+.botonAbiertoCerrado {
   width: auto;
   height: auto;
   padding-left: 20px;
   padding-right: 20px;
   margin: 0;
+}
+.contenerdorBtnCatalogo {
+  width: 20%;
+}
+
+.row-estrellas {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-estrellas h3 {
+  font-family: "Montserrat";
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29.26px;
+  text-align: center;
+}
+@media screen and (width < 1000px) {
+  .row-estrellas {
+    scale: 0.8;
+    width: 80%;
+  }
+  .main h2 {
+    font-size: 2rem;
+  }
+  .cuit-row {
+    scale: 0.8;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+@media screen and (width < 600px) {
+  .row-estrellas {
+    scale: 0.6;
+    width: 100%;
+  }
+  .main h2 {
+    font-size: 1.6rem;
+  }
+  .cuit-row {
+    scale: 0.6;
+    width: 100%;
+    margin-top: 0;
+  }
 }

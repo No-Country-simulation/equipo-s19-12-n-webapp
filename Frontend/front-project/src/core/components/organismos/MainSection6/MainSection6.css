@@ -1,11 +1,34 @@
 .main6-contenedor {
+  margin-top: 15vh;
+  margin-bottom: 10vh;
   width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1vh;
+}
+.main6-contenedor h2{
+  width: 100%;
+  height: 8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
-
 .main6-seccion-mision {
   display: flex;
   justify-content: space-evenly;
   padding-bottom: 25px;
+  width: 100%;
+}
+
+@media screen and (width < 600px) {
+  .main6-seccion-mision {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6vh;
+  }
 }

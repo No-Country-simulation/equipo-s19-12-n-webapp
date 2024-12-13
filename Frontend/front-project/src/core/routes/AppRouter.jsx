@@ -6,6 +6,12 @@ import Perfil from '../../features/perfil/Perfil'
 import Soporte from '../../features/soporte/Soporte'
 import Layout from '../layouts/Layout'
 import Productos from '../components/templates/Productos/Productos'
+import PrivateRouteCliente from '../auth/components/PrivateRouteCliente.jsx'
+import Articulo from '../components/templates/Articulo/Articulo.jsx'
+import DatosPersonales from '../components/templates/datosPersonales/DatosPersonales.jsx'
+import MetodosDePago from '../components/templates/pagos/MetodosDePago.jsx'
+import EditarProductos from '../../features/editarProducto/EditarProducto'
+import Confirmacion from '../components/templates/confirmacion/Confirmacion.jsx'
 
 export const AppRouter = createBrowserRouter([
     {
@@ -17,12 +23,32 @@ export const AppRouter = createBrowserRouter([
         element: <LoginView/>,
     },
     {
+        path: "/productos/articulo",
+        element: <Layout><Articulo></Articulo></Layout>,
+    },
+    {
         path: "/productos",
         element: <Layout><Productos/></Layout>,
     },
     {
         path: "/agregarProductos",
         element: <Layout><AgregarProductos/></Layout>,
+    },
+    {
+        path: "/metodos_de_pago",
+        element: <PrivateRouteCliente><MetodosDePago/></PrivateRouteCliente> ,
+    },
+    {
+        path: "/datos_personales",
+        element: <PrivateRouteCliente><DatosPersonales/></PrivateRouteCliente> ,
+    },
+    {
+        path: "/editarProductos/:id",
+        element: <Layout><EditarProductos/></Layout>,
+    },
+    {
+        path:"/confirmacion",
+        element:<Layout><Confirmacion/></Layout>,
     },
     /*{
         path: "/perfil",

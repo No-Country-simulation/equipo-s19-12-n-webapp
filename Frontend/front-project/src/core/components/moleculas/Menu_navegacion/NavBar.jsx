@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AppBar, Toolbar, IconButton, Menu, MenuItem, Box, Container, Tooltip, Typography } from '@mui/material';
-import { AccountCircle, Menu as MenuIcon } from '@mui/icons-material';
+import { AccountCircle, Menu as MenuIcon, Padding } from '@mui/icons-material';
 import Enlace from "../../atomos/Enlace/Enlace.jsx";
 import SelectorMenu from '../../atomos/Selector/SelectorMenu.jsx';
 import ImagenGenerica from '../../atomos/Imagen/ImagenGenerica.jsx';
@@ -11,6 +11,8 @@ import ModalSesionCliente from '../../organismos/modal/ModalSesionCliente.jsx';
 import ModalSesionComerciante from '../../organismos/modal/ModalSesionComerciante.jsx';
 import ModalRegistrarComerciante from '../../organismos/modal/ModalRegistrarComerciante.jsx';
 import { Context } from '../../../context/Context.jsx';
+import { useNavigate } from 'react-router-dom';
+import "./style.css"
 
 // Opciones del selector en caso de no haber sesión iniciada
 const opciones = [
@@ -39,7 +41,8 @@ const Navbar = () => {
     const [openSesionComerciante, setOpenSesionComerciante] = useState(false);
     const [openRegistrarComerciante, setOpenRegistrarComerciante] = useState(false);
 
-    const { usuario, cerrarSesion } = useContext(Context); // Contexto
+    const { usuario, cerrarSesion ,vaciarCarrito,vaciarVenta} = useContext(Context); // Contexto
+    const navigate = useNavigate();
     
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget); // Abre el menú hamburguesa
@@ -73,6 +76,9 @@ const Navbar = () => {
             setAnchorElUser(null);
         } else if (opcion === "cerrar sesion") {
             cerrarSesion();
+            vaciarCarrito();
+            vaciarVenta();
+            navigate('/');
  //           setAnchorElUser(null);
         } else if (opcion === "vender producto") {
             console.log("vender producto");
@@ -86,8 +92,8 @@ const Navbar = () => {
     return (
         <>
             <AppBar position="sticky" sx={{ backgroundColor: '#FFFFFF' }}>
-                <Container maxWidth="xl">
-                    <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Container maxWidth="90%">
+                    <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 0 }}>
 
                         {/* Icono para el menú hamburguesa */}
                         <IconButton
@@ -99,11 +105,11 @@ const Navbar = () => {
                         </IconButton>
 
                         {/* Logo */}
-                        <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
+                        <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center', height: "112px" }}>
                             <ImagenGenerica
                                 src={logo}
                                 alt="Logo"
-                                sx={{ width: '249px', height: '112px' }}
+                                sx={{ width: 'auto', height: '100%' }}
                             />
                         </Box>
 
@@ -117,7 +123,7 @@ const Navbar = () => {
                         }}>
                             <Enlace pagina="/" texto="Inicio" tipo="enlace_navbar" />
                             <SelectorMenu categorias={categorias} onCategoriaSelect={(categoria) => console.log(categoria)} />
-                            <Enlace pagina="/" texto="Conoce Eaty" tipo="enlace_navbar" />
+                            <Enlace pagina="/" texto="Contacto" tipo="enlace_navbar" />
                             <Enlace pagina="/" texto="Ayuda" tipo="enlace_navbar" />
                         </Box>
 
@@ -129,24 +135,35 @@ const Navbar = () => {
                                 </IconButton>
                             </Tooltip>
                             <Menu
-                                sx={{ mt: '45px' }}
+                                sx={{ mt: '45px'}}
                                 anchorEl={anchorElUser}
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                                {(usuario ===null) && opciones.map((setting) => (
-                                    <MenuItem key={setting} onClick={() => handleOpcionSelect(setting)}>
-                                        <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+                                {(usuario ===null) && <>
+                                    <div className='subtituloSesion0'>Usuarios</div>
+                                    <MenuItem sx={{ m: '6px'}} key={1} onClick={() => handleOpcionSelect('iniciar sesion cliente')}>
+                                        <Typography sx={{ textAlign: 'center', fontFamily: "Montserrat" }}>Iniciar Sesión</Typography>
                                     </MenuItem>
-                                ))}
+                                    <MenuItem sx={{ m: '6px'}} key={2} onClick={() => handleOpcionSelect('Registrar cliente')}>
+                                        <Typography sx={{ textAlign: 'center', fontFamily: "Montserrat" }}>Registrase</Typography>
+                                    </MenuItem>
+                                    <div className='subtituloSesion0'>Comerciantes</div>
+                                    <MenuItem sx={{ m: '6px'}} key={3} onClick={() => handleOpcionSelect('iniciar sesion comerciante')}>
+                                        <Typography sx={{ textAlign: 'center', fontFamily: "Montserrat" }}>Iniciar Sesión</Typography>
+                                    </MenuItem>
+                                    <MenuItem sx={{ m: '6px'}} key={4} onClick={() => handleOpcionSelect('registrar comerciante')}>
+                                        <Typography sx={{ textAlign: 'center', fontFamily: "Montserrat" }}>Registrase</Typography>
+                                    </MenuItem>
+                                </>}
                                 {usuario === "cliente" && opcionesSesionCliente.map((setting) => (
-                                    <MenuItem key={setting} onClick={() => handleOpcionSelect(setting)}>
-                                        <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+                                    <MenuItem sx={{ m: '6px'}} key={setting} onClick={() => handleOpcionSelect(setting)}>
+                                        <Typography sx={{ textAlign: 'center', fontFamily: "Montserrat" }}>{setting}</Typography>
                                     </MenuItem>
                                 ))}
                                 {usuario === "comerciante" && opcionesSesionComerciante.map((setting) => (
-                                    <MenuItem key={setting} onClick={() => handleOpcionSelect(setting)}>
-                                        <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+                                    <MenuItem sx={{ m: '6px'}} key={setting} onClick={() => handleOpcionSelect(setting)}>
+                                        <Typography sx={{ textAlign: 'center', fontFamily: "Montserrat" }}>{setting}</Typography>
                                     </MenuItem>
                                 ))}
                                 
@@ -159,9 +176,9 @@ const Navbar = () => {
                             open={Boolean(anchorElNav)}
                             onClose={handleCloseNavMenu}
                         >
-                            <MenuItem onClick={handleCloseNavMenu}>Inicio</MenuItem>
-                            <MenuItem onClick={handleCloseNavMenu}>Productos</MenuItem>
-                            <MenuItem onClick={handleCloseNavMenu}>Contacto</MenuItem>
+                            <MenuItem sx={{fontFamily: "Montserrat"}} onClick={() => {handleCloseNavMenu(); navigate('/')}}>Inicio</MenuItem>
+                            <MenuItem sx={{fontFamily: "Montserrat"}} onClick={() => {handleCloseNavMenu(); navigate('/productos')}}>Productos</MenuItem>
+                            <MenuItem sx={{fontFamily: "Montserrat"}} onClick={() => {handleCloseNavMenu(); navigate('/')}}>Contacto</MenuItem>
                         </Menu>
                     </Toolbar>
                 </Container>

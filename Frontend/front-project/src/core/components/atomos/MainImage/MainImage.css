@@ -1,13 +1,13 @@
 .image {
-  max-width: 100%;
-  height: auto;
+  width: auto;
+  height: 100%;
 }
 
 .main-image-tablet {
   display: none;
 }
 
-@media (max-width: 744px) {
+@media (max-width: 1000px) or (height < 610px){
   .main-image-tablet {
     display: block;
   }

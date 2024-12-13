@@ -6,7 +6,7 @@ input[type="file"] {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 80%;
     aspect-ratio: 1/1;
     background-color: #909090;
     border-radius: 5px;
@@ -16,22 +16,13 @@ input[type="file"] {
 .contenedor_Input {
     display: flex;
     width: 43%;
+    height: auto;
     aspect-ratio: 1/1;
-    position: relative;
     align-items: center;
     justify-content: center;
 }
 
-
-
-
-@media (min-width: 768px) {
-    .contenedor_Input {
-        width: 30%;
-    }
-}
-
-@media (min-width: 1024px) {
+@media screen and (width > 767px) {
     .contenedor_Input {
         width: 20%;
     }

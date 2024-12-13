@@ -1,6 +1,10 @@
 import { useState } from "react";
 import "./PestañasPerfil.css";
 import AcercaDe from "../AcercaDe/AcercaDe";
+import Ofertas from "../../moleculas/ofertas/Ofertas";
+import SearchInput from "../../atomos/SearchInput/SearchInput";
+import Button from "../../atomos/Button/Button";
+import ProductosRelacionados from "../ProductosRelacionados/ProductosRelacionados";
 
 // Componente para las pestañas
 const Tabs = ({ children }) => {
@@ -36,21 +40,23 @@ const TabPanel = ({ children }) => {
 // Componente principal
 const PestañasPerfil = () => {
   return (
-    <div>
+    <div className="contPestañasDelPerfil">
       <Tabs>
         <TabPanel label="Acerca de">
           {/* Aquí puedes importar y renderizar el componente de "Acerca de" */}
           <AcercaDe />
         </TabPanel>
         <TabPanel label="Catálogo">
-          <h2>Catálogo</h2>
-          <p>Contenido de la sección Catálogo.</p>
           {/* Aquí puedes importar y renderizar el componente de "Catálogo" */}
-        </TabPanel>
-        <TabPanel label="Reservas">
-          <h2>Reservas</h2>
-          <p>Contenido de la sección Reservas.</p>
-          {/* Aquí puedes importar y renderizar el componente de "Reservas" */}
+          <div className="contenedor-padre-input">
+            <div className="contenedorInputPerfil">
+              <SearchInput />
+            </div>
+          </div>
+          <div className="contenedor-padre-ofertas">
+            <Ofertas />
+          </div>
+          <ProductosRelacionados />
         </TabPanel>
       </Tabs>
     </div>

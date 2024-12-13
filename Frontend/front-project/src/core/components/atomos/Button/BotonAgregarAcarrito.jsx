@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@mui/material'; // Importamos el componente Button de MUI
 import { Icon } from '@mui/material';   // Importamos el componente Icon de MUI para poder usar íconos
 
 const BotonAgregarAcarrito = ({ colorFondo, colorLetra, Icono, texto }) => {
+
   return (
     <Button
       variant="contained" // Botón con fondo sólido

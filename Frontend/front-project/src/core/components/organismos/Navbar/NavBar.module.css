@@ -42,3 +42,20 @@
     border-bottom: 2px solid rgba(0, 0, 0, 0.6);
 }
 
+@media screen and (width < 1000px) {
+    .Enlace{
+        font-size: 0.8rem;
+    }
+    .MenuCont{
+        width: 70%;
+    }
+}
+@media screen and (width < 600px) {
+    .Enlace{
+        font-size: 0.6rem;
+    }
+    .MenuCont{
+        width: 70%;
+    }
+}
+

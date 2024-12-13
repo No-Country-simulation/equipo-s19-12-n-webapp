@@ -20,6 +20,10 @@
   color: #303030;
   border-radius: 0;
 }
+.contPestañasDelPerfil{
+  width: 90%;
+  margin-bottom: 4vh;
+}
 
 .tab-button.active {
   border-bottom: 2px solid #76b939;
@@ -38,9 +42,64 @@
 }
 
 .tab-content {
-  padding: 20px;
+  width: 100%;
+  border: 1px solid #77b9396c;
+  border-radius: 10px;
 }
 
 .tab-panel {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding-top: 4vh;
+  padding-bottom: 4vh;
+}
+
+.contenedorInputPerfil {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vh;
+}
+
+.contenedor-padre-input {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 50px;
+  width: 90%;
+}
+
+.contenedor-padre-ofertas {
+  margin-bottom: 40px;
+  width: 90%;
+}
+
+@media screen and (width < 1000px) {
+  .tab-button {
+    scale: 0.8;
+  }
+  .tab-button.active {
+    scale: 0.8;
+  }
+  .contenedor-padre-ofertas {
+    display: none;
+  }
+  .contenedor-padre-input {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (width < 600px) {
+  .tab-button {
+    scale: 0.6;
+  }
+  .tab-button.active {
+    scale: 0.6;
+  }
+  .contenedorInputPerfil {
+    width: 100%;
+  }
 }

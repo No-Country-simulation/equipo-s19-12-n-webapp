@@ -2,24 +2,95 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  height: 445px;
-  width: 100%;
+  height: 70vh;
+  width: 90%;
   background-image: url("../../../../assets/images/food-doodles-banner.svg");
   margin-bottom: 100px;
-  margin-top: 50px;
+  margin-top: 4vh;
+  margin-left: auto;
+  margin-right: auto;
 }
-
+.ahorroAnimaCont{
+  width: 40%;
+  height: 80%;
+  max-height: 100px;
+  max-width: 300px;
+  min-width: 180px;
+  min-height: 60px;
+  margin-top: -2vh;
+}
+.ahorroImg1{
+  position: relative;
+  width: 20%;
+  height: auto;
+  left: 30%;
+  top: -80%;
+  animation: caida 2s infinite linear;
+}
+@keyframes caida {
+  0%{
+    opacity: 0;
+    top: -80%;
+  }
+  10%{
+    opacity: 1;
+    top: -60%;
+  }
+  20%{
+    opacity: 1;
+    top: 0%;
+  }
+  100%{
+    opacity: 1;
+    top: 0%;
+  }
+}
+.ahorroImg2{
+  position: relative;
+  top: 0%;
+  left: -10%;
+  z-index: 100;
+  width: 60%;
+  height: auto;
+  animation: moverse 2s infinite linear;
+}
+@keyframes moverse {
+  0%{
+    top: 0;
+  }
+  50%{
+    top: 0;
+  }
+  51%{
+    top: -4%;
+  }
+  52%{
+    top: 4%;
+  }
+  53%{
+    top: -4%;
+  }
+  54%{
+    top: 4%;
+  }
+  55%{
+    top: 0;
+  }
+}
 .text-content {
   width: 40%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  gap: 2vh;
 }
 
 .image-content {
-  width: 40%;
+  width: auto;
+  height: 80%;
   display: flex;
   justify-content: end;
   align-items: end;
@@ -31,6 +102,7 @@
   align-items: center;
   height: auto;
   width: 50%;
+  min-width: 200px;
   font-weight: 600;
 }
 .mainsection1-btn-tablet {
@@ -39,31 +111,35 @@
   height: auto;
 }
 
-@media (max-width: 744px) {
+@media (max-width: 1000px) or (height < 610px){
   /* Estilos para tablets aquí */
   .text-content {
     flex: 60%;
   }
   .image-content {
-    flex: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: auto;
   }
   .main-banner {
-    background-image: none;
-    height: 220px;
+    width: 90%;
+    height: 360px;
   }
   .mainsection1-btn-tablet {
     width: 196px;
     padding-left: 100px;
   }
+  
 }
-@media (max-width: 394px) {
+@media (max-width: 500px) {
   /* Estilos para móviles aquí */
   .main-banner {
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 360px;
     display: flex;
     background-image: url("../../../../assets/images/food-doodles-banner.svg");
-
     background-size: cover;
   }
 

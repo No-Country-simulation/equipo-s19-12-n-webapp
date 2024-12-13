@@ -4,7 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CloseIcon from '@mui/icons-material/Close';
 import SelectorInput from '../../atomos/Selector/SelectorInput';
 import usePostFetch from '../../../services/usePostFetch';
-
+import styles from "../modal/styles.module.css"
 
 const style = {
   position: 'absolute',
@@ -25,7 +25,7 @@ const style = {
 };
 
 
-const categorias = ['Comida saludable y nutricional', 'Panaderías y pastelería', 'Lácteos', 'Panadería', 'Snacks', 'No Perecederos'];
+const categorias = ['Kiosko', 'Supermercado', 'Autoservicio', 'Panadería', 'Restaurant', 'Bar'];
 
 const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
   const formRef = useRef(null);
@@ -47,6 +47,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
     const formData = new FormData(formRef.current)
     const cuit = formData.get("cuit");
     const nombreNegocio = formData.get("nombreNegocio");
+    const rubroNegocio = formData.get("rubroNegocio");
     const caracteristica = formData.get("caracteristica")
     const telefono = formData.get("telefono");
     const email = formData.get("email");
@@ -55,7 +56,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
 
     console.log("cuit:" + cuit);
     console.log("nombre del negocio:" + nombreNegocio);
-    console.log("tipo de negocio:" + categoria);
+    console.log("tipo de negocio:" + rubroNegocio);
     console.log("caracteristica:" + caracteristica);
     console.log("telefono:" + telefono);
     console.log("email:" + email);
@@ -72,6 +73,8 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
       logo: "",
       email,
       pass:password,
+      rubro: rubroNegocio,
+      desc: "",
       img1: "",
       img2: "",
       img3: "",
@@ -92,7 +95,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
         {/*   contenedor engloba todo el formulario */}
 
         {/* Contenedor de los botones de cerrar y volver atrás */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: "calc(100% - 8vh)", height: "calc(100% - 8vh)" }}>
           {/* Mostrar la flecha de volver atrás solo si openFrom NO es 'NavBar' */}
           {openFrom !== 'NavBar' && (
             <IconButton
@@ -207,6 +210,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
                     '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
                       borderBottomColor: '#76B939',
                     },
+                    borderBottom: "1px solid #76B939"
                   }}
                 />
               </Grid>
@@ -234,6 +238,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
                     '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
                       borderBottomColor: '#76B939',
                     },
+                    borderBottom: "1px solid #76B939"
                   }}
                 />
               </Grid>
@@ -241,12 +246,14 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
             <Grid container spacing={2}>
               {/* Selector de tipo de negocio */}
               <Grid item xs={12} sm={4}>
-                <SelectorInput
-                  categorias={categorias}
-                  onCategoriaSelect={(categoria) => setCategoria(categoria)}
-                  placeholder={"Tipo de negocio"}
-                  placeholderColor={"rgba(0, 0, 0, 0.54)"}
-                />
+                <select className={styles.inputSelector} name='rubroNegocio'>
+                  <option value="Supermercado" selected>Supermercado</option>
+                  <option value="Autoservicio">Autoservicio</option>
+                  <option value="Kiosko">Kiosko</option>
+                  <option value="Panadería">Panadería</option>
+                  <option value="Restaurant">Restaurant</option>
+                  <option value="Bar">Bar</option>
+                </select>
               </Grid>
 
               {/* Caja para los campos de teléfono */}
@@ -351,6 +358,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
                     '@media (max-width:600px)': {
                           mt: 2, // Margen superior en pantallas móviles
                         },
+                      borderBottom: "1px solid #76B939"
                   }}
                 />
               </Grid>
@@ -382,6 +390,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
                     '@media (max-width:600px)': {
                       mt: 0, // Margen superior en pantallas móviles
                     },
+                    borderBottom: "1px solid #76B939"
                   }}
                 />
               </Grid>
@@ -411,6 +420,7 @@ const ModalRegistrarComerciante = ({ open, onClose, openFrom, onBack }) => {
                     '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
                       borderBottomColor: '#76B939', // Borde inferior verde al pasar el cursor
                     },
+                    borderBottom: "1px solid #76B939"
                   }}
                 />
               </Grid>

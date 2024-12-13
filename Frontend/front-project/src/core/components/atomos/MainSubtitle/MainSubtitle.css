@@ -16,7 +16,7 @@
   display: none;
 }
 
-@media (max-width: 744px) {
+@media (max-width: 1000px) or (height < 610px){
   .main-subtitle-tablet {
     display: none;
   }
@@ -25,7 +25,7 @@
   }
 }
 
-@media (max-width: 394px) {
+@media (max-width: 500) {
   .main-subtitle-tablet {
     display: none;
   }
