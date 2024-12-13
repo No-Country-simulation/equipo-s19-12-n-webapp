@@ -22,7 +22,7 @@ const Home = () => {
       <MainSection3></MainSection3>      
       <ProductosDestacados></ProductosDestacados>
       <MainSection5 />
-      {/*<MainSection6 />*/}
+      <MainSection6 />
     </>
   );
 };

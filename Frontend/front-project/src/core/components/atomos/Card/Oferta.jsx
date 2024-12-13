@@ -7,7 +7,7 @@ import { Context } from '../../../context/Context'
 const Oferta = ({tipo,alt,src,titulo,altura,ancho}) => {
 
     const navigate = useNavigate();
-    const { setAllProducts } = useContext(Context)
+    const { setAllProducts, setBusqueda0 } = useContext(Context)
 
     function verProductos (categoria){
         fetch(`https://eaty-three.vercel.app/api/productos/busqueda-por-categoria/${categoria}`, {
@@ -21,6 +21,7 @@ const Oferta = ({tipo,alt,src,titulo,altura,ancho}) => {
             .then((res) => res.json())
             .then((data) => {
               setAllProducts(data);
+              setBusqueda0(1);
             })
             .then(() => navigate("/productos"));
     }

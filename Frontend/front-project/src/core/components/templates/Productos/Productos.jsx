@@ -8,28 +8,32 @@ import Texto from '../../atomos/Textos/Texto'
 import Button from '../../atomos/Button/Button'
 import ArticuloProducto from '../../organismos/ArticuloProducto/ArticuloProducto'
 
-function Productos() {
+function Productos({num}) {
 
-
-  const { allProducts, menuArticulo, setAllProducts } = useContext(Context);
+  const { allProducts, busqueda0, setBusqueda0, setAllProducts } = useContext(Context);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(0);
 
   //console.log(allProducts);
 
   useEffect(() => {
-    fetch("https://eaty-three.vercel.app/api/productos", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        Accept: "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setAllProducts(data);
+    if (busqueda0 === 0){
+      fetch("https://eaty-three.vercel.app/api/productos", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+          Accept: "application/json",
+        },
       })
+        .then((res) => res.json())
+        .then((data) => {
+          setAllProducts(data);
+        })
+    }
+    else{
+      setBusqueda0(0);
+    }
   }, [])
   
 

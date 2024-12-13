@@ -1,5 +1,5 @@
 .card-mision-container {
-  width: 400px;
+  width: 25%;
   height: auto;
   background: linear-gradient(
     0deg,
@@ -12,7 +12,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .card-mision-icon {
@@ -41,6 +41,48 @@
 }
 
 .contenedor-titulo-y-parrafo {
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: auto;
+  min-height: 400px;
   outline: 1px solid orange;
+}
+.contenedor-titulo-y-parrafo h3{
+  width: 90%;
+}
+.contenedor-titulo-y-parrafo p{
+  width: 90%;
+}
+
+@media screen and (width < 1000px) {
+  .contenedor-titulo-y-parrafo {
+    min-height: 360px;
+  }
+  .contenedor-titulo-y-parrafo p{
+    font-size: 0.8rem;
+  }
+  .card-mision-container {
+    width: 22%;
+  }
+}
+@media screen and (width < 1000px) {
+  .contenedor-titulo-y-parrafo {
+    min-height: 360px;
+  }
+  .contenedor-titulo-y-parrafo p{
+    font-size: 0.8rem;
+  }
+  .card-mision-container {
+    width: 22%;
+  }
+}
+@media screen and (width < 600px) {
+  .card-mision-container {
+    width: 60%;
+  }
+  .contenedor-titulo-y-parrafo {
+    min-height: 240px;
+  }
 }

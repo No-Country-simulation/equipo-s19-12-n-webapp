@@ -2,6 +2,7 @@ import iconBasura from "../../../../assets/images/icono-verde-basura.svg";
 import iconImpacto from "../../../../assets/images/icono-verde-impacto.svg";
 import iconSolucion from "../../../../assets/images/icono-verde-solucion.svg";
 import CardMision from "../../moleculas/CardMision/CardMision";
+import "./MainSection6.css"
 
 const Mision = () => {
   return (

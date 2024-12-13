@@ -9,9 +9,10 @@ import CarritoRightDrawer from "../modal/CarritoRightDrawer";
 
 function ArticuloProducto() {
 
-  const { actualProduct, setMenuArticulo, allProducts, allProductsComerciante, detallesComerciante, datosUsuario, agregarVenta } = useContext(Context);
+  const { actualProduct, allProductsComerciante, detallesComerciante, datosUsuario, agregarVenta } = useContext(Context);
   const [actualImage, setActualImage] = useState(actualProduct.img1)
   const [numberImage, setNumberImage] = useState(1)
+  const [cantidadP, setCantidadP] = useState(0)
   const { agregarAcarrito, usuario ,carrito} = useContext(Context)
   const navigate = useNavigate();
   // modal carrito
@@ -21,7 +22,12 @@ function ArticuloProducto() {
     setActualImage(actualProduct.img1)
   }, [actualProduct.img1])
 
-    ;
+  useEffect(() => {
+    if (cantidadP < 1){
+      setCantidadP(1);
+    }
+  }, [cantidadP])
+  
 
   function clickComprar() {
     if (usuario === null) {
@@ -51,24 +57,23 @@ function ArticuloProducto() {
 
   }
   const abrirModalCarrito = ()=>{
+    if (carrito.length === 0) {
+      clickAgregarAlCarrito();
+    }
     setOpenModalCarrito(true);
   }
 
   function clickAgregarAlCarrito() {
     if (usuario === null || usuario === "comerciante") {
       alert("Debes estar logueado como cliente para agregar al carrito")
-    } else {
-      
+    } else {     
        const resultado = carrito.find(producto => producto._id === actualProduct._id);
        console.log(resultado)
-      if(resultado===undefined){
+      if(resultado === undefined){
         agregarAcarrito(actualProduct)
       }else{
         alert("¡Este producto ya está en tu carrito de compras! Si deseas agregar más cantidad, por favor, ve a tu carrito y actualiza la cantidad desde allí.")
       }
-      
-     // console.log("producto:"+actualProduct._id)
-      
     }
   }
 
@@ -92,7 +97,6 @@ function ArticuloProducto() {
           <div className={styles.otrosArticulos}>
             <h3>Otras ofertas del vendedor</h3>
             <div className={styles.carrucelCont}>
-
             <div className={styles.carrucel}>
               {allProductsComerciante.map((product) => (
                 <ProductCard
@@ -130,6 +134,11 @@ function ArticuloProducto() {
             <div className={styles.precioAnterior}>${parseInt(actualProduct.precio) * 1.5}</div>
             <div className={styles.discount}>-{actualProduct.off}%</div>
           </div>
+          <div className={styles.cantidadCont}>
+            <div className={styles.botonIncrementar} onClick={() => setCantidadP(cantidadP - 1)}>-</div>            
+            <div className={styles.valorIncrementado}>{cantidadP}</div>
+            <div className={styles.botonIncrementar} onClick={() => setCantidadP(cantidadP + 1)}>+</div>
+          </div>
           <div className={styles.detallesCont}>
             <div className={styles.detalleCont}>
               <h4>Categoría:</h4>
@@ -152,7 +161,7 @@ function ArticuloProducto() {
             </div>
           </div>
           <div className={styles.botonCont}>
-            <Button onClick={abrirModalCarrito} variante={"orange"} texto={"Comprar"}></Button>
+            <Button onClick={() => abrirModalCarrito()} variante={"orange"} texto={"Comprar"}></Button>
             <Button onClick={clickAgregarAlCarrito} variante={"green"} texto={"Añadir al carrito"}></Button>
           </div>
         </div>

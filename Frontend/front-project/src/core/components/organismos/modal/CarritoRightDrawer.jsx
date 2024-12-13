@@ -271,8 +271,8 @@ export default function CarritoRightDrawer({ open, onClose }) {
               fontWeight: 500,
               borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
             }}>
-              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>Subtotal</Typography>
-              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>${subtotal}</Typography>
+              <Typography variant="h6" sx={{fontFamily: 'Montserrat', fontSize: {xs: "0.8rem", md: "1rem", lg: "1.2rem"}}}>Subtotal</Typography>
+              <Typography variant="h6" sx={{fontFamily: 'Montserrat', fontSize: {xs: "0.8rem", md: "1rem", lg: "1.2rem"}}}>${subtotal}</Typography>
             </Box>
             <Box sx={{
               display: 'flex',
@@ -282,8 +282,8 @@ export default function CarritoRightDrawer({ open, onClose }) {
               height: {xs: "4vh", md: "6vh", lg: "6vh"},
               borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
             }}>
-              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>Delivery</Typography>
-              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>${0}</Typography>
+              <Typography variant="h6" sx={{fontFamily: 'Montserrat', fontSize: {xs: "0.8rem", md: "1rem", lg: "1.2rem"}}}>Delivery</Typography>
+              <Typography variant="h6" sx={{fontFamily: 'Montserrat', fontSize: {xs: "0.8rem", md: "1rem", lg: "1.2rem"}}}>${0}</Typography>
             </Box>
             <Box sx={{
               display: 'flex',
@@ -294,8 +294,8 @@ export default function CarritoRightDrawer({ open, onClose }) {
               borderBottom: '1px solid rgba(0, 0, 0, 0.3)',
               marginBottom: 6,
             }}>
-              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>Total</Typography>
-              <Typography variant="h6" sx={{fontSize: {xs: "0.9rem", md: "1.2rem", lg: "1.4rem"}}}>${subtotal}</Typography>
+              <Typography variant="h6" sx={{fontFamily: 'Montserrat', fontSize: {xs: "0.8rem", md: "1rem", lg: "1.2rem"}}}>Total</Typography>
+              <Typography variant="h6" sx={{fontFamily: 'Montserrat', fontSize: {xs: "0.8rem", md: "1rem", lg: "1.2rem"}}}>${subtotal}</Typography>
             </Box>
 
             <Box sx={{
@@ -314,6 +314,7 @@ export default function CarritoRightDrawer({ open, onClose }) {
                   height: 40,
                   fontSize: '16px',
                   backgroundColor: "#F87C01",
+                  fontFamily: 'Montserrat',
                   textTransform: 'none',
                   '&:hover': {
                     backgroundColor: '#F87C01',
@@ -336,6 +337,7 @@ export default function CarritoRightDrawer({ open, onClose }) {
                   alignItems: 'center',
                   gap: 1,
                   textTransform: 'none',
+                  fontFamily: 'Montserrat',
                   color: 'black',
                   '&:hover': {
                     backgroundColor: 'white',

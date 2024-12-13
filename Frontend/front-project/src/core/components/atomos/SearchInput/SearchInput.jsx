@@ -7,7 +7,7 @@ import searchIcon from "../../../../assets/images/search-icon.svg";
 const SearchInput = () => {
 
   const navigate = useNavigate();
-  const { setAllProducts } = useContext(Context)
+  const { setAllProducts, setBusqueda0 } = useContext(Context)
   const [busqueda, setBusqueda] = useState("")
 
   function buscarProducto (data){
@@ -22,6 +22,7 @@ const SearchInput = () => {
       .then((res) => res.json())
       .then((data) => {
         setAllProducts(data);
+        setBusqueda0(1);
       })
       .then(() => navigate("/productos"))   
   }
