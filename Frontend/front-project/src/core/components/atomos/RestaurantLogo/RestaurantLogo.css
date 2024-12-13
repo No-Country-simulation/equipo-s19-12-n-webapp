@@ -1,0 +1,17 @@
+.img {
+  margin-top: -110px;
+  width: 12%;
+  min-width: 140px;
+  height: auto;
+  aspect-ratio: 1;
+  background-color: rgb(236, 236, 236);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-radius: 50%;
+  border: 6px solid white;
+}
+
+.contenedor-btn-imagen-perfil {
+  margin-top: -70px;
+  margin-left: 170px;
+}

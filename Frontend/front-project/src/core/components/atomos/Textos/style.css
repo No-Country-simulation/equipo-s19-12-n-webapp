@@ -1,0 +1,76 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+p {
+  font-size: 1rem;
+  padding-left: 1vh;
+  padding-right: 1vh;
+}
+
+.orange {
+  color: #f87c01;
+}
+
+.green {
+  color: #76b939;
+}
+
+.white {
+  color: #fff;
+}
+.black {
+  color: #303030;
+}
+
+.tituloFooter {
+  color: #fff;
+  font-weight: 500;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 2.125rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+}

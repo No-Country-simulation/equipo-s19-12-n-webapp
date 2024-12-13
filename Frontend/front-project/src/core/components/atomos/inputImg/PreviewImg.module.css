@@ -1,0 +1,29 @@
+.Preview{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 43%;
+    aspect-ratio: 1;
+    position: relative;
+}
+.pImg{
+    width: 50%;
+    height: auto;
+    background-size: cover;
+    background-color: white;
+    aspect-ratio: 1;
+}
+.btnCont{
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (width > 767px) {
+    .Preview{
+        width: 20%;
+    }
+}

@@ -1,0 +1,21 @@
+.contenedorInputsImg{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2vh;
+    width: 100%;
+}
+
+
+/*@media (max-width: 767px) {
+    .contenedorInputsImg > :nth-child(n+3) {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .contenedorInputsImg > :nth-child(n+4) {
+        display: none;
+    }
+}*/

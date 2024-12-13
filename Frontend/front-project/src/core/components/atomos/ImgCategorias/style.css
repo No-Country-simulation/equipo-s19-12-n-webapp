@@ -1,0 +1,18 @@
+.container{
+    position: relative;
+}
+
+.container:first-child {
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.container > img:nth-child(2) {
+    filter: blur(2px);
+    opacity: 0.5;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+}

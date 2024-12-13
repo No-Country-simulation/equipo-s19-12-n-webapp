@@ -1,0 +1,17 @@
+.image {
+  width: auto;
+  height: 100%;
+}
+
+.main-image-tablet {
+  display: none;
+}
+
+@media (max-width: 1000px) or (height < 610px){
+  .main-image-tablet {
+    display: block;
+  }
+  .main-image-desktop {
+    display: none;
+  }
+}

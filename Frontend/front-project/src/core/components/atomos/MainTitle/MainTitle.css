@@ -1,0 +1,70 @@
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 48.76px;
+  text-align: center;
+  text-underline-position: from-font;
+}
+.mobile {
+  display: none;
+}
+.tablet {
+  display: none;
+}
+.highlight {
+  color: #6ab344;
+}
+
+@media (max-width: 1000px) or (height < 610px){
+  .tablet {
+    display: block;
+  }
+  .mobile {
+    display: none;
+  }
+  .desktop {
+    display: none;
+  }
+  .title {
+    text-align: center;
+    padding-left: 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 39.01px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+}
+
+@media (max-width: 500px) {
+  /* Estilos para móviles aquí */
+  .title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30.48px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  .highlight {
+    font-family: "Montserrat", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30.48px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+  .mobile {
+    display: block;
+  }
+  .desktop {
+    display: none;
+  }
+  .tablet {
+    display: none;
+  }
+}

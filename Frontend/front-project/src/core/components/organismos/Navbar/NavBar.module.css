@@ -1,0 +1,61 @@
+.NavBar{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--color-verde);
+}
+.NavBarCont{
+    width: calc(100% - 5vh);
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    height: 90%;
+    width: auto;
+}
+.MenuCont{
+    width: 50%;
+    height: 90%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.MiniMenuCont{
+    display: none;
+}
+.Enlace{
+    cursor: pointer;
+    transition: all 0.6s ease-in-out;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    border-bottom: 2px solid white;
+    font-weight: 500;
+}
+.Enlace:hover{
+    border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+@media screen and (width < 1000px) {
+    .Enlace{
+        font-size: 0.8rem;
+    }
+    .MenuCont{
+        width: 70%;
+    }
+}
+@media screen and (width < 600px) {
+    .Enlace{
+        font-size: 0.6rem;
+    }
+    .MenuCont{
+        width: 70%;
+    }
+}
+

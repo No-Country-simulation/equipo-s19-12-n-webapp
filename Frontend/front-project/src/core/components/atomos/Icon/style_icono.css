@@ -1,0 +1,15 @@
+.circular {
+  border-radius: 50%; /* Hacer los íconos circulares */
+  object-fit: cover; /* Ajustar la imagen sin distorsionarla */
+  margin: 10px;
+}
+
+.cuadrado {
+  object-fit: cover; /* Ajustar la imagen sin distorsionarla */
+  margin: 10px;
+}
+
+/**{
+  vertical-align: middle;
+  margin: 2px 7px;
+}*/

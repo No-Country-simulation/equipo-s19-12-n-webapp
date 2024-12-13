@@ -1,0 +1,29 @@
+input[type="file"] {
+    display: none;
+}
+
+.boton_mas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    aspect-ratio: 1/1;
+    background-color: #909090;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contenedor_Input {
+    display: flex;
+    width: 43%;
+    height: auto;
+    aspect-ratio: 1/1;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (width > 767px) {
+    .contenedor_Input {
+        width: 20%;
+    }
+}

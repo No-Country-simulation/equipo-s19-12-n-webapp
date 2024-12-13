@@ -1,0 +1,100 @@
+.enlace_navbar{
+    font-family: "Montserrat", sans-serif;
+    font-size: 24px;
+    color: #303030;
+    font-weight: 600; 
+    text-decoration: none;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+.enlace_login{
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  color: #76B939;
+  font-weight: 600; 
+  text-decoration: none;
+  font-weight: normal; /* Regular */
+  width: 215px; /* Ancho de la caja */
+  height: 20px; /* Altura de la caja */
+  line-height: 20px; /* Para alinear el texto verticalmente */
+
+}
+
+.enlace_login_registrarse{
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  color: #76B939;
+  font-weight: 600; 
+  font-weight: 500; /* Medium */
+  width: 392px; /* Ancho */
+  height: 24px; /* Alto */
+  line-height: 24px; /* Para centrar el texto verticalmente */
+  text-decoration: underline; /* Línea debajo del texto */
+}
+
+.enlace_footer{
+  font-family: 'Montserrat', sans-serif;
+  color: #FAFAFA;
+  font-weight: normal; /* Regular */
+  font-size: 16px; 
+  width: 394px;
+  height: 22px;
+  line-height: 22px;
+  text-decoration: none; /* Línea debajo del texto */
+}
+
+/* Media Queries para dispositivos móviles */
+@media (max-width: 900px) {
+  .enlace_navbar {
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 16px; /* Reducir tamaño de fuente en dispositivos móviles */
+  }
+
+  .enlace_login {
+      font-size: 16px; /* Reducir tamaño de fuente en dispositivos móviles */
+      width: 215px; /* Reducir ancho de la caja */
+      height: 20px; /* Reducir altura de la caja */
+  }
+
+  .enlace_login_registrarse {
+      font-size: 16px; /* Reducir tamaño de fuente */
+      width: 314px; /* Reducir ancho */
+      height: 20px; /* Reducir altura */
+  }
+
+  .enlace_footer {
+      font-size: 14px; /* Reducir tamaño de fuente */
+      width: 146px; /* Reducir ancho */
+      height: 22px; /* Reducir altura */
+      line-height: 20px; /* Ajustar altura de línea */
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .enlace_navbar {
+      font-size: 18px; /* Reducir más en pantallas muy pequeñas */
+  }
+
+  .enlace_login {
+      font-size: 16px; /* Reducir más el tamaño de fuente */
+      width: 213px; /* Reducir aún más el ancho */
+      height: 20px; /* Reducir altura */
+      
+  }
+
+  .enlace_login_registrarse {
+      font-size: 16px; /* Reducir aún más tamaño de fuente */
+      width: 298px; /* Reducir ancho */
+      height: 40px; /* Reducir altura */
+      
+  }
+
+  .enlace_footer {
+      font-size: 12px; /* Reducir tamaño de fuente */
+      width: 177px; /* Reducir ancho */
+      height: 20px; /* Reducir altura */
+      line-height: 18px; /* Ajustar altura de línea */
+  }
+}

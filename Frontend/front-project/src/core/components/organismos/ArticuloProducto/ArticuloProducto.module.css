@@ -1,0 +1,347 @@
+.ArticuloProducto{
+    width: 90%;
+    max-width: 1400px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2vw;
+}
+.panelA{
+    width: 50%;
+    height: 100%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.titulo2Articulo{
+    display: none;
+}
+.panelACont{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2vh;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 2vh;
+}
+.imgACont{
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.imagesCont{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+}
+.carrucelImages{
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.carrucelImages img{
+    width: 80%;
+    height: auto;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.imagenPrincipal{
+    width: 50%;
+    height: auto;
+}
+.infoPanel{
+    height: 80%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.infoPanel p{
+    width: 100%;
+    text-align: right;
+}
+.back{
+    color: var(--color-verde);
+    font-weight: 500;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+.back:hover{
+    font-weight: 700;
+}
+/*.imgACont img{
+    height: 80%;
+    width: auto;
+}*/
+.otrosArticulos{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4vh;
+}
+.otrosArticulos h3{
+    width: 100%;
+    height: 1vh;
+    min-height: 20px;
+}
+.carrucelCont{
+    width: 100%;
+    height: auto;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+.carrucel{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1vh;
+}
+
+.panelB{
+    width: 40%;
+    height: 100%;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+.panelBCont{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1vh;
+}
+.panelBCont h3{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+    margin: 0;
+    padding: 0;
+}
+.precioCont{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+}
+.precioAnterior{
+    font-size: 1rem;
+    color: #555;
+    text-align: left;
+    text-decoration: line-through;
+}
+.precioActual {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--color-verde);
+    text-align: left;
+}
+.discount{
+    font-size: 1rem;
+    color: red;
+    text-align: left;
+}
+.detallesCont{
+    width: 100%;
+    height: 10%;
+    min-height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+.detalleCont{
+    width: 100%;
+    height: 30%;
+    min-height: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+}
+.vencimientoCont{
+    width: 100%;
+    height: 10%;
+    min-height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--color-rojo-error);
+    color: white;
+}
+.vencimientoCont h4{
+    margin: 0;
+    padding: 0;
+}
+.vencimientoCont p{
+    margin: 0;
+    padding: 0;
+}
+.comercianteCont{
+    width: 100%;
+    height: 10%;
+    min-height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.comercianteCont img{
+    height: 80%;
+    width: auto;
+}
+.detallesPerfilCont{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+.detallesPerfilCont p{
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+.detallesPerfilCont p:hover{
+    color: var(--color-verde);
+    font-weight: 600;
+}
+.detallesPerfilCont h4{
+    margin: 0;
+    padding: 0;
+}
+.botonCont{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1vh;    
+}
+.descripcionCont{
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    gap: 1vh;
+    margin-bottom: 4vh;
+}
+.descripcionCont h3{
+    margin: 0;
+    padding: 0;
+}
+.desc{
+    margin-bottom: 2vh;
+}
+.cantidadCont{
+    width: 100%;
+    height: 3vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6px;
+}
+.botonIncrementar{
+    height: 100%;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+    border: 1px solid var(--color-verde);
+    transition: all 0.3s ease-in-out;
+    aspect-ratio: 1;
+    background-color: #77b939b7;
+    border-radius: 4px;
+}
+.valorIncrementado{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color-verde);
+}
+.botonIncrementar:hover{
+    color: white;
+    background-color: var(--color-verde);
+}
+
+@media screen and (aspect-ratio < 1) {
+
+    .ArticuloProducto{
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow-y: auto;
+        gap: 2vh;
+    }
+    .panelBCont h3{
+        display: none;
+    }
+    .panelA{
+        width: 90%;
+        height: auto;
+        overflow-y: visible;
+    }
+    .panelB{
+        width: 100%;
+        height: 70vh;
+        border: none;
+    }
+    .panelBCont{
+        height: 70vh;
+    }
+    .titulo2Articulo{
+        width: 90%;
+        display: flex;
+        font-size: 1.6rem;
+        font-weight: 600;
+        padding-bottom: 1vh;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        margin-bottom: 4vh;
+    }
+    .imagenPrincipal{
+        width: 70%;
+    }
+    .otrosArticulos, .panelACont, .titulo2Articulo, .descripcionCont{
+        width: 100%;
+    }
+}

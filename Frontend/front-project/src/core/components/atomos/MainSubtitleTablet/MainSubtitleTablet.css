@@ -1,0 +1,28 @@
+.subtitleReserva0 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pb {
+  margin-bottom: 30px;
+}
+
+@media (max-width: 744px) {
+  .subtitleReserva0{
+    font-size: 1rem;
+    line-height: 1.6rem;
+  }
+}
+
+@media (max-width: 394px) {
+  .subtitleReserva0{
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+}

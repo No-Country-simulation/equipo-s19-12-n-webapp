@@ -1,0 +1,47 @@
+/* ArrowButton.css */
+.arrow-button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.arrow-button.left,
+.arrow-button.right {
+  font-family: "Monserrat", sans-serif; /* O la fuente que se esté usando */
+  font-weight: bold;
+  color: #333; /* Color gris oscuro como en la captura */
+}
+
+.arrow-button:hover {
+  opacity: 0.8;
+}
+
+.arrow-button:focus {
+  outline: none;
+}
+
+.arrow-button.disabled {
+  cursor: not-allowed;
+  opacity: 0.5; /* Como lo hicimos en el inline, más tenue cuando está deshabilitado */
+  color: #ccc; /* Un gris más claro para botones deshabilitados */
+}
+
+/* Extra: estilo para que el botón ocupe solo el espacio necesario */
+.arrow-button.left,
+.arrow-button.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem; /* Ajusta según el tamaño que quieras */
+  height: 2rem;
+  border-radius: 50%; /* Para hacer el botón más redondeado, estilo "burbuja" */
+  background-color: #f0f0f0; /* Fondo claro como en la captura */
+}
+
+.arrow-button.left:hover,
+.arrow-button.right:hover {
+  background-color: #ddd; /* Un ligero cambio de color en hover */
+}
