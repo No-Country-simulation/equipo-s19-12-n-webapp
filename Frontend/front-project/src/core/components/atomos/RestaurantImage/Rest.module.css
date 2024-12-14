@@ -1,6 +1,6 @@
 .contImagenPortada {
   width: 100%;
-  height: 50vh;
+  height: 60vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@
 }
 @media screen and (width < 1000px) {
   .contImagenPortada {
-    height: 30vh;
+    height: 40vh;
   }
 }
 @media screen and (width < 600px) {

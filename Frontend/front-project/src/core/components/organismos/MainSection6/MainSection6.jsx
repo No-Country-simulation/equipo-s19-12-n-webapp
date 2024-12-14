@@ -2,9 +2,15 @@ import iconBasura from "../../../../assets/images/icono-verde-basura.svg";
 import iconImpacto from "../../../../assets/images/icono-verde-impacto.svg";
 import iconSolucion from "../../../../assets/images/icono-verde-solucion.svg";
 import CardMision from "../../moleculas/CardMision/CardMision";
+import React, { useRef } from 'react'
+import { useInView } from 'framer-motion';
 import "./MainSection6.css"
 
 const Mision = () => {
+
+  const ref01 = useRef(null);
+  const isInView = useInView(ref01, { once: false });
+
   return (
     <div className="main6-contenedor">
       <h2>Nuestra misión</h2>

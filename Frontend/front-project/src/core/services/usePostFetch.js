@@ -8,7 +8,6 @@ function usePostFetch(url) {
   const postData = async (userData) => {
     setLoading(true);
     setError(null); // Limpiamos errores anteriores
-    console.log("Enviando:", JSON.stringify(userData));
 
     try {
       const response = await fetch(url, {

@@ -83,7 +83,7 @@ const MetodosDePago = () => {
                     flexDirection: 'column',
                 }}
             >
-                <Box sx={{ width: 500, display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+                <Box sx={{ width: "50%", maxWidth: "500px", minWidth: "300px", display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
                     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 10 }}>
                         <img
                             src={imagenDatosPersonales}
@@ -99,7 +99,7 @@ const MetodosDePago = () => {
                                 color: '#000',
                                 textAlign: 'center',
                                 fontFamily: 'Montserrat',
-                                fontSize: '16px',
+                                fontSize: {xs:'10px', mb:'16px', lg:'16px'},
                                 fontWeight: 600,
                             }}
                         >
@@ -113,7 +113,7 @@ const MetodosDePago = () => {
                                 color: '#000',
                                 textAlign: 'center',
                                 fontFamily: 'Montserrat',
-                                fontSize: '16px',
+                                fontSize: {xs:'10px', mb:'16px', lg:'16px'},
                                 fontWeight: 600,
                             }}
                         >
@@ -122,12 +122,12 @@ const MetodosDePago = () => {
                     </Box>
                 </Box>
 
-                <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start',ml:35, height: "5vh", mb: "0"}}>
+                <Box sx={{ width: '90%', display: 'flex', alignItems: 'flex-start', justifyContent: "flex-start", mb: 3, mt: 3 }}>
                     <Typography
                         variant="body1"
                         sx={{
                             fontFamily: 'Montserrat',
-                            fontSize: '30px',
+                            fontSize: {xs:'24px', mb:'30px', lg:'30px'},
                             fontWeight: 700,
                             lineHeight: 'normal',
                             width: '800px',
@@ -140,15 +140,15 @@ const MetodosDePago = () => {
 
                 <Card sx={{ width: '80%', maxWidth: '840px', minWidth: '320px', height: 'auto', mb: 0, borderRadius: '20px', background: '#FAFAFA', boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)', display: "flex", justifyContent: "flex-start", alignItems: "center", flexDirection: "column", mt: "0" }}>
                     {/* Botones centrados*/}
-                    <Box sx={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: 6, width: "80%" }}> {/* Cambié aquí el marginTop */}
+                    <Box sx={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: 6, width: "90%", height: "auto", flexDirection: {xs: "column", md: "row", lg: "row"}, }}> {/* Cambié aquí el marginTop */}
                         {/* Botón 1 - Tarjeta de Débito */}
                         <Button
                             variant="contained"
                             color={selectedButton === 1 ? 'success' : 'inhert'}
                             onClick={() => handleButtonClick(1)}
-                            style={{
-                                width: '30%', borderRadius: 10, textTransform: 'none',
-                                height: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                            sx={{
+                                width: {xs: "100%", md: "90%", lg: "30%"}, borderRadius: 10, textTransform: 'none',
+                                height: {xs:"60px", md: "90px", lg:'90px'}, display: 'flex', alignItems: 'center', justifyContent: 'center'
                             }}
                         >
                             <img src={iconoTarjetaDeDebito} alt="Tarjeta de débito" style={{ width: 24, height: 24, marginRight: 8 }} />
@@ -160,9 +160,9 @@ const MetodosDePago = () => {
                             variant="contained"
                             color={selectedButton === 2 ? 'success' : 'inhert'}
                             onClick={() => handleButtonClick(2)}
-                            style={{
-                                width: '30%', borderRadius: 10, textTransform: 'none',
-                                height: '105px', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                            sx={{
+                                width: {xs: "100%", md: "90%", lg: "30%"}, borderRadius: 10, textTransform: 'none',
+                                height: {xs:"60px", md: "90px", lg:'90px'}, display: 'flex', alignItems: 'center', justifyContent: 'center'
                             }}
                         >
                             <img src={iconoTarjetaDeCredito} alt="Tarjeta de crédito" style={{ width: 24, height: 24, marginRight: 8 }} />
@@ -174,9 +174,9 @@ const MetodosDePago = () => {
                             variant="contained"
                             color={selectedButton === 3 ? 'success' : 'inhert'}
                             onClick={() => handleButtonClick(3)}
-                            style={{
-                                width: '30%', borderRadius: 10, textTransform: 'none',
-                                height: '105px', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                            sx={{
+                                width: {xs: "100%", md: "90%", lg: "30%"}, borderRadius: 10, textTransform: 'none',
+                                height: {xs:"60px", md: "90px", lg:'90px'}, display: 'flex', alignItems: 'center', justifyContent: 'center'
                             }}
                         >
                             <img src={iconoMercadoPago} alt="MercadoPago" style={{ width: 24, height: 24, marginRight: 8 }} />
@@ -185,8 +185,8 @@ const MetodosDePago = () => {
                     </Box>
 
                     <Box sx={{
-                        width: '100%',
-                        height: '50%',
+                        width: '90%',
+                        height: 'auto',
                         display: 'flex',
                         flexDirection: 'column',  // Asegura que los elementos se apilen verticalmente
                         justifyContent: 'center',  // Centra los elementos verticalmente
@@ -199,9 +199,9 @@ const MetodosDePago = () => {
 
                         {/* Formulario */}
                         <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-                            <Box sx={{ display: 'flex',width:650, justifyContent: 'space-between', gap: 2 ,alignItems: 'flex-start', }}>
+                            <Box sx={{ display: 'flex',width:"100%", justifyContent: 'space-between', gap: 2 ,alignItems: 'flex-start', flexDirection: {xs: "column", md: "row", lg: "row"}}}>
                                 {/* Campo de número de tarjeta */}
-                                <Box sx={{ width: '50%' }}>
+                                <Box sx={{ width: {xs:'100%', md: "48%", lg: "48%"} }}>
                                     <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
                                         Número
                                     </Typography>
@@ -229,7 +229,7 @@ const MetodosDePago = () => {
                                 </Box>
 
                                 {/* Campo de cuotas */}
-                                <Box sx={{ width: '48%' }}>
+                                <Box sx={{ width: {xs:'100%', md: "48%", lg: "48%"} }}>
                                     <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
                                         Cuotas
                                     </Typography>
@@ -258,8 +258,8 @@ const MetodosDePago = () => {
                             </Box>
 
                             {/* Campo Fecha de Vencimiento */}
-                            <Box sx={{ display: 'flex',width:650, justifyContent: 'space-between', gap: 2,  }}>
-                                <Box sx={{ width: '48%' }}>
+                            <Box sx={{ display: 'flex',width:"100%", justifyContent: 'space-between', gap: 2,  flexDirection: {xs: "column", md: "row", lg: "row"}}}>
+                                <Box sx={{ width: {xs:'100%', md: "48%", lg: "48%"} }}>
                                     <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
                                         Fecha de Vencimiento
                                     </Typography>
@@ -318,7 +318,7 @@ const MetodosDePago = () => {
                                 </Box>
 
                                 {/* Campo Código de Seguridad */}
-                                <Box sx={{ width: '48%' }}>
+                                <Box sx={{ width: {xs:'100%', md: "48%", lg: "48%"} }}>
                                     <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
                                         Código de Seguridad
                                     </Typography>
@@ -347,8 +347,8 @@ const MetodosDePago = () => {
                             </Box>
 
                             {/* Campo Nombre y Apellido + Dirección */}
-                            <Box sx={{ display: 'flex', width:650,justifyContent: 'space-between', gap: 2, marginTop: 2 }}>
-                                <Box sx={{ width: '48%' }}>
+                            <Box sx={{ display: 'flex', width:"100%",justifyContent: 'space-between', gap: 2, marginTop: 2, flexDirection: {xs: "column", md: "row", lg: "row"} }}>
+                                <Box sx={{ width: {xs:'100%', md: "48%", lg: "48%"} }}>
                                     <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
                                         Nombre y Apellido
                                     </Typography>
@@ -375,7 +375,7 @@ const MetodosDePago = () => {
                                     />
                                 </Box>
 
-                                <Box sx={{ width: '48%' }}>
+                                <Box sx={{ width: {xs:'100%', md: "48%", lg: "48%"} }}>
                                     <Typography variant="body2" sx={{ color: '#303030', fontFamily: 'Montserrat', fontSize: '20px', fontWeight: 600 }}>
                                         Dirección
                                     </Typography>
@@ -410,7 +410,7 @@ const MetodosDePago = () => {
                                     variant="contained"
                                     color="primary"
                                     sx={{
-                                        width:650,
+                                        width:"100%",
                                         height: 30,
                                         fontSize: '16px',
                                         backgroundColor: '#F87C01',

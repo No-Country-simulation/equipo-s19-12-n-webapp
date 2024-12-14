@@ -7,11 +7,11 @@ import Boton from '../../atomos/Button/Button'
 import './style.css'
 import { Context } from '../../../context/Context';
 import Modal from '../modal/ModalEditarProducto'
-
+import { motion } from "framer-motion"
 
 const FormEditarProductos = () => {
 
-    const { actualProduct } = useContext(Context)
+    const { actualProduct, setPanelPerfil } = useContext(Context);
     const id = actualProduct._id
 
     const [formData, setFormData] = useState({
@@ -93,7 +93,6 @@ const FormEditarProductos = () => {
         setFormData((prev) => ({ ...prev, [key]: value }));
       };
 
-      const { setPanelPerfil } = useContext(Context);
       const [isModalVisible, setModalVisible] = useState(false);
 
       const handleSubmit = async (e) => {
@@ -130,7 +129,7 @@ const FormEditarProductos = () => {
 
     return (
       <>
-        <form onSubmit={handleSubmit}>
+        <motion.form onSubmit={handleSubmit} initial={{scale: 0.98, opacity: 0.5}} animate={{scale: 1, opacity: 1}} transition={{ease: "easeInOut", duration: 0.4}}>
           <Texto level="h2" texto="Editar producto" />
           <AgregarImg
             evento1={(img) => handleChange("img", [img, formData.img[1], formData.img[2], formData.img[3]])}
@@ -221,9 +220,9 @@ const FormEditarProductos = () => {
           {error && <p className="error">{error}</p>}
           <div className="botones">
             <Boton texto="Guardar cambios" variante="orange" onClick={handleSubmit} />
-            <Boton texto="Cancelar" variante="green" onClick={() => setFormData({ ...formData, img: ["", "", "", ""] })} />
+            <Boton texto="Cancelar" variante="green" onClick={() => {setFormData({ ...formData, img: ["", "", "", ""] }); setPanelPerfil(0);}} />
           </div>
-        </form>
+        </motion.form>
 
         {isModalVisible && (
           <Modal
