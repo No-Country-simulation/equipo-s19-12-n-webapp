@@ -2,9 +2,9 @@
   border: 1px solid #ddd;
   border-radius: 12px;
   text-align: center;
-  width: 40%;
-  max-width: 360px;
-  min-width: 150px;
+  width: 30%;
+  max-width: 340px;
+  min-width: 240px;
   max-height: 450px;
   min-height: 200px;
   height: 28vh;
@@ -150,4 +150,16 @@ button:focus {
 }
 .contimagenPapeleraB:hover{
   background-color: rgb(255, 116, 81);
+}
+
+@media screen and (width < 767px){
+  .contDataCardProducto h3 {
+    font-size: 0.8rem;
+  }
+  .precioActual {
+    font-size: 1.1rem;
+  }
+  .precioAnterior{
+    font-size: 0.8rem;
+  }
 }

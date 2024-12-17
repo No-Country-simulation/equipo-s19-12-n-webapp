@@ -1,11 +1,12 @@
 
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 import styles from "../ArticuloProducto/ArticuloProducto.module.css";
 import { Context } from "../../../context/Context";
 import Button from "../../atomos/Button/Button";
 import ProductCard from "../../atomos/ProductCard/ProductCard";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CarritoRightDrawer from "../modal/CarritoRightDrawer";
+import { useInView, motion} from "framer-motion"
 
 function ArticuloProducto() {
 
@@ -17,6 +18,10 @@ function ArticuloProducto() {
   const navigate = useNavigate();
   // modal carrito
   const [openModalCarrito, setOpenModalCarrito] = useState(false);
+  const ref01 = useRef(null);
+  const isInView = useInView(ref01, { once: false });
+  const ref02 = useRef(null);
+  const isInView2 = useInView(ref02, { once: false });
 
   useEffect(() => {
     setActualImage(actualProduct.img1)
@@ -60,7 +65,10 @@ function ArticuloProducto() {
     if (carrito.length === 0) {
       clickAgregarAlCarrito();
     }
-    setOpenModalCarrito(true);
+    if (usuario === null || usuario === "comerciante"){      
+    }else{
+      setOpenModalCarrito(true);
+    }   
   }
 
   function clickAgregarAlCarrito() {
@@ -78,8 +86,8 @@ function ArticuloProducto() {
   }
 
   return (
-    <div className={styles.ArticuloProducto}>
-        <div className={styles.panelA}>
+    <div className={styles.ArticuloProducto} style={{scale: isInView ? "1" : "0.95", opacity: isInView ? 1 : 0, transition: "all 0.6s ease-out"}}>
+        <div className={styles.panelA} ref={ref01}>
           <div className={styles.titulo2Articulo}>{actualProduct.nombre}</div>
           <div className={styles.panelACont}>
             <div className={styles.imgACont}>
@@ -90,7 +98,7 @@ function ArticuloProducto() {
                   {actualProduct.img3 !== "" && <img src={actualProduct.img3} alt="" onClick={() => {setActualImage(actualProduct.img3); setNumberImage(3)}} style={numberImage === 3 ? {border: "1px solid rgba(0, 170, 0, 0.5)"} : {border: "1px solid rgba(0, 0, 0, 0.3)"}}></img>}
                   {actualProduct.img4 !== "" && <img src={actualProduct.img4} alt="" onClick={() => {setActualImage(actualProduct.img4); setNumberImage(4)}} style={numberImage === 4 ? {border: "1px solid rgba(0, 170, 0, 0.5)"} : {border: "1px solid rgba(0, 0, 0, 0.3)"}}></img>}
                 </div>
-                <img src={actualImage} alt="" className={styles.imagenPrincipal}/>
+                <motion.img src={actualImage} alt="" className={styles.imagenPrincipal} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ ease: "easeOut", duration: 1 }}/>
               </div>                     
             </div>
           </div>

@@ -1,10 +1,13 @@
 import "./MainSection5.css";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { Context } from "../../../context/Context";
+import { useInView } from 'framer-motion';
 
 const MainSection5 = () => {
 
   const { comerciosAderidos, setComerciosAderidos } = useContext(Context)
+  const ref01 = useRef(null);
+  const isInView = useInView(ref01, { once: false });
 
   fetch("https://eaty-three.vercel.app/api/comerciante/negociosAderidos", {
     method: "GET",
@@ -20,8 +23,8 @@ const MainSection5 = () => {
     })
 
   return (
-    <div className="main5-container">
-      <div className="contTituloNegociosAderidos">
+    <div className="main5-container" style={{scale: isInView ? "1" : "0.95", opacity: isInView ? 1 : 0, transition: "all 0.6s ease-out"}}>
+      <div className="contTituloNegociosAderidos" ref={ref01}>
         Tiendas que se sumaron al cambio
       </div>
       <div className="seccion-tiendas">

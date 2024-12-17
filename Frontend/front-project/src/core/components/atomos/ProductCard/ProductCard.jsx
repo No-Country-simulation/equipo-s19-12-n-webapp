@@ -1,8 +1,9 @@
 import Button from "../Button/Button";
 import "./ProductCard.css";
 import { Context } from "../../../context/Context";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useInView } from 'framer-motion';
 
 const ProductCard = ({
   style,
@@ -31,6 +32,8 @@ const ProductCard = ({
   };
 
   const navigate = useNavigate();
+  const ref01 = useRef(null);
+  const isInView = useInView(ref01, { once: false });
 
   async function editarProducto () {
     const nuevoVencimiento = Date.parse(vencimiento);
@@ -118,12 +121,13 @@ const ProductCard = ({
   return (
     <div
       className="product-card"
-      style={style}
+      style={{scale: isInView ? "1" : "0.95", opacity: isInView ? 1 : 0, transition: "all 0.6s ease-out"}}
     >
       <img
         src={img1}
         alt={nombre}
         className="product-image"
+        ref={ref01}
       />
       <div className="discountC">OFF {off}%</div>
       <div className="contDataCard">

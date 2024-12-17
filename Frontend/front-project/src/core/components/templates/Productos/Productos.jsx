@@ -6,15 +6,12 @@ import { Context } from '../../../context/Context'
 import ProductCard from '../../atomos/ProductCard/ProductCard'
 import Texto from '../../atomos/Textos/Texto'
 import Button from '../../atomos/Button/Button'
-import ArticuloProducto from '../../organismos/ArticuloProducto/ArticuloProducto'
 
 function Productos({num}) {
 
   const { allProducts, busqueda0, setBusqueda0, setAllProducts } = useContext(Context);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(0);
-
-  //console.log(allProducts);
 
   useEffect(() => {
     if (busqueda0 === 0){

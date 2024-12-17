@@ -8,7 +8,7 @@ import { Context } from '../../../context/Context';
 
 const FormProductos = () => {
 
-      const { datosUsuario } = useContext(Context)
+      const { datosUsuario, setPanelPerfil } = useContext(Context)
     
       const [error, setError] = useState(null);
       const [nombreProducto, setNombreProducto] = useState("")
@@ -113,7 +113,7 @@ const FormProductos = () => {
             {error && <p className="error">{error}</p>}
             <div className="botones">
                 <Boton texto={'Cargar producto'} variante={'orange'} onClick={handleSubmit} />
-                <Boton texto={'Cancelar'} variante={'green'} onClick={() => reiniciarDatos()} />
+                <Boton texto={'Cancelar'} variante={'green'} onClick={() => {reiniciarDatos(); setPanelPerfil(0);}} />
             </div>        
         </ form>
     )

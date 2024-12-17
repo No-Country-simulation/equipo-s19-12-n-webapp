@@ -5,11 +5,15 @@ import Button from "../../atomos/Button/Button";
 import "./MainSection1.css";
 import { useNavigate } from "react-router-dom";
 import { Context } from "../../../context/Context";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
+import { useInView} from "framer-motion"
 
 const MainSection1 = () => {
   const navigate = useNavigate();
   const { setAllProducts } = useContext(Context);
+
+  const ref01 = useRef(null);
+  const isInView = useInView(ref01, { once: false });
 
   function obtenerProductos() {
     fetch("https://eaty-three.vercel.app/api/productos", {
@@ -30,8 +34,8 @@ const MainSection1 = () => {
   }
 
   return (
-    <div className="main-banner">
-      <div className="text-content">
+    <div className="main-banner" style={{scale: isInView ? "1" : "0.95", opacity: isInView ? 1 : 0, transition: "all 0.6s ease-out"}}>
+      <div className="text-content" ref={ref01}>
         <MainTitle />
         <MainSubtitle />
         <div className="ahorroAnimaCont">
