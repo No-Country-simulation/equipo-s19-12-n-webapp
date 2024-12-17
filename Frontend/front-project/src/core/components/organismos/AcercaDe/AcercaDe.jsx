@@ -12,6 +12,7 @@ import "./AcercaDe.css";
 import DescripcionComerciante from "../../moleculas/DescripcionComerciante/DescripcionComerciante";
 import IconoConTexto from "../../moleculas/IconoConTexto/IconoConTexto";
 import { Context } from "../../../context/Context";
+import { motion } from "framer-motion"
 
 const AcercaDe = () => {
   const { datosUsuario } = useContext(Context);
@@ -28,7 +29,7 @@ const AcercaDe = () => {
   } = datosUsuario || {};
 
   return (
-    <div className="acerca-de-container">
+    <motion.div className="acerca-de-container" initial={{scale: 0.98, opacity: 0.5}} animate={{scale: 1, opacity: 1}} transition={{ease: "easeInOut", duration: 0.4}}>
       <div className="acerca-de-texto">
         <DescripcionComerciante comercianteId={datosUsuario?.id} />
       </div>
@@ -53,7 +54,7 @@ const AcercaDe = () => {
       <div className="row-icon-details">
         <IconoConTexto
           icono={Telefono}
-          descripcion={telefono}
+          descripcion={telefono.toString()}
           altText="icono de teléfono"
         />
       </div>
@@ -129,7 +130,7 @@ const AcercaDe = () => {
           variante="black"
         />
       )}
-    </div>
+    </motion.div>
   );
 };
 

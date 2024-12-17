@@ -46,25 +46,20 @@ function ModalSesionComerciante({ open, onClose }) {
     }
 
     function handleOpenModalRegisrarComerciante() {
-        console.log("abrir modal registrar comerciante")
         setOpenRegistrarComerciante(true)
     }
     function handleCerrarModalRegisrarComerciante() {
-        console.log("cerrar los 2 modales")
         onClose();
         setOpenRegistrarComerciante(false)
     }
     function atras() {
-        console.log("cerrar modal de registro")
         setOpenRegistrarComerciante(false)
         setOpenRestablecer(false)
     }
     function handleOpenModalRestablecer() {
-        console.log("abrir modal restablecer contraseña")
         setOpenRestablecer(true)
     }
     function handleCerrarModalRestablecer() {
-        console.log("cerrar los 2 modales")
         onClose();
         setOpenRestablecer(false)
     }
@@ -93,7 +88,6 @@ function ModalSesionComerciante({ open, onClose }) {
                     img3: data.img3,
                 };
                 guardarSesionComerciante(JSON.stringify(userData));
-                console.log("contexto:" + JSON.stringify(userData))
                 /* {"_id":"67527b70457df8a560780458","cuit":20,"nombre":"el heavy","email":"elheavy@hotmail.com","pass":"elheavy","direccion":"","ciudad":null,"telefono":2020,"logo":"","img1":"","img2":"","img3":"","__v":0} */
             }
         }
@@ -110,13 +104,10 @@ function ModalSesionComerciante({ open, onClose }) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        console.log('Formulario enviado');
         onClose();
         const formData = new FormData(formRef.current)
         const email = formData.get("email");
         const password = formData.get("password");
-        console.log("email:" + email);
-        console.log("contraseña:" + password);
         const userData = {
             email,
             pass: password,

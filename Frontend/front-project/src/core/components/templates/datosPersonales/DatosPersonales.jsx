@@ -34,7 +34,7 @@ const DatosPersonales = () => {
         flexDirection: 'column',
       }}
     >
-      <Box sx={{ width: 500, display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+      <Box sx={{ width: "50%", maxWidth: "500px", minWidth: "300px", display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
         <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center', mt: 10 }}>
           <img
             src={imagenDatosPersonales}
@@ -58,7 +58,7 @@ const DatosPersonales = () => {
               color: '#000',
               textAlign: 'center', // Centrado del texto
               fontFamily: 'Montserrat',
-              fontSize: '16px',
+              fontSize: {xs:'10px', mb:'16px', lg:'16px'},
               fontStyle: 'normal',
               fontWeight: 600,
               lineHeight: 'normal',
@@ -75,7 +75,7 @@ const DatosPersonales = () => {
               color: '#000',
               textAlign: 'center', // Centrado del texto
               fontFamily: 'Montserrat',
-              fontSize: '16px',
+              fontSize: {xs:'10px', mb:'16px', lg:'16px'},
               fontStyle: 'normal',
               fontWeight: 600,
               lineHeight: 'normal',
@@ -88,17 +88,16 @@ const DatosPersonales = () => {
 
       {/* Texto "Datos personales" en la parte inferior izquierda */}
 
-      <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', mb: 3, ml: 35 }}>
+      <Box sx={{ width: '90%', display: 'flex', alignItems: 'flex-start', justifyContent: "flex-start", mb: 3, mt: 3 }}>
         {/* Texto "Datos personales" fuera de la Card y alineado con la Card */}
         <Typography
           variant="body1"
           sx={{
             fontFamily: 'Montserrat',
-            fontSize: '30px',
+            fontSize: {xs:'24px', mb:'30px', lg:'30px'},
             fontStyle: 'normal',
             fontWeight: 700,
             lineHeight: 'normal',
-            width: '800px', // Alinea con el tamaño de la Card
           }}
         >
           Datos personales
@@ -121,7 +120,7 @@ const DatosPersonales = () => {
 
         {/* box del formulario */}
         <Box sx={{
-          width: '850px',
+          width: '90%',
           height: 'auto',
           display: 'flex',
           flexDirection: 'normal',   // Asegura que los elementos se apilen verticalmente
@@ -132,7 +131,7 @@ const DatosPersonales = () => {
           {/* Formulario */}
           <form ref={formRef} onSubmit={handleSubmit}>
             {/* Campo de Email */}
-            <Box sx={{ width: '50%', mt: 5, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+            <Box sx={{ width: {xs:'100%', md: "48%", lg: "48%"}, mt: 5, display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
               <Typography variant="body2" sx={{
                 color: '#303030',
                 fontFamily: 'Montserrat',
@@ -166,9 +165,9 @@ const DatosPersonales = () => {
 
 
             {/* Campos Nombre y Apellido en el mismo nivel */}
-            <Box sx={{ display: 'flex', justifyContent: 'flex-start', gap: 2, width: '100%' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start', gap: 2, width: '100%', flexDirection: {xs: "column", md: "row", lg: "row"}}}>
               {/* Campo de Nombre */}
-              <Box sx={{ width: '48%' }}>
+              <Box sx={{ width: {xs:'100%', md: "48%", lg: "48%"} }}>
                 <Typography variant="body2" sx={{
                   color: '#303030',
                   fontFamily: 'Montserrat',
@@ -201,7 +200,7 @@ const DatosPersonales = () => {
               </Box>
 
               {/* Campo de Apellido */}
-              <Box sx={{ width: '48%' }}>
+              <Box sx={{ width: {xs:'100%', md: "48%", lg: "48%"} }}>
                 <Typography variant="body2" sx={{
                   color: '#303030',
                   fontFamily: 'Montserrat',
@@ -235,9 +234,9 @@ const DatosPersonales = () => {
             </Box>
 
             {/* Campos DNI y Teléfono en el mismo nivel */}
-            <Box sx={{ display: 'flex', justifyContent: 'flex-start', gap: 2, marginTop: 2, width: '100%' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'flex-start', gap: 2, marginTop: 2, width: '100%', flexDirection: {xs: "column", md: "row", lg: "row"} }}>
               {/* Campo de DNI */}
-              <Box sx={{ width: '48%' }}>
+              <Box sx={{ width: {xs:'100%', md: "48%", lg: "48%"} }}>
                 <Typography variant="body2" sx={{
                   color: '#303030',
                   fontFamily: 'Montserrat',
@@ -270,7 +269,7 @@ const DatosPersonales = () => {
               </Box>
 
               {/* Campo de Teléfono */}
-              <Box sx={{ width: '48%' }}>
+              <Box sx={{ width: {xs:'100%', md: "48%", lg: "48%"} }}>
                 <Typography variant="body2" sx={{
                   color: '#303030',
                   fontFamily: 'Montserrat',

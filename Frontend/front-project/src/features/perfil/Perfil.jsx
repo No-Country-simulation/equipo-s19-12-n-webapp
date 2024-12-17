@@ -14,6 +14,7 @@ import styles from "../perfil/Perfil.module.css"
 import AgregarProductos from "../agregarProductos/AgregarProductos";
 import FormEditarProductos from "../../core/components/organismos/FormAgregarProductos/FormEditarProductos";
 import { Context } from "../../core/context/Context";
+import { motion } from "framer-motion";
 
 const Perfil = () => {
 
@@ -22,10 +23,10 @@ const Perfil = () => {
   return (
     <div>
       <NavBar verPerfil={setPanelPerfil}></NavBar>
-      {panelPerfil === 0 && <div className={styles.perfilCont}>
+      {panelPerfil === 0 && <motion.div className={styles.perfilCont} initial={{scale: 0.98, opacity: 0.5}} animate={{scale: 1, opacity: 1}} transition={{ease: "easeInOut", duration: 0.4}}>
         <Breadcrumb />
         <RestaurantInfo />
-      </div>}
+      </motion.div>}
       {panelPerfil === 1 && <AgregarProductos></AgregarProductos>} 
       {panelPerfil === 2 && <FormEditarProductos></FormEditarProductos>}        
       <Footer />

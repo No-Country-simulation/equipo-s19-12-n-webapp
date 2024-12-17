@@ -140,7 +140,7 @@ const Navbar = () => {
                                 open={Boolean(anchorElUser)}
                                 onClose={handleCloseUserMenu}
                             >
-                                {(usuario ===null) && <>
+                                {(usuario ===null) && <Box>
                                     <div className='subtituloSesion0'>Usuarios</div>
                                     <MenuItem sx={{ m: '6px'}} key={1} onClick={() => handleOpcionSelect('iniciar sesion cliente')}>
                                         <Typography sx={{ textAlign: 'center', fontFamily: "Montserrat" }}>Iniciar Sesión</Typography>
@@ -155,7 +155,7 @@ const Navbar = () => {
                                     <MenuItem sx={{ m: '6px'}} key={4} onClick={() => handleOpcionSelect('registrar comerciante')}>
                                         <Typography sx={{ textAlign: 'center', fontFamily: "Montserrat" }}>Registrase</Typography>
                                     </MenuItem>
-                                </>}
+                                </Box>}
                                 {usuario === "cliente" && opcionesSesionCliente.map((setting) => (
                                     <MenuItem sx={{ m: '6px'}} key={setting} onClick={() => handleOpcionSelect(setting)}>
                                         <Typography sx={{ textAlign: 'center', fontFamily: "Montserrat" }}>{setting}</Typography>

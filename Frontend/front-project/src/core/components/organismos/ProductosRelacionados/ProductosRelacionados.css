@@ -1,7 +1,11 @@
 .productos-relacionados-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 4vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 90%;
+  height: auto;
+  margin-top: 1vh;
   margin-bottom: 4vh;
 }
 

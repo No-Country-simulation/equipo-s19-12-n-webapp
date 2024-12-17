@@ -68,13 +68,19 @@
 .contenedor-padre-input {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 50px;
+  align-items: center;
+  height: auto;
+  margin-bottom: 20px;
   width: 90%;
 }
 
 .contenedor-padre-ofertas {
   margin-bottom: 40px;
   width: 90%;
+  background-color: rgba(226, 205, 195, 0.4);
+  padding: 1vh;
+  padding-bottom: 4vh;
+  border-radius: 20px;
 }
 
 @media screen and (width < 1000px) {

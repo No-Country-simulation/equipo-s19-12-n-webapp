@@ -9,7 +9,7 @@ const RestaurantLogo = () => {
   const { datosUsuario } = useContext(Context);
 
   return (
-    <div>
+    <div className="contenedorLogoEn">
       <img
         className="img"
         src={datosUsuario.logo}
