@@ -3,7 +3,7 @@ import "./DescripcionComerciante.css";
 import { Context } from "../../../context/Context";
 import { useContext } from "react";
 
-const DescripcionComerciante = ({ comercianteId }) => {
+const DescripcionComerciante = ({ desc }) => {
   const { datosUsuario } = useContext(Context);
   const placeholder = "Ingrese la descripción del negocio";
 
@@ -12,7 +12,7 @@ const DescripcionComerciante = ({ comercianteId }) => {
       <div className="descripcion-comerciante">
         <Texto
           level="p"
-          texto={datosUsuario.desc || placeholder}
+          texto={desc || placeholder}
           variante="gray"
         />
       </div>

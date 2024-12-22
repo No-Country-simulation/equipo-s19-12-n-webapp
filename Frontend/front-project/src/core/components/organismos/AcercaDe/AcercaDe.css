@@ -6,7 +6,7 @@
 
 .acerca-de-texto {
   width: 100%;
-  margin-bottom: 40px;
+  margin-bottom: 0;
 }
 
 .acerca-de-enlaces {
@@ -40,7 +40,6 @@
 
 .title-detail {
   padding-top: 20px;
-  padding-bottom: 10px;
 }
 
 .dosFilas {
@@ -53,4 +52,53 @@
 }
 .columnaDos {
   width: 45%;
+}
+.desc0boton1{
+  width: 90px;
+  height: 30px;
+  background-color: var(--color-verde);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.desc0boton2{
+  width: 90px;
+  height: 30px;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.desc0boton1:hover{
+  background-color: green;
+}
+.desc0boton2:hover{
+  background-color: rgb(116, 0, 0);
+}
+.textADesc{
+  width: 100%;
+  min-height: 100px;
+  resize: none;
+  border-radius: 10px;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+.controlDescPanel{
+  margin-top: 1vh;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1vh;
 }

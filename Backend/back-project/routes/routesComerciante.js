@@ -108,8 +108,8 @@ routerComerciante.put("/:_id", async (req, res) => {
         });
     }
     try {
-        const {nombre, direccion, ciudad, rubro, desc, telefono, logo, email, pass, img1, img2, img3} = req.body;
-        const comercianteActualizado = {nombre, direccion, ciudad, desc, rubro, telefono, logo, email, pass, img1, img2, img3};
+        const {nombre, direccion, ciudad, rubro, desc, telefono, logo, pass, img1} = req.body;
+        const comercianteActualizado = {nombre, direccion, ciudad, desc, rubro, telefono, logo, pass, img1};
         const data = await comercianteSchema.findByIdAndUpdate(req.params._id, comercianteActualizado);
         if (!data) {
             res.status(404).send({

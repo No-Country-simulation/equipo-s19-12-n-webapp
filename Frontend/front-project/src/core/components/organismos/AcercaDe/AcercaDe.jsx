@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Texto from "../../atomos/Textos/Texto";
 import Mapa from "../../atomos/Icon/mapa.svg";
 import Telefono from "../../atomos/Icon/telefono.svg";
@@ -16,6 +16,8 @@ import { motion } from "framer-motion"
 
 const AcercaDe = () => {
   const { datosUsuario } = useContext(Context);
+  const [descActive, setDescActive] = useState(false)
+  const [descData, setDescData] = useState(datosUsuario.desc || "")
 
   const {
     direccion = "Falta completar información",
@@ -28,10 +30,29 @@ const AcercaDe = () => {
     recojoEnRestaurante = true,
   } = datosUsuario || {};
 
+  function guardarDescripcion () {
+    fetch(`https://eaty-three.vercel.app/api/comerciante/${datosUsuario.id}`, {
+      method: "PUT",
+      body: JSON.stringify({nombre: datosUsuario.nombre, direccion: datosUsuario.direccion, ciudad: datosUsuario.ciudad, rubro: datosUsuario.rubro, desc: descData, telefono: datosUsuario.telefono, logo: datosUsuario.logo, pass: datosUsuario.pass, img1: datosUsuario.img1}),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    })
+  }
+
   return (
     <motion.div className="acerca-de-container" initial={{scale: 0.98, opacity: 0.5}} animate={{scale: 1, opacity: 1}} transition={{ease: "easeInOut", duration: 0.4}}>
       <div className="acerca-de-texto">
-        <DescripcionComerciante comercianteId={datosUsuario?.id} />
+        {descActive === false ? <DescripcionComerciante desc={descData} /> : <textarea className="textADesc" style={{width: "100%"}} onChange={(e) => setDescData(e.target.value)}>{descData}</textarea>}
+
+        {descActive === false ? <div className="controlDescPanel">
+          <div className="desc0boton1" onClick={() => setDescActive(true)}>Editar</div>
+        </div> :
+        <div className="controlDescPanel">
+          <div className="desc0boton2" onClick={() => {setDescData(datosUsuario.desc); setDescActive(false)}}>Cancelar</div>
+          <div className="desc0boton1" onClick={() => {guardarDescripcion(); setDescActive(false)}}>Guardar</div>
+        </div>}        
       </div>
 
       {/* Sección Datos Generales */}
