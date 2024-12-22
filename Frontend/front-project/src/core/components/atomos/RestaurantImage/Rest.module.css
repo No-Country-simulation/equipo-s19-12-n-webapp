@@ -12,6 +12,21 @@
   background-size: cover;
   background-repeat: no-repeat;
   border-radius: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.inImage{
+  position: relative;
+  display: block;
+  left: 3em;
+  top: -0.5em;
+  width: 3em;
+  height: 3em;
+  background-color: white;
+  z-index: 999;
+  opacity: 0;
+  cursor: pointer;
 }
 @media screen and (width < 1000px) {
   .contImagenPortada {

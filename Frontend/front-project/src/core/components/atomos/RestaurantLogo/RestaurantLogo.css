@@ -1,10 +1,10 @@
-.img {
-  margin-top: -110px;
+.imgLogoEn {
+  margin-top: -160px;
   width: 12%;
   min-width: 140px;
   height: auto;
-  aspect-ratio: 1;
-  background-color: rgb(236, 236, 236);
+  aspect-ratio: 1/1;
+  background-color: rgb(206, 206, 215);
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
   padding: 30px;
   border-radius: 50%;
@@ -17,6 +17,19 @@
 }
 .contenedorLogoEn{
   scale: 1;
+}
+.inImageLogo{
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  display: block;
+  top: -3.5em;
+  width: 3em;
+  height: 3em;
+  background-color: white;
+  z-index: 999;
+  opacity: 0;
+  cursor: pointer;
 }
 
 @media screen and (width < 767px) {
