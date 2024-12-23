@@ -4,8 +4,21 @@
   border-radius: 10px;
   border: 1px solid #30303067;
 }
-
+.desc-texto-0{
+  padding: 1vh;
+}
 .descripcion-comerciante {
   min-height: 100px;
   border-radius: 10px;
+}
+
+@media screen and (width < 1000px) {
+  .desc-texto-0{
+    font-size: 0.8rem;
+  }
+}
+@media screen and (width < 600px) {
+  .desc-texto-0{
+    font-size: 0.7rem;
+  }
 }

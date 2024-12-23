@@ -18,7 +18,7 @@ h3 {
 }
 
 p {
-  font-size: 1rem;
+  font-size: 0.7rem;
   padding-left: 1vh;
   padding-right: 1vh;
 }
@@ -57,6 +57,9 @@ p {
   h3 {
     font-size: 1.2rem;
   }
+  p {
+    font-size: 0.8rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -72,5 +75,8 @@ p {
 
   h3 {
     font-size: 1.5rem;
+  }
+  p {
+    font-size: 1rem;
   }
 }

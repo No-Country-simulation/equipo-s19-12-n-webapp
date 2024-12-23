@@ -85,10 +85,10 @@
 
 @media screen and (width < 1000px) {
   .tab-button {
-    scale: 0.8;
+    font-size: 1rem;
   }
   .tab-button.active {
-    scale: 0.8;
+    font-size: 1rem;
   }
   .contenedor-padre-ofertas {
     display: none;
@@ -100,10 +100,10 @@
 
 @media screen and (width < 600px) {
   .tab-button {
-    scale: 0.6;
+    font-size: 0.8rem;
   }
   .tab-button.active {
-    scale: 0.6;
+    font-size: 0.8rem;
   }
   .contenedorInputPerfil {
     width: 100%;
