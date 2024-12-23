@@ -102,3 +102,30 @@
   align-items: center;
   gap: 1vh;
 }
+
+@media screen and (width < 1000px) {
+  .dosFilas {
+    flex-direction: column;
+  }
+  .columnaUno {
+    width: 100%;
+  }
+  .columnaDos {
+    width: 100%;
+  }
+  .textADesc{
+    font-size: 0.8rem;
+  }
+  .desc0boton1, .desc0boton2{
+    scale: 0.9;
+  }
+}
+
+@media screen and (width < 600px) {
+  .textADesc{
+    font-size: 0.7rem;
+  }
+  .desc0boton1, .desc0boton2{
+    scale: 0.8;
+  }
+}

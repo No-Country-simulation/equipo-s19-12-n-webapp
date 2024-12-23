@@ -136,7 +136,7 @@ const ProductCard = ({
             <h3>{nombre}</h3>
           </div>
           <div className="contDataCardProducto">
-            <p className="precioAnterior">${parseInt(precio) * 1.5}</p>
+            <p className="precioAnterior">${parseInt(precio) * ((100 + parseInt(off)) / 100)}</p>
             <p className="precioActual">${precio}</p>
           </div>
         </div>

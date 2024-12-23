@@ -92,7 +92,7 @@ const AcercaDe = () => {
       <div className="title-detail">
         <Texto
           level="h3"
-          texto="Servicios que brinda de manera presencial"
+          texto="Servicios en local"
           variante="black"
         />
       </div>
