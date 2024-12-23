@@ -165,7 +165,7 @@ function ArticuloProducto() {
             <img src={detallesComerciante.logo} alt="" />
             <div className={styles.detallesPerfilCont}>
               <h4>{detallesComerciante.nombre}</h4>
-              <p>Ver Perfil</p>
+              <p>{detallesComerciante.rubro}</p>
             </div>
           </div>
           <div className={styles.botonCont}>

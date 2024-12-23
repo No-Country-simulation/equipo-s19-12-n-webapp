@@ -232,12 +232,8 @@
 .detallesPerfilCont p{
     margin: 0;
     padding: 0;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
-.detallesPerfilCont p:hover{
-    color: var(--color-verde);
     font-weight: 600;
+    color: var(--color-verde)
 }
 .detallesPerfilCont h4{
     margin: 0;

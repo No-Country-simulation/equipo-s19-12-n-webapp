@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <section className="footer">
       <div className="seccionFooter">
-        <div>
+        <div className="sub-seccion-footer">
           <Texto
             level={"p"}
             texto={"ACERCA DE NOSOTROS"}
@@ -14,7 +14,7 @@ const Footer = () => {
           />
           <Texto
             level={"p"}
-            texto={"--"}
+            texto={"--------------"}
             variante={"white"}
           />
           <Texto
@@ -23,12 +23,17 @@ const Footer = () => {
             variante={"white"}
           />
         </div>
-        <div>
+        <div className="sub-seccion-footer">
           <Texto
             level={"p"}
-            texto={"POLITICA DE COOKIES"}
+            texto={"POLITICAS"}
             variante={"tituloFooter"}
           />
+          <Texto
+            level={"p"}
+            texto={"--------------"}
+            variante={"white"}
+          />          
           <Texto
             level={"p"}
             texto={"Privacidad"}
@@ -45,12 +50,17 @@ const Footer = () => {
             variante={"white"}
           />
         </div>
-        <div>
+        <div className="sub-seccion-footer">
           <Texto
             level={"p"}
             texto={"CATEGORIAS"}
             variante={"tituloFooter"}
           />
+          <Texto
+            level={"p"}
+            texto={"--------------"}
+            variante={"white"}
+          />          
           <Texto
             level={"p"}
             texto={"Frutas y verduras"}
@@ -72,12 +82,17 @@ const Footer = () => {
             variante={"white"}
           />
         </div>
-        <div>
+        <div className="sub-seccion-footer">
           <Texto
             level={"p"}
-            texto={"UNETE A LA COMUNIDAD"}
+            texto={"COMUNIDAD"}
             variante={"tituloFooter"}
           />
+          <Texto
+            level={"p"}
+            texto={"--------------"}
+            variante={"white"}
+          />          
           <div className="redes">
             <Icon
               type={"facebook"}
