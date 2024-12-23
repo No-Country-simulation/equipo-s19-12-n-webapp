@@ -128,22 +128,38 @@ export default function CarritoRightDrawer({ open, onClose }) {
           <img
             src={detallesComerciante.logo} // Coloca la URL de la imagen aquí
             alt="Imagen del comerciante"
-            style={{ width: 40, height: 40, objectFit: 'cover', borderRadius: '50%', marginLeft:10 }} // Ajusta el tamaño y estilo de la imagen
+            style={{ width: 50, height: 50, objectFit: 'cover', borderRadius: '50%', marginLeft:10 }} // Ajusta el tamaño y estilo de la imagen
           />
+          <Box sx={{display: "flex", flexDirection: "column", justifyContent:"center", alignItems: "flex-start", height: "70px", width: "auto"}}>
           <Typography
             variant="body1"
             sx={{
               textAlign: 'start',
               fontFamily: 'Montserrat',
-              fontSize: '16px',
+              fontSize: '14px',
               fontStyle: 'normal',
-              fontWeight: 400,
+              fontWeight: 600,
               lineHeight: 'normal',
               ml:4
             }}
           >
             {detallesComerciante.nombre}
           </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              textAlign: 'start',
+              fontFamily: 'Montserrat',
+              fontSize: '14px',
+              fontStyle: 'normal',
+              fontWeight: 400,
+              lineHeight: 'normal',
+              ml:4
+            }}
+          >
+            {detallesComerciante.rubro}
+          </Typography>
+          </Box>
         </Box>):null}
 
         {/*<Divider style={{border: "1px solid rgba(0, 0, 0, 0.2)"}} />*/}

@@ -9,9 +9,12 @@
   justify-content: space-around;
 }
 
-.seccionFooter div {
+.sub-seccion-footer {
   display: flex;
+  min-width: 180px;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   flex-wrap: wrap;
   padding: 3% 0;
 }
@@ -36,30 +39,40 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 1vh;
 }
 
 .redes {
+  display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2vh;
+  margin-top: 1vh;
+  margin-bottom: 2vh;
 }
 
 @media (min-width: 768px) {
   .seccionFooter {
     flex-direction: row;
+    align-items: flex-start;
     flex-wrap: wrap;
     text-wrap: balance;
   }
-
-  .seccionFooter > div:nth-child(4) {
+  .sub-seccion-footer {
+    width: 25%;
+  }
+  .sub-seccion-footer:nth-child(4) {
     width: 25%;
   }
 }
 
 @media (min-width: 1024px) {
-  .seccionFooter div {
-    width: 10%;
+  .sub-seccion-footer {
+    width: 20%;
   }
 
-  .seccionFooter > div:nth-child(4) {
+  .sub-seccion-footer:nth-child(4) {
     width: 20%;
   }
 }
